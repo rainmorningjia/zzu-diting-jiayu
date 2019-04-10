@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="diting-online-core:war">
+    <output-path>$PROJECT_DIR$/diting-online-core/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>diting-online-core</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="diting-online-core.war">
+      <element id="artifact" artifact-name="diting-online-core:war exploded" />
+    </root>
+  </artifact>
+</component>
