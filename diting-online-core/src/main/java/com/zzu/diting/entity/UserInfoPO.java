@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -18,6 +19,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "user_info")
 public class UserInfoPO {
+    @Id
     private Long id;
     private String userName;
     private String sex;
