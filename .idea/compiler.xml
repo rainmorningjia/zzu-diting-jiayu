@@ -18,8 +18,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="diting-online" options="-parameters" />
-      <module name="diting-online-core" options="-parameters" />
+      <module name="diting-online" options="" />
+      <module name="diting-online-core" options="" />
       <module name="zzu-diting-jiayu" options="-parameters" />
     </option>
   </component>

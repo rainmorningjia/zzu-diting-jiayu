@@ -1,0 +1,817 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.RightMapper">
+    <resultMap id="right" type="com.zzu.diting.entity.RightVO">
+        <id column="ID" property="id"/>
+        <result column="RIGHT_TYPE" property="rightType"/>
+        <result column="RIGHT_NAME" property="rightName"/>
+        <result column="IS_ENTRUSTED_PROTECTION" property="isEntrustedProtection"/>
+        <result column="AUDIT_STATE" property="auditResult"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="updateTime" property="updateTime"/>
+    </resultMap>
+    <!--全部类型中的全部状态 -->
+    <!-- 1-->
+    <select id="queryTotalNumberByUserIDAndRightAllAndTypeAll" resultType="java.lang.Integer">
+    <![CDATA[
+        select count(*)
+        from (select id id
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id id
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id id
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}) s
+        ]]>
+    </select>
+
+    <select id="queryRightsByUserIDAndRightAllAndTypeAll" resultMap="right">
+        <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          right_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          works_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}) s
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+    <!-- 2-->
+    <select id="queryTotalNumberByUserIDAndRightAllAndType" resultType="java.lang.Integer">
+          <![CDATA[
+        select count(*)
+        from (select id id
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and audit_state = #{auditState}
+              union all
+              select id id
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and audit_status = #{auditState}
+              union all
+              select id id
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and audit_status = #{auditState}) s
+        ]]>
+    </select>
+
+
+    <!-- 全部类型中的特定状态 -->
+    <select id="queryRightsByUserIDAndRightAllAndType" resultMap="right">
+        <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and audit_state = #{auditState}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          right_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     proof_material_url      right_url,
+                     audit_status            state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and audit_status = #{auditState}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          works_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and audit_status = #{auditState}) s
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+    <!-- 3 -->
+    <!-- 特定类型中的全部状态 -->
+    <select id="queryTotalNumberByUserIDAndRightAndTypeAll" resultType="java.lang.Integer">
+        <![CDATA[
+        select count(*)
+        from (select id id
+
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id id
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id id
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}) s
+        where s.right_type = #{rightType}
+        ]]>
+    </select>
+
+    <select id="queryRightsByUserIDAndRightAndTypeAll" resultMap="right">
+        <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          right_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          works_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}) s
+        where s.right_type = #{rightType}
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+    <!-- 4-->
+    <select id="queryTotalNumberByUserIDAndRightAndType" resultType="java.lang.Integer">
+        <![CDATA[
+        select count(*)
+        from (select id id
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id id
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id id
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}) s
+        where s.right_type = #{rightType}
+          and s.audit_state = #{auditState}
+        ]]>
+    </select>
+
+    <!-- 特定类型中的特定状态 -->
+    <select id="queryRightsByUserIDAndRightAndType" resultMap="right">
+        <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          right_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          works_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}) s
+        where s.right_type = #{rightType}
+          and s.audit_state = #{auditState}
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+    <!-- 查询特定ID全部类型全部状态 -->
+    <select id="queryRightByUserIDAndRightIdAll" resultMap="right">
+        <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          right_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          works_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}) s
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+    <!-- 查询特定ID特定状态全部权利 -->
+    <select id="queryRightByUserIDAndRightIdAllTypeAndAuditState" resultMap="right">
+        <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          right_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          works_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}) s
+        where s.audit_state = #{auditState}
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+    <!-- 查询特定ID特定权利全部状态 -->
+    <select id="queryRightByUserIDAndRightIdType" resultMap="right">
+        <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          right_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          works_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}) s
+        where s.right_type = #{rightType}
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+
+    <!-- 查询特定ID特定权利特定状态 -->
+    <select id="queryRightByUserIDAndRightIdTypeAndRight" resultMap="right">
+        <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          right_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              FROM reputation_portrait_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}
+              union all
+              select id                      id,
+                     copyright_type          right_type,
+                     copyright_name          works_name,
+                     is_entrusted_protection is_entrusted_protection,
+                     audit_status            audit_state,
+                     gmt_create              create_time,
+                     gmt_modified            updateTime
+              from other_right_info
+              where user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and id = #{id}) s
+        where s.right_type = #{rightType}
+          and s.audit_state = #{auditState}
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+    <!-- 5 -->
+    <select id="getTotalNumberByUserIDAndRightNameAndAll" resultType="java.lang.Integer">
+         <![CDATA[
+        select count(*)
+        from (select id id
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and works_name like "%"#{name}"%"
+              union all
+              select id
+                     id
+              FROM reputation_portrait_info
+              WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
+              union all
+              select id
+                     id
+              from other_right_info
+              where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
+        ]]>
+    </select>
+    <!-- 根据权利名称模糊查询特定权利类型的全部状态权利信息-->
+    <select id="queryRightByUserIDAndRightNameAndAll" resultMap="right">
+         <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and works_name like "%"#{name}"%"
+              union all
+              select id
+                     id,
+                     copyright_type
+                     right_type,
+                     copyright_name
+                     right_name,
+                     is_entrusted_protection
+                     is_entrusted_protection,
+                     audit_status
+                     audit_state,
+                     gmt_create
+                     create_time,
+                     gmt_modified
+                     updateTime
+              FROM reputation_portrait_info
+              WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
+              union all
+              select id
+                     id,
+                     copyright_type
+                     right_type,
+                     copyright_name
+                     works_name,
+                     is_entrusted_protection
+                     is_entrusted_protection,
+                     audit_status
+                     audit_state,
+                     gmt_create
+                     create_time,
+                     gmt_modified
+                     updateTime
+              from other_right_info
+              where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+    <!-- 6 -->
+
+    <select id="getTotalNumberByUserIDAndRightNameAndAllStateOneRight" resultType="java.lang.Integer">
+         <![CDATA[
+        select count(*)
+        from (select id id
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and works_name like "%"#{name}"%"
+              union all
+              select id
+                     id
+              FROM reputation_portrait_info
+              WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
+              union all
+              select id
+                     id
+              from other_right_info
+              where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
+        where s.right_type = #{rightType}
+        ]]>
+    </select>
+
+    <!-- 根据权利名称模糊查询特定权利类型的全部状态权利信息-->
+    <select id="queryRightByUserIDAndRightNameAndAllStateOneRight" resultMap="right">
+         <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and works_name like "%"#{name}"%"
+              union all
+              select id
+                     id,
+                     copyright_type
+                     right_type,
+                     copyright_name
+                     right_name,
+                     is_entrusted_protection
+                     is_entrusted_protection,
+                     audit_status
+                     audit_state,
+                     gmt_create
+                     create_time,
+                     gmt_modified
+                     updateTime
+              FROM reputation_portrait_info
+              WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
+              union all
+              select id
+                     id,
+                     copyright_type
+                     right_type,
+                     copyright_name
+                     works_name,
+                     is_entrusted_protection
+                     is_entrusted_protection,
+                     audit_status
+                     audit_state,
+                     gmt_create
+                     create_time,
+                     gmt_modified
+                     updateTime
+              from other_right_info
+              where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
+        where s.right_type = #{rightType}
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+    <!-- 7 -->
+    <select id="getTotalNumberByUserIDAndRightNameAndOneStateAllRight" resultType="java.lang.Integer">
+         <![CDATA[
+        select *
+        from (select id                 id
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and works_name like "%"#{name}"%"
+              union all
+              select id
+                     id
+              FROM reputation_portrait_info
+              WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
+              union all
+              select id
+                     id
+              from other_right_info
+              where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
+        where s.audit_state = #{state}
+        ]]>
+    </select>
+
+    <select id="queryRightByUserIDAndRightNameAndOneStateAllRight" resultMap="right">
+         <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and works_name like "%"#{name}"%"
+              union all
+              select id
+                     id,
+                     copyright_type
+                     right_type,
+                     copyright_name
+                     right_name,
+                     is_entrusted_protection
+                     is_entrusted_protection,
+                     audit_status
+                     audit_state,
+                     gmt_create
+                     create_time,
+                     gmt_modified
+                     updateTime
+              FROM reputation_portrait_info
+              WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
+              union all
+              select id
+                     id,
+                     copyright_type
+                     right_type,
+                     copyright_name
+                     works_name,
+                     is_entrusted_protection
+                     is_entrusted_protection,
+                     audit_status
+                     audit_state,
+                     gmt_create
+                     create_time,
+                     gmt_modified
+                     updateTime
+              from other_right_info
+              where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
+        where s.audit_state = #{state}
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+    <!-- 8 -->
+    <select id="getTotalNumberByUserIDAndRightNameAndOneStateOneRight" resultType="java.lang.Integer">
+         <![CDATA[
+        select count (*)
+        from (select id                 id
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and works_name like "%"#{name}"%"
+              union all
+              select id
+                     id
+              FROM reputation_portrait_info
+              WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
+              union all
+              select id
+                     id
+              from other_right_info
+              where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
+        where s.audit_state = #{state}
+          and s.right_type = #{rightType}
+        ]]>
+    </select>
+
+
+    <select id="queryRightByUserIDAndRightNameAndOneStateOneRight" resultMap="right">
+         <![CDATA[
+        select *
+        from (select id                 id,
+                     copyright_type     right_type,
+                     works_name         right_name,
+                     is_right_entrusted is_entrusted_protection,
+                     audit_state        audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
+              from
+                  copyright_info
+              WHERE user_id = #{userId}
+                and gmt_create < #{t2}
+                and gmt_create > #{t1}
+                and works_name like "%"#{name}"%"
+              union all
+              select id
+                     id,
+                     copyright_type
+                     right_type,
+                     copyright_name
+                     right_name,
+                     is_entrusted_protection
+                     is_entrusted_protection,
+                     audit_status
+                     audit_state,
+                     gmt_create
+                     create_time,
+                     gmt_modified
+                     updateTime
+              FROM reputation_portrait_info
+              WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
+              union all
+              select id
+                     id,
+                     copyright_type
+                     right_type,
+                     copyright_name
+                     works_name,
+                     is_entrusted_protection
+                     is_entrusted_protection,
+                     audit_status
+                     audit_state,
+                     gmt_create
+                     create_time,
+                     gmt_modified
+                     updateTime
+              from other_right_info
+              where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
+        where s.audit_state = #{state}
+          and s.right_type = #{rightType}
+        order by s.create_time desc limit #{num1},#{num2}
+        ]]>
+    </select>
+
+</mapper>

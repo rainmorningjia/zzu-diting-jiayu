@@ -30,9 +30,10 @@ public class UserInfoPO {
     private String address;
     private String sign;
     private String headIconUrl;
+    private String salt;
     @Column(name = "gmt_create")
-    private String createTime;
+    private Long createTime;
     @Column(name = "gmt_modified")
-    private String updateTime;
+    private Long updateTime;
 
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.OrganizationAuthenticationInfoMapper">
+    <resultMap id="organizationAuthentication" type="com.zzu.diting.entity.OrganizationAuthenticationInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="BIGINT"/>
+        <result column="organization_name" property="organizationName" jdbcType="VARCHAR"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="area" property="area" jdbcType="VARCHAR"/>
+        <result column="phone_number" property="phoneNumber" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="certificate_type" property="certificateType" jdbcType="VARCHAR"/>
+        <result column="certificate_number" property="certificateNumber" jdbcType="VARCHAR"/>
+        <result column="certificate_postive_url" property="certificatePostiveUrl" jdbcType="VARCHAR"/>
+        <result column="corporation_name" property="corporationName" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="zip" property="zip" jdbcType="VARCHAR"/>
+        <result column="tel" property="tel" jdbcType="VARCHAR"/>
+        <result column="fas" property="fas" jdbcType="VARCHAR"/>
+        <result column="relation_name" property="relationName" jdbcType="VARCHAR"/>
+        <result column="authentication_result" property="authenticationResult" jdbcType="VARCHAR"/>
+        <result column="recently_operator" property="recentlyOperator" jdbcType="VARCHAR"/>
+        <result column="recently_update_type" property="recentlyUpdateType" jdbcType="VARCHAR"/>
+        <result column="FAIL_TYPE" property="failType" jdbcType="VARCHAR"/>
+        <result column="REASON" property="reason" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="createTime" jdbcType="BIGINT"/>
+        <result column="gmt_modified" property="updateTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="queryTotalNumberOrganizationAuthenticationAll" resultType="java.lang.Integer">
+        select count(*)
+        from organization_authentication_info
+    </select>
+
+    <select id="queryOrganizationAuthenticationAll" resultMap="organizationAuthentication">
+        select *
+        from organization_authentication_info
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberOrganizationAuthenticationByOrganizationName" resultType="java.lang.Integer">
+        select count(*)
+        from organization_authentication_info
+        where organization_name like "%"#{organizationName}"%"
+    </select>
+
+    <select id="queryOrganizationAuthenticationByOrganizationName" resultMap="organizationAuthentication">
+        select *
+        from organization_authentication_info
+        where organization_name like "%"#{organizationName}"%"
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberOrganizationAuthenticationByEmail" resultType="java.lang.Integer">
+        select count(*)
+        from organization_authentication_info
+        where email like "%"#{emial}"%"
+    </select>
+
+    <select id="queryOrganizationAuthenticationByEmail" resultMap="organizationAuthentication">
+        select *
+        from organization_authentication_info
+        where email like "%"#{emial}"%"
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberOrganizationAuthenticationByCorporationName" resultType="java.lang.Integer">
+        select count(*)
+        from organization_authentication_info
+        where corporation_name like "%"#{corporationName}"%"
+    </select>
+
+    <select id="queryOrganizationAuthenticationByCorporationName" resultMap="organizationAuthentication">
+        select *
+        from organization_authentication_info
+        where corporation_name like "%"#{corporationName}"%"
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberOrganizationAuthenticationByTime" resultType="java.lang.Integer">
+        select count(*)
+        from organization_authentication_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt;{endTime}
+    </select>
+
+    <select id="queryOrganizationAuthenticationByTime" resultMap="organizationAuthentication">
+        select *
+        from organization_authentication_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt;{endTime}
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+</mapper>

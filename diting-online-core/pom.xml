@@ -29,11 +29,7 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <!--版本自动和父级保持一致 -->
-        </dependency>
+
         <!--数据库驱动-->
         <dependency>
             <groupId>mysql</groupId>

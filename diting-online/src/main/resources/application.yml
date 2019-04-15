@@ -3,19 +3,23 @@ spring:
     name: diting-online
   mvc:
     view:
-      suffix: /
-      prefix: .jsp
+      prefix: /
+      suffix: .jsp
+  datasource:
+    password: 1234
+    username: root
+    url: jdbc:mysql://localhost:3306/diting?charset=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
   http:
     converters:
       preferred-json-mapper: jackson
-  servlet:
     multipart:
       maxFileSize: 30MB
       max-request-size: 100MB
 server:
-  servlet:
-    context-path: /diting-online
-    jsp:
-      init-parameters:
-        development: true
   port: 8083
+  context-path: /diting
+  jsp-servlet:
+    init-parameters:
+      development: true

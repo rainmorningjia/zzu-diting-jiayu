@@ -7,11 +7,11 @@
     <meta http-equiv="description" content="this is my page">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/common.css" type="text/css"></link>
-    <link rel="stylesheet" href="css/login.css" type="text/css"></link>
-    <script type="text/javascript" src="script/jquery.js"></script>
-    <script type="text/javascript" src="script/common.js"></script>
+    <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css" type="text/css"></link>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css"></link>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/script/common.js"></script>
     <script type="text/javascript">
 
         $(function () {
@@ -21,7 +21,7 @@
             });
             //姓名的正则表达式
             var reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
-            var regs=/^[a-zA-Z\/ ]{2,20}$/;
+            var regs = /^[a-zA-Z\/ ]{2,20}$/;
             //密码的正则表达式
             var pPattern = /[0-9a-zA-Z]{6,16}/;
             //  form 表单提交
@@ -29,12 +29,12 @@
             //验证姓名的格式与是否存在方法
             var validName = function () {
                 var name = $("#name").val();
-                if (!reg.test(name)&&!regs.test(name)) {
+                if (!reg.test(name) && !regs.test(name)) {
                     $("#nameMessage").text("姓名格式不正确！");
                 } else {
                     $.ajax({
                         type: "post",
-                        url: "${pageContext.request.contextPath}/manager/loginManagerName",
+                        url: "${pageContext.request.contextPath}/user/loginUserName",
                         data: {
                             name: name
                         },
@@ -50,13 +50,13 @@
                 }
 
             }
-            var password=function(){
-                var password=$("#password").val();
-                if(!pPattern.test(password)){
+            var password = function () {
+                var password = $("#password").val();
+                if (!pPattern.test(password)) {
                     $("#passwordMessage").text("密码格式不正确");
-                    b=false;
-                }else {
-                    b=true;
+                    b = false;
+                } else {
+                    b = true;
                 }
             }
             $("#name").blur(function () {
@@ -69,7 +69,7 @@
 <body>
 
 <div class="login">
-    <form id="loginForm" action="${pageContext.request.contextPath}/manager/loginManager" method="post">
+    <form id="loginForm" action="${pageContext.request.contextPath}/user/login" method="post">
 
         <table>
             <tbody>
@@ -117,20 +117,20 @@
                 <td>&nbsp;</td>
                 <th>&nbsp;</th>
                 <td>
-                    <input type="button" class="homeButton" value="" onclick="location.href='/'"><input type="submit"
-                                                                                                        class="loginButton"
-                                                                                                        value="登录">
+                    <input type="button" class="homeButton" value=""
+                           onclick="location.href='/'">
+                    <input type="submit"
+                           class="loginButton"
+                           value="登录">
                 </td>
             </tr>
             </tbody>
         </table>
         <div class="powered">COPYRIGHT © 2008-2017.</div>
         <div class="link">
-            <a href="http://www.chimingfowang.com/">持名佛网首页</a> |
+            <a href="http://www.xxx.com/">首页</a> |
             <a href="http://www.chimingbbs.com/">交流论坛</a> |
-            <a href="">关于我们</a> |
-            <a href="">联系我们</a> |
-            <a href="">授权查询</a>
+            <a href="${pageContext.request.contextPath}/user/regist.jsp">注册</a> |
         </div>
     </form>
 </div>

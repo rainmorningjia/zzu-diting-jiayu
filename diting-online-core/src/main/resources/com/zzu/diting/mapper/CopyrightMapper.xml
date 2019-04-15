@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.CopyrightInfoMapper">
+    <resultMap id="CopyrightInfoPOMap"
+               type="com.zzu.diting.entity.CopyrightInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <id column="USER_ID" property="userId" jdbcType="BIGINT"/>
+        <result column="WORKS_TYPE" property="worksType" jdbcType="VARCHAR"/>
+        <result column="IS_REGISTER" property="isRegister" jdbcType="VARCHAR"/>
+        <result column="COPYRIGHT_REGISTRATION_NUMBER" property="copyrightRegistrationNumber" jdbcType="VARCHAR"/>
+        <result column="COPYRIGHT_REGISTRATION_FILE_URL" property="copyrightRegistrationFileUrl" jdbcType="VARCHAR"/>
+        <result column="WORKS_NAME" property="worksName" jdbcType="VARCHAR"/>
+        <result column="COPYRIGHT_PERSON_NAME" property="copyrightPersonName" jdbcType="DATE"/>
+        <result column="COPYRIGHT_REGISTER_DATE" property="copyrightRegisterDate" jdbcType="DATE"/>
+        <result column="COPYRIGHT_VLD" property="copyrightVld" jdbcType="VARCHAR"/>
+        <result column="DIRECTOR_INFO" property="directorInfo" jdbcType="VARCHAR"/>
+        <result column="PERFORMER_MAIN_INFO" property="performerMainInfo" jdbcType="VARCHAR"/>
+        <result column="WORKS_ATTRIBUTE" property="worksAttribute" jdbcType="VARCHAR"/>
+        <result column="WORKS_NUMBER" property="worksNumber" jdbcType="VARCHAR"/>
+        <result column="IS_DISTRIBUTION" property="isDistribution" jdbcType="VARCHAR"/>
+        <result column="COPYRIGHT_ATTRIBUTE" property="copyrightAttribute" jdbcType="VARCHAR"/>
+        <result column="COPYRIGHT_PERSON_TYPE" property="copyrightPersonType" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_NUMBER" property="certificateNumber" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_TYPE" property="certificateType" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_POSITIVE_URL" property="certificatePositiveUrl" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_OPPOSITE_URL" property="certificateOppositeUrl" jdbcType="VARCHAR"/>
+        <result column="PASSPORT_URL" property="passportUrl" jdbcType="VARCHAR"/>
+        <result column="UNIFIED_SOCIAL_CREDIT_CODE" property="unifiedSocialCreditCode" jdbcType="VARCHAR"/>
+        <result column="ENTERPRISE_PROVE_FILE_URL" property="enterpriseProveFileUrl" jdbcType="VARCHAR"/>
+        <result column="COPYRIGHT_DOCUMENT_CHAIN_URL" property="copyrightDocumentChainUrl" jdbcType="VARCHAR"/>
+        <result column="IS_RIGHT_ENTRUSTED" property="isRightEntrusted" jdbcType="VARCHAR"/>
+        <result column="ATTORNEY_ATTRIBUTE" property="attorneyAttribute" jdbcType="VARCHAR"/>
+        <result column="ENTRUST_PROTECTION_STARTDATE" property="entrustedProtectionStartdate" jdbcType="DATE"/>
+        <result column="ENTRUST_PROTECTION_ENDDATE" property="entrustProtectionEnddate" jdbcType="DATE"/>
+        <result column="ENTRUST_FILE_URL" property="entrustFileUrl" jdbcType="VARCHAR"/>
+        <result column="AUDIT_STATE" property="auditStatus" jdbcType="VARCHAR"/>
+        <result column="GMT_CREATE" property="updateTime" jdbcType="BIGINT"/>
+        <result column="GMT_MODIFIED" property="createTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="Copyright">
+        ID
+        ,
+        USER_ID,
+        WORKS_TYPE,
+        IS_REGISTER,
+        COPYRIGHT_REGISTRATION_NUMBER,
+        COPYRIGHT_REGISTRATION_FILE_URL,
+        WORKS_NAME,
+        COPYRIGHT_PERSON_NAME,
+        COPYRIGHT_REGISTER_DATE,
+        COPYRIGHT_VLD,
+        PERFORMER_MAIN_INFO,
+        DIRECTOR_INFO,
+        WORKS_ATTRIBUTE,
+        WORKS_NUMBER,
+        IS_DISTRIBUTION,
+        COPYRIGHT_ATTRIBUTE,
+        COPYRIGHT_PERSON_TYPE,
+        CERTIFICATE_NUMBER,
+        CERTIFICATE_TYPE,
+        CERTIFICATE_POSITIVE_URL,
+        CERTIFICATE_OPPOSITE_URL,
+        PASSPORT_URL,
+        UNIFIED_SOCIAL_CREDIT_CODE,
+        ENTERPRISE_PROVE_FILE_URL,
+        COPYRIGHT_DOCUMENT_CHAIN_URL,
+        IS_RIGHT_ENTRUSTED,
+        ATTORNEY_ATTRIBUTE,
+        ENTRUST_PROTECTION_STARTDATE,
+        ENTRUST_PROTECTION_ENDDATE,
+        ENTRUST_FILE_URL,
+        AUDIT_STATE,
+        GMT_CREATE,
+        GMT_MODIFIED
+
+    </sql>
+
+    <select id="queryCopyrightInfoList" resultMap="CopyrightInfoPOMap">
+        select
+        <include refid="Copyright"/>
+        from copyright_info limit #{num1},#{num2}
+    </select>
+
+    <update id="updateCopyrightInfo">
+        update copyright_info
+        set audit_state =#{copyrightInfoPO.auditState}
+        where id = #{copyrightInfoPO.id}
+    </update>
+    <select id="queryTotalNumberCopyrightInfoAll" resultType="java.lang.Integer">
+        select
+            count(*)
+        from copyright_info
+    </select>
+
+    <select id="queryCopyrightInfoAll" resultMap="CopyrightInfoPOMap">
+        select
+        <include refid="Copyright"/>
+        from copyright_info
+        order by ${time} ${desc}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberCopyrightInfoByCopyrightName" resultType="java.lang.Integer">
+        select
+            count(*)
+        from copyright_info
+        where works_name like "%"#{copyrightName}"%"
+    </select>
+
+    <select id="queryCopyrightInfoByCopyrightName" resultMap="CopyrightInfoPOMap">
+        select
+        <include refid="Copyright"/>
+        from copyright_info
+        where works_name like "%"#{copyrightName}"%"
+        order by ${time} ${desc}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberCopyrightInfoByTime" resultType="java.lang.Integer">
+        select
+            count(*)
+        from copyright_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt;{endTime}
+    </select>
+
+    <select id="queryCopyrightInfoByTime" resultMap="CopyrightInfoPOMap">
+        select
+        <include refid="Copyright"/>
+        from copyright_info
+        where ${timeType} &gt;#{startTime} and ${timeType} &lt;{endTime}
+        order by ${time} ${desc}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberCopyrightInfoByUserId" resultType="java.lang.Integer">
+        select
+            count(*)
+        from copyright_info
+        where user_id = #{userId}
+    </select>
+
+    <select id="queryCopyrightInfoByUserId" resultMap="CopyrightInfoPOMap">
+        select
+        <include refid="Copyright"/>
+        from copyright_info
+        where user_id=#{userId}
+        order by ${time} ${desc}
+        limit #{num1},#{num2}
+    </select>
+</mapper>

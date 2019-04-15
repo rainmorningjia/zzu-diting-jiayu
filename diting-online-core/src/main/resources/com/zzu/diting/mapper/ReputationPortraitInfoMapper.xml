@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.ReputationPortraitInfoMapper">
+    <resultMap id="ReputationPortraitInfo" type="com.zzu.diting.entity.ReputationPortraitInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <id column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <id column="COPYRIGHT_TYPE" property="copyrightType" jdbcType="VARCHAR"/>
+        <id column="COPYRIGHT_NAME" property="copyrightName" jdbcType="VARCHAR"/>
+        <id column="PROOF_MATERIAL" property="proofMaterialUrl" jdbcType="VARCHAR"/>
+        <id column="IS_ENTRUSTED_PROTECTION" property="isEntrustedProtection" jdbcType="VARCHAR"/>
+        <id column="PROTECTION_RIGHT_ATTRIBUTION" property="protectionRightAttribute" jdbcType="VARCHAR"/>
+        <id column="ENTRUSTED_PROTECTION_STARTDATE" property="entrustedProtectionStartdate" jdbcType="DATE"/>
+        <id column="ENTRUSTED_PROTECTION_ENDDATE" property="entrustedProtectionEnddate" jdbcType="DATE"/>
+        <id column="ATTORNEY_POWER_URL" property="attorneyPowerUrl" jdbcType="VARCHAR"/>
+        <id column="AUDIT_STATUS" property="auditStatus" jdbcType="VARCHAR"/>
+        <id column="GMT_CREATE" property="updateTime" jdbcType="BIGINT"/>
+        <id column="GMT_MODIFIED" property="createTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="queryTotalNumberReputationPortraitInfoAll" resultType="java.lang.Integer">
+        select count(*)
+        from
+            reputation_portrait_info
+    </select>
+
+    <select id="queryReputationPortraitInfoAll" resultMap="ReputationPortraitInfo">
+        select *
+        from
+            reputation_portrait_info
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+
+
+    <select id="queryTotalNumberReputationPortraitInfoByCopyrightName" resultType="java.lang.Integer">
+        select count(*)
+        from
+            reputation_portrait_info
+        where copyright_name like "%"#{copyrightName}"%"
+    </select>
+
+    <select id="queryReputationPortraitInfoByCopyrightName" resultMap="ReputationPortraitInfo">
+        select *
+        from
+            reputation_portrait_info
+        where copyright_name like "%"#{copyrightName}"%"
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberReputationPortraitInfoByTime" resultType="java.lang.Integer">
+        select count(*)
+        from
+            reputation_portrait_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt;{endTime}
+    </select>
+
+    <select id="queryReputationPortraitInfoByTime" resultMap="ReputationPortraitInfo">
+        select *
+        from
+            reputation_portrait_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt;{endTime}
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberReputationPortraitInfoByUserId" resultType="java.lang.Integer">
+        select count(*)
+        from
+            reputation_portrait_info
+        where user_id = #{userId}
+    </select>
+
+    <select id="queryReputationPortraitInfoByUserId" resultMap="ReputationPortraitInfo">
+        select *
+        from
+            reputation_portrait_info
+        where user_id = #{userId}
+        order by ${time} ${sort}
+                 limit #{num1},#{num2}
+    </select>
+</mapper>

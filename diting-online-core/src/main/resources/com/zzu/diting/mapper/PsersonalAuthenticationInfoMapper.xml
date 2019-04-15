@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.PersonalAuthenticationInfoMapper">
+    <resultMap id="PersonalAuthenticationInfoMap"
+               type="com.zzu.diting.entity.PersonalAuthenticationInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="USER_ID" property="userId" jdbcType="BIGINT"/>
+        <result column="REAL_NAME" property="realName" jdbcType="VARCHAR"/>
+        <result column="EMAIL" property="email" jdbcType="VARCHAR"/>
+        <result column="PROVINCE" property="province" jdbcType="VARCHAR"/>
+        <result column="AREA" property="area" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_TYPE" property="certificateType" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_NUMBER" property="certificateNumber" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_POSITIVE_URL" property="certificatePositiveUrl" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_OPPOSITE_URL" property="certificateOppositeUrl" jdbcType="VARCHAR"/>
+        <result column="CERTIFICATE_HANDOF_URL" property="certificateHandofUrl" jdbcType="VARCHAR"/>
+        <result column="ADDRESS" property="address" jdbcType="VARCHAR"/>
+        <result column="ZIP" property="zip" jdbcType="INTEGER"/>
+        <result column="AUTHENTICATION_RESULT" property="authenticationResult" jdbcType="VARCHAR"/>
+        <result column="RECENTLY_OPERATOR" property="recentlyOperator" jdbcType="VARCHAR"/>
+        <result column="RECENTLY_UPDATE_TYPE" property="recentlyUpdateType" jdbcType="VARCHAR"/>
+        <result column="REASON" property="reason" jdbcType="VARCHAR"/>
+        <result column="FAIL_TYPE" property="failType" jdbcType="VARCHAR"/>
+        <result column="GMT_CREATE" property="updateTime" jdbcType="BIGINT"/>
+        <result column="GMT_MODIFIED" property="createTime" jdbcType="BIGINT"/>
+
+    </resultMap>
+    <sql id="PersonalAuthenticationInfoPO_Column_List">
+        ID
+        ,
+        USER_ID,
+        REAL_NAME,
+        PHONE_NUMBER,
+        EMAIL,
+        PROVINCE,
+        CITY,
+        AREA,
+        CERTIFICATE_TYPE,
+        CERTIFICATE_NUMBER,
+        CERTIFICATE_POSITIVE_URL,
+        CERTIFICATE_OPPOSITE_URL,
+        CERTIFICATE_HANDOF_URL,
+        ADDRESS,
+        ZIP,
+        AUTHENTICATION_RESULT,
+        RECENTLY_OPERATOR,
+        RECENTLY_UPDATE_TYPE,
+        FAIL_TYPE,
+        REASON,
+        GMT_CREATE,
+        GMT_MODIFIED
+    </sql>
+
+    <select id="queryTotalNumberPersonalAuthenticationAll" resultType="java.lang.Integer">
+        select
+            count(*)
+        from personal_authentication_info
+
+    </select>
+    <select id="queryPersonalAuthenticationAll" resultMap="PersonalAuthenticationInfoMap">
+        select
+        <include refid="PersonalAuthenticationInfoPO_Column_List"/>
+        from personal_authentication_info
+        order by ${time} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberPersonalAuthenticationByRealName" resultType="java.lang.Integer">
+        select
+            count(*)
+        from personal_authentication_info
+        where real_name like "%"#{realName}"%"
+    </select>
+    <select id="queryPersonalAuthenticationByRealName" resultMap="PersonalAuthenticationInfoMap">
+        select
+        <include refid="PersonalAuthenticationInfoPO_Column_List"/>
+        from personal_authentication_info
+        where real_name like "%"#{realName}"%"
+        order by ${time} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberPersonalAuthenticationByEmail" resultType="java.lang.Integer">
+        select
+            count(*)
+        from personal_authentication_info
+        where email like "%"#{eamil}"%"
+    </select>
+    <select id="queryPersonalAuthenticationByEmail" resultMap="PersonalAuthenticationInfoMap">
+        select
+        <include refid="PersonalAuthenticationInfoPO_Column_List"/>
+        from personal_authentication_info
+        where email like "%"#{eamil}"%"
+        order by ${time} ${sort}
+        limit #{num1},#{num2}
+    </select>
+    <select id="queryTotalNumberPersonalAuthenticationByTime" resultType="java.lang.Integer">
+        select
+            count(*)
+        from personal_authentication_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt;#{endTime}
+    </select>
+
+    <select id="queryPersonalAuthenticationByTime" resultMap="PersonalAuthenticationInfoMap">
+        select
+        <include refid="PersonalAuthenticationInfoPO_Column_List"/>
+        from personal_authentication_info
+        where ${timeType} &gt;#{startTime} and ${timeType} &lt;#{endTime}
+        order by ${time} ${sort}
+        limit #{num1},#{num2}
+    </select>
+</mapper>

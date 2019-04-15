@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.UserComplaintInfoMapper">
+    <resultMap id="complaint" type="com.zzu.diting.entity.UserComplaintInfoPO">
+        <id column="ID" property="id"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="RELATION_RIGHT_ID" property="relationRightId"/>
+        <result column="COMPLAINTS_URL" property="complaintsUrl"/>
+        <result column="COMPLAINT_PLATFORM" property="complaintPlatform"/>
+        <result column="RIGHT_NAME" property="rightName"/>
+        <result column="PROCESS_STATE" property="processState"/>
+        <result column="GMT_CREATE" property="createTime"/>
+        <result column="COPYRIGHT_TYPE" property="copyrightType"/>
+        <result column="GMT_MODIFIED" property="updateTime"/>
+    </resultMap>
+
+    <!-- 1 全部投诉信息条数-->
+    <select id="queryTotalNumberByPageAndTimeAndAll" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 全部投诉信息-->
+    <select id="queryListComplaintByPageAndTimeAndAll" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+    <!-- 2 特定处理状态的全部类型信息总条数-->
+    <select id="queryTotalNumberAllRightAndState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where user_id = #{userId}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 特定处理状态的全部类型信息-->
+    <select id="queryComplaintsAllRightAndState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+    <!-- 3 queryTotalNumberRightAndAllState -->
+    <select id="queryTotalNumberRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where user_id = #{userId}
+          and copyright_type = #{rightType}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 特定投诉类型的全部处理状态 -->
+    <select id="queryComplaintsRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and copyright_type = #{rightType}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 4 特定投诉类型的特定处理状态总条数 -->
+    <select id="queryTotalNumberRightAndState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where user_id = #{userId}
+          and copyright_type = #{rightType}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 特定投诉类型的特定处理状态 -->
+    <select id="queryComplaintsRightAndState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and copyright_type = #{rightType}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 特定id的全部投诉类型全部状态 -->
+    <select id="queryComplaintByIdAllRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and id = #{id}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <!-- 特定id的特定投诉类型全部状态 -->
+    <select id="queryComplaintByIdRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and id = #{id}
+          and copyright_type = #{rightType}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+    <!-- 特定id的全部投诉类型特定状态 -->
+    <select id="queryComplaintByIdAllRightAndState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and id = #{id}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+    <!-- 特定id的特定投诉类型特定状态 -->
+    <select id="queryComplaintByIdRightAndState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and id = #{id}
+          and process_state = #{state}
+          and copyright_type = #{rightType}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 5 根据投诉链接模糊查询所有投诉信息总条数 -->
+    <select id="queryTotalNumberByUrlAndAllRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据投诉链接模糊查询所有投诉信息 -->
+    <select id="queryComplaintByUrlAndAllRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 6 根据投诉链接模糊查询特定权利的全部状态投诉信息总条数 -->
+    <select id="queryTotalNumberByUrlAndOneRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据投诉链接模糊查询特定权利的全部状态投诉信息 -->
+    <select id="queryComplaintByUrlAndOneRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 7根据投诉链接模糊查询特定权利的全部状态投诉信息总条数 -->
+    <select id="queryTotalNumberByUrlAndAllRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据投诉链接模糊查询特定权利的全部状态投诉信息 -->
+    <select id="queryComplaintByUrlAndAllRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 8根据投诉链接模糊查询特定权利的特定状态投诉信息总条数 -->
+    <select id="queryTotalNumberByUrlAndOneRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据投诉链接模糊查询特定权利的特定状态投诉信息 -->
+    <select id="queryComplaintByUrlAndOneRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 9 根据权利名称模糊查询全部权利的全部状态投诉信息总条数 -->
+    <select id="queryTotalNumberByNameAndAllRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据权利名称模糊查询全部权利的全部状态投诉信息 -->
+    <select id="queryComplaintByNameAndAllRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+    <!-- 10 根据权利名称模糊查询特定权利的全部状态投诉信息总数 -->
+    <select id="queryTotalNumberByNameAndOneRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据权利名称模糊查询特定权利的全部状态投诉信息 -->
+    <select id="queryComplaintByNameAndOneRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 11 根据权利名称模糊查询全部权利的特定状态投诉信息总条数 -->
+    <select id="queryTotalNumberByNameAndAllRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据权利名称模糊查询全部权利的特定状态投诉信息 -->
+    <select id="queryComplaintByNameAndAllRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 12根据权利名称模糊查询特定权利的特定状态投诉信息总条数 -->
+    <select id="queryTotalNumberByNameAndOneRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据权利名称模糊查询特定权利的特定状态投诉信息 -->
+    <select id="queryComplaintByNameAndOneRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 13根据权利id精准查询全部权利的全部状态信息总条数 -->
+    <select id="queryTotalNumberByRightIdAndAllRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where RELATION_COPYRIGHT_ID = #{rightId}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据权利id精准查询全部权利的全部状态信息 -->
+    <select id="queryComplaintByRightIdAndAllRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where RELATION_COPYRIGHT_ID = #{rightId}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 14根据权利id精准查询特定权利的全部状态信息总条数 -->
+    <select id="queryTotalNumberByRightIdAndOneRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where RELATION_COPYRIGHT_ID = #{rightId}
+          and copyright_type = #{rightType}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据权利id精准查询特定权利的全部状态信息 -->
+    <select id="queryComplaintByRightIdAndOneRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where RELATION_COPYRIGHT_ID = #{rightId}
+          and copyright_type = #{rightType}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 15根据权利id精准查询特定权利的全部状态信息总条数 -->
+    <select id="queryTotalNumberByRightIdAndAllRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where RELATION_COPYRIGHT_ID = #{rightId}
+          and process_state = #{state}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据权利id精准查询特定权利的全部状态信息 -->
+    <select id="queryComplaintByRightIdAndAllRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where RELATION_COPYRIGHT_ID = #{rightId}
+          and process_state = #{state}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+
+    <!-- 16根据权利id精准查询特定权利的特定状态信息总条数 -->
+    <select id="queryTotalNumberByRightIdAndOneRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where RELATION_COPYRIGHT_ID = #{rightId}
+          and process_state = #{state}
+          and copyright_type = #{rightType}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <!-- 根据权利id精准查询特定权利的特定状态信息 -->
+    <select id="queryComplaintByRightIdAndOneRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where RELATION_COPYRIGHT_ID = #{rightId}
+          and process_state = #{state}
+          and copyright_type = #{rightType}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        order by gmt_create desc
+        ]]>
+    </select>
+</mapper>
