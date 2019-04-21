@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.RightWorkMapper">
+    <resultMap id="rightInfo" type="com.zzu.diting.entity.RightWorkInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="JOB_TYPE" property="jobType" jdbcType="VARCHAR"/>
+        <result column="RIGHT_TYPE" property="rightType" jdbcType="VARCHAR"/>
+        <result column="WORKS_TYPE" property="worksType" jdbcType="VARCHAR"/>
+        <result column="USER_TYPE" property="userType" jdbcType="VARCHAR"/>
+        <result column="RIGHT_NAME" property="rightName" jdbcType="VARCHAR"/>
+        <result column="RIGHT_PERSON" property="rightPerson" jdbcType="VARCHAR"/>
+        <result column="HANDLE_PERSON" property="handlePerson" jdbcType="VARCHAR"/>
+        <result column="AUDIT_STATE" property="auditState" jdbcType="VARCHAR"/>
+        <result column="RIGHT_ID" property="rightId" jdbcType="BIGINT"/>
+        <result column="GMT_CREATE" property="createTime" jdbcType="BIGINT"/>
+        <result column="GMT_MODIFIED" property="updateTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="right">
+        ID
+        ,
+        JOB_TYPE,
+        RIGHT_TYPE,
+        WORKS_TYPE,
+        USER_TYPE,
+        RIGHT_NAME,
+        RIGHT_PERSON,
+        HANDLE_PERSON,
+        AUDIT_STATE,
+        RIGHT_ID,
+        GMT_CREATE,
+        GMT_MODIFIED
+    </sql>
+
+
+    <select id="queryTotalNumberForAllWorksByAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+    </select>
+    <select id="queryAllWorksByAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where audit_state = #{state}
+    </select>
+    <select id="queryAllWorksByState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByOrderTypeAndAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where job_type = #{jobType}
+    </select>
+    <select id="queryAllWorksByOrderTypeAndAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where job_type=#{jobType}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByOrderTypeAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where job_type = #{jobType}
+          and audit_state = #{state}
+    </select>
+    <select id="queryAllWorksByOrderTypeAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where job_type=#{jobType}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByRightTypeAndAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_type = #{rightType}
+    </select>
+    <select id="queryAllWorksByRightTypeAndAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_type=#{rightType}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByRightTypeAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_type = #{rightType}
+          and audit_state = #{state}
+    </select>
+    <select id="queryAllWorksByRightTypeAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_type=#{rightType}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByRightNameAndAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_name like "%"#{rightName}"%"
+    </select>
+    <select id="queryAllWorksByRightNameAndAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_name like "%"#{rightName}"%"
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByRightNameAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_name like "%"#{rightName}"%"
+            and audit_state=#{state}
+    </select>
+    <select id="queryAllWorksByRightNameAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_name like "%"#{rightName}"%"
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByRightPersonAndAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_person like "%"#{rightPerson}"%"
+    </select>
+    <select id="queryAllWorksByRightPersonAndAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_person like "%"#{rightPerson}"%"
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByRightPersonAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_person like "%"#{rightPerson}"%"
+            and audit_state=#{state}
+    </select>
+    <select id="queryAllWorksByRightPersonAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_person like "%"#{rightPerson}"%"
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByHandlePersonAndAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where handle_person like "%"#{handlePerson}"%"
+    </select>
+    <select id="queryAllWorksByHandlePersonAndAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where handle_person like "%"#{handlePerson}"%"
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByHandlePersonAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where handle_person like "%"#{handlePerson}"%"
+            and audit_state=#{state}
+    </select>
+    <select id="queryAllWorksByHandlePersonAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where handle_person like "%"#{handlePerson}"%"
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByUserTypeAndAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where user_type = #{userType}
+    </select>
+    <select id="queryAllWorksByUserTypeAndAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where user_type=#{userType}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByUserTypeAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where user_type = #{userType}
+          and audit_state = #{state}
+    </select>
+    <select id="queryAllWorksByUserTypeAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where user_type=#{userType}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByTimeTypeAndAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+    </select>
+    <select id="queryAllWorksByTimeTypeAndAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where ${timeType} &gt;#{startTime} and ${timeType} &lt;#{endTime}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByTimeTypeAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+          and audit_state = #{state}
+    </select>
+    <select id="queryAllWorksByTimeTypeAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where ${timeType} &gt;#{startTime} and ${timeType} &lt;#{endTime}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByRightIdAndAllState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_id = #{rightId}
+    </select>
+    <select id="queryAllWorksByRightIdAndAllState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_id = #{rightId}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForAllWorksByRightIdAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_id = #{rightId}
+          and audit_state = #{state}
+    </select>
+    <select id="queryAllWorksByRightIdAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_id = #{rightId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where auditor_id = #{mId}
+          and audit_state in ("通过", "驳回", "关闭")
+    </select>
+    <select id="queryWorksByMIdAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+    <select id="queryTotalNumberForWorksByMIdAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where audit_state = #{state}
+          and auditor_id = #{mId}
+    </select>
+    <select id="queryWorksByMIdAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where audit_state=#{state}
+        and auditor_id=#{mId}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndOrderTypeAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where job_type = #{jobType}
+          and auditor_id = #{mId}
+          and audit_state in ("通过", "驳回", "关闭")
+    </select>
+    <select id="queryWorksByMIdAndOrderTypeAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where job_type=#{jobType}
+        and auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndOrderTypeAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where job_type = #{jobType}
+          and auditor_id = #{mId}
+          and audit_state = #{state}
+    </select>
+    <select id="queryWorksByMIdAndOrderTypeAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where job_type=#{jobType}
+        and auditor_id=#{mId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndRightTypeAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_type = #{rightType}
+          and auditor_id = #{mId}
+          and audit_state in ("通过", "驳回", "关闭")
+    </select>
+    <select id="queryWorksByMIdAndRightTypeAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_type=#{rightType}
+        and auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndRightTypeAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_type = #{rightType}
+          and auditor_id = #{mId}
+          and audit_state = #{state}
+    </select>
+    <select id="queryWorksByMIdAndRightTypeAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_type=#{rightType}
+        and auditor_id=#{mId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndRightNameAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_name like "%"#{rightName}"%"
+            and auditor_id=#{mId}
+            and audit_state in ("通过"
+            ,"驳回"
+            ,"关闭")
+    </select>
+    <select id="queryWorksByMIdAndRightNameAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_name like "%"#{rightName}"%"
+        and auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndRightNameAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_name like "%"#{rightName}"%"
+            and auditor_id=#{mId}
+            and audit_state=#{state}}
+    </select>
+    <select id="queryWorksByMIdAndRightNameAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_name like "%"#{rightName}"%"
+        and auditor_id=#{mId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndRightIdAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_id = #{rightId}
+          and auditor_id = #{mId}
+          and audit_state in ("通过", "驳回", "关闭")
+    </select>
+
+    <select id="queryWorksByMIdAndRightIdAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_id=#{rightId}
+        and auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndRightIdAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_id = #{rightId}
+          and auditor_id = #{mId}
+          and audit_state = #{state}
+    </select>
+
+    <select id="queryWorksByMIdAndRightIdAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_id=#{rightId}
+        and auditor_id=#{mId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+    <select id="queryTotalNumberForWorksByMIdAndRightPersonAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_person like "%"#{rightPerson}"%"
+            and auditor_id=#{mId}
+            and audit_state in ("通过"
+            ,"驳回"
+            ,"关闭")
+    </select>
+
+    <select id="queryWorksByMIdAndRightPersonAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_person like "%"#{rightPerson}"%"
+        and auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndRightPersonAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where right_person like "%"#{rightPerson}"%"
+            and auditor_id=#{mId}
+            and audit_state=#{state}
+    </select>
+    <select id="queryWorksByMIdAndRightPersonAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where right_person like "%"#{rightPerson}"%"
+        and auditor_id=#{mId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndHandlePersonAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where handle_person like "%"#{handlePerson}"%"
+            and auditor_id=#{mId}
+            and audit_state in ("通过"
+            ,"驳回"
+            ,"关闭")
+    </select>
+    <select id="queryWorksByMIdAndHandlePersonAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where handle_person like "%"#{handlePerson}"%"
+        and auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndHandlePersonAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where handle_person like "%"#{handlePerson}"%"
+            and auditor_id=#{mId}
+            and audit_state=#{state}
+    </select>
+    <select id="queryWorksByMIdAndHandlePersonAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where handle_person like "%"#{handlePerson}"%"
+        and auditor_id=#{mId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndUserTypeAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where user_type = #{userType}
+          and auditor_id = #{mId}
+          and audit_state in ("通过", "驳回", "关闭")
+    </select>
+    <select id="queryWorksByMIdAndUserTypeAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where user_type=#{userType}
+        and auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndUserTypeAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where user_type = #{userType}
+          and auditor_id = #{mId}
+          and audit_state = #{state}
+    </select>
+    <select id="queryWorksByMIdAndUserTypeAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where user_type=#{userType}
+        and auditor_id=#{mId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndTimeTypeAndAllProcessed" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+          and auditor_id = #{mId}
+          and audit_state in ("通过", "驳回", "关闭")
+    </select>
+    <select id="queryWorksByMIdAndTimeTypeAndAllProcessed" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where ${timeType} &gt;#{startTime} and ${timeType} &lt;#{endTime}
+        and auditor_id=#{mId}
+        and audit_state in ("通过","驳回","关闭")
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByMIdAndTimeTypeAndState" resultType="java.lang.Integer">
+        select
+            count(*)
+        from right_work_info
+        where ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+          and auditor_id = #{mId}
+          and audit_state = #{state}
+    </select>
+    <select id="queryWorksByMIdAndTimeTypeAndState" resultMap="rightInfo">
+        select
+        <include refid="right"/>
+        from right_work_info
+        where ${timeType} &gt;#{startTime} and ${timeType} &lt;#{endTime}
+        and auditor_id=#{mId}
+        and audit_state=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+</mapper>

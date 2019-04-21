@@ -3,6 +3,7 @@ package com.zzu.diting.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 
@@ -18,8 +19,8 @@ public class RightVO implements Serializable {
     private Long id;
     private String rightName;
     private String rightType;
-    private String rightUrl;
-    private String copyrightPersonType;
+    private String isEntrustedProtection;
     private String auditResult;
     private Long createTime;
+    private Long updateTime;
 }

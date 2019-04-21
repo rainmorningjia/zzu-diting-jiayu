@@ -25,7 +25,7 @@ public class PersonalAuthenticationInfoPO implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
     private Long id;
-    private Long personInfoId;
+    private Long userId;
     private String realName;
     private String phoneNumber;
     private String email;
@@ -52,6 +52,10 @@ public class PersonalAuthenticationInfoPO implements Serializable {
      * 受理结果
      */
     private String authenticationResult;
+    private String recentlyOperator;
+    private String recentlyUpdateType;
+    private String failType;
+    private String reason;
     @Column(name = "gmt_modified")
     private Long updateTime;
     @Column(name = "gmt_create")

@@ -31,6 +31,7 @@ public class UserInfoPO {
     private String sign;
     private String headIconUrl;
     private String salt;
+    private Integer authenticationState;
     @Column(name = "gmt_create")
     private Long createTime;
     @Column(name = "gmt_modified")

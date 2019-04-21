@@ -42,6 +42,7 @@ public class PersonalAuthenticationUpdateInfoPO implements Serializable {
      * 身份证手持链接
      */
     private String newCertificateHandofUrl;
+
     @Column(name = "gmt_modified")
     private Long updateTime;
     @Column(name = "gmt_create")

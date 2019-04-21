@@ -25,7 +25,7 @@ public class OSSClientUtil {
     private static String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
     private static String accessKeyId = "LTAIsFJTIRCdA8Ru";
     private static String accessKeySecret = "fFlfijBvG2SljGTPhA8LCBA5QvwSF5";
-    private static String bucketName = "youku-diting";
+    private static String bucketName = "zzu-diting";
     private static String FOLDER = "user/";
     public static final String FORMAT = new SimpleDateFormat("yyyyMMdd").format(new Date());
     public static final String FORMATS = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
@@ -116,8 +116,6 @@ public class OSSClientUtil {
             resultStr = putResult.getETag();
             fo[1] = folder + fileName;
             fo[0] = resultStr;
-
-            ossClient.shutdown();
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("上传阿里云OSS服务器异常." + e.getMessage(), e);

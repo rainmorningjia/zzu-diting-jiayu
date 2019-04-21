@@ -17,6 +17,7 @@
         <result column="PERFORMER_MAIN_INFO" property="performerMainInfo" jdbcType="VARCHAR"/>
         <result column="WORKS_ATTRIBUTE" property="worksAttribute" jdbcType="VARCHAR"/>
         <result column="WORKS_NUMBER" property="worksNumber" jdbcType="VARCHAR"/>
+        <result column="CONSULT_URL" property="consultUrl" jdbcType="VARCHAR"/>
         <result column="IS_DISTRIBUTION" property="isDistribution" jdbcType="VARCHAR"/>
         <result column="COPYRIGHT_ATTRIBUTE" property="copyrightAttribute" jdbcType="VARCHAR"/>
         <result column="COPYRIGHT_PERSON_TYPE" property="copyrightPersonType" jdbcType="VARCHAR"/>
@@ -30,9 +31,9 @@
         <result column="COPYRIGHT_DOCUMENT_CHAIN_URL" property="copyrightDocumentChainUrl" jdbcType="VARCHAR"/>
         <result column="IS_RIGHT_ENTRUSTED" property="isRightEntrusted" jdbcType="VARCHAR"/>
         <result column="ATTORNEY_ATTRIBUTE" property="attorneyAttribute" jdbcType="VARCHAR"/>
-        <result column="ENTRUST_PROTECTION_STARTDATE" property="entrustedProtectionStartdate" jdbcType="DATE"/>
-        <result column="ENTRUST_PROTECTION_ENDDATE" property="entrustProtectionEnddate" jdbcType="DATE"/>
-        <result column="ENTRUST_FILE_URL" property="entrustFileUrl" jdbcType="VARCHAR"/>
+        <result column="ENTRUSTED_PROTECTION_STARTDATE" property="entrustedProtectionStartdate" jdbcType="DATE"/>
+        <result column="ENTRUSTED_PROTECTION_ENDDATE" property="entrustedProtectionEnddate" jdbcType="DATE"/>
+        <result column="ENTRUST_FILE_URL" property="attorneyPowerUrl" jdbcType="VARCHAR"/>
         <result column="AUDIT_STATE" property="auditStatus" jdbcType="VARCHAR"/>
         <result column="GMT_CREATE" property="updateTime" jdbcType="BIGINT"/>
         <result column="GMT_MODIFIED" property="createTime" jdbcType="BIGINT"/>
@@ -53,6 +54,7 @@
         DIRECTOR_INFO,
         WORKS_ATTRIBUTE,
         WORKS_NUMBER,
+        CONSULT_URL,
         IS_DISTRIBUTION,
         COPYRIGHT_ATTRIBUTE,
         COPYRIGHT_PERSON_TYPE,
@@ -66,13 +68,12 @@
         COPYRIGHT_DOCUMENT_CHAIN_URL,
         IS_RIGHT_ENTRUSTED,
         ATTORNEY_ATTRIBUTE,
-        ENTRUST_PROTECTION_STARTDATE,
-        ENTRUST_PROTECTION_ENDDATE,
+        ENTRUSTED_PROTECTION_STARTDATE,
+        ENTRUSTED_PROTECTION_ENDDATE,
         ENTRUST_FILE_URL,
         AUDIT_STATE,
         GMT_CREATE,
         GMT_MODIFIED
-
     </sql>
 
     <select id="queryCopyrightInfoList" resultMap="CopyrightInfoPOMap">
@@ -147,5 +148,13 @@
         where user_id=#{userId}
         order by ${time} ${desc}
         limit #{num1},#{num2}
+    </select>
+
+    <select id="queryCopyRightInfoOfNameAndId" resultMap="CopyrightInfoPOMap">
+        select
+            works_name,
+            id
+        from copyright_info
+        where works_name like "%"#{name}"%"
     </select>
 </mapper>

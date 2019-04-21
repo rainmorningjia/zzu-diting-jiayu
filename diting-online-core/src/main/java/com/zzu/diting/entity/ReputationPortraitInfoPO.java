@@ -8,7 +8,6 @@ import tk.mybatis.mapper.annotation.KeySql;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -35,8 +34,11 @@ public class ReputationPortraitInfoPO {
     /**
      * 是否被维权委托
      */
-    private String isEntrustedProtection;
-    private String protectionRightAttribute;
+    private String isRightEntrusted;
+    /**
+     * 维权属性
+     */
+    private String attorneyAttribute;
     /**
      * 委托维权起止日
      */

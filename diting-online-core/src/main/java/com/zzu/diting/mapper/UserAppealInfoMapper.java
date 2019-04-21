@@ -2,9 +2,8 @@ package com.zzu.diting.mapper;
 
 
 import com.zzu.diting.entity.UserAppealInfoPO;
-import org.apache.ibatis.annotations.Mapper;
-import tk.mybatis.mapper.common.BaseMapper;
+import tk.mybatis.mapper.common.Mapper;
 
-@Mapper
-public interface UserAppealInfoMapper extends BaseMapper<UserAppealInfoPO> {
+@org.apache.ibatis.annotations.Mapper
+public interface UserAppealInfoMapper extends Mapper<UserAppealInfoPO> {
 }

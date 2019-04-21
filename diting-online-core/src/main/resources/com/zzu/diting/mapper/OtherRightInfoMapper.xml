@@ -11,8 +11,8 @@
         <id column="PROVINCE" property="province" jdbcType="VARCHAR"/>
         <id column="INTELLCTUAL_PROPERTY_CERTIFICATES_URL" property="intellctualPropertyCertificatesUrl"
             jdbcType="VARCHAR"/>
-        <id column="IS_ENTRUSTED_PROTECTION" property="isEntrustedProtection" jdbcType="VARCHAR"/>
-        <id column="PROTECTION_RIGHT_ATTRIBUTION" property="protectionRightAttribute" jdbcType="VARCHAR"/>
+        <id column="IS_RIGHT_ENTRUSTED" property="isRightEntrusted" jdbcType="VARCHAR"/>
+        <id column="ATTORNEY_ATTRIBUTE" property="attorneyAttribute" jdbcType="VARCHAR"/>
         <id column="ENTRUSTED_PROTECTION_STARTDATE" property="entrustedProtectionStartdate" jdbcType="DATE"/>
         <id column="ENTRUSTED_PROTECTION_ENDDATE" property="entrustedProtectionEnddate" jdbcType="DATE"/>
         <id column="ATTORNEY_POWER_URL" property="attorneyPowerUrl" jdbcType="VARCHAR"/>
@@ -83,5 +83,12 @@
         where user_id = #{userId}
         order by ${time} ${sort}
                  limit #{num1},#{num2}
+    </select>
+
+    <select id="queryOtherRightInfoOfNameAndId" resultMap="ReputationPortraitInfo">
+        select copyright_name,id
+        from
+            other_right_info
+        where copyright_name like "%"#{name}"%"
     </select>
 </mapper>

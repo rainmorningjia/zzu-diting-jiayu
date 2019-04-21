@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
         String s=new SimpleHash("MD5",user.getPassword(),salt,1024).toString();
         user.setPassword(s);
         user.setSalt(salt);
+        user.setAuthenticationState(0);
         user.setCreateTime(System.currentTimeMillis());
         user.setUpdateTime(System.currentTimeMillis());
         userInfoMapper.insert(user);
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserInfoPO user) {
-        userInfoMapper.updateByPrimaryKey(user);
+        userInfoMapper.updateByPrimaryKeySelective(user);
     }
 
     @Override

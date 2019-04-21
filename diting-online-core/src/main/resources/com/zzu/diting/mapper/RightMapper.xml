@@ -5,10 +5,11 @@
         <id column="ID" property="id"/>
         <result column="RIGHT_TYPE" property="rightType"/>
         <result column="RIGHT_NAME" property="rightName"/>
-        <result column="IS_ENTRUSTED_PROTECTION" property="isEntrustedProtection"/>
+        <result column="is_right_entrusted" property="isEntrustedProtection"/>
         <result column="AUDIT_STATE" property="auditResult"/>
         <result column="CREATE_TIME" property="createTime"/>
         <result column="updateTime" property="updateTime"/>
+
     </resultMap>
     <!--全部类型中的全部状态 -->
     <!-- 1-->
@@ -35,14 +36,13 @@
                 and gmt_create > #{t1}) s
         ]]>
     </select>
-
     <select id="queryRightsByUserIDAndRightAllAndTypeAll" resultMap="right">
         <![CDATA[
         select *
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -52,25 +52,25 @@
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          right_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     right_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          works_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     works_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -115,7 +115,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -126,27 +126,26 @@
                 and gmt_create > #{t1}
                 and audit_state = #{auditState}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          right_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     proof_material_url      right_url,
-                     audit_status            state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     right_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
                 and audit_status = #{auditState}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          works_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     works_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -161,7 +160,8 @@
     <select id="queryTotalNumberByUserIDAndRightAndTypeAll" resultType="java.lang.Integer">
         <![CDATA[
         select count(*)
-        from (select id id
+        from (select id             id,
+                     copyright_type right_type
 
               from
                   copyright_info
@@ -169,13 +169,15 @@
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id id
+              select id             id,
+                     copyright_type right_type
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id id
+              select id             id,
+                     copyright_type right_type
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -190,7 +192,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -200,25 +202,25 @@
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          right_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     right_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          works_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     works_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -232,20 +234,26 @@
     <select id="queryTotalNumberByUserIDAndRightAndType" resultType="java.lang.Integer">
         <![CDATA[
         select count(*)
-        from (select id id
+        from (select id             id,
+                     copyright_type right_type,
+                     audit_state    audit_state
               from
                   copyright_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id id
+              select id             id,
+                     copyright_type right_type,
+                     audit_status   audit_state
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id id
+              select id             id,
+                     copyright_type right_type,
+                     audit_status   audit_state
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -272,25 +280,25 @@
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          right_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     right_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          works_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     works_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -319,26 +327,26 @@
                 and gmt_create > #{t1}
                 and id = #{id}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          right_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     right_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
                 and id = #{id}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          works_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     works_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -365,26 +373,26 @@
                 and gmt_create > #{t1}
                 and id = #{id}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          right_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     right_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
                 and id = #{id}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          works_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     works_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -412,26 +420,26 @@
                 and gmt_create > #{t1}
                 and id = #{id}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          right_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     right_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
                 and id = #{id}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          works_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     works_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -461,26 +469,26 @@
                 and gmt_create > #{t1}
                 and id = #{id}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          right_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     right_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               FROM reputation_portrait_info
               WHERE user_id = #{userId}
                 and gmt_create < #{t2}
                 and gmt_create > #{t1}
                 and id = #{id}
               union all
-              select id                      id,
-                     copyright_type          right_type,
-                     copyright_name          works_name,
-                     is_entrusted_protection is_entrusted_protection,
-                     audit_status            audit_state,
-                     gmt_create              create_time,
-                     gmt_modified            updateTime
+              select id                 id,
+                     copyright_type     right_type,
+                     copyright_name     works_name,
+                     is_right_entrusted is_right_entrusted,
+                     audit_status       audit_state,
+                     gmt_create         create_time,
+                     gmt_modified       updateTime
               from other_right_info
               where user_id = #{userId}
                 and gmt_create < #{t2}
@@ -573,9 +581,11 @@
     <!-- 6 -->
 
     <select id="getTotalNumberByUserIDAndRightNameAndAllStateOneRight" resultType="java.lang.Integer">
-         <![CDATA[
+           <![CDATA[
         select count(*)
-        from (select id id
+        from (select id             id,
+                     copyright_type right_type,
+                     audit_state    audit_state
               from
                   copyright_info
               WHERE user_id = #{userId}
@@ -584,12 +594,20 @@
                 and works_name like "%"#{name}"%"
               union all
               select id
-                     id
+                     id,
+                     copyright_type
+                     right_type,
+                     audit_status
+                     audit_state
               FROM reputation_portrait_info
               WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
               union all
               select id
-                     id
+                     id,
+                     copyright_type
+                     right_type,
+                     audit_status
+                     audit_state
               from other_right_info
               where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
         where s.right_type = #{rightType}
@@ -655,8 +673,9 @@
     <!-- 7 -->
     <select id="getTotalNumberByUserIDAndRightNameAndOneStateAllRight" resultType="java.lang.Integer">
          <![CDATA[
-        select *
-        from (select id                 id
+        select count(*)
+        from (select id          id,
+                     audit_state audit_state
               from
                   copyright_info
               WHERE user_id = #{userId}
@@ -665,12 +684,16 @@
                 and works_name like "%"#{name}"%"
               union all
               select id
-                     id
+                     id,
+                     audit_status
+                     audit_state
               FROM reputation_portrait_info
               WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
               union all
               select id
-                     id
+                     id,
+                     audit_status
+                     audit_state
               from other_right_info
               where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
         where s.audit_state = #{state}
@@ -734,8 +757,10 @@
     <!-- 8 -->
     <select id="getTotalNumberByUserIDAndRightNameAndOneStateOneRight" resultType="java.lang.Integer">
          <![CDATA[
-        select count (*)
-        from (select id                 id
+        select count(*)
+        from (select id             id,
+                     copyright_type right_type,
+                     audit_state    audit_state
               from
                   copyright_info
               WHERE user_id = #{userId}
@@ -744,12 +769,20 @@
                 and works_name like "%"#{name}"%"
               union all
               select id
-                     id
+                     id,
+                     copyright_type
+                     right_type,
+                     audit_status
+                     audit_state
               FROM reputation_portrait_info
               WHERE user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%"
               union all
               select id
-                     id
+                     id,
+                     copyright_type
+                     right_type,
+                     audit_status
+                     audit_state
               from other_right_info
               where user_id=#{userId} and gmt_create<#{t2} and gmt_create>#{t1} and copyright_name like "%"#{name}"%") s
         where s.audit_state = #{state}

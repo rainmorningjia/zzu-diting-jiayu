@@ -20,6 +20,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.zzu.diting</groupId>
+            <artifactId>diting-management-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.jiayu</groupId>
             <artifactId>diting-online-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>

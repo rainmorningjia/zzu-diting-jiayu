@@ -27,11 +27,11 @@ public class MenuController {
         List<Menu> listm=menuService.queryAllUserParentManu();
         return listm;
     }
-    @RequestMapping(value = "getAllChildrenMenu",produces = "text/html;charset=UTF-8" )
+    @RequestMapping(value = "queryAllChildrenMenu",produces = "text/html;charset=UTF-8" )
     @ResponseBody
     public List<Tree> getAllChriMenu(Integer parentId){
         List<Tree> treeList=menuService.queryAllChildrenMenu(parentId);
-
+        System.out.println(treeList);
         return treeList;
     }
 }

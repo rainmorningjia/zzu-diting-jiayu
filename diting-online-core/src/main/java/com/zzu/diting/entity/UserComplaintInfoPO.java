@@ -26,17 +26,18 @@ public class UserComplaintInfoPO implements Serializable {
     @KeySql(useGeneratedKeys = true)
     private Long id;
     private Long userId;
-    private Long relationCopyrightId;
+    private Long relationRightId;
     private String complaintsUrl;
     /**
      * 投诉平台
      */
     private String complaintPlatform;
+
+    private String copyrightType;
+    private String rightName;
     /**
      * 处理状态
      */
-    private String copyrightType;
-    private String rightName;
     private String processState;
     @Column(name = "gmt_create")
     private Long createTime;

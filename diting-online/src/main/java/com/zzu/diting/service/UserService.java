@@ -14,4 +14,5 @@ public interface UserService {
     void updateUser(UserInfoPO user);
     UserInfoPO getUserById(Long id);
     UserInfoPO getUserByUserInfo(UserInfoPO user);
+
 }

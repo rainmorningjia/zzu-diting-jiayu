@@ -13,7 +13,7 @@
         <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="certificate_type" property="certificateType" jdbcType="VARCHAR"/>
         <result column="certificate_number" property="certificateNumber" jdbcType="VARCHAR"/>
-        <result column="certificate_postive_url" property="certificatePostiveUrl" jdbcType="VARCHAR"/>
+        <result column="certificate_positive_url" property="certificatePositiveUrl" jdbcType="VARCHAR"/>
         <result column="corporation_name" property="corporationName" jdbcType="VARCHAR"/>
         <result column="address" property="address" jdbcType="VARCHAR"/>
         <result column="zip" property="zip" jdbcType="VARCHAR"/>

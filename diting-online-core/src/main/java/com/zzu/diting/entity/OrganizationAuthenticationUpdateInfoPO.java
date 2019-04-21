@@ -34,7 +34,7 @@ public class OrganizationAuthenticationUpdateInfoPO implements Serializable {
     /**
      * 证件照正面链接
      */
-    private String newCertificatePostiveUrl;
+    private String newCertificatePositiveUrl;
     /**
      * 证件照手持链接
      */

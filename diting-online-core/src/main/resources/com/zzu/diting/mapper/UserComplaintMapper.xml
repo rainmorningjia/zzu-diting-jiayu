@@ -31,9 +31,8 @@
         from user_complaint_info
         where user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
     <!-- 2 特定处理状态的全部类型信息总条数-->
@@ -55,9 +54,8 @@
         where user_id = #{userId}
           and process_state = #{state}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
     <!-- 3 queryTotalNumberRightAndAllState -->
@@ -79,9 +77,8 @@
         where user_id = #{userId}
           and copyright_type = #{rightType}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -106,9 +103,8 @@
           and copyright_type = #{rightType}
           and process_state = #{state}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -133,9 +129,8 @@
           and id = #{id}
           and copyright_type = #{rightType}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
     <!-- 特定id的全部投诉类型特定状态 -->
@@ -147,9 +142,8 @@
           and id = #{id}
           and process_state = #{state}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
     <!-- 特定id的特定投诉类型特定状态 -->
@@ -162,9 +156,8 @@
           and process_state = #{state}
           and copyright_type = #{rightType}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -187,9 +180,8 @@
         where complaints_url like "%"#{url}"%"
             and user_id = #{userId}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} limit #{num1}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -214,9 +206,8 @@
             and user_id = #{userId}
             and copyright_type = #{rightType}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} limit #{num1}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -241,9 +232,8 @@
             and user_id = #{userId}
             and process_state = #{state}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} limit #{num1}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -270,9 +260,8 @@
             and process_state = #{state}
             and copyright_type = #{rightType}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} limit #{num1}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -295,9 +284,8 @@
         where right_name like "%"#{name}"%"
             and user_id = #{userId}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} limit #{num1}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
     <!-- 10 根据权利名称模糊查询特定权利的全部状态投诉信息总数 -->
@@ -321,9 +309,8 @@
             and user_id = #{userId}
             and copyright_type = #{rightType}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} limit #{num1}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -348,9 +335,8 @@
             and user_id = #{userId}
             and process_state = #{state}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} limit #{num1}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -377,9 +363,8 @@
             and process_state = #{state}
             and copyright_type = #{rightType}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} limit #{num1}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -388,7 +373,7 @@
       <![CDATA[
         select count(*)
         from user_complaint_info
-        where RELATION_COPYRIGHT_ID = #{rightId}
+        where RELATION_RIGHT_ID = #{rightId}
           and user_id = #{userId}
           and gmt_create < #{t2}
           and gmt_create > #{t1}
@@ -399,12 +384,11 @@
       <![CDATA[
         select *
         from user_complaint_info
-        where RELATION_COPYRIGHT_ID = #{rightId}
+        where RELATION_RIGHT_ID = #{rightId}
           and user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -413,7 +397,7 @@
       <![CDATA[
         select count(*)
         from user_complaint_info
-        where RELATION_COPYRIGHT_ID = #{rightId}
+        where RELATION_RIGHT_ID = #{rightId}
           and copyright_type = #{rightType}
           and user_id = #{userId}
           and gmt_create < #{t2}
@@ -425,13 +409,12 @@
       <![CDATA[
         select *
         from user_complaint_info
-        where RELATION_COPYRIGHT_ID = #{rightId}
+        where RELATION_RIGHT_ID = #{rightId}
           and copyright_type = #{rightType}
           and user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -440,7 +423,7 @@
       <![CDATA[
         select count(*)
         from user_complaint_info
-        where RELATION_COPYRIGHT_ID = #{rightId}
+        where RELATION_RIGHT_ID = #{rightId}
           and process_state = #{state}
           and user_id = #{userId}
           and gmt_create < #{t2}
@@ -452,13 +435,12 @@
       <![CDATA[
         select *
         from user_complaint_info
-        where RELATION_COPYRIGHT_ID = #{rightId}
+        where RELATION_RIGHT_ID = #{rightId}
           and process_state = #{state}
           and user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 
@@ -467,7 +449,7 @@
       <![CDATA[
         select count(*)
         from user_complaint_info
-        where RELATION_COPYRIGHT_ID = #{rightId}
+        where RELATION_RIGHT_ID = #{rightId}
           and process_state = #{state}
           and copyright_type = #{rightType}
           and user_id = #{userId}
@@ -480,14 +462,13 @@
       <![CDATA[
         select *
         from user_complaint_info
-        where RELATION_COPYRIGHT_ID = #{rightId}
+        where RELATION_RIGHT_ID = #{rightId}
           and process_state = #{state}
           and copyright_type = #{rightType}
           and user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} limit #{num1}
+          and gmt_create > #{t1}  order by gmt_create desc limit #{num1}
             ,#{num2}
-        order by gmt_create desc
         ]]>
     </select>
 </mapper>

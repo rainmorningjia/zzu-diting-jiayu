@@ -43,11 +43,7 @@ public class OrganizationAuthenticationInfoPO implements Serializable {
     /**
      * 证件照正面链接
      */
-    private String certificatePostiveUrl;
-    /**
-     * 证件照手持链接
-     */
-    private String certificateHandofUrl;
+    private String certificatePositiveUrl;
     private String corporationName;
     private String address;
     private Integer zip;
@@ -55,6 +51,10 @@ public class OrganizationAuthenticationInfoPO implements Serializable {
     private String fas;
     private String relationName;
     private String authenticationResult;
+    private String recentlyOperator;
+    private String recentlyUpdateType;
+    private String failType;
+    private String reason;
     @Column(name = "gmt_modified")
     private Long updateTime;
     @Column(name = "gmt_create")

@@ -1,10 +1,12 @@
 package com.zzu.diting.controller;
 
 import com.aliyun.oss.OSSClient;
+import com.zzu.diting.dto.UserInfoDto;
 import com.zzu.diting.entity.UserInfoPO;
 import com.zzu.diting.service.UserService;
 import com.zzu.diting.util.OSSClientUtil;
 import org.apache.commons.io.FileUtils;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,17 +35,16 @@ public class UserController {
         code = code.toLowerCase();
         String codeS = (String) session.getAttribute("code");
         if (!code.equals(codeS)) {
-            System.out.println(0);
             return "redirect:/login.jsp";
         } else {
             try {
                 System.out.println(name);
                 userService.LoginUser(name, password);
                 System.out.println(1);
-                return "success";
+                return "redirect:/main/main.jsp";
             } catch (RuntimeException e) {
                 session.setAttribute("message", e.getMessage());
-                throw new RuntimeException(e);
+                return "redirect:/login.jsp";
 
             }
         }
@@ -51,7 +52,7 @@ public class UserController {
 
     @RequestMapping("loginUserName")
     @ResponseBody
-    public String loginUserName(String name) {
+    public String loginUserName(String name, HttpServletRequest request) {
         try {
             UserInfoPO userInfoPO = new UserInfoPO();
             userInfoPO.setUserName(name);
@@ -59,6 +60,8 @@ public class UserController {
             if (userInfoPO1 == null) {
                 return "用户不存在!";
             } else {
+                HttpSession session = request.getSession();
+                session.setAttribute("userId", userInfoPO1.getId());
                 return "success";
             }
 
@@ -66,6 +69,17 @@ public class UserController {
             e.printStackTrace();
             return e.getMessage();
         }
+    }
+
+    @RequestMapping("getUserInfo")
+    @ResponseBody
+    public UserInfoPO queryUserInfo() {
+        UserInfoDto userInfoDto = new UserInfoDto();
+        String userName = (String) SecurityUtils.getSubject().getPrincipal();
+        UserInfoPO userInfoPO = new UserInfoPO();
+        userInfoPO.setUserName(userName);
+        UserInfoPO userInfoPO1 = userService.getUserByUserInfo(userInfoPO);
+        return userInfoPO1;
     }
 
     @RequestMapping("addUser")
@@ -87,8 +101,9 @@ public class UserController {
                     FileUtils.copyInputStreamToFile(file.getInputStream(), file1);
                 }
 
-                String[] s1 = OSSClientUtil.uploadObject2OSS(client, file1, "youku-diting", user.getUserName());
-                String headUrl = OSSClientUtil.getUrl(client, "youku-diting", s1[1]);
+                String[] s1 = OSSClientUtil.uploadObject2OSS(client, file1, "zzu-diting", user.getUserName());
+                String headUrl = OSSClientUtil.getUrl(client, "zzu-diting", s1[1]);
+                OSSClientUtil.stopOssClinet();
                 user.setHeadIconUrl(headUrl);
                 userService.addUser(user);
             } else {

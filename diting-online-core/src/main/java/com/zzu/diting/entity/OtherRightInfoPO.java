@@ -3,13 +3,13 @@ package com.zzu.diting.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 
@@ -39,9 +39,13 @@ public class OtherRightInfoPO implements Serializable {
     /**
      * 是否被委托维权
      */
-    private String isEntrustedProtection;
-    private String protectionRightAttribute;
+    private String isRightEntrusted;
+    /**
+     * 维权属性
+     */
+    private String attorneyAttribute;
     private String attorneyPowerUrl;
+
     private Timestamp entrustedProtectionStartdate;
     private Timestamp entrustedProtectionEnddate;
     private String auditStatus;

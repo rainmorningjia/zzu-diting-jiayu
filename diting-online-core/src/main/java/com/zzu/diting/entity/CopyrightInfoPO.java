@@ -1,5 +1,7 @@
 package com.zzu.diting.entity;
+
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Column;
@@ -33,49 +35,58 @@ public class CopyrightInfoPO implements Serializable {
      * 作品类型
      */
     private String worksType;
+    /**
+     * 权利类型
+     */
     private String copyrightType;
     /**
      * 是否进行著作权登记
      */
     private String isRegister;
     /**
-     * 著作权登记号
+     * 著作权登记号6
      */
     private String copyrightRegistrationNumber;
     /**
-     * 著作权登记文件链接
+     * 著作权登记文件链接7
      */
     private String copyrightRegistrationFileUrl;
     /**
-     * 作品名称
+     * 作品名称8
      */
     private String worksName;
+    /**
+     * 著作权人名称9
+     */
     private String copyrightPersonName;
     /**
-     * 著作权登记日
+     * 著作权登记日10
      */
-
     private Timestamp copyrightRegisterDate;
     /**
-     * 著作权有效期
+     * 著作权有效期11
      */
     private Timestamp copyrightVld;
     /**
-     * 导演信息
+     * 导演信息12
      */
     private String directorInfo;
     /**
-     * 主演信息
+     * 主演信息13
      */
     private String performerMainInfo;
     /**
-     * 作品属性
+     * 作品属性14
      */
     private String worksAttribute;
     /**
-     * 作品集数
+     * 作品集数15
      */
     private String worksNumber;
+    /**
+     * 作品信息可参考网址
+     */
+    private String consultUrl;
     /**
      * 是否分销获取的权利
      */
@@ -131,15 +142,18 @@ public class CopyrightInfoPO implements Serializable {
     /**
      * 委托维权起止日
      */
-    private Timestamp entrustProtectionStartdate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Timestamp entrustedProtectionStartdate;
     /**
      * 委托维权截止日
      */
-    private Timestamp entrustProtectionEnddate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Timestamp entrustedProtectionEnddate;
     /**
      * 委托文件链接
      */
-    private String entrustFileUrl;
+    @Column(name = "entrust_file_url")
+    private String attorneyPowerUrl;
     /**
      * 审核状态
      */

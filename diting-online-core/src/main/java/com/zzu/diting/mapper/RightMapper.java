@@ -1,4 +1,5 @@
 package com.zzu.diting.mapper;
+
 import com.zzu.diting.entity.RightVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -13,6 +14,10 @@ import java.util.List;
  */
 @Mapper
 public interface RightMapper {
+
+    //1
+    Integer queryTotalNumberByUserIDAndRightAllAndTypeAll(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2);
+
     /**
      * 所有的都是全部类型
      *
@@ -25,6 +30,9 @@ public interface RightMapper {
      */
     List<RightVO> queryRightsByUserIDAndRightAllAndTypeAll(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2);
 
+    //2
+    Integer queryTotalNumberByUserIDAndRightAllAndType(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("auditState") String auditState);
+
     /**
      * 全部类型中的特定状态
      *
@@ -35,7 +43,11 @@ public interface RightMapper {
      * @param t2          ：结束时间
      * @return 权利集合
      */
+
     List<RightVO> queryRightsByUserIDAndRightAllAndType(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("auditState") String auditState);
+
+    //3
+    Integer queryTotalNumberByUserIDAndRightAndTypeAll(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
 
     /**
      * 特定类型中的全部状态
@@ -47,8 +59,10 @@ public interface RightMapper {
      * @param t2          ：结束时间
      * @return 权利集合
      */
-
     List<RightVO> queryRightsByUserIDAndRightAndTypeAll(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
+
+    //4
+    Integer queryTotalNumberByUserIDAndRightAndType(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType, @Param("auditState") String auditState);
 
     /**
      * 特定类型中的特定状态
@@ -60,7 +74,6 @@ public interface RightMapper {
      * @param t2          ：结束时间
      * @return 权利集合
      */
-
     List<RightVO> queryRightsByUserIDAndRightAndType(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType, @Param("auditState") String auditState);
 
     /**
@@ -103,7 +116,7 @@ public interface RightMapper {
      * @param auditState
      * @return
      */
-    List<RightVO> queryRightByUserIDAndRightIdTypeAndAuditState(@Param("userId") Long userId, @Param("auditState") String auditState, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("id") Long id);
+    List<RightVO> queryRightByUserIDAndRightIdAllTypeAndAuditState(@Param("userId") Long userId, @Param("auditState") String auditState, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("id") Long id);
 
 
     /**
@@ -121,6 +134,9 @@ public interface RightMapper {
      */
     List<RightVO> queryRightByUserIDAndRightIdTypeAndRight(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("id") Long id, @Param("rightType") String rightType, @Param("auditState") String auditState);
 
+    //5
+    Integer getTotalNumberByUserIDAndRightNameAndAll(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("name") String name);
+
     /**
      * 根据权利名称模糊查询特定权利类型的全部状态权利信息
      *
@@ -134,6 +150,8 @@ public interface RightMapper {
      */
     List<RightVO> queryRightByUserIDAndRightNameAndAll(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("name") String name);
 
+    //6
+    Integer getTotalNumberByUserIDAndRightNameAndAllStateOneRight(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("name") String name, @Param("rightType") String rightType);
 
     /**
      * 根据权利名称模糊查询特定权利类型的全部状态权利信息
@@ -149,6 +167,9 @@ public interface RightMapper {
      */
     List<RightVO> queryRightByUserIDAndRightNameAndAllStateOneRight(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("name") String name, @Param("rightType") String rightType);
 
+    //7
+    Integer getTotalNumberByUserIDAndRightNameAndOneStateAllRight(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("name") String name, @Param("state") String state);
+
     /**
      * 根据权利名称模糊查询特定权利类型的全部状态权利信息
      *
@@ -163,6 +184,8 @@ public interface RightMapper {
      */
     List<RightVO> queryRightByUserIDAndRightNameAndOneStateAllRight(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("name") String name, @Param("state") String state);
 
+    //8
+    Integer getTotalNumberByUserIDAndRightNameAndOneStateOneRight(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("name") String name, @Param("state") String state, @Param("rightType") String rightType);
 
     /**
      * 根据权利名称模糊查询特定权利类型的特定状态权利信息
@@ -180,83 +203,4 @@ public interface RightMapper {
     List<RightVO> queryRightByUserIDAndRightNameAndOneStateOneRight(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("name") String name, @Param("state") String state, @Param("rightType") String rightType);
 
 
-    /**
-     *  没有Id时的著作权的全部类型链接
-     * @param userId:用户ID
-     * @param num1:起始页码
-     * @param num2:行数
-     * @param t1 :起始时间
-     * @param t2 ：结束时间
-     * @param auditState:
-     * @return 权利集合
-     *
-     */
-    /*
-     List<RightVO> queryRightsByUserIDAndCopyrightAndTypeAll(@Param("userId") Long userId, @Param("num1")Integer num1,@Param("num2")Integer num2,@Param("t1")Long t1,@Param("t2")Long t2,@Param("auditState")String auditState);
-    /**
-     *  没有Id时的著作权的特定类型链接
-     * @param userId:用户ID
-     * @param num1:起始页码
-     * @param num2:行数
-     * @param t1 :起始时间
-     * @param t2 ：结束时间
-     * @param auditState:
-     * @return 权利集合
-     *
-     *//*
-    List<RightVO> queryRightsByUserIDAndCopyrightAndType(@Param("userId") Long userId, @Param("num1")Integer num1,@Param("num2")Integer num2,@Param("t1")Long t1,@Param("t2")Long t2,@Param("auditState")String auditState);
-
-    *//**
-     *  没有Id时的名誉权全部类型链接
-     * @param userId:用户ID
-     * @param num1:起始页码
-     * @param num2:行数
-     * @param t1 :起始时间
-     * @param t2 ：结束时间
-     * @return 权利集合
-     *
-     *//*
-
-    List<RightVO> queryRightsByUserIDAndPorightAndTypeAll(@Param("userId") Long userId, @Param("num1")Integer num1,@Param("num2")Integer num2,@Param("t1")Long t1,@Param("t2")Long t2);
-
-
-    *//**
-     *  没有Id时的名誉权特定类型
-     * @param userId:用户ID
-     * @param num1:起始页码
-     * @param num2:行数
-     * @param t1 :起始时间
-     * @param t2 ：结束时间
-     * @param auditState:审核状态
-     * @return 权利集合
-     *
-     *//*
-
-    List<RightVO> queryRightsByUserIDAndPorightAndType(@Param("userId") Long userId, @Param("num1")Integer num1,@Param("num2")Integer num2,@Param("t1")Long t1,@Param("t2")Long t2,@Param("auditState")String auditState);
-    *//**
-     *  没有id的其他权利全部类型信息
-     * @param userId:用户ID
-     * @param num1:起始页码
-     * @param num2:行数
-     * @param t1 :起始时间
-     * @param t2 ：结束时间
-     * @return 权利集合
-     *//*
-     List<RightVO> queryRightsByUserIDAndOtherRightAndTypeAll(@Param("userId") Long userId, @Param("num1")Integer num1,@Param("num2")Integer num2,@Param("t1")Long t1,@Param("t2")Long t2);
-
-    *//**
-     *没有id的其他权利特定类型信息
-     * @param userId:用户ID
-     * @param num1:起始页码
-     * @param num2:行数
-     * @param t1 :起始时间
-     * @param t2 ：结束时间
-     * @param auditState:审核状态
-     * @return 权利集合
-     *//*
-    List<RightVO> queryRightsByUserIDAndOtherRightAndType(@Param("userId") Long userId, @Param("num1")Integer num1,@Param("num2")Integer num2,@Param("t1")Long t1,@Param("t2")Long t2,@Param("auditState")String auditState);
-
-    List<RightVO> queryRightsByUserIDAndRightIdOther(@Param("userId")Long userId,@Param("rightId") Long id,@Param("t1")Long t1,@Param("t2")Long t2);
-    List<RightVO> queryRightsByUserIDAndRightIdPor(@Param("userId")Long userId,@Param("rightId") Long id,@Param("t1")Long t1,@Param("t2")Long t2);
-    */
 }

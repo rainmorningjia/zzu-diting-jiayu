@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "menu")
+@Table(name = "diting_menu")
 public class Menu {
     @Id
     private Integer id;

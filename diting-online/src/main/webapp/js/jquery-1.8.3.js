@@ -1532,7 +1532,7 @@ jQuery.extend({
 
 	hasData: function( elem ) {
 		elem = elem.nodeType ? jQuery.cache[ elem[jQuery.expando] ] : elem[ jQuery.expando ];
-		return !!elem && !isEmptyDataObject( elem );
+		return !!elem && !isEmptyentity( elem );
 	},
 
 	data: function( elem, name, data, pvt /* Internal Use Only */ ) {
@@ -1678,7 +1678,7 @@ jQuery.extend({
 
 				// If there is no data left in the cache, we want to continue
 				// and let the cache object itself get destroyed
-				if ( !( pvt ? isEmptyDataObject : jQuery.isEmptyObject )( thisCache ) ) {
+				if ( !( pvt ? isEmptyentity : jQuery.isEmptyObject )( thisCache ) ) {
 					return;
 				}
 			}
@@ -1690,7 +1690,7 @@ jQuery.extend({
 
 			// Don't destroy the parent cache unless the internal data object
 			// had been the only thing left in it
-			if ( !isEmptyDataObject( cache[ id ] ) ) {
+			if ( !isEmptyentity( cache[ id ] ) ) {
 				return;
 			}
 		}
@@ -1830,7 +1830,7 @@ function dataAttr( elem, key, data ) {
 }
 
 // checks a cache object for emptiness
-function isEmptyDataObject( obj ) {
+function isEmptyentity( obj ) {
 	var name;
 	for ( name in obj ) {
 

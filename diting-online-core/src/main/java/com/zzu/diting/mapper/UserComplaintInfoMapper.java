@@ -11,6 +11,10 @@ import java.util.List;
  */
 @org.apache.ibatis.annotations.Mapper
 public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
+
+    //1
+    Integer queryTotalNumberByPageAndTimeAndAll(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2);
+
     /**
      * 全部权利全部状态
      *
@@ -21,7 +25,10 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      * @param t2     结束时间
      * @return 投诉集合
      */
-    List<UserComplaintInfoPO> queryListComplaintByPageAndTimeAndResult(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2);
+    List<UserComplaintInfoPO> queryListComplaintByPageAndTimeAndAll(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2);
+
+    //2
+    Integer queryTotalNumberAllRightAndState(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String processState);
 
     /**
      * 全部权利的特定状态
@@ -35,6 +42,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      */
     List<UserComplaintInfoPO> queryComplaintsAllRightAndState(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String processState);
 
+    //3
+    Integer queryTotalNumberRightAndAllState(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
+
     /**
      * 特定权利的全部状态
      *
@@ -47,6 +57,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      * @return 投诉集合
      */
     List<UserComplaintInfoPO> queryComplaintsRightAndAllState(@Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
+
+    //4
+    Integer queryTotalNumberRightAndState(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType, @Param("state") String processState);
 
     /**
      * 特定权利的全部状态
@@ -86,6 +99,7 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      */
     List<UserComplaintInfoPO> queryComplaintByIdRightAndAllState(@Param("userId") Long userId, @Param("id") Long id, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
 
+
     /**
      * 特定id的全部投诉类型特定状态
      *
@@ -115,6 +129,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      */
     List<UserComplaintInfoPO> queryComplaintByIdRightAndState(@Param("userId") Long userId, @Param("id") Long id, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state, @Param("rightType") String rightType);
 
+    //5
+    Integer queryTotalNumberByUrlAndAllRightAndAllState(@Param("userId") Long userId, @Param("url") String url, @Param("t1") Long t1, @Param("t2") Long t2);
+
     /**
      * 根据投诉链接模糊查询所有投诉信息
      *
@@ -127,6 +144,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      * @return 投诉集合
      */
     List<UserComplaintInfoPO> queryComplaintByUrlAndAllRightAndAllState(@Param("userId") Long userId, @Param("url") String url, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2);
+
+    //6
+    Integer queryTotalNumberByUrlAndOneRightAndAllState(@Param("userId") Long userId, @Param("url") String url, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
 
     /**
      * 根据投诉链接模糊查询特定权利的全部状态投诉信息
@@ -142,6 +162,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      */
     List<UserComplaintInfoPO> queryComplaintByUrlAndOneRightAndAllState(@Param("userId") Long userId, @Param("url") String url, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
 
+    //7
+    Integer queryTotalNumberByUrlAndAllRightAndOneState(@Param("userId") Long userId, @Param("url") String url, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state);
+
     /**
      * 根据投诉链接模糊查询全部权利的特定状态投诉信息
      *
@@ -155,6 +178,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      * @return 投诉集合
      */
     List<UserComplaintInfoPO> queryComplaintByUrlAndAllRightAndOneState(@Param("userId") Long userId, @Param("url") String url, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state);
+
+    //8
+    Integer queryTotalNumberByUrlAndOneRightAndOneState(@Param("userId") Long userId, @Param("url") String url, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state, @Param("rightType") String rightType);
 
     /**
      * 根据投诉链接模糊查询特定权利的特定状态投诉信息
@@ -171,6 +197,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      */
     List<UserComplaintInfoPO> queryComplaintByUrlAndOneRightAndOneState(@Param("userId") Long userId, @Param("url") String url, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state, @Param("rightType") String rightType);
 
+    //9
+    Integer queryTotalNumberByNameAndAllRightAndAllState(@Param("userId") Long userId, @Param("name") String name, @Param("t1") Long t1, @Param("t2") Long t2);
+
     /**
      * 根据权利名称模糊查询全部权利的全部状态投诉信息
      *
@@ -183,6 +212,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      * @return 投诉集合
      */
     List<UserComplaintInfoPO> queryComplaintByNameAndAllRightAndAllState(@Param("userId") Long userId, @Param("name") String name, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2);
+
+    //10
+    Integer queryTotalNumberByNameAndOneRightAndAllState(@Param("userId") Long userId, @Param("name") String name, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
 
     /**
      * 根据权利名称模糊查询特定权利的全部状态投诉信息
@@ -198,6 +230,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      */
     List<UserComplaintInfoPO> queryComplaintByNameAndOneRightAndAllState(@Param("userId") Long userId, @Param("name") String name, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
 
+    //11
+    Integer queryTotalNumberByNameAndAllRightAndOneState(@Param("userId") Long userId, @Param("name") String name, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state);
+
     /**
      * 根据权利名称模糊查询全部权利的特定状态投诉信息
      *
@@ -211,6 +246,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      * @return 投诉集合
      */
     List<UserComplaintInfoPO> queryComplaintByNameAndAllRightAndOneState(@Param("userId") Long userId, @Param("name") String name, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state);
+
+    //12
+    Integer queryTotalNumberByNameAndOneRightAndOneState(@Param("userId") Long userId, @Param("name") String name, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state, @Param("rightType") String rightType);
 
     /**
      * 根据权利名称模糊查询特定权利的特定状态投诉信息
@@ -227,6 +265,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      */
     List<UserComplaintInfoPO> queryComplaintByNameAndOneRightAndOneState(@Param("userId") Long userId, @Param("name") String name, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state, @Param("rightType") String rightType);
 
+    //13
+    Integer queryTotalNumberByRightIdAndAllRightAndAllState(@Param("userId") Long userId, @Param("rightId") Long rightId, @Param("t1") Long t1, @Param("t2") Long t2);
+
     /**
      * 根据权利id精准查询特全部权利的全部状态投诉信息
      *
@@ -239,6 +280,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      * @return 投诉集合
      */
     List<UserComplaintInfoPO> queryComplaintByRightIdAndAllRightAndAllState(@Param("userId") Long userId, @Param("rightId") Long rightId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2);
+
+    //14
+    Integer queryTotalNumberByRightIdAndOneRightAndAllState(@Param("userId") Long userId, @Param("rightId") Long rightId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
 
     /**
      * 根据权利id精准查询特定权利的全部状态投诉信息
@@ -254,6 +298,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      */
     List<UserComplaintInfoPO> queryComplaintByRightIdAndOneRightAndAllState(@Param("userId") Long userId, @Param("rightId") Long rightId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("rightType") String rightType);
 
+    //15
+    Integer queryTotalNumberByRightIdAndAllRightAndOneState(@Param("userId") Long userId, @Param("rightId") Long rightId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state);
+
     /**
      * 根据权利id精准查询全部权利的特定状态投诉信息
      *
@@ -267,6 +314,9 @@ public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
      * @return 投诉集合
      */
     List<UserComplaintInfoPO> queryComplaintByRightIdAndAllRightAndOneState(@Param("userId") Long userId, @Param("rightId") Long rightId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state);
+
+    //16
+    Integer queryTotalNumberByRightIdAndOneRightAndOneState(@Param("userId") Long userId, @Param("rightId") Long rightId, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state, @Param("rightType") String rightType);
 
     /**
      * 根据权利id精准查询特定权利的特定状态投诉信息

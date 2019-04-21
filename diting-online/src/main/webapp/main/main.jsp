@@ -34,7 +34,7 @@
 
                             onExpand: function () {
                                 $('#tree' + menu.id).tree({
-                                    url: "${pageContext.request.contextPath}/menu/getAllChildrenMenu?parentId=" + menu.id,
+                                    url: "${pageContext.request.contextPath}/menu/queryAllChildrenMenu?parentId=" + menu.id,
                                     loadFilter: function (data) {
                                         if (data.d) {
                                             return data.d;
@@ -43,7 +43,9 @@
                                         }
                                     },
                                     onClick: function (node) {
+                                        console.info(node.text)
                                         var ex = $('#tt').tabs('exists', node.text);
+
                                         if (ex == false) {
                                             $('#tt').tabs('add', {
                                                 title: node.text,
@@ -74,8 +76,9 @@
 <div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
     <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px">
         持名法州后台管理系统
+        欢迎您:<shiro:authenticated>[<shiro:principal/>]</shiro:authenticated>
     </div>
-    <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:<shiro:authenticated>[<shiro:principal/>]</shiro:authenticated>
+    <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">
         &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#"
                                                                                                               class="easyui-linkbutton"
                                                                                                               data-options="iconCls:'icon-01'">退出系统</a>

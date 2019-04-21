@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.ComplaintWorkMapper">
+    <resultMap id="ComplaintWork" type="com.zzu.diting.entity.ComplaintWorkInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="COMPLAINT_ID" property="complaintId" jdbcType="VARCHAR"/>
+        <result column="COMPLAINTS_WORK_ID" property="complaintsWorkId" jdbcType="BIGINT"/>
+        <result column="COMPLAINT_URL" property="complaintUrl" jdbcType="VARCHAR"/>
+        <result column="COMMENT_ID" property="commentId" jdbcType="VARCHAR"/>
+        <result column="ORDER_TYPE" property="orderType" jdbcType="VARCHAR"/>
+        <result column="AUDIT_STATE_ONE" property="auditStateOne" jdbcType="VARCHAR"/>
+        <result column="AUDIT_STATE_TWO" property="auditStateTwo" jdbcType="VARCHAR"/>
+        <result column="IS_DISTRIBUTION" property="isDistribution" jdbcType="BIGINT"/>
+        <result column="REJECT_TYPE_ONE" property="rejectTypeOne" jdbcType="VARCHAR"/>
+        <result column="REASON_ONE" property="reasonOne" jdbcType="BIGINT"/>
+        <result column="HANDLE_RANK" property="handleRank" jdbcType="BIGINT"/>
+        <result column="EXPLANATION" property="explanation" jdbcType="BIGINT"/>
+        <result column="REJECT_TYPE_TWO" property="rejectTypeTwo" jdbcType="BIGINT"/>
+        <result column="REASON_TWO" property="reasonTwo" jdbcType="BIGINT"/>
+        <result column="HANDLE_MODE" property="handleMode" jdbcType="BIGINT"/>
+        <result column="SPECIFIC_INFORMATION" property="specificInformation" jdbcType="BIGINT"/>
+        <result column="GMT_MODIFIED" property="updateTime" jdbcType="BIGINT"/>
+        <result column="GMT_CREATE" property="createTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="complaint">
+        ID
+        ,
+        COMPLAINT_ID,
+        COMPLAINT_URL,
+        COMMENT_ID,
+        AUDIT_STATE_ONE,
+        AUDIT_STATE_TWO,
+        GMT_CREATE
+    </sql>
+    <select id="queryWorksByWorksIdAndAllProcessing" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndOneProcessing" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and ${nodeState}=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndAllProcessingAndListId" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and id in
+        <foreach
+                collection="ids" item="item" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndOneProcessingAndListId" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and id in
+        <foreach
+                collection="ids" item="item" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+        and ${nodeState}=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndAllProcessingAndListCompalintIds" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and complaint_id in
+        <foreach
+                collection="complaintIds" item="item" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndOneProcessingAndListComplaintIds" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and complaint_id in
+        <foreach
+                collection="complaintIds" item="item" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+        and ${nodeState}=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndAllProcessingAndListCommentIds" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and comment_id in
+        <foreach
+                collection="commentIds" item="item" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndOneProcessingAndListCommentIds" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and comment_id in
+        <foreach
+                collection="commentIds" item="item" separator="," open="(" close=")" index="">
+            #{item}
+        </foreach>
+        and ${nodeState}=#{state}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndAllProcessingAndComplaintUrl" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and complaint_url like "%"#{complaintUrl}"%"
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndOneProcessingAndComplaintUrl" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and ${nodeState}=#{state}
+        and complaint_url like "%"#{complaintUrl}"%"
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+    <select id="queryWorksByWorksIdAndAllProcessingAndTime" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and ${timeType}&gt;#{startTime}
+        and ${timeType}&lt;#{endTime}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryWorksByWorksIdAndOneProcessingAndTime" resultMap="ComplaintWork">
+        select
+        <include refid="complaint"/>
+        from complaint_work_info
+        where complaints_work_id=#{worksId}
+        and ${nodeState}=#{state}
+        and ${timeType}&gt;#{startTime}
+        and ${timeType}&lt;#{endTime}
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+</mapper>
