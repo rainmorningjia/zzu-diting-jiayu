@@ -1,8 +1,7 @@
 package com.zzu.diting.controller;
 
 import com.aliyun.oss.OSSClient;
-import com.zzu.diting.dto.AuthenticationResultDto;
-import com.zzu.diting.dto.MessageDto;
+import com.zzu.diting.dto.*;
 import com.zzu.diting.entity.*;
 import com.zzu.diting.service.UserAuthenticationService;
 import com.zzu.diting.service.UserService;
@@ -17,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 
 /**
@@ -38,60 +38,73 @@ public class UserAuthenticationController {
 
     @ResponseBody
     @RequestMapping("userAuthenticationInfo")
-    public AuthenticationResultDto userAuthenticationInfo(HttpServletRequest request) {
+    public UserAuthenticationInfoDto getUserAuthenticationInfoByUserId(HttpServletRequest request) {
         Long userId = (Long) request.getSession().getAttribute("userId");
-        AuthenticationResultDto authenticationResultDto = new AuthenticationResultDto();
-        String state = userAuthenticationService.getUserAuthenticationStateByUserId(userId);
-        if (state.equals(s)) {
-            authenticationResultDto.setState("未通过");
-            String reason = userAuthenticationService.getFailReasonByUserId(userId);
-            authenticationResultDto.setReason(reason);
-            return authenticationResultDto;
-        } else if (state.equals(s1)) {
-            authenticationResultDto.setState("未认证");
-            return authenticationResultDto;
-
-        } else if (state.equals(s2)) {
-            authenticationResultDto.setState("审核中");
-            return authenticationResultDto;
+        UserAuthenticationFormDto userAuthenticationFormDto = new UserAuthenticationFormDto();
+        UserAuthenticationInfoDto userAuthenticationInfoDto = new UserAuthenticationInfoDto();
+        OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = userAuthenticationService.getUserAuthenticationOrganizationByUserId(userId);
+        if (organizationAuthenticationInfoPO != null) {
+            Object o = DataObjectTransDto.populate(organizationAuthenticationInfoPO, userAuthenticationInfoDto);
+            userAuthenticationInfoDto = (UserAuthenticationInfoDto) o;
+            userAuthenticationInfoDto.setAuthenticationType(1);
+            return userAuthenticationInfoDto;
         } else {
-            OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = userAuthenticationService.getUserAuthenticationOrganizationByUserId(userId);
-            if (organizationAuthenticationInfoPO != null) {
-                Object o = DataObjectTransDto.populate(organizationAuthenticationInfoPO, authenticationResultDto);
-                authenticationResultDto = (AuthenticationResultDto) o;
-                authenticationResultDto.setType(2);
-                return authenticationResultDto;
+            PersonalAuthenticationInfoPO personalAuthenticationInfoPO = userAuthenticationService.getUserAuthenticationPersonByUserId(userId);
+            if (personalAuthenticationInfoPO != null) {
+                Object o = DataObjectTransDto.populate(personalAuthenticationInfoPO, userAuthenticationInfoDto);
+                userAuthenticationInfoDto = (UserAuthenticationInfoDto) o;
+                userAuthenticationInfoDto.setAuthenticationType(0);
+                return userAuthenticationInfoDto;
             } else {
-                PersonalAuthenticationInfoPO personalAuthenticationInfoPO = userAuthenticationService.getUserAuthenticationPersonByUserId(userId);
-                if (personalAuthenticationInfoPO != null) {
-                    Object o = DataObjectTransDto.populate(personalAuthenticationInfoPO, authenticationResultDto);
-                    authenticationResultDto = (AuthenticationResultDto) o;
-                    authenticationResultDto.setType(1);
-                    return authenticationResultDto;
-                } else {
-                    authenticationResultDto.setType(0);
-                    return authenticationResultDto;
-                }
+
+                return null;
             }
-
         }
+    }
 
+    public MessageDto updateUserAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfo, HttpServletRequest request) {
+        MessageDto messageDto = new MessageDto();
+        try {
+            HttpSession session = request.getSession();
+            Long userId = (Long) session.getAttribute("userId");
+            userAuthenticationInfo.setUserId(new Long("2000223007"));
+            if (userAuthenticationInfo.getAuthenticationType() == 0) {
+                PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
+                personalAuthenticationInfoPO = (PersonalAuthenticationInfoPO) DataObjectTransDto.populate(userAuthenticationInfo, personalAuthenticationInfoPO);
+                userAuthenticationService.addUserAuthenticationUpdatePersonInfo(personalAuthenticationInfoPO);
+                messageDto.setCode(0);
+                messageDto.setMessage("修改信息成功");
+                return messageDto;
+            } else {
+                OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = new OrganizationAuthenticationInfoPO();
+                organizationAuthenticationInfoPO = (OrganizationAuthenticationInfoPO) DataObjectTransDto.populate(userAuthenticationInfo, organizationAuthenticationInfoPO);
+                userAuthenticationService.addUserAuthenticationUpdateOrganizationInfo(organizationAuthenticationInfoPO);
+                messageDto.setCode(0);
+                messageDto.setMessage("修改信息成功");
+                return messageDto;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            messageDto.setCode(1);
+            messageDto.setMessage("修改信息失败");
+            return messageDto;
+        }
     }
 
     @RequestMapping("addUserAuthentication")
     @ResponseBody
-    public MessageDto addUserAuthenticationInfo(AuthenticationResultDto authenticationResultDto, MultipartFile file1, MultipartFile file2, MultipartFile file3, HttpServletRequest request) {
+    public MessageDto addUserAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfoQueryParam, MultipartFile file1, MultipartFile file2, MultipartFile file3, HttpServletRequest request) {
         MessageDto messageDto = new MessageDto();
         OSSClient client = OSSClientUtil.getOSSClient();
         try {
-            Integer userAuthenticationType = authenticationResultDto.getType();
+            Integer userAuthenticationType = userAuthenticationInfoQueryParam.getAuthenticationType();
             String name = (String) SecurityUtils.getSubject().getPrincipal();
             UserInfoPO userInfoPO = new UserInfoPO();
             userInfoPO.setUserName(name);
             Long id = userService.getUserByUserInfo(userInfoPO).getId();
             if (userAuthenticationType == 0) {
                 PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
-                Object o = DataObjectTransDto.populate(authenticationResultDto, personalAuthenticationInfoPO);
+                Object o = DataObjectTransDto.populate(userAuthenticationInfoQueryParam, personalAuthenticationInfoPO);
                 personalAuthenticationInfoPO = (PersonalAuthenticationInfoPO) o;
                 personalAuthenticationInfoPO.setUserId(id);
                 personalAuthenticationInfoPO.setCreateTime(System.currentTimeMillis());
@@ -120,7 +133,7 @@ public class UserAuthenticationController {
             } else {
 
                 OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = new OrganizationAuthenticationInfoPO();
-                Object o = DataObjectTransDto.populate(authenticationResultDto, organizationAuthenticationInfoPO);
+                Object o = DataObjectTransDto.populate(userAuthenticationInfoQueryParam, organizationAuthenticationInfoPO);
                 File files1 = FileUtil.transerFile(file1, request);
                 String[] s1 = OSSClientUtil.uploadObject2OSS(client, files1, "zzu-diting", organizationAuthenticationInfoPO.getOrganizationName());
                 String positiveUrl = OSSClientUtil.getUrl(client, "zzu-diting", s1[1]);
@@ -150,45 +163,73 @@ public class UserAuthenticationController {
     }
 
     @ResponseBody
-    @RequestMapping("updateUserPerson")
-    public MessageDto UpdateUserPersonAuthenticationInfo(AuthenticationResultDto AuthenticationResultDto) {
+    @RequestMapping("updateUserNoAuthen")
+    public MessageDto updateUserNoAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfo) {
+        /*            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+            HttpSession session = request.getSession();
+            Long userId = (Long) session.getAttribute("userId");*/
+        userAuthenticationInfo.setUserId(new Long("2000223007"));
         MessageDto messageDto = new MessageDto();
+        Integer userAuthenticationType = userAuthenticationInfo.getAuthenticationType();
         try {
-            PersonalAuthenticationUpdateInfoPO personalAuthenticationUpdateInfoPO = new PersonalAuthenticationUpdateInfoPO();
-            Object o = DataObjectTransDto.populate(AuthenticationResultDto, personalAuthenticationUpdateInfoPO);
-            personalAuthenticationUpdateInfoPO = (PersonalAuthenticationUpdateInfoPO) o;
-            personalAuthenticationUpdateInfoPO.setCreateTime(System.currentTimeMillis());
-            personalAuthenticationUpdateInfoPO.setUpdateTime(System.currentTimeMillis());
-            userAuthenticationService.addUserAuthenticationUpdatePersonInfo(personalAuthenticationUpdateInfoPO);
+            if (userAuthenticationType == 0) {
+                PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
+                Object o = DataObjectTransDto.populate(userAuthenticationInfo, personalAuthenticationInfoPO);
+                personalAuthenticationInfoPO = (PersonalAuthenticationInfoPO) o;
+                personalAuthenticationInfoPO.setId(userAuthenticationInfo.getId());
+                userAuthenticationService.UpdateUserAuthenticationPerson(personalAuthenticationInfoPO);
+                messageDto.setCode(0);
+                messageDto.setMessage("修改信息成功");
+                return messageDto;
+            } else {
+                OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = new OrganizationAuthenticationInfoPO();
+                Object o = DataObjectTransDto.populate(userAuthenticationInfo, organizationAuthenticationInfoPO);
+                organizationAuthenticationInfoPO = (OrganizationAuthenticationInfoPO) o;
+                organizationAuthenticationInfoPO.setId(userAuthenticationInfo.getId());
+                userAuthenticationService.UpdateUserAuthenticationOrganization(organizationAuthenticationInfoPO);
+                messageDto.setCode(0);
+                messageDto.setMessage("修改信息成功");
+                return messageDto;
+            }
         } catch (Exception e) {
+            e.printStackTrace();
             messageDto.setCode(1);
             messageDto.setMessage("系统异常");
             return messageDto;
         }
-        messageDto.setCode(0);
-        messageDto.setMessage("修改成功");
-        return messageDto;
+
     }
 
-    @RequestMapping("updateUserOrganization")
+
+    @RequestMapping("updateUserNoAutentication")
     @ResponseBody
-    public MessageDto UpdateUserOrganizationAuthenticationInfo(AuthenticationResultDto AuthenticationResultDto) {
+    public MessageDto updateUserAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfo) {
         MessageDto messageDto = new MessageDto();
         try {
-            OrganizationAuthenticationUpdateInfoPO organizationAuthenticationUpdateInfoPO = new OrganizationAuthenticationUpdateInfoPO();
-            Object o = DataObjectTransDto.populate(AuthenticationResultDto, organizationAuthenticationUpdateInfoPO);
-            organizationAuthenticationUpdateInfoPO = (OrganizationAuthenticationUpdateInfoPO) o;
-            organizationAuthenticationUpdateInfoPO.setCreateTime(System.currentTimeMillis());
-            organizationAuthenticationUpdateInfoPO.setUpdateTime(System.currentTimeMillis());
-            userAuthenticationService.addUserAuthenticationUpdateOrganizationInfo(organizationAuthenticationUpdateInfoPO);
+/*            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+            HttpSession session = request.getSession();
+            Long userId = (Long) session.getAttribute("userId");*/
+            userAuthenticationInfo.setUserId(new Long("2000223007"));
+            if (userAuthenticationInfo.getAuthenticationType() == 0) {
+                PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
+                personalAuthenticationInfoPO = (PersonalAuthenticationInfoPO) DataObjectTransDto.populate(userAuthenticationInfo, personalAuthenticationInfoPO);
+                userAuthenticationService.addUserAuthenticationUpdatePersonInfo(personalAuthenticationInfoPO);
+                messageDto.setCode(0);
+                messageDto.setMessage("修改信息成功");
+                return messageDto;
+            } else {
+                OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = new OrganizationAuthenticationInfoPO();
+                organizationAuthenticationInfoPO = (OrganizationAuthenticationInfoPO) DataObjectTransDto.populate(userAuthenticationInfo, organizationAuthenticationInfoPO);
+                userAuthenticationService.addUserAuthenticationUpdateOrganizationInfo(organizationAuthenticationInfoPO);
+                messageDto.setCode(0);
+                messageDto.setMessage("修改信息成功");
+                return messageDto;
+            }
         } catch (Exception e) {
+            e.printStackTrace();
             messageDto.setCode(1);
-            messageDto.setMessage("系统异常");
+            messageDto.setMessage("修改信息失败");
             return messageDto;
         }
-        messageDto.setCode(0);
-        messageDto.setMessage("修改成功");
-        return messageDto;
-
     }
 }

@@ -25,6 +25,7 @@ import java.sql.Timestamp;
 @Table(name = "personal_authentication_update_info")
 public class PersonalAuthenticationUpdateInfoPO implements Serializable {
     @Id
+    @KeySql(useGeneratedKeys = true)
     private Long id;
     private Long personInfoId;
     private String newRealName;

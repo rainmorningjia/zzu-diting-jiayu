@@ -1,13 +1,13 @@
 package com.zzu.diting.service;
 
-import com.zzu.diting.entity.*;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.zzu.diting.dto.AuthenticationResultDto;
+import com.zzu.diting.entity.OrganizationAuthenticationInfoPO;
+import com.zzu.diting.entity.PersonalAuthenticationInfoPO;
 
 /**
  * @author :wb-jcy525678
- * @description:
+* @ :
  * @date : 2019/4/2 17:21
  */
 
@@ -29,10 +29,10 @@ public interface UserAuthenticationService {
 
     void UpdateUserAuthenticationOrganization(OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO);
 
-    void addUserAuthenticationUpdateOrganizationInfo(OrganizationAuthenticationUpdateInfoPO organizationAuthenticationUpdateInfoPO);
+    void addUserAuthenticationUpdateOrganizationInfo(OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO);
 
-    void addUserAuthenticationUpdatePersonInfo(PersonalAuthenticationUpdateInfoPO personalAuthenticationUpdateInfoPO);
+    void addUserAuthenticationUpdatePersonInfo(PersonalAuthenticationInfoPO personalAuthenticationInfoPO);
 
-    String getFailReasonByUserId(Long id);
+    AuthenticationResultDto getFailReasonByUserId(Long id);
 
 }

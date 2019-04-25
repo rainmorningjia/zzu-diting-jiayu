@@ -3,18 +3,12 @@ package com.zzu.diting.service.impl;
 
 import com.zzu.diting.entity.OperationRecordInfoPO;
 import com.zzu.diting.manager.OperationRecordInfoManager;
-import com.zzu.diting.service.OperationService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * @author :wb-jcy525678
- * @description:
- * @date : 2019/4/17 11:36
- */
 @Service
 public class OperationServiceImpl implements OperationService {
     @Resource

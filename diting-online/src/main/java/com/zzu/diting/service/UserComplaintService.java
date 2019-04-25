@@ -1,16 +1,10 @@
 package com.zzu.diting.service;
 
-import com.zzu.diting.entity.ComplaintsInfo;
+
 import com.zzu.diting.entity.UserComplaintInfoPO;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-/**
- * @author :wb-jcy525678
- * @description:
- * @date : 2019/4/8 21:39
- */
 public interface UserComplaintService {
     String addComplaintInfo(UserComplaintInfoPO userComplaintInfoPO);
 

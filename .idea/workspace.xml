@@ -4,115 +4,42 @@
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d83e08e-edff-4869-90b9-0e4ee0e32376" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/diting-management-core/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/DitingManagementCoreApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/AppealAuditInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/AuthenticationDistributionManagementInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/AuthenticationWorkInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/ComplaintDistributionManagementInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/ComplaintWorkInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/ComplaintsInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/ComplaintsWorkInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/ManagerComplaintInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/OperationRecordInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/RightDistributionManagementInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/RightWorkInfoPO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/AuthenticationManagementInfoManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/AuthenticationWorkManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/ComplaintDistributionManagementInfoManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/ComplaintWorkManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/ComplaintsInfoManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/ManagerComplaintManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/OperationRecordInfoManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/RightDistributionManagementInfoManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/RightWorkManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/AuthenticationManagementManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/AuthenticationWorkManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/ComplaintDistributionManagementInfoManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/ComplaintWorkManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/ComplaintsInfoManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/ManagerComplaintManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/OperationRecordImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/RightDistributionManagementInfoManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/RightManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/AuthenticationDistributionManagementInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/AuthenticationWorkInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/ComplaintDistributionManagementInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/ComplaintWorkMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/ComplaintsInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/ComplaintsWorkAllInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/ComplaintsWorkByManagerIdMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/ManagerComplaintInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/OperationRecordInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/RightDistributionManagementInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/RightWorkMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/AuthenticationManagementInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/AuthenticationWorkMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/ComplaintDistributionManagementInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/ComplaintWorkMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/ComplaintsMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/ComplaintsWorkAllMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/ComplaintsWorkByManagerIdMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/ManagerComplaintInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/RightDistributionManagementInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/RightWorkMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-management-core/src/test/java/com/zzu/diting/DitingManagementCoreApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/UserAuthenticationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/UserComplaintManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/UserCopyrightManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/UserOtherRightManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/UserReputationPortraitManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/UserRightManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserAuthenticationManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserComplaintManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserCopyrightManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserOtherRightManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserReputationPortraitManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserRightManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ReputationPortraitInfoMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/conf/FastJsonConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserAuthenticationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultFormDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/MessageDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserInfoDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/OperationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserAuthenticationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserComplaintService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserRightInfoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserComplaintServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserRightInfoServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/DataObjectTransDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/DataTransformUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/FileUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/UrlUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/addUserAuthentication.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticaionAuditing.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticationNoAdopt.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/detailUserAuthentication.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/noAuthentication.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/userInfo.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/upload/jiamengqicmfz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/upload/lupeiyangcmfz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="3d83e08e-edff-4869-90b9-0e4ee0e32376" name="Default Changelist" comment="DIRECTION: 2019/04/21&#10;author: jiachenyu&#10;version: updateUserAuthentication">
+      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/Province.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CityDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ProvinceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/cityMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/provinceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/OrganizationAuthenticationUpdateInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/PersonalAuthenticationUpdateInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationFormDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationInfoQueryParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/AllRightInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/CopyrightInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/CopyrightUpdateInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/FormDataRight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/OtherRightInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/OtherRightUpdateInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/Reason.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReasonMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReputationPortraitInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReputationPortraitUpdateInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightDetailedDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightInfoListDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightManagerDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightNameAndIdDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightNameAndType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/UpdateRightDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/AddressSevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/AddressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/updateUserAuthentication.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online-core/diting-online-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/diting-online-core.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/CopyrightInfoPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/CopyrightInfoPO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/CopyrightUpdateInfoPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/CopyrightUpdateInfoPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OrganizationAuthenticationInfoPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OrganizationAuthenticationInfoPO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OrganizationAuthenticationUpdateInfoPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OrganizationAuthenticationUpdateInfoPO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OtherRightInfoPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OtherRightInfoPO.java" afterDir="false" />
@@ -124,30 +51,37 @@
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/RightVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/RightVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/UserAppealInfoPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/UserAppealInfoPO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/UserComplaintInfoPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/UserComplaintInfoPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/UserInfoPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/UserInfoPO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CopyrightInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CopyrightInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CopyrightUpdateInfoPOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CopyrightUpdateInfoPOMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OrganizationAuthenticationInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OrganizationAuthenticationInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OrganizationAuthenticationUpdateInfoPOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OrganizationAuthenticationUpdateInfoPOMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OtherRightInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OtherRightInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OtherRightUpdateInfoPOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OtherRightUpdateInfoPOMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/PersonalAuthenticationInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/PersonalAuthenticationInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/PersonalAuthenticationUpdateInfoPOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/PersonalAuthenticationUpdateInfoPOMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ReputationPortraitInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ReputationPortraitInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ReputationPortraitUpdateInfoPOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ReputationPortraitUpdateInfoPOMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/RightMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/RightMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserAppealInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserAppealInfoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserComplaintInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserComplaintInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserInfoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/CopyrightMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/CopyrightMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/OrganizationAuthenticationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/OrganizationAuthenticationMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/OtherRightInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/OtherRightInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/PsersonalAuthenticationInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/PsersonalAuthenticationInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/ReputationPortraitInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/ReputationPortraitInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/RightMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/RightMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/UserComplaintMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/UserComplaintMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/MenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/OSSClientUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/OSSClientUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/src/main/webapp/js/jquery-1.8.3.js" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/js/jquery-1.8.3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diting-online/src/main/webapp/main/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/main/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserAuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserAuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultFormDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultFormDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserAuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserAuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserComplaintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserComplaintService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserRightInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserRightInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserComplaintServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserComplaintServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserRightInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserRightInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/detailUserAuthentication.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/authen/detailUserAuthentication.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -165,8 +99,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserAuthenticationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="131" column="79" lean-forward="true" selection-start-line="131" selection-start-column="79" selection-end-line="131" selection-end-column="79" />
+            <state relative-caret-position="192">
+              <caret line="38" column="17" lean-forward="true" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -175,10 +109,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/OSSClientUtil.java">
+        <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="117" column="30" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
+            <state relative-caret-position="-629">
+              <caret line="240" column="16" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserAuthenticationService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-368">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -200,15 +149,22 @@
       <find>comm</find>
       <find>`</find>
       <find>dao.dataobject</find>
-      <find>youku.diting.dao.dataobject</find>
       <find>youku</find>
       <find>youku.diting.dao</find>
       <find>dataobject</find>
       <find>zzu.diting.dao</find>
       <find>updateByPrimary</find>
       <find>client.shutdown();</find>
-      <find>client.shutdown();</find>
-      <find>client.shutdown();</find>
+      <find>youku.diting.dao.dataobject</find>
+      <find>com.com.zzu.diting.entity.</find>
+      <find>com.zzu.diting.dataobject</find>
+      <find>com.youku.diting.dao.dataobject</find>
+      <find>com.youku.diting.dao</find>
+      <find>com.youku.diting</find>
+      <find>com.zzu.diting.api</find>
+      <find>data-options=&quot;&quot;</find>
+      <find>readonly=&quot;readonly&quot;</find>
+      <find>addUserAuthenticationUpdatePersonInfo</find>
     </findStrings>
     <replaceStrings>
       <replace>mapper</replace>
@@ -218,6 +174,11 @@
       <replace>zzu.diting</replace>
       <replace>authenticationResultDto</replace>
       <replace>OSSClientUtil.stopOssClinet();</replace>
+      <replace>com.zzu.diting.</replace>
+      <replace>com.zzu.diting.entity</replace>
+      <replace>com.zzu.diting</replace>
+      <replace>readonly=&quot;readonly&quot;  data-options=&quot;&quot;</replace>
+      <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -229,56 +190,56 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserOtherRightManagerImpl.java" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CopyrightInfoMapper.java" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CopyrightUpdateInfoPOMapper.java" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserReputationPortraitManagerImpl.java" />
-        <option value="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/AppealAuditInfoPO.java" />
-        <option value="$PROJECT_DIR$/diting-management-core/pom.xml" />
-        <option value="$PROJECT_DIR$/diting-online/pom.xml" />
-        <option value="$PROJECT_DIR$/diting-online-core/pom.xml" />
-        <option value="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mapper/AuthenticationDistributionManagementInfoMapper.java" />
-        <option value="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/RightManagerImpl.java" />
-        <option value="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/AuthenticationManagementManagerImpl.java" />
-        <option value="$PROJECT_DIR$/diting-management-core/src/main/resources/com.zzu.diting/mapper/AuthenticationManagementInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/CopyrightMapper.xml" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationServiceImpl.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/MessageDto.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/DataObjectTransDto.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultFormDto.java" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/ExcelDataObject.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/DingTalkController.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authenticaiton/addUserAuthentication.jsp" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/UserComplaintManager.java" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserRightManagerImpl.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/UrlUtil.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserRightInfoServiceImpl.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserComplaintServiceImpl.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserRightInfoService.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/DataTransformUtil.java" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserInfoMapper.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserInfoDto.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/userInfo.jsp" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/main/main.jsp" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/NoAuthentication.jsp.xhtml" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticationNoAdopt.jsp" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/UserInfoPO.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/FileUtil.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/noAuthentication.jsp" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserService.java" />
-        <option value="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/OperationRecordInfoPO.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/MenuServiceImpl.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/addUserAuthentication.jsp" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultDto.java" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OrganizationAuthenticationUpdateInfoPO.java" />
-        <option value="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/OrganizationAuthenticationMapper.xml" />
         <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticaionAuditing.jsp" />
         <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OrganizationAuthenticationInfoPO.java" />
-        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/detailUserAuthentication.jsp" />
         <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserController.java" />
         <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/OSSClientUtil.java" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CityDao.java" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/cityMapper.xml" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/CopyrightMapper.xml" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/AddressSevice.java" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ProvinceDao.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/detailUserAuthentication.jsp" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/updateUserAuthentication.jsp" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultFormDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/OrganizationAuthenticationUpdateInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/PersonalAuthenticationUpdateInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationFormDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationInfoQueryParam.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserComplaintService.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/IdDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserRightInfoService.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/AllRightInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/CopyrightInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/CopyrightUpdateInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/FormDataRight.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/OtherRightInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/OtherRightUpdateInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/Reason.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReasonMessage.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReputationPortraitInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReputationPortraitUpdateInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightDetailedDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightInfoDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightInfoListDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightManagerDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightNameAndIdDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightNameAndType.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/UpdateRightDto.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationService.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/AddressServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserComplaintServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ReputationPortraitUpdateInfoPOMapper.java" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CopyrightUpdateInfoPOMapper.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserRightInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OtherRightUpdateInfoPOMapper.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OrganizationAuthenticationUpdateInfoPOMapper.java" />
+        <option value="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/PersonalAuthenticationUpdateInfoPOMapper.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserAuthenticationService.java" />
         <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserAuthenticationController.java" />
       </list>
     </option>
@@ -313,7 +274,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="46" />
+    <option name="x" value="579" />
+    <option name="y" value="128" />
     <option name="width" value="1139" />
     <option name="height" value="728" />
   </component>
@@ -325,8 +287,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -442,16 +402,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="diting" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zzu-diting-jiayu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zzu-diting-jiayu" type="462c0819:PsiDirectoryNode" />
-              <item name="diting-online" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="diting" type="462c0819:PsiDirectoryNode" />
               <item name="realm" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -507,15 +457,6 @@
               <item name="zzu-diting-jiayu" type="462c0819:PsiDirectoryNode" />
               <item name="diting-online" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="upload" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zzu-diting-jiayu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zzu-diting-jiayu" type="462c0819:PsiDirectoryNode" />
-              <item name="diting-online" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -559,36 +500,7 @@
               <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="diting" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zzu-diting-jiayu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zzu-diting-jiayu" type="462c0819:PsiDirectoryNode" />
-              <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="diting" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zzu-diting-jiayu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zzu-diting-jiayu" type="462c0819:PsiDirectoryNode" />
-              <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zzu-diting-jiayu" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zzu-diting-jiayu" type="462c0819:PsiDirectoryNode" />
-              <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="zzu-diting-jiayu" type="b2602c69:ProjectViewProjectNode" />
@@ -600,6 +512,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -612,7 +526,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555860307803" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556205272649" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/diting-online" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -641,11 +555,11 @@
       <recent name="com.zzu.diting.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\java\com\zzu\diting\util" />
-      <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\webapp" />
+      <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\java\com\zzu\diting\service" />
+      <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\java\com\zzu\diting\service\impl" />
+      <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\java\com\zzu\diting\dto" />
       <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\webapp\authen" />
-      <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\webapp\authenticaiton" />
-      <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-management-core\src\main\resources\com.zzu.diting\mapper" />
+      <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\webapp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -735,7 +649,9 @@
       <workItem from="1555343560495" duration="5280000" />
       <workItem from="1555590581866" duration="4732000" />
       <workItem from="1555674999320" duration="4462000" />
-      <workItem from="1555679513504" duration="38075000" />
+      <workItem from="1555679513504" duration="38404000" />
+      <workItem from="1556031914042" duration="5442000" />
+      <workItem from="1556203700160" duration="1561000" />
     </task>
     <task id="LOCAL-00001" summary="DIRECTION: 2019/03/18&#10;author: jiachenyu&#10;version: 1.00">
       <created>1552917247142</created>
@@ -744,7 +660,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552917247142</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="DIRECTION: 2019/04/21&#10;author: jiachenyu&#10;version: updateUserAuthentication">
+      <created>1555860833694</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1555860833694</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -777,12 +700,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88788000" />
+    <option name="totallyTimeSpent" value="96120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4975" visible="true" weight="0.25416037" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4975" visible="true" weight="0.2624811" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -791,14 +715,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" sideWeight="0.5025" side_tool="true" weight="0.3721634" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.34511784" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.24307692" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49924356" visible="true" weight="0.21538462" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49924356" weight="0.4476923" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.32923076" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.046153847" />
@@ -818,7 +742,7 @@
       <window_info anchor="right" id="Ant Build" order="9" weight="0.24962178" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4975" visible="true" weight="0.25416037" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4975" visible="true" weight="0.2624811" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -827,14 +751,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" sideWeight="0.5025" side_tool="true" weight="0.3721634" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24307692" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.34511784" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24307692" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49924356" weight="0.6635945" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49924356" weight="0.4476923" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.32923076" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.046153847" />
@@ -859,254 +783,224 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="DIRECTION: 2019/03/18&#10;author: jiachenyu&#10;version: 1.00" />
-    <option name="LAST_COMMIT_MESSAGE" value="DIRECTION: 2019/03/18&#10;author: jiachenyu&#10;version: 1.00" />
+    <MESSAGE value="DIRECTION: 2019/04/21&#10;author: jiachenyu&#10;version: updateUserAuthentication" />
+    <option name="LAST_COMMIT_MESSAGE" value="DIRECTION: 2019/04/21&#10;author: jiachenyu&#10;version: updateUserAuthentication" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/diting-online/src/test/java/com/zzu/diting/DitingOnlineApplicationTests.java">
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ProvinceDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/UrlUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserRightInfoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-23">
-          <caret line="643" lean-forward="true" selection-start-line="643" selection-end-line="643" />
+        <state relative-caret-position="138">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserComplaintServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="47" lean-forward="true" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserRightInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/DataTransformUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/DataObjectTransDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="48" column="20" lean-forward="true" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/conf/ShiroConf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/realm/MyRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserInfoMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserInfoDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/NoAuthentication.jsp.xhtml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1611">
-          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="75" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/MenuMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/CopyrightMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3097">
-          <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/RightMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19082" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/UserComplaintMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-184">
-          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/UserInfoPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticationNoAdopt.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="13" selection-start-line="13" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="299">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/css/style.css">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/detailUserAuthentication.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-276" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-299">
-          <caret line="23" column="12" lean-forward="true" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        <state relative-caret-position="1540">
+          <caret line="301" column="48" lean-forward="true" selection-start-line="301" selection-start-column="48" selection-end-line="301" selection-end-column="48" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#10;n#table#0;n#form#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#11;n#table#0;n#form#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/addUserAuthentication.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/main/main.jsp">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/detailUserAuthentication.jsp" />
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticaionAuditing.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-437">
-          <caret line="11" column="77" lean-forward="true" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
+        <state relative-caret-position="234">
+          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/FileUtil.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/updateUserAuthentication.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="-5202">
+          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultFormDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="138">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/RightWorkInfoPO.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/OrganizationAuthenticationUpdateInfoDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/AuthenticationWorkInfoPO.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/PersonalAuthenticationUpdateInfoDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/OperationRecordImpl.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserComplaintService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="115">
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/OperationRecordInfoPO.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/IdDto.java" />
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/AllRightInfoDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state relative-caret-position="23">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/manager/impl/UserAuthenticationManagerImpl.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/CopyrightInfoDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="145" selection-start-line="145" selection-end-line="145" />
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/manager/impl/AuthenticationWorkManagerImpl.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/CopyrightUpdateInfoDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="92">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/FormDataRight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="58" column="66" selection-start-line="58" selection-start-column="66" selection-end-line="58" selection-end-column="66" />
+        <state relative-caret-position="92">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/OtherRightInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/OtherRightUpdateInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/Reason.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReasonMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReputationPortraitInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/ReputationPortraitUpdateInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightDetailedDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightInfoListDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightManagerDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightNameAndIdDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/RightNameAndType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/right/UpdateRightDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
+        <state relative-caret-position="804">
           <caret line="49" column="38" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1116,126 +1010,185 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/MenuController.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/AddressServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+        <state relative-caret-position="322">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/MenuServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/PermServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+        <state relative-caret-position="207">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserComplaintServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/tk/mybatis/mapper-base/1.1.1/mapper-base-1.1.1.jar!/tk/mybatis/mapper/common/base/update/UpdateByPrimaryKeySelectiveMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/ReputationPortraitUpdateInfoPOMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/CopyrightUpdateInfoPOMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OtherRightUpdateInfoPOMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/AuthenticationResultDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="32" column="35" lean-forward="true" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/OrganizationAuthenticationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="72" lean-forward="true" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/addUserAuthentication.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="44" column="6" selection-start-line="44" selection-start-column="6" selection-end-line="71" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/noAuthentication.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-896">
-          <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticaionAuditing.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="33" column="6" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/PersonalAuthenticationInfoPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="40" column="7" lean-forward="true" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="7" />
+        <state relative-caret-position="253">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OrganizationAuthenticationInfoPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/entity/OrganizationAuthenticationUpdateInfoPO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/userInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="105" column="46" selection-start-line="105" selection-start-column="46" selection-end-line="105" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/detailUserAuthentication.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5580">
-          <caret line="248" column="29" lean-forward="true" selection-start-line="248" selection-start-column="29" selection-end-line="248" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#td#2;n#tr#9;n#table#0;n#form#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#td#1;n#tr#10;n#table#0;n#form#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#td#1;n#tr#11;n#table#0;n#form#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#td#1;n#tr#9;n#table#1;n#form#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/OSSClientUtil.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/OperationServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
-          <caret line="117" column="30" selection-start-line="117" selection-start-column="30" selection-end-line="117" selection-end-column="30" />
+          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserRightInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserRightInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/PersonalAuthenticationUpdateInfoPOMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/OrganizationAuthenticationUpdateInfoPOMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationInfoQueryParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/dto/UserAuthenticationFormDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-629">
+          <caret line="240" column="16" selection-start-line="240" selection-start-column="16" selection-end-line="240" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/UserAuthenticationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-368">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserAuthenticationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="131" column="79" lean-forward="true" selection-start-line="131" selection-start-column="79" selection-end-line="131" selection-end-column="79" />
+        <state relative-caret-position="192">
+          <caret line="38" column="17" lean-forward="true" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

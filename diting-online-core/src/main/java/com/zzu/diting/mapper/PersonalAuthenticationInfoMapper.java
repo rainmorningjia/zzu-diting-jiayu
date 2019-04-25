@@ -1,6 +1,6 @@
 package com.zzu.diting.mapper;
 
-import com.zzu.diting.entity.PersonalAuthenticationInfoPO;
+import com.zzu.diting.entityPersonalAuthenticationInfoPO;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 

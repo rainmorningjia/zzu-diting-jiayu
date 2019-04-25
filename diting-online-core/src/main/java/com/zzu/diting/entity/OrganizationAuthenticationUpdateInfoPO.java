@@ -21,8 +21,10 @@ import java.io.Serializable;
 @Table(name = "organization_authentication_update_info")
 public class OrganizationAuthenticationUpdateInfoPO implements Serializable {
     @Id
+    @KeySql(useGeneratedKeys = true)
     private Long id;
     private Long authenticationId;
+    private String newOrganizationName;
     /**
      * 证件类型
      */
@@ -35,10 +37,6 @@ public class OrganizationAuthenticationUpdateInfoPO implements Serializable {
      * 证件照正面链接
      */
     private String newCertificatePositiveUrl;
-    /**
-     * 证件照手持链接
-     */
-    private String newCertificateHandofUrl;
     @Column(name = "gmt_modified")
     private Long updateTime;
     @Column(name = "gmt_create")

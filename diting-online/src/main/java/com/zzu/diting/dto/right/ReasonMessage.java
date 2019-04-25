@@ -1,18 +1,15 @@
-package com.zzu.diting.dto;
+package com.zzu.diting.dto.right;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResultDto implements Serializable {
+public class ReasonMessage {
     private Integer code;
     private String message;
-    private String reason;
-    private Integer failType;
-
+    private Reason reason;
 }

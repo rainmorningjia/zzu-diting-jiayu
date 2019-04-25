@@ -23,7 +23,7 @@
         <result column="authentication_result" property="authenticationResult" jdbcType="VARCHAR"/>
         <result column="recently_operator" property="recentlyOperator" jdbcType="VARCHAR"/>
         <result column="recently_update_type" property="recentlyUpdateType" jdbcType="VARCHAR"/>
-        <result column="FAIL_TYPE" property="failType" jdbcType="VARCHAR"/>
+        <result column="FAIL_TYPE" property="failType" jdbcType="INTEGER"/>
         <result column="REASON" property="reason" jdbcType="VARCHAR"/>
         <result column="gmt_create" property="createTime" jdbcType="BIGINT"/>
         <result column="gmt_modified" property="updateTime" jdbcType="BIGINT"/>

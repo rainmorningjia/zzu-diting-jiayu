@@ -1,6 +1,6 @@
 package com.zzu.diting.mapper;
 
-import com.zzu.diting.entity.RightVO;
+import com.zzu.diting.entityRightVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

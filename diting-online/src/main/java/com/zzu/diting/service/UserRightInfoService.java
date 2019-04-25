@@ -1,8 +1,8 @@
 package com.zzu.diting.service;
 
+import com.zzu.diting.dto.right.RightNameAndIdDto;
 import com.zzu.diting.entity.*;
 
-import java.io.File;
 import java.util.List;
 
 /**
@@ -89,5 +89,5 @@ public interface UserRightInfoService {
 
     void updateOtherRightUpdateInfo(OtherRightUpdateInfoPO otherRightUpdateInfoPO);
 
-//    List<RightNameAndIdDto> getRightNameAndIdDto(String rightType, String name);
+    List<RightNameAndIdDto> getRightNameAndIdDto(String rightType, String name);
 }

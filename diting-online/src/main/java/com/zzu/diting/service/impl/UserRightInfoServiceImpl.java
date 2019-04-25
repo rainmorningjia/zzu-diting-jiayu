@@ -1,12 +1,13 @@
 package com.zzu.diting.service.impl;
 
+
+import com.zzu.diting.dto.right.RightNameAndIdDto;
 import com.zzu.diting.entity.*;
+import com.zzu.diting.manager.*;
 import com.zzu.diting.mapper.CopyrightUpdateInfoPOMapper;
 import com.zzu.diting.mapper.OtherRightUpdateInfoPOMapper;
 import com.zzu.diting.mapper.ReputationPortraitUpdateInfoPOMapper;
 import com.zzu.diting.mapper.RightMapper;
-import com.zzu.diting.manager.*;
-import com.zzu.diting.service.OperationService;
 import com.zzu.diting.service.UserAuthenticationService;
 import com.zzu.diting.service.UserRightInfoService;
 import org.springframework.stereotype.Service;
@@ -19,13 +20,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author :wb-jcy525678
- * @description:
- * @date : 2019/4/8 15:11
- */
 @Service
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true,rollbackFor = Exception.class)
 public class UserRightInfoServiceImpl implements UserRightInfoService {
     @Resource
     private UserRightManager userRightManager;
@@ -209,7 +205,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String addCopyrightInfo(CopyrightInfoPO copyrightInfoPO) {
         try {
             copyrightInfoPO.setCreateTime(System.currentTimeMillis());
@@ -254,7 +250,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String addReputationPortraitInfo(ReputationPortraitInfoPO reputationPortraitInfoPO) {
         try {
             reputationPortraitInfoPO.setAuditStatus("审核中");
@@ -298,7 +294,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String addOtherRightInfo(OtherRightInfoPO otherRightInfoPO) {
         try {
             otherRightInfoPO.setAuditStatus("审核中");
@@ -339,14 +335,14 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String addOtherRightUpdateInfo(OtherRightUpdateInfoPO otherRightUpdateInfoPO) {
         userOtherRightManager.addUserOtherRightUpdateInfo(otherRightUpdateInfoPO);
         return "success";
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String addCopyrightUpdateInfo(CopyrightUpdateInfoPO copyrightUpdateInfoPO) {
         userCopyrightManager.addCopyrightUpdateInfo(copyrightUpdateInfoPO);
 
@@ -354,14 +350,14 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String addReputationPortraitUpdateInfo(ReputationPortraitUpdateInfoPO reputationPortraitUpdateInfoPO) {
         userReputationPortraitManager.addUserReputationPortraitUpdateInfo(reputationPortraitUpdateInfoPO);
         return "success";
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String updateCopyrightInfoResubmit(CopyrightInfoPO copyrightInfoPO) {
         //对用户该权利是否是第一次审核做判断
         RightWorkInfoPO rightWorkInfoPOs = new RightWorkInfoPO();
@@ -456,13 +452,13 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
         }
         //添加著作权更新信息的同时生成权利工单  每一次都生成
         addRightWork(copyrightInfoPO);
-        operationService.addOperator("添加", "系统添加著作权审核工单信息", new Long(0), "系统");
+        operationService.addOperator("添加", "系统添加著作权审核工单信息", new Long("0"), "系统");
 
         return "success";
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String updateReputationPortraitInfoResubmit(ReputationPortraitInfoPO reputationPortraitInfoPO) {
 
         RightWorkInfoPO rightWorkInfoPOs = new RightWorkInfoPO();
@@ -521,13 +517,13 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
         }
         //添加名誉权权的同时生成权利工单
         addRightWork(reputationPortraitInfoPO);
-        operationService.addOperator("添加", "系统添加名誉权/肖像权审核工单信息", new Long(0), "系统");
+        operationService.addOperator("添加", "系统添加名誉权/肖像权审核工单信息", new Long("0"), "系统");
 
         return "success";
     }
 
     @Override
-    @Transactional
+ @Transactional(rollbackFor = Exception.class)
     public String updateOtherRightResubmit(OtherRightInfoPO otherRightInfoPO) {
 
         RightWorkInfoPO rightWorkInfoPOs = new RightWorkInfoPO();
@@ -588,7 +584,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             addOtherRightUpdateInfo(otherRightUpdateInfoPO);
         }
         addRightWork(otherRightInfoPO);
-        operationService.addOperator("添加", "系统添加其他权利审核工单", new Long(0), "系统");
+        operationService.addOperator("添加", "系统添加其他权利审核工单", new Long("0"), "系统");
         return "success";
     }
 
@@ -642,7 +638,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
         rightWorkManager.addRightWorkInfo(rightWorkInfoPO);
     }
 
-  /*  @Override
+    @Override
     public List<RightNameAndIdDto> getRightNameAndIdDto(String rightType, String name) {
         List<RightNameAndIdDto> nameAndIds = new ArrayList<>();
         if ("著作权".equals(rightType)) {
@@ -670,7 +666,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             }
         }
         return nameAndIds;
-    }*/
+    }
 
     @Override
     public void updateCopyrightInfo(CopyrightInfoPO copyrightInfoPO) {

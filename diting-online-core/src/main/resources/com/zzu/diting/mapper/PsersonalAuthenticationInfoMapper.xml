@@ -20,7 +20,7 @@
         <result column="RECENTLY_OPERATOR" property="recentlyOperator" jdbcType="VARCHAR"/>
         <result column="RECENTLY_UPDATE_TYPE" property="recentlyUpdateType" jdbcType="VARCHAR"/>
         <result column="REASON" property="reason" jdbcType="VARCHAR"/>
-        <result column="FAIL_TYPE" property="failType" jdbcType="VARCHAR"/>
+        <result column="FAIL_TYPE" property="failType" jdbcType="INTEGER"/>
         <result column="GMT_CREATE" property="updateTime" jdbcType="BIGINT"/>
         <result column="GMT_MODIFIED" property="createTime" jdbcType="BIGINT"/>
 

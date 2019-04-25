@@ -1,13 +1,12 @@
 package com.zzu.diting.service.impl;
 
-import com.zzu.diting.entity.*;
-import com.zzu.diting.mapper.ComplaintsInfoMapper;
+
+import com.zzu.diting.entity.ComplaintsWorkInfoPO;
+import com.zzu.diting.entity.UserComplaintInfoPO;
+import com.zzu.diting.manager.ComplaintWorkManager;
+import com.zzu.diting.manager.UserComplaintManager;
 import com.zzu.diting.mapper.ComplaintsWorkAllInfoMapper;
 import com.zzu.diting.mapper.UserComplaintInfoMapper;
-import com.zzu.diting.manager.ComplaintWorkManager;
-import com.zzu.diting.manager.OperationRecordInfoManager;
-import com.zzu.diting.manager.UserComplaintManager;
-import com.zzu.diting.service.OperationService;
 import com.zzu.diting.service.UserAuthenticationService;
 import com.zzu.diting.service.UserComplaintService;
 import com.zzu.diting.util.UrlUtil;
@@ -16,17 +15,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
-/**
- * @author :wb-jcy525678
- * @description:
- * @date : 2019/4/8 21:56
- */
 @Service
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class UserComplaintServiceImpl implements UserComplaintService {
     @Resource
     UserComplaintManager userComplaintManager;
@@ -42,7 +33,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
     UserComplaintInfoMapper userComplaintInfoMapper;
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public String addComplaintInfo(UserComplaintInfoPO userComplaintInfoPO) {
 
         try {
@@ -64,7 +55,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
             List<String> list = UrlUtil.splitUrl(userComplaintInfoPO.getComplaintsUrl());
             complaintsWorkInfoPO.setComplaintNumber(list.size());
             complaintsWorkAllInfoMapper.insert(complaintsWorkInfoPO);
-            operationService.addOperator("添加", "系统生成投诉工单集", new Long(0), "系统");
+            operationService.addOperator("添加", "系统生成投诉工单集", new Long("0"), "系统");
             //之后生成工单信息与每条投诉信息
             for (String url : list) {
                 UserComplaintInfoPO userComplaintInfoPO1 = new UserComplaintInfoPO();
@@ -90,7 +81,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
                 complaintWorkInfoPO.setCreateTime(System.currentTimeMillis());
                 complaintWorkInfoPO.setUpdateTime(System.currentTimeMillis());
                 complaintWorkManager.addComplaintWork(complaintWorkInfoPO);
-                operationService.addOperator("添加", "系统生成投诉工单", new Long(0), "系统");
+                operationService.addOperator("添加", "系统生成投诉工单", new Long("0"), "系统");
             }
             return "success";
         } catch (Exception e) {
@@ -99,7 +90,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public String addComplaintsInfo(List<UserComplaintInfoPO> complaints) {
         for (UserComplaintInfoPO complaintInfoPO :
                 complaints) {
@@ -109,7 +100,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public String deleteUserComplaintById(Long id) {
         userComplaintManager.deleteUserComplaintById(id);
         return "success";
@@ -128,13 +119,14 @@ public class UserComplaintServiceImpl implements UserComplaintService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public String updateUserComplaint(UserComplaintInfoPO userComplaintInfoPO) {
         userComplaintManager.updateUserComplaint(userComplaintInfoPO);
         return null;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void recallUserComplaint(Long id) {
         UserComplaintInfoPO userComplaintInfoPO = new UserComplaintInfoPO();
         userComplaintInfoPO.setId(id);
@@ -153,6 +145,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void resubmitUserCompliantInfo(UserComplaintInfoPO userComplaintInfoPO) {
 
         ComplaintsWorkInfoPO complaintsWorkInfoPO = new ComplaintsWorkInfoPO();
@@ -170,7 +163,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
         complaintsWorkInfoPO.setUpdateTime(System.currentTimeMillis());
         complaintsWorkInfoPO.setComplaintNumber(1);
         complaintsWorkAllInfoMapper.insert(complaintsWorkInfoPO);
-        operationService.addOperator("添加", "系统生成投诉工单集", new Long(0), "系统");
+        operationService.addOperator("添加", "系统生成投诉工单集", new Long("0"), "系统");
 
         UserComplaintInfoPO userComplaintInfoPO1 = new UserComplaintInfoPO();
         userComplaintInfoPO1.setUserId(userComplaintInfoPO.getUserId());
@@ -195,7 +188,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
         complaintWorkInfoPO.setCreateTime(System.currentTimeMillis());
         complaintWorkInfoPO.setUpdateTime(System.currentTimeMillis());
         complaintWorkManager.addComplaintWork(complaintWorkInfoPO);
-        operationService.addOperator("添加", "系统生成投诉工单", new Long(0), "系统");
+        operationService.addOperator("添加", "系统生成投诉工单", new Long("0"), "系统");
         //覆盖原来的信息
         userComplaintInfoPO.setProcessState("处理中");
         userComplaintManager.updateUserComplaint(userComplaintInfoPO);

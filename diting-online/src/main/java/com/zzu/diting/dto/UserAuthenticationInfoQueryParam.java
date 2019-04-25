@@ -1,32 +1,20 @@
-package com.zzu.diting.entity;
+package com.zzu.diting.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import tk.mybatis.mapper.annotation.KeySql;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Timestamp;
 
-/**
- * @Author wb-jcy525678
- * @Description: 组织认证信息表
- * @Date:Created in 下午7:21 2019/3/20
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "organization_authentication_info")
-public class OrganizationAuthenticationInfoPO implements Serializable {
-    @Id
-    @KeySql(useGeneratedKeys = true)
+public class UserAuthenticationInfoQueryParam implements Serializable {
     private Long id;
     private Long userId;
+    private Integer authenticationType;
     private String organizationName;
+    private String realName;
     private String province;
     private String city;
     private String area;
@@ -44,35 +32,39 @@ public class OrganizationAuthenticationInfoPO implements Serializable {
      * 证件照正面链接
      */
     private String certificatePositiveUrl;
+    /**
+     * 身份证反面照链接
+     */
+    private String certificateOppositeUrl;
+    private String certificateHandofUrl;
     private String corporationName;
     private String address;
     private Integer zip;
     /**
-     * 电话区号
+     * 座机电话区号
      */
     private String telAreaCode;
     /**
-     * 电话
+     * 座机电话号码
      */
     private String telNumber;
     /**
-     * 分机
+     * 座机分机
      */
     private String telExtension;
+
+
     private String fasAreaCode;
     private String fasNumber;
     private String fasExtension;
-    private String relationName;
-    private String authenticationResult;
-    private String recentlyOperator;
-    private String recentlyUpdateType;
-    /**
-     * 失败类型
-     */
     private Integer failType;
     private String reason;
-    @Column(name = "gmt_modified")
+    private String relationName;
+    private String authenticationResult;
+
+    private String recentlyOperator;
+    private String recentlyUpdateType;
     private Long updateTime;
-    @Column(name = "gmt_create")
     private Long createTime;
+
 }

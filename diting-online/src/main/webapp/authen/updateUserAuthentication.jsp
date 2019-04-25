@@ -45,7 +45,7 @@
                 <tr>
                     <td>
                         <input id="type1" type="hidden" class="easyui-validatebox" name="type"
-                             value="0" data-options="validType:'name',required:true"/>
+                               value="0" data-options="validType:'name',required:true"/>
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +72,7 @@
                     </td>
                     <td>
                         <input id="emailP" type="text" class="easyui-validatebox" name="email"
-                                 data-options=""/>
+                               data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -81,7 +81,7 @@
                     </td>
                     <td>
                         <input id="signP" type="text" class="easyui-validatebox" name="province"
-                                data-options=""/>
+                               data-options=""/>
                     </td>
                 </tr>
                 <tr>

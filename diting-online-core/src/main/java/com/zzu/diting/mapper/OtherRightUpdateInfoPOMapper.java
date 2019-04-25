@@ -1,5 +1,6 @@
 package com.zzu.diting.mapper;
 
+
 import com.zzu.diting.entity.OtherRightUpdateInfoPO;
 import tk.mybatis.mapper.common.Mapper;
 
