@@ -71,23 +71,12 @@ public class UserAuthenticationInfoDto {
      * 邮编
      */
     private Integer zip;
-    /**
-     * 座机电话区号
-     */
-    private String telAreaCode;
-    /**
-     * 座机电话号码
-     */
-    private String telNumber;
-    /**
-     * 座机分机
-     */
-    private String telExtension;
 
+    private String tel;
 
-    private String fasAreaCode;
-    private String fasNumber;
-    private String fasExtension;
+    private String fas;
+    private String failType;
+    private String authenticationResult;
     /**
      * 失败原因
      */

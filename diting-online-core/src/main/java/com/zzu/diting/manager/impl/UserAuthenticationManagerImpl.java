@@ -4,11 +4,11 @@ import com.zzu.diting.entity.OrganizationAuthenticationInfoPO;
 import com.zzu.diting.entity.OrganizationAuthenticationUpdateInfoPO;
 import com.zzu.diting.entity.PersonalAuthenticationInfoPO;
 import com.zzu.diting.entity.PersonalAuthenticationUpdateInfoPO;
+import com.zzu.diting.manager.UserAuthenticationManager;
 import com.zzu.diting.mapper.OrganizationAuthenticationInfoMapper;
 import com.zzu.diting.mapper.OrganizationAuthenticationUpdateInfoPOMapper;
 import com.zzu.diting.mapper.PersonalAuthenticationInfoMapper;
 import com.zzu.diting.mapper.PersonalAuthenticationUpdateInfoPOMapper;
-import com.zzu.diting.manager.UserAuthenticationManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -183,5 +183,16 @@ public class UserAuthenticationManagerImpl implements UserAuthenticationManager 
     @Override
     public void deleteOrganizationAuthenticationInfoPO(OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO) {
         organizationAuthenticationInfoMapper.delete(organizationAuthenticationInfoPO);
+    }
+
+    @Override
+    public void updateOrganizationAuthenticationUpdateInfo(OrganizationAuthenticationUpdateInfoPO organizationAuthenticationUpdateInfoPO) {
+        organizationAuthenticationUpdateInfoPOMapper.updateByPrimaryKeySelective(organizationAuthenticationUpdateInfoPO);
+    }
+
+    @Override
+    public void updatePersonAuthenticationUpdateInfo(PersonalAuthenticationUpdateInfoPO personalAuthenticationUpdateInfoPO) {
+        personalAuthenticationUpdateInfoPOMapper.updateByPrimaryKeySelective(personalAuthenticationUpdateInfoPO);
+
     }
 }

@@ -1,6 +1,6 @@
 package com.zzu.diting.mapper;
 
-import com.zzu.diting.entityUserComplaintInfoPO;
+import com.zzu.diting.entity.UserComplaintInfoPO;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 

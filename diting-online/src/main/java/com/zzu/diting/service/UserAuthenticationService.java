@@ -4,6 +4,9 @@ package com.zzu.diting.service;
 import com.zzu.diting.dto.AuthenticationResultDto;
 import com.zzu.diting.entity.OrganizationAuthenticationInfoPO;
 import com.zzu.diting.entity.PersonalAuthenticationInfoPO;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author :wb-jcy525678

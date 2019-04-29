@@ -1,8 +1,13 @@
 package com.zzu.diting.controller;
 
 import com.aliyun.oss.OSSClient;
-import com.zzu.diting.dto.*;
-import com.zzu.diting.entity.*;
+import com.zzu.diting.dto.MessageDto;
+import com.zzu.diting.dto.UserAuthenticationFormDto;
+import com.zzu.diting.dto.UserAuthenticationInfoDto;
+import com.zzu.diting.dto.UserAuthenticationInfoQueryParam;
+import com.zzu.diting.entity.OrganizationAuthenticationInfoPO;
+import com.zzu.diting.entity.PersonalAuthenticationInfoPO;
+import com.zzu.diting.entity.UserInfoPO;
 import com.zzu.diting.service.UserAuthenticationService;
 import com.zzu.diting.service.UserService;
 import com.zzu.diting.util.DataObjectTransDto;
@@ -62,12 +67,12 @@ public class UserAuthenticationController {
         }
     }
 
-    public MessageDto updateUserAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfo, HttpServletRequest request) {
+   /* public MessageDto updateUserAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfo, HttpServletRequest request) {
         MessageDto messageDto = new MessageDto();
         try {
             HttpSession session = request.getSession();
             Long userId = (Long) session.getAttribute("userId");
-            userAuthenticationInfo.setUserId(new Long("2000223007"));
+
             if (userAuthenticationInfo.getAuthenticationType() == 0) {
                 PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
                 personalAuthenticationInfoPO = (PersonalAuthenticationInfoPO) DataObjectTransDto.populate(userAuthenticationInfo, personalAuthenticationInfoPO);
@@ -89,7 +94,7 @@ public class UserAuthenticationController {
             messageDto.setMessage("修改信息失败");
             return messageDto;
         }
-    }
+    }*/
 
     @RequestMapping("addUserAuthentication")
     @ResponseBody
@@ -164,11 +169,10 @@ public class UserAuthenticationController {
 
     @ResponseBody
     @RequestMapping("updateUserNoAuthen")
-    public MessageDto updateUserNoAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfo) {
-        /*            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            HttpSession session = request.getSession();
-            Long userId = (Long) session.getAttribute("userId");*/
-        userAuthenticationInfo.setUserId(new Long("2000223007"));
+    public MessageDto updateUserNoAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfo, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Long userId = (Long) session.getAttribute("userId");
+        userAuthenticationInfo.setUserId(userId);
         MessageDto messageDto = new MessageDto();
         Integer userAuthenticationType = userAuthenticationInfo.getAuthenticationType();
         try {
@@ -201,14 +205,12 @@ public class UserAuthenticationController {
     }
 
 
-    @RequestMapping("updateUserNoAutentication")
+    @RequestMapping("updateUserAutentication")
     @ResponseBody
     public MessageDto updateUserAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfo) {
         MessageDto messageDto = new MessageDto();
         try {
-/*            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-            HttpSession session = request.getSession();
-            Long userId = (Long) session.getAttribute("userId");*/
+
             userAuthenticationInfo.setUserId(new Long("2000223007"));
             if (userAuthenticationInfo.getAuthenticationType() == 0) {
                 PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();

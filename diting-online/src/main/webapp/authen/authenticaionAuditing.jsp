@@ -25,7 +25,7 @@
                         {
                             text: "关闭",
                             handler: function () {
-                                $("#addAuthenDia").dialog("close")
+                                $("#userAuthenInfo").dialog("close")
                             }
                         }]
                 })

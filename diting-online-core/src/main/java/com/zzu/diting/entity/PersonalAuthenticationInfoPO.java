@@ -57,7 +57,7 @@ public class PersonalAuthenticationInfoPO implements Serializable {
     /**
      * 失败类型
      */
-    private Integer failType;
+    private String failType;
     private String reason;
     @Column(name = "gmt_modified")
     private Long updateTime;

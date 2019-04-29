@@ -47,21 +47,8 @@ public class OrganizationAuthenticationInfoPO implements Serializable {
     private String corporationName;
     private String address;
     private Integer zip;
-    /**
-     * 电话区号
-     */
-    private String telAreaCode;
-    /**
-     * 电话
-     */
-    private String telNumber;
-    /**
-     * 分机
-     */
-    private String telExtension;
-    private String fasAreaCode;
-    private String fasNumber;
-    private String fasExtension;
+    private String tel;
+    private String fas;
     private String relationName;
     private String authenticationResult;
     private String recentlyOperator;
@@ -69,7 +56,7 @@ public class OrganizationAuthenticationInfoPO implements Serializable {
     /**
      * 失败类型
      */
-    private Integer failType;
+    private String  failType;
     private String reason;
     @Column(name = "gmt_modified")
     private Long updateTime;

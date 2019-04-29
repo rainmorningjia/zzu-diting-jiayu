@@ -7,45 +7,108 @@
         )
         $("#userAuthenticationInfoForm").form({
                 onLoadSuccess: function (data) {
-                    if (data.type == 1) {
+                    if (data.authenticationType != 0) {
+                        $("#person").empty();
+                        document.getElementById("person").style.display = "none";
+                        document.getElementById("organization").style.display = "block";
+                        $("#certificatePositive").prop("src", data.certificatePositiveUrl);
+                    } else {
                         document.getElementById("person").style.display = "block";
                         document.getElementById("organization").style.display = "none";
                         $("#certificatePositiveP").prop("src", data.certificatePositiveUrl);
                         $("#certificateOppositeP").prop("src", data.certificateOppositeUrl)
                         $("#certificateHandofP").prop("src", data.certificateHandofUrl)
-                    } else {
-
-                        document.getElementById("person").style.display = "none";
-                        document.getElementById("organization").style.display = "block";
-                        $("#certificatePositiveC").prop("src", data.certificatePositiveUrl);
+                        $("#organization").empty();
                     }
+                    if (data.authenticationResult == "审核中") {
+                        document.getElementById("auditState").innerText = "审核中，不可修改";
+                        $("input").attr("readonly", "readonly");
+                        document.getElementById("AuthenNoUpdate").style.display = "none";
+                    } else {
+                        $("auditState").attr("color", "blue");
+                        document.getElementById("auditState").innerText = data.authenticationResult;
+                        document.getElementById("AuthenNoUpdate").style.display = "block";
 
+                    }
                 }
             }
-        )
+        );
+      $("#realNameP").click(function () {
+          $("#updateAuthen").dialog({
+              title: "用户认证信息修改",
+              width: 500,
+              height: 600,
+              closed: false,
+              cache: false,
+              iconCls: "icon-add",
+              href: "${pageContext.request.contextPath}/authen/updateUserAuthentication.jsp",
+              modal: true,
+              buttons: [
+                  {
+                      text: "关闭",
+                      handler: function () {
+                          $("#updateAuthen").dialog("close")
+                      }
+                  }]
+          })
+      })
         //定义保存按钮
         $("#confirmuserAuthen").linkbutton({
             iconCls: "icon-save",
             //单击保存按钮触发关闭对话框事件
             onClick: function () {
                 //关闭表单事件
-                $("#addAuthenDia").dialog("close");
+                $("#userAuthenInfo").dialog("close");
             }
+        })
+        $("#AuthenNoUpdate").linkbutton({
+            iconCls: "icon-save",
+            //单击保存按钮触发表单提交事件
+            onClick: function () {
+                //提交表单事件
+                $("#userAuthenticationInfoForm").form("submit", {
+                    url: "${pageContext.request.contextPath}/userAuthentication/updateUserNoAuthen",
+                    onSubmit: function () {
+                        //进行验证
+                        return true
+                    },
+                    success: function (data) {
+                        //关闭对话框
+                        $("#userAuthenInfo").dialog("close");
+                        //调出系统提示框
+                        $.messager.show({
+                            title: "修改成功",
+                            msg: "恭喜修改成功",
+
+                        });
+
+                    }
+                })
+            },
 
 
         })
+
     })
 
 </script>
 <div>
-    <div><p style="font-size: large">用户认证详情</p></div>
+    <div><p style="font-size: large">用户认证详情</p>
+        <p id="auditState" style="font-size: large;color: red"></p></div>
+
     <div>
         <form id="userAuthenticationInfoForm" method="post">
             <table style="display: block" id="person">
                 <tr>
                     <td>
-                        <input id="type1" type="hidden" class="easyui-validatebox" name="type"
-                             value="0" data-options="validType:'name',required:true"/>
+                        <input id="type1" type="hidden" class="easyui-validatebox" name="authenticationType"
+                               value="0" data-options="validType:'name',required:true"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="id" type="hidden" class="easyui-validatebox" name="id"
+                               readonly value="0" data-options="validType:'name',required:true"/>
                     </td>
                 </tr>
                 <tr>
@@ -54,7 +117,7 @@
                     </td>
                     <td>
                         <input id="realNameP" type="text" class="easyui-validatebox" name="realName"
-                               data-options="validType:'name',required:true"/>
+                               readonly data-options="validType:'name',required:true"/>
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +135,7 @@
                     </td>
                     <td>
                         <input id="emailP" type="text" class="easyui-validatebox" name="email"
-                                 data-options=""/>
+                               data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -81,7 +144,7 @@
                     </td>
                     <td>
                         <input id="signP" type="text" class="easyui-validatebox" name="province"
-                                data-options=""/>
+                               data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -95,21 +158,11 @@
                 </tr>
                 <tr>
                     <td>
-                        地区:
-                    </td>
-                    <td>
-                        <input id="areaP" type="text" class="easyui-validatebox" name="area"
-                               data-options=""/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
                         证件类型:
                     </td>
                     <td>
                         <input id="certificateTypeP" type="text" class="easyui-validatebox" name="certificateType"
-                               data-options=""/>
+                               readonly data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -118,7 +171,7 @@
                     </td>
                     <td>
                         <input id="certificateNumberP" type="text" class="easyui-validatebox" name="certificateNumber"
-                               data-options=""/>
+                               readonly data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -149,8 +202,7 @@
                         地址:
                     </td>
                     <td>
-                        <input id="addressP" type="text" class="easyui-validatebox" name="address"
-                               data-options=""/>
+                        <input id="addressP" type="text" class="easyui-validatebox" name="address" data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -166,8 +218,14 @@
             <table style="display: none" id="organization">
                 <tr>
                     <td>
-                        <input id="type2" type="hidden" class="easyui-validatebox" name="type"
-                               value="1" data-options="validType:'name',required:true"/>
+                        <input id="type2" type="hidden" class="easyui-validatebox" name="authenticationType"
+                               readonly value="1" data-options="validType:'name',required:true"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="id2" type="hidden" class="easyui-validatebox" name="id"
+                               readonly value="0" data-options="validType:'name',required:true"/>
                     </td>
                 </tr>
                 <tr>
@@ -176,7 +234,7 @@
                     </td>
                     <td>
                         <input id="organizationNameC" type="text" class="easyui-validatebox" name="organizationName"
-                               data-options="validType:'name',required:true"/>
+                               readonly data-options="validType:'name',required:true"/>
                     </td>
                 </tr>
                 <tr>
@@ -194,15 +252,6 @@
                     </td>
                     <td>
                         <input id="cityC" type="text" class="easyui-validatebox" name="city"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        地区:
-                    </td>
-                    <td>
-                        <input id="areaC" type="text" class="easyui-validatebox" name="area"
                                data-options=""/>
                     </td>
                 </tr>
@@ -230,7 +279,7 @@
                     </td>
                     <td>
                         <input id="certificateType" type="text" class="easyui-validatebox" name="certificateType"
-                               data-options=""/>
+                               readonly data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -239,7 +288,7 @@
                     </td>
                     <td>
                         <input id="certificateNumber" type="text" class="easyui-validatebox" name="certificateNumber"
-                               data-options=""/>
+                               readonly data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -250,7 +299,7 @@
                 </tr>
                 <tr>
                     <td>
-                        机构名:
+                        法人:
                     </td>
                     <td>
                         <input id="corporationName" type="text" class="easyui-validatebox" name="corporationName"
@@ -295,7 +344,7 @@
                 </tr>
                 <tr>
                     <td>
-                        relationName:
+                        联系人:
                     </td>
                     <td>
                         <input id="relationName" type="text" class="easyui-validatebox" name="relationName"
@@ -306,7 +355,9 @@
         </form>
         <p>
             <a id="confirmuserAuthen" class="easyui-linkbutton">关闭</a>
+            <a id="AuthenNoUpdate" class="easyui-linkbutton">更改</a>
         </p>
     </div>
+    <div id="updateAuthen"></div>
 </div>
 </body>

@@ -7,19 +7,19 @@
         )
         $("#userAuthenticationInfoForm").form({
                 onLoadSuccess: function (data) {
-                    if (data.type == 1) {
-                        document.getElementById("person").style.display = "block";
-                        document.getElementById("organization").style.display = "none";
-                        $("#certificatePositiveP").prop("src", data.certificatePositiveUrl);
-                        $("#certificateOppositeP").prop("src", data.certificateOppositeUrl)
-                        $("#certificateHandofP").prop("src", data.certificateHandofUrl)
-                    } else {
-
+                    if (data.authenticationType != 0) {
+                        $("#person").empty();
                         document.getElementById("person").style.display = "none";
                         document.getElementById("organization").style.display = "block";
-                        $("#certificatePositiveC").prop("src", data.certificatePositiveUrl);
+                        $("#certificatePositive2").prop("src", data.certificatePositiveUrl);
+                    } else {
+                        document.getElementById("person").style.display = "block";
+                        document.getElementById("organization").style.display = "none";
+                        $("#certificatePositiveP2").prop("src", data.certificatePositiveUrl);
+                        $("#certificateOppositeP2").prop("src", data.certificateOppositeUrl)
+                        $("#certificateHandofP2").prop("src", data.certificateHandofUrl)
+                        $("#organization").empty();
                     }
-
                 }
             }
         )
@@ -31,6 +31,33 @@
                 //关闭表单事件
                 $("#addAuthenDia").dialog("close");
             }
+
+
+        })
+        $("#AuthenUpdate").linkbutton({
+            iconCls: "icon-save",
+            //单击保存按钮触发表单提交事件
+            onClick: function () {
+                //提交表单事件
+                $("#addUserAuthenForm").form("submit", {
+                    url: "${pageContext.request.contextPath}/userAuthentication/updateUserAutentication",
+                    onSubmit: function () {
+                        //进行验证
+                        return true
+                    },
+                    success: function (data) {
+                        //关闭对话框
+                        $("#addAuthenDia").dialog("close");
+                        //调出系统提示框
+                        $.messager.show({
+                            title: "修改成功",
+                            msg: "恭喜！修改非认证信息成功，请等待审核！",
+
+                        });
+
+                    }
+                })
+            },
 
 
         })
@@ -54,62 +81,16 @@
                     </td>
                     <td>
                         <input id="realNameP" type="text" class="easyui-validatebox" name="realName"
-                               data-options="validType:'name',required:true"/>
+                               readonly   data-options="validType:'name',required:true"/>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        手机号:
-                    </td>
-                    <td>
-                        <input id="phoneNumberP" type="text" class="easyui-validatebox" name="phoneNumber"
-                               data-options="validType:'name',required:true"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        邮箱:
-                    </td>
-                    <td>
-                        <input id="emailP" type="text" class="easyui-validatebox" name="email"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        省份:
-                    </td>
-                    <td>
-                        <input id="signP" type="text" class="easyui-validatebox" name="province"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        城市:
-                    </td>
-                    <td>
-                        <input id="cityP" type="text" class="easyui-validatebox" name="city"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        地区:
-                    </td>
-                    <td>
-                        <input id="areaP" type="text" class="easyui-validatebox" name="area"
-                               data-options=""/>
-                    </td>
-                </tr>
-
                 <tr>
                     <td>
                         证件类型:
                     </td>
                     <td>
                         <input id="certificateTypeP" type="text" class="easyui-validatebox" name="certificateType"
-                               data-options=""/>
+                               readonly   data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -117,15 +98,15 @@
                         证件号码:
                     </td>
                     <td>
-                        <input id="certificateNumberP" type="text" class="easyui-validatebox" name="certificateNumber"
-                               data-options=""/>
+                        <input id="certificateNumberP2" type="text" class="easyui-validatebox" name="certificateNumber"
+                               readonly  data-options=""/>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         身份证正面照:
                     </td>
-                    <td><img id="certificatePositiveP" src="" style="width: 120px;height: 200px"></td>
+                    <td><img id="certificatePositiveP2" src="" style="width: 120px;height: 200px"></td>
 
                 </tr>
                 <tr>
@@ -133,7 +114,7 @@
                         身份证反面照:
                     </td>
                     <td>
-                        <img id="certificateOppositeP" src="" style="width: 120px;height: 200px">
+                        <img id="certificateOppositeP2" src="" style="width: 120px;height: 200px">
                     </td>
                 </tr>
                 <tr>
@@ -141,25 +122,7 @@
                         身份证手持照:
                     </td>
                     <td>
-                        <img id="certificateHandofP" src="" style="width: 120px;height: 200px">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        地址:
-                    </td>
-                    <td>
-                        <input id="addressP" type="text" class="easyui-validatebox" name="address"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        邮编:
-                    </td>
-                    <td>
-                        <input id="zipP" type="text" class="easyui-validatebox" name="zip"
-                               data-options=""/>
+                        <img id="certificateHandofP2" src="" style="width: 120px;height: 200px">
                     </td>
                 </tr>
             </table>
@@ -176,52 +139,7 @@
                     </td>
                     <td>
                         <input id="organizationNameC" type="text" class="easyui-validatebox" name="organizationName"
-                               data-options="validType:'name',required:true"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        省份:
-                    </td>
-                    <td>
-                        <input id="provinceC" type="text" class="easyui-validatebox" name="province"
-                               data-options="validType:'name',required:true"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        城市:
-                    </td>
-                    <td>
-                        <input id="cityC" type="text" class="easyui-validatebox" name="city"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        地区:
-                    </td>
-                    <td>
-                        <input id="areaC" type="text" class="easyui-validatebox" name="area"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        手机号:
-                    </td>
-                    <td>
-                        <input id="phoneNumberC" type="text" class="easyui-validatebox" name="phoneNumber"
-                               data-options="validType:'name',required:true"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        邮箱:
-                    </td>
-                    <td>
-                        <input id="emailC" type="text" class="easyui-validatebox" name="email"
-                               data-options=""/>
+                               readonly data-options="validType:'name',required:true"/>
                     </td>
                 </tr>
                 <tr>
@@ -230,7 +148,7 @@
                     </td>
                     <td>
                         <input id="certificateType" type="text" class="easyui-validatebox" name="certificateType"
-                               data-options=""/>
+                               readonly  data-options=""/>
                     </td>
                 </tr>
                 <tr>
@@ -239,73 +157,30 @@
                     </td>
                     <td>
                         <input id="certificateNumber" type="text" class="easyui-validatebox" name="certificateNumber"
-                               data-options=""/>
+                               readonly  data-options=""/>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         证件正面照:
                     </td>
-                    <td><img id="certificatePositive" src="" style="width: 120px;height: 200px"></td>
+                    <td><img id="certificatePositive2" src="" style="width: 120px;height: 200px"></td>
                 </tr>
                 <tr>
                     <td>
-                        机构名:
+                        法人:
                     </td>
                     <td>
                         <input id="corporationName" type="text" class="easyui-validatebox" name="corporationName"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        地址:
-                    </td>
-                    <td>
-                        <input id="address" type="text" class="easyui-validatebox" name="address"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        邮编:
-                    </td>
-                    <td>
-                        <input id="zip" type="text" class="easyui-validatebox" name="zip"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        电话:
-                    </td>
-                    <td>
-                        <input id="tel" type="text" class="easyui-validatebox" name="tel"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        fas:
-                    </td>
-                    <td>
-                        <input id="fas" type="text" class="easyui-validatebox" name="fas"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        relationName:
-                    </td>
-                    <td>
-                        <input id="relationName" type="text" class="easyui-validatebox" name="relationName"
-                               data-options=""/>
+                               readonly  data-options=""/>
                     </td>
                 </tr>
             </table>
         </form>
         <p>
             <a id="confirmuserAuthen" class="easyui-linkbutton">关闭</a>
+
+            <a id="AuthenUpdate" class="easyui-linkbutton">保存</a>
         </p>
     </div>
 </div>

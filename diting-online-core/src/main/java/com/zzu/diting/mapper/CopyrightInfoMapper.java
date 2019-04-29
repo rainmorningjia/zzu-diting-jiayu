@@ -1,6 +1,7 @@
 package com.zzu.diting.mapper;
 
-import com.zzu.diting.entityCopyrightInfoPO;
+
+import com.zzu.diting.entity.CopyrightInfoPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.BaseMapper;

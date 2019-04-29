@@ -13,6 +13,6 @@ public class AuthenticationResultDto implements Serializable {
     private Integer code;
     private String message;
     private String reason;
-    private Integer failType;
+    private String  failType;
 
 }

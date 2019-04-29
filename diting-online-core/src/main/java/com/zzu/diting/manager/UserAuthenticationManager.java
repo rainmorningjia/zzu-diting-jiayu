@@ -5,7 +5,6 @@ import com.zzu.diting.entity.OrganizationAuthenticationInfoPO;
 import com.zzu.diting.entity.OrganizationAuthenticationUpdateInfoPO;
 import com.zzu.diting.entity.PersonalAuthenticationInfoPO;
 import com.zzu.diting.entity.PersonalAuthenticationUpdateInfoPO;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -107,4 +106,9 @@ public interface UserAuthenticationManager {
      * @param organizationAuthenticationInfoPO 机构认证信息参数
      */
     void deleteOrganizationAuthenticationInfoPO(OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO);
+
+
+    void updateOrganizationAuthenticationUpdateInfo(OrganizationAuthenticationUpdateInfoPO organizationAuthenticationUpdateInfoPO);
+
+    void updatePersonAuthenticationUpdateInfo(PersonalAuthenticationUpdateInfoPO personalAuthenticationUpdateInfoPO);
 }

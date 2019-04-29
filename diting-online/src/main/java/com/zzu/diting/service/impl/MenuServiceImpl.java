@@ -59,10 +59,10 @@ public class MenuServiceImpl implements MenuService {
                 if (userInfoPO1.getAuthenticationState() == 1) {
                     m.setUrl("authen/authenticaionAuditing.jsp");
                 }
-                if ((userInfoPO1.getAuthenticationState() == 2)) {
+                if ((userInfoPO1.getAuthenticationState() == 3)) {
                     m.setUrl("authen/authenticationNoAdopt.jsp");
                 }
-                if (userInfoPO1.getAuthenticationState() == 3) {
+                if (userInfoPO1.getAuthenticationState() == 2) {
                     m.setUrl("authen/detailUserAuthentication.jsp");
                 }
             }

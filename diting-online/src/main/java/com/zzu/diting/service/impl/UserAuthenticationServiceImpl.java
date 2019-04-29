@@ -11,6 +11,7 @@ import com.zzu.diting.mapper.PersonalAuthenticationInfoMapper;
 import com.zzu.diting.mapper.PersonalAuthenticationUpdateInfoPOMapper;
 import com.zzu.diting.service.UserAuthenticationService;
 import com.zzu.diting.service.UserService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,10 +25,6 @@ import java.util.Date;
 public class UserAuthenticationServiceImpl implements UserAuthenticationService {
     @Resource
     UserAuthenticationManager userAuthenticationManager;
-    @Resource
-    PersonalAuthenticationUpdateInfoPOMapper personalAuthenticationUpdateInfoPOMapper;
-    @Resource
-    OrganizationAuthenticationUpdateInfoPOMapper organizationAuthenticationUpdateInfoPOMapper;
     @Resource
     AuthenticationWorkManager authenticationWorkManager;
     @Resource
@@ -55,14 +52,13 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     }
 
     @Override
-    public void addUserAuthenticationPerson(PersonalAuthenticationInfoPO personalAuthenticationInfoPO, Long userId) {
-
+    public void addUserAuthenticationPerson(PersonalAuthenticationInfoPO personalAuthenticationInfoPO) {
         userAuthenticationManager.addPersonAuthenticationInfo(personalAuthenticationInfoPO);
         AuthenticationWorkInfoPO authenticationWorkInfoPO = new AuthenticationWorkInfoPO();
         authenticationWorkInfoPO.setOrderType("首次认证");
         authenticationWorkInfoPO.setUserId(personalAuthenticationInfoPO.getUserId());
-        UserInfoPO userInfoPO = userService.getUserById(userId);
-        authenticationWorkInfoPO.setNickname(userInfoPO.getUserName());
+
+        authenticationWorkInfoPO.setNickname( (String) SecurityUtils.getSubject().getPrincipal());
         authenticationWorkInfoPO.setRealName(personalAuthenticationInfoPO.getRealName());
         authenticationWorkInfoPO.setUserType("个人");
         authenticationWorkInfoPO.setIsTransmit(new Byte("0"));
@@ -79,15 +75,14 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     }
 
     @Override
-    public void addUserAuthenticationOrganization(OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO,Long userId) {
+    public void addUserAuthenticationOrganization(OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO) {
 
         userAuthenticationManager.addOrganizationAuthenticationInfoPO(organizationAuthenticationInfoPO);
         //添加认证信息的同时生成工单信息，此时工单尚未分配，待每隔一段时间扫描数据库中未分配的工单进行随机平均分配
         AuthenticationWorkInfoPO authenticationWorkInfoPO = new AuthenticationWorkInfoPO();
         authenticationWorkInfoPO.setOrderType("首次认证");
         authenticationWorkInfoPO.setUserId(organizationAuthenticationInfoPO.getUserId());
-        UserInfoPO userInfoPO = userService.getUserById(userId);
-        authenticationWorkInfoPO.setNickname(userInfoPO.getUserName());
+        authenticationWorkInfoPO.setNickname((String) SecurityUtils.getSubject().getPrincipal());
         authenticationWorkInfoPO.setRealName(organizationAuthenticationInfoPO.getOrganizationName());
         authenticationWorkInfoPO.setUserType("机构/组织");
         authenticationWorkInfoPO.setIsTransmit(new Byte("0"));
@@ -104,8 +99,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     }
 
     @Override
-    @Transactional(propagation =Propagation.SUPPORTS,readOnly =true,rollbackFor =Exception .class)
-
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
     public String getUserAuthenticationStateByUserId(Long id) {
         String state = null;
         OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = new OrganizationAuthenticationInfoPO();
@@ -130,8 +124,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     }
 
     @Override
-    @Transactional(propagation =Propagation.SUPPORTS,readOnly =true,rollbackFor =Exception .class)
-
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
     public PersonalAuthenticationInfoPO getUserAuthenticationPersonByUserId(Long id) {
         PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
         personalAuthenticationInfoPO.setUserId(id);
@@ -158,7 +151,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     }
 
     @Override
-    public void addUserAuthenticationUpdateOrganizationInfo(OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO,Long userId) {
+    public void addUserAuthenticationUpdateOrganizationInfo(OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO) {
         OrganizationAuthenticationInfoPO organizationAuthenticationInfoPOt = new OrganizationAuthenticationInfoPO();
         organizationAuthenticationInfoPOt.setUserId(organizationAuthenticationInfoPO.getUserId());
         OrganizationAuthenticationInfoPO organizationAuthenticationInfoPOUser = userAuthenticationManager.queryOrganizationAuthenticationInfo(organizationAuthenticationInfoPOt);
@@ -173,8 +166,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         AuthenticationWorkInfoPO authenticationWorkInfoPO3 = authenticationWorkManager.getAuthenticationWorkInfo(authenticationWorkInfoPO2);
         AuthenticationWorkInfoPO authenticationWorkInfoPONew = new AuthenticationWorkInfoPO();
         authenticationWorkInfoPONew.setUserId(organizationAuthenticationInfoPO.getUserId());
-        UserInfoPO userInfoPO = userService.getUserById(userId);
-        authenticationWorkInfoPONew.setNickname(userInfoPO.getUserName());
+        authenticationWorkInfoPONew.setNickname((String) SecurityUtils.getSubject().getPrincipal());
         authenticationWorkInfoPONew.setRealName(organizationAuthenticationInfoPO.getOrganizationName());
         authenticationWorkInfoPONew.setUserType("个人");
         authenticationWorkInfoPONew.setIsTransmit(new Byte("0"));
@@ -223,7 +215,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
             OrganizationAuthenticationUpdateInfoPO o = userAuthenticationManager.getUserOrganizationAuthenticationUpdateInfo(organizationAuthenticationUpdateInfoPO);
             organizationAuthenticationUpdateInfoPO.setId(o.getId());
             //修改用户认证更新信息
-            organizationAuthenticationUpdateInfoPOMapper.updateByPrimaryKeySelective(organizationAuthenticationUpdateInfoPO);
+            userAuthenticationManager.updateOrganizationAuthenticationUpdateInfo(organizationAuthenticationUpdateInfoPO);
             OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO1 = new OrganizationAuthenticationInfoPO();
             organizationAuthenticationInfoPO1.setId(organizationAuthenticationInfoPO.getUserId());
             organizationAuthenticationInfoPO1.setAuthenticationResult("审核中");
@@ -238,7 +230,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     }
 
     @Override
-    public void addUserAuthenticationUpdatePersonInfo(PersonalAuthenticationInfoPO personalAuthenticationInfoPO,Long userId) {
+    public void addUserAuthenticationUpdatePersonInfo(PersonalAuthenticationInfoPO personalAuthenticationInfoPO) {
         PersonalAuthenticationInfoPO personalAuthenticationInfoPOt = new PersonalAuthenticationInfoPO();
         personalAuthenticationInfoPOt.setUserId(personalAuthenticationInfoPO.getUserId());
         PersonalAuthenticationInfoPO personalAuthenticationInfoPOUser = userAuthenticationManager.queryPersonAuthenticationInfo(personalAuthenticationInfoPOt);
@@ -253,8 +245,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         AuthenticationWorkInfoPO authenticationWorkInfoPO3 = authenticationWorkManager.getAuthenticationWorkInfo(authenticationWorkInfoPO2);
         AuthenticationWorkInfoPO authenticationWorkInfoPONew = new AuthenticationWorkInfoPO();
         authenticationWorkInfoPONew.setUserId(personalAuthenticationInfoPO.getUserId());
-        UserInfoPO userInfoPO = userService.getUserById(userId);
-        authenticationWorkInfoPONew.setNickname(userInfoPO.getUserName());
+        authenticationWorkInfoPONew.setNickname((String) SecurityUtils.getSubject().getPrincipal());
         authenticationWorkInfoPONew.setRealName(personalAuthenticationInfoPO.getRealName());
         authenticationWorkInfoPONew.setUserType("个人");
         authenticationWorkInfoPONew.setIsTransmit(new Byte("0"));
@@ -310,7 +301,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
             //更新用户修改信息
             PersonalAuthenticationUpdateInfoPO p = userAuthenticationManager.getUserAuthenticationUpdateInfo(personalAuthenticationUpdateInfoPO);
             personalAuthenticationUpdateInfoPO.setId(p.getId());
-            personalAuthenticationUpdateInfoPOMapper.updateByPrimaryKeySelective(personalAuthenticationUpdateInfoPO);
+            userAuthenticationManager.updatePersonAuthenticationUpdateInfo(personalAuthenticationUpdateInfoPO);
             operationService.addOperator("修改", "用户修改个人认证修改信息", personalAuthenticationInfoPO.getUserId(), personalAuthenticationInfoPO.getRealName());
             authenticationWorkInfoPONew.setOrderType("信息修改");
             authenticationWorkManager.addAuthenticationWorkInfo(authenticationWorkInfoPONew);
@@ -327,36 +318,28 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
     }
 
     @Override
-    public AuthenticationResultDto getFailReasonByUserId(Long userId) {
+    public AuthenticationResultDto getFailReasonByUserId(Long id) {
         AuthenticationResultDto authenticationResultDto = new AuthenticationResultDto();
         String reason;
         Integer failType;
         OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = new OrganizationAuthenticationInfoPO();
-        organizationAuthenticationInfoPO.setUserId(userId);
+        organizationAuthenticationInfoPO.setUserId(id);
         OrganizationAuthenticationInfoPO o = userAuthenticationManager.queryOrganizationAuthenticationInfo(organizationAuthenticationInfoPO);
 
         if (o != null) {
 
-            failType = o.getFailType();
-            if (failType == 0 || failType == 1) {
-                reason = "";
-            } else {
-                reason = o.getReason();
-            }
-            authenticationResultDto.setReason(reason);
-            authenticationResultDto.setFailType(failType);
+            authenticationResultDto.setReason(organizationAuthenticationInfoPO.getReason());
+            authenticationResultDto.setFailType(organizationAuthenticationInfoPO.getFailType());
             authenticationResultDto.setCode(0);
             authenticationResultDto.setMessage("查询消息成功");
             return authenticationResultDto;
         } else {
             PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
-            personalAuthenticationInfoPO.setUserId(userId);
+            personalAuthenticationInfoPO.setUserId(id);
             PersonalAuthenticationInfoPO p = userAuthenticationManager.queryPersonAuthenticationInfo(personalAuthenticationInfoPO);
             if (p != null) {
-                reason = p.getReason();
-                failType = p.getFailType();
-                authenticationResultDto.setReason(reason);
-                authenticationResultDto.setFailType(failType);
+                authenticationResultDto.setReason(personalAuthenticationInfoPO.getReason());
+                authenticationResultDto.setFailType(personalAuthenticationInfoPO.getFailType());
                 authenticationResultDto.setCode(0);
                 authenticationResultDto.setMessage("查询消息成功");
                 return authenticationResultDto;
