@@ -29,7 +29,7 @@
             //单击保存按钮触发关闭对话框事件
             onClick: function () {
                 //关闭表单事件
-                $("#addAuthenDia").dialog("close");
+                $("#updateAuthen").dialog("close");
             }
 
 
@@ -39,7 +39,7 @@
             //单击保存按钮触发表单提交事件
             onClick: function () {
                 //提交表单事件
-                $("#addUserAuthenForm").form("submit", {
+                $("#userAuthenticationInfoForm").form("submit", {
                     url: "${pageContext.request.contextPath}/userAuthentication/updateUserAutentication",
                     onSubmit: function () {
                         //进行验证
@@ -47,11 +47,11 @@
                     },
                     success: function (data) {
                         //关闭对话框
-                        $("#addAuthenDia").dialog("close");
+                        $("#updateAuthen").dialog("close");
                         //调出系统提示框
                         $.messager.show({
                             title: "修改成功",
-                            msg: "恭喜！修改非认证信息成功，请等待审核！",
+                            msg: "恭喜！修改认证信息成功，请等待审核！",
 
                         });
 

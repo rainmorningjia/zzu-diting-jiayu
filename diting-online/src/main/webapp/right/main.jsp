@@ -4,11 +4,11 @@
     $(function () {
 
         //初始化数据表格
-        $("#dbUser").edatagrid({
-            toolbar: "#tbUser",
+        $("#dbRight").edatagrid({
+            toolbar: "#tbRight",
             fitColumns: true,
-            url: "${pageContext.request.contextPath}/user/queryUsersByRows",
-            updateUrl:"${pageContext.request.contextPath}/user/updataUser",
+            url: "${pageContext.request.contextPath}/right/userRightInfo",
+            <%--updateUrl:"${pageContext.request.contextPath}/user/updataUser",--%>
             pagePosition: "bottom",
             pagination: true,
             pageSize: 4,
@@ -105,7 +105,7 @@
             //细节展示表
             detailFormatter: function (rowIndex, rowData) {
                 return '<table><tr>' +
-                /*    '<td rowspan=2 style="border:0"><img src="${pageContext.request.contextPath}/imageslun/' + rowData.imagepath + '" style="height:200px;"></td>' + */
+                /*    '<td rowspan=2 style="border:0"><img src="/imageslun/' + rowData.imagepath + '" style="height:200px;"></td>' + */
                     '<td style="border:0">' +
                     '<p style="font-size:20px">省份: ' + rowData.province + '</p>' +
                     '<p style="font-size:20px">城市: ' + rowData.city + '</p>' +
@@ -113,29 +113,29 @@
                     '</td>' +
                     '</tr></table>';
             }
-        })
-        $("#addUser").linkbutton({
+        });
+        $("#addRight").linkbutton({
             onClick: function () {
-                $("#dialogUser").dialog({
+                $("#dialogRight").dialog({
                     title: "添加用户",
                     width: 500,
                     height: 300,
                     closed: false,
                     cache: false,
                     iconCls: "icon-add",
-                    href: "${pageContext.request.contextPath}/user/addUser.jsp",
+                    href: "${pageContext.request.contextPath}/right/addUserRightInfo.jsp",
                     modal: true
                 })
             }
         })
         //修改时间
-        $("#saveUser").linkbutton({
+        $("#saveRight").linkbutton({
             onClick:function(){
-                $("#dbUser").data('isSave',true).edatagrid('saveRow');
+                $("#dbRight").data('isSave',true).edatagrid('saveRow');
             }
         })
         //点击删除事件
-        $("#deleteUser").linkbutton({
+        $("#deleteRight").linkbutton({
             onClick: function () {
                 var arr = $('#dbImg').datagrid('getSelections');
                 if (arr.length <= 0) {
@@ -170,11 +170,11 @@
             e.preventDefault();
             $.ajax({
                 type: "post",
-                url: "${pageContext.request.contextPath}/chapter/downT",
+                url: "/chapter/downT",
                 dataType: "json",
                 data: {},
                 success:function () {
-                    $.download("${pageContext.request.contextPath}/chapter/exportUser","post","")
+                    $.download("/chapter/exportUser","post","")
 
                 }
             })
@@ -190,17 +190,17 @@
     }*/
 </script>
 <div>
-    <h1 align="center">用户管理</h1>
-    <table id="dbUser"></table>
-    <div id="tbUser">
-        <a id="addUser" class="easyui-linkbutton" href="#"
+    <h1 align="center">权利管理</h1>
+    <table id="dbRight"></table>
+    <div id="tbRight">
+        <a id="addRight" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-add',plain:true">添加</a>
 <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
-        <a id="deleteUser" class="easyui-linkbutton" href="#"
+        <a id="deleteRight" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-remove',plain:true">删除</a>
 <%--        <a id="exportUser" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-save',plain:true">导出</a>--%>
     </div>
-    <div id="dialogUser"></div>
+    <div id="dialogRight"></div>
 </div>
