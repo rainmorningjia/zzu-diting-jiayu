@@ -3,6 +3,7 @@ package com.zzu.diting.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 @Table(name = "user_info")
 public class UserInfoPO {
     @Id
+    @KeySql(useGeneratedKeys = true)
     private Long id;
     private String userName;
     private String sex;

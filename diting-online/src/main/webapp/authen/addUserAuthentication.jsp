@@ -85,7 +85,7 @@
         <table style="display: block" id="person">
             <tr>
                 <td>
-                    <input id="type1" type="hidden"  class="easyui-validatebox" name="type"
+                    <input id="type1" type="hidden"  class="easyui-validatebox" name="authenticationType"
                            value="0" data-options="validType:'name',required:true"/>
                 </td>
             </tr>
@@ -213,7 +213,7 @@
         <table style="display: none" id="organization">
             <tr>
                 <td>
-                    <input id="type2" type="hidden"  class="easyui-validatebox" name="type"
+                    <input id="type2" type="hidden"  class="easyui-validatebox" name="authenticationType"
                            value="1" data-options="validType:'name',required:true"/>
                 </td>
             </tr>

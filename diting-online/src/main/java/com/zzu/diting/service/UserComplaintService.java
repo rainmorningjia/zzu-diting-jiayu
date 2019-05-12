@@ -1,12 +1,13 @@
 package com.zzu.diting.service;
 
 
+import com.zzu.diting.dto.complaint.UserComplaintNumberDto;
 import com.zzu.diting.entity.UserComplaintInfoPO;
 
 import java.util.List;
 
 public interface UserComplaintService {
-    String addComplaintInfo(UserComplaintInfoPO userComplaintInfoPO);
+    UserComplaintNumberDto addComplaintInfo(UserComplaintInfoPO userComplaintInfoPO);
 
     String addComplaintsInfo(List<UserComplaintInfoPO> complaints);
 

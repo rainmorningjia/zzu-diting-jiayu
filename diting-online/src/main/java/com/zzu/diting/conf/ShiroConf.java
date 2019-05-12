@@ -74,6 +74,7 @@ public class ShiroConf {
         filtermap.put("/**", "authc");
         filtermap.put("/user/regist.jsp","anon");
         filtermap.put("/user/*","anon");
+
         shiroFilterFactoryBean.setLoginUrl("/login.jsp");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filtermap);

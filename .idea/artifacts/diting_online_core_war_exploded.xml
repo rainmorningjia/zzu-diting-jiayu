@@ -14,7 +14,8 @@
           <element id="module-output" name="diting-online-core" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.38" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.11" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:2.6.0" />
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.19" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.4" />
           <element id="library" level="project" name="Maven: tk.mybatis:mapper-spring-boot-starter:2.1.1" />

@@ -1,7 +1,7 @@
 package com.zzu.diting.manager.impl;
 
 import com.zzu.diting.entity.ComplaintDistributionManagementInfoPO;
-import com.zzu.diting.mapper.ComplaintDistributionManagementInfoMapper;
+import com.zzu.diting.mappers.ComplaintDistributionManagementInfoMapper;
 import com.zzu.diting.manager.ComplaintDistributionManagementInfoManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

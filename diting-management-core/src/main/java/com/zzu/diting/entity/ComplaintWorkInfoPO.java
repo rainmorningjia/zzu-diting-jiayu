@@ -52,6 +52,7 @@ public class ComplaintWorkInfoPO implements Serializable {
     private String reasonTwo;
     private String handleMode;
     private String specificInformation;
+    private String infoSource;
     /**
      * 是否已被分配
      */

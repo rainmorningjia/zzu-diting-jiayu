@@ -114,9 +114,9 @@ public class UserAuthenticationController {
                 personalAuthenticationInfoPO.setUserId(id);
                 personalAuthenticationInfoPO.setCreateTime(System.currentTimeMillis());
                 personalAuthenticationInfoPO.setUpdateTime(System.currentTimeMillis());
-                personalAuthenticationInfoPO.setAuthenticationResult("待审核");
-                personalAuthenticationInfoPO.setRecentlyOperator("内部创建");
-                personalAuthenticationInfoPO.setRecentlyUpdateType("内部创建");
+                personalAuthenticationInfoPO.setAuthenticationResult("审核中");
+                personalAuthenticationInfoPO.setRecentlyOperator("用户创建");
+                personalAuthenticationInfoPO.setRecentlyUpdateType("用户创建");
                 File files1 = FileUtil.transerFile(file1, request);
                 String[] s1 = OSSClientUtil.uploadObject2OSS(client, files1, "zzu-diting", personalAuthenticationInfoPO.getRealName());
                 String positiveUrl = OSSClientUtil.getUrl(client, "zzu-diting", s1[1]);

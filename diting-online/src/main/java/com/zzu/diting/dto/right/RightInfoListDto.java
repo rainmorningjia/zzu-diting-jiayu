@@ -12,6 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RightInfoListDto implements Serializable {
-    private List<RightInfoDto> rightInfoDtoS;
-    private Integer totalNumber;
+    private List<RightInfoDto> rows;
+    private Integer total;
 }

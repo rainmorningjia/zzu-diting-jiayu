@@ -47,14 +47,14 @@ public class MenuServiceImpl implements MenuService {
         List<Menu> listm = menuMapper.select(menu);
         for (Menu m :
                 listm) {
+            String name = (String) SecurityUtils.getSubject().getPrincipal();
+            UserInfoPO userInfoPO = new UserInfoPO();
+            userInfoPO.setUserName(name);
+            UserInfoPO userInfoPO1 = userService.getUserByUserInfo(userInfoPO);
             if (m.getName().equals("用户认证信息")) {
-                String name = (String) SecurityUtils.getSubject().getPrincipal();
-                UserInfoPO userInfoPO = new UserInfoPO();
-                userInfoPO.setUserName(name);
-                UserInfoPO userInfoPO1 = userService.getUserByUserInfo(userInfoPO);
                 if (userInfoPO1.getAuthenticationState() == 0) {
-                    m.setUrl("authen/noAuthentication.jsp");
 
+                    m.setUrl("authen/noAuthentication.jsp");
                 }
                 if (userInfoPO1.getAuthenticationState() == 1) {
                     m.setUrl("authen/authenticaionAuditing.jsp");

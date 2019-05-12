@@ -10,6 +10,7 @@ import com.zzu.diting.mapper.ReputationPortraitUpdateInfoPOMapper;
 import com.zzu.diting.mapper.RightMapper;
 import com.zzu.diting.service.UserAuthenticationService;
 import com.zzu.diting.service.UserRightInfoService;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -239,11 +240,12 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             rightWorkInfoPO.setCreateTime(System.currentTimeMillis());
             rightWorkInfoPO.setUpdateTime(System.currentTimeMillis());
             rightWorkManager.addRightWorkInfo(rightWorkInfoPO);
-            operationService.addOperator("添加", "用户添加著作权信息", rightWorkInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(rightWorkInfoPO.getUserId()));
+            operationService.addOperator("添加", "用户添加著作权信息", rightWorkInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
 
             return "success";
 
         } catch (Exception e) {
+            e.printStackTrace();
             return e.getMessage();
         }
 
@@ -283,10 +285,11 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             rightWorkInfoPO.setCreateTime(System.currentTimeMillis());
             rightWorkInfoPO.setUpdateTime(System.currentTimeMillis());
             rightWorkManager.addRightWorkInfo(rightWorkInfoPO);
-            operationService.addOperator("添加", "用户添加名誉权/肖像权信息", rightWorkInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(rightWorkInfoPO.getUserId()));
+            operationService.addOperator("添加", "用户添加名誉权/肖像权信息", rightWorkInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
 
             return "success";
         } catch (Exception e) {
+            e.printStackTrace();
             return e.getMessage();
         }
 
@@ -326,9 +329,10 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             rightWorkInfoPO.setCreateTime(System.currentTimeMillis());
             rightWorkInfoPO.setUpdateTime(System.currentTimeMillis());
             rightWorkManager.addRightWorkInfo(rightWorkInfoPO);
-            operationService.addOperator("添加", "用户添加其他权利信息", rightWorkInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(rightWorkInfoPO.getUserId()));
+            operationService.addOperator("添加", "用户添加其他权利信息", rightWorkInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
             return "success";
         } catch (Exception e) {
+            e.printStackTrace();
             return e.getMessage();
         }
 
@@ -429,8 +433,8 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             userCopyrightManager.updateUserCopyright(copyrightInfoPO1);
             copyrightUpdateInfoPO.setCreateTime(System.currentTimeMillis());
             addCopyrightUpdateInfo(copyrightUpdateInfoPO);
-            operationService.addOperator("添加", "用户添加著作权更新信息", copyrightInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(copyrightInfoPO.getUserId()));
-            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(copyrightInfoPO.getUserId()));
+            operationService.addOperator("添加", "用户添加著作权更新信息", copyrightInfoPO.getUserId(),(String) SecurityUtils.getSubject().getPrincipal());
+            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
 
         } else if (rightWorkInfoPO1 != null && rightWorkInfoPO2 != null) {
             //待更新权利修改信息3
@@ -440,14 +444,14 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             copyrightInfoPO1.setId(copyrightInfoPO.getId());
             copyrightInfoPO1.setAuditState("审核中");
             userCopyrightManager.updateUserCopyright(copyrightInfoPO1);
-            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(copyrightInfoPO.getUserId()));
+            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(),(String) SecurityUtils.getSubject().getPrincipal());
             updateCopyrightUpdateInfo(copyrightUpdateInfoPO);
         } else if (rightWorkInfoPO1 == null) {
             //第一次审核过程中修改权利信息 这次没有用到权利更新表1
             copyrightInfoPO.setUpdateTime(System.currentTimeMillis());
             copyrightInfoPO.setAuditState("审核中");
             userCopyrightManager.updateUserCopyright(copyrightInfoPO);
-            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(copyrightInfoPO.getUserId()));
+            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
 
         }
         //添加著作权更新信息的同时生成权利工单  每一次都生成
@@ -562,7 +566,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             otherRightInfoPO.setUpdateTime(System.currentTimeMillis());
             System.out.println(otherRightInfoPO);
             userOtherRightManager.updateUserOtherRightInfo(otherRightInfoPO);
-            operationService.addOperator("修改", "用户修改其他权利信息", otherRightInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(otherRightInfoPO.getUserId()));
+            operationService.addOperator("修改", "用户修改其他权利信息", otherRightInfoPO.getUserId(),(String) SecurityUtils.getSubject().getPrincipal());
         } else if (rightWorkInfoPO1 != null && rightWorkInfoPO2 != null) {
             OtherRightInfoPO otherRightInfoPO1 = new OtherRightInfoPO();
             otherRightInfoPO1.setAuditStatus("审核中");
@@ -571,8 +575,8 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
             userOtherRightManager.updateUserOtherRightInfo(otherRightInfoPO1);
             //修改权利更新信息3
             updateOtherRightUpdateInfo(otherRightUpdateInfoPO);
-            operationService.addOperator("修改", "用户修改其他权利信息", otherRightInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(otherRightInfoPO.getUserId()));
-            operationService.addOperator("添加", "用户修改其他权利更新信息", otherRightInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(otherRightInfoPO.getUserId()));
+            operationService.addOperator("修改", "用户修改其他权利信息", otherRightInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
+            operationService.addOperator("添加", "用户修改其他权利更新信息", otherRightInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
         } else if (rightWorkInfoPO1 != null && rightWorkInfoPO2 == null) {
             OtherRightInfoPO otherRightInfoPO1 = new OtherRightInfoPO();
             otherRightInfoPO1.setAuditStatus("审核中");

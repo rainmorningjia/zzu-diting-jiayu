@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     public void addUser(UserInfoPO user) {
         String password=user.getPassword();
         String salt= Md5Util.getSalt();
-        String s=new SimpleHash("MD5",user.getPassword(),salt,1024).toString();
+        String s=new SimpleHash("MD5",password,salt,1024).toString();
         user.setPassword(s);
         user.setSalt(salt);
         user.setAuthenticationState(0);

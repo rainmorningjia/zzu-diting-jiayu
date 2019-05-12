@@ -8,7 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @Author: wb-jcy525678
@@ -62,11 +62,11 @@ public class CopyrightInfoPO implements Serializable {
     /**
      * 著作权登记日10
      */
-    private Timestamp copyrightRegisterDate;
+    private Date copyrightRegisterDate;
     /**
      * 著作权有效期11
      */
-    private Timestamp copyrightVld;
+    private Date copyrightVld;
     /**
      * 导演信息12
      */
@@ -143,12 +143,12 @@ public class CopyrightInfoPO implements Serializable {
      * 委托维权起止日
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Timestamp entrustedProtectionStartdate;
+    private Date entrustedProtectionStartdate;
     /**
      * 委托维权截止日
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Timestamp entrustedProtectionEnddate;
+    private Date entrustedProtectionEnddate;
     /**
      * 委托文件链接
      */

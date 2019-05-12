@@ -1,7 +1,7 @@
 package com.zzu.diting.manager.impl;
 
 import com.zzu.diting.entity.RightDistributionManagementInfoPO;
-import com.zzu.diting.mapper.RightDistributionManagementInfoMapper;
+import com.zzu.diting.mappers.RightDistributionManagementInfoMapper;
 import com.zzu.diting.manager.RightDistributionManagementInfoManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

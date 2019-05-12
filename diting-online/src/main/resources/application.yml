@@ -1,3 +1,6 @@
+mybatis:
+  type-aliases-package: com.zzu.diting.entity
+  mapper-locations: classpath:com/zzu/diting/mapper/*Mapper.xml
 spring:
   application:
     name: diting-online
@@ -6,10 +9,10 @@ spring:
       prefix: /
       suffix: .jsp
   datasource:
-    password: 1234
+    password: jiayu123456
     username: root
-    url: jdbc:mysql://localhost:3306/diting?charset=utf-8
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/diting?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   http:
     converters:

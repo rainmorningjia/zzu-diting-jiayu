@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mapper.UserComplaintInfoMapper">
+    <resultMap id="complaint" type="com.zzu.diting.entity.UserComplaintInfoPO">
+        <id column="ID" property="id"/>
+        <result column="USER_ID" property="userId"/>
+        <result column="RELATION_RIGHT_ID" property="relationRightId"/>
+        <result column="COMPLAINTS_URL" property="complaintsUrl"/>
+        <result column="COMPLAINT_PLATFORM" property="complaintPlatform"/>
+        <result column="RIGHT_NAME" property="rightName"/>
+        <result column="PROCESS_STATE" property="processState"/>
+        <result column="GMT_CREATE" property="createTime"/>
+        <result column="COPYRIGHT_TYPE" property="copyrightType"/>
+        <result column="GMT_MODIFIED" property="updateTime"/>
+    </resultMap>
+    <select id="queryTotalNumberByPageAndTimeAndAll" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryListComplaintByPageAndTimeAndAll" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryTotalNumberAllRightAndState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where user_id = #{userId}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintsAllRightAndState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryTotalNumberRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where user_id = #{userId}
+          and copyright_type = #{rightType}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintsRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and copyright_type = #{rightType}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryTotalNumberRightAndState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where user_id = #{userId}
+          and copyright_type = #{rightType}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintsRightAndState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and copyright_type = #{rightType}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryComplaintByIdAllRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and id = #{id}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryComplaintByIdRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and id = #{id}
+          and copyright_type = #{rightType}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryComplaintByIdAllRightAndState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and id = #{id}
+          and process_state = #{state}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryComplaintByIdRightAndState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where user_id = #{userId}
+          and id = #{id}
+          and process_state = #{state}
+          and copyright_type = #{rightType}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryTotalNumberByUrlAndAllRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByUrlAndAllRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryTotalNumberByUrlAndOneRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByUrlAndOneRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+
+    <select id="queryTotalNumberByUrlAndAllRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByUrlAndAllRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+
+    <select id="queryTotalNumberByUrlAndOneRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByUrlAndOneRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where complaints_url like "%"#{url}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+
+    <select id="queryTotalNumberByNameAndAllRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByNameAndAllRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryTotalNumberByNameAndOneRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+
+    <select id="queryComplaintByNameAndOneRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+
+    <select id="queryTotalNumberByNameAndAllRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByNameAndAllRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+
+    <select id="queryTotalNumberByNameAndOneRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByNameAndOneRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where right_name like "%"#{name}"%"
+            and user_id = #{userId}
+            and process_state = #{state}
+            and copyright_type = #{rightType}
+            and gmt_create < #{t2}
+            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+    <select id="queryTotalNumberByRightIdAndAllRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where RELATION_RIGHT_ID = #{rightId}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByRightIdAndAllRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where RELATION_RIGHT_ID = #{rightId}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+
+    <select id="queryTotalNumberByRightIdAndOneRightAndAllState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where RELATION_RIGHT_ID = #{rightId}
+          and copyright_type = #{rightType}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+    <select id="queryComplaintByRightIdAndOneRightAndAllState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where RELATION_RIGHT_ID = #{rightId}
+          and copyright_type = #{rightType}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+
+
+    <select id="queryTotalNumberByRightIdAndAllRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where RELATION_RIGHT_ID = #{rightId}
+          and process_state = #{state}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+
+    <select id="queryComplaintByRightIdAndAllRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where RELATION_RIGHT_ID = #{rightId}
+          and process_state = #{state}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+
+    <select id="queryTotalNumberByRightIdAndOneRightAndOneState" resultType="java.lang.Integer">
+      <![CDATA[
+        select count(*)
+        from user_complaint_info
+        where RELATION_RIGHT_ID = #{rightId}
+          and process_state = #{state}
+          and copyright_type = #{rightType}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}
+        ]]>
+    </select>
+
+    <select id="queryComplaintByRightIdAndOneRightAndOneState" resultMap="complaint">
+      <![CDATA[
+        select *
+        from user_complaint_info
+        where RELATION_RIGHT_ID = #{rightId}
+          and process_state = #{state}
+          and copyright_type = #{rightType}
+          and user_id = #{userId}
+          and gmt_create < #{t2}
+          and gmt_create > #{t1}  order by gmt_create desc limit #{num1}
+            ,#{num2}
+        ]]>
+    </select>
+</mapper>

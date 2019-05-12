@@ -162,7 +162,6 @@
         select count(*)
         from (select id             id,
                      copyright_type right_type
-
               from
                   copyright_info
               WHERE user_id = #{userId}

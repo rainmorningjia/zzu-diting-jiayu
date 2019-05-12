@@ -9,7 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -24,6 +24,7 @@ import java.sql.Timestamp;
 @Table(name = "other_right_update_info")
 public class OtherRightUpdateInfoPO implements Serializable {
     @Id
+    @KeySql(useGeneratedKeys = true)
     private Long id;
     private Long otherRightInfoId;
     private String newCountry;
@@ -38,8 +39,8 @@ public class OtherRightUpdateInfoPO implements Serializable {
     private String isEntrustedProtection;
     private String protectionRightAttribute;
     private String newAttorneyPowerUrl;
-    private Timestamp newEntrustedProtectionStartdate;
-    private Timestamp newEntrustedProtectionEnddate;
+    private Date newEntrustedProtectionStartdate;
+    private Date newEntrustedProtectionEnddate;
     @Column(name = "gmt_create")
     private Long createTime;
     @Column(name = "gmt_modified")

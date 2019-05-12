@@ -1,7 +1,7 @@
 package com.zzu.diting.manager.impl;
 
 import com.zzu.diting.entity.OperationRecordInfoPO;
-import com.zzu.diting.mapper.OperationRecordInfoMapper;
+import com.zzu.diting.mappers.OperationRecordInfoMapper;
 import com.zzu.diting.manager.OperationRecordInfoManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

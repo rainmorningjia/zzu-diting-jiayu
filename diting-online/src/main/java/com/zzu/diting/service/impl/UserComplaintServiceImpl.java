@@ -1,16 +1,20 @@
 package com.zzu.diting.service.impl;
 
 
+import com.zzu.diting.dto.complaint.UrlTotalNumberDto;
+import com.zzu.diting.dto.complaint.UserComplaintNumberDto;
 import com.zzu.diting.entity.ComplaintWorkInfoPO;
 import com.zzu.diting.entity.ComplaintsWorkInfoPO;
 import com.zzu.diting.entity.UserComplaintInfoPO;
 import com.zzu.diting.manager.ComplaintWorkManager;
 import com.zzu.diting.manager.UserComplaintManager;
-import com.zzu.diting.mapper.ComplaintsWorkAllInfoMapper;
+import com.zzu.diting.mappers.ComplaintsWorkAllInfoMapper;
 import com.zzu.diting.mapper.UserComplaintInfoMapper;
 import com.zzu.diting.service.UserAuthenticationService;
 import com.zzu.diting.service.UserComplaintService;
+import com.zzu.diting.util.SplitNameAndId;
 import com.zzu.diting.util.UrlUtil;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,9 +42,11 @@ public class UserComplaintServiceImpl implements UserComplaintService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public String addComplaintInfo(UserComplaintInfoPO userComplaintInfoPO) {
-
+    public UserComplaintNumberDto addComplaintInfo(UserComplaintInfoPO userComplaintInfoPO) {
+        UserComplaintNumberDto userComplaintNumberDto = new UserComplaintNumberDto();
+        UrlTotalNumberDto urlTotalNumberDto = new UrlTotalNumberDto();
         try {
+
             //添加投诉信息的同时生成投诉工单集
             ComplaintsWorkInfoPO complaintsWorkInfoPO = new ComplaintsWorkInfoPO();
             complaintsWorkInfoPO.setComplaintPersonId(userComplaintInfoPO.getUserId());
@@ -50,46 +56,74 @@ public class UserComplaintServiceImpl implements UserComplaintService {
             complaintsWorkInfoPO.setRelationRight(userComplaintInfoPO.getRightName());
             complaintsWorkInfoPO.setNode("版权管理组审核");
             complaintsWorkInfoPO.setProcessing(0.00);
-
+            complaintsWorkInfoPO.setIsDistribution(0);
             SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
             String date = sdf.format(new Date());
-            complaintsWorkInfoPO.setHandleRecord(date + " " + "生成工单");
+            complaintsWorkInfoPO.setHandleRecord(date + " " + "生成工单集" + " 系统" + " 0");
             complaintsWorkInfoPO.setCreateTime(System.currentTimeMillis());
             complaintsWorkInfoPO.setUpdateTime(System.currentTimeMillis());
             List<String> list = UrlUtil.splitUrl(userComplaintInfoPO.getComplaintsUrl());
             complaintsWorkInfoPO.setComplaintNumber(list.size());
             complaintsWorkAllInfoMapper.insert(complaintsWorkInfoPO);
             operationService.addOperator("添加", "系统生成投诉工单集", new Long("0"), "系统");
+            int successTotalNumber = list.size();
+            int existNumber = 0;
             //之后生成工单信息与每条投诉信息
             for (String url : list) {
-                UserComplaintInfoPO userComplaintInfoPO1 = new UserComplaintInfoPO();
-                userComplaintInfoPO1.setUserId(userComplaintInfoPO.getUserId());
-                userComplaintInfoPO1.setRelationRightId(userComplaintInfoPO.getRelationRightId());
-                userComplaintInfoPO1.setComplaintPlatform(userComplaintInfoPO.getComplaintPlatform());
-                userComplaintInfoPO1.setCopyrightType(userComplaintInfoPO.getCopyrightType());
-                userComplaintInfoPO1.setRightName(userComplaintInfoPO.getRightName());
-                userComplaintInfoPO1.setComplaintsUrl(url);
-                userComplaintInfoPO1.setProcessState("处理中");
-                userComplaintInfoPO1.setCreateTime(System.currentTimeMillis());
-                userComplaintInfoPO1.setUpdateTime(System.currentTimeMillis());
-                userComplaintManager.addUserComplaint(userComplaintInfoPO1);
-                ComplaintWorkInfoPO complaintWorkInfoPO = new ComplaintWorkInfoPO();
-                userComplaintInfoPO1 = userComplaintManager.getUserComplaint(userComplaintInfoPO1);
-                complaintWorkInfoPO.setComplaintId(userComplaintInfoPO1.getId());
-                complaintWorkInfoPO.setComplaintsWorkId(complaintsWorkAllInfoMapper.selectOne(complaintsWorkInfoPO).getId());
-                complaintWorkInfoPO.setOrderType("首次投诉");
-                complaintWorkInfoPO.setComplaintUrl(url);
+                UserComplaintInfoPO userComplaintInfoPOUrl = new UserComplaintInfoPO();
+                userComplaintInfoPOUrl.setComplaintsUrl(url);
+                userComplaintInfoPOUrl.setUserId(userComplaintInfoPO.getUserId());
+                UserComplaintInfoPO userComplaintInfoPOUrlT1 = userComplaintInfoMapper.selectOne(userComplaintInfoPOUrl);
+                if (userComplaintInfoPOUrlT1 != null) {
+                    successTotalNumber--;
+                    existNumber++;
+                } else {
+                    UserComplaintInfoPO userComplaintInfoPO1 = new UserComplaintInfoPO();
+                    userComplaintInfoPO1.setUserId(userComplaintInfoPO.getUserId());
+                    userComplaintInfoPO1.setRelationRightId(userComplaintInfoPO.getRelationRightId());
+                    userComplaintInfoPO1.setComplaintPlatform(userComplaintInfoPO.getComplaintPlatform());
+                    userComplaintInfoPO1.setCopyrightType(userComplaintInfoPO.getCopyrightType());
+                    userComplaintInfoPO1.setComplaintsUrl(url);
+                    userComplaintInfoPO1.setProcessState("处理中");
+                    userComplaintInfoPO1.setCreateTime(System.currentTimeMillis());
+                    userComplaintInfoPO1.setUpdateTime(System.currentTimeMillis());
+                    userComplaintInfoPO1.setRightName(userComplaintInfoPO.getRightName());
+                    userComplaintInfoPO1.setRelationRightId(userComplaintInfoPO.getRelationRightId());
+                    operationService.addOperator("添加", "生成用户投诉信息", userComplaintInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(userComplaintInfoPO.getUserId()));
+                    userComplaintManager.addUserComplaint(userComplaintInfoPO1);
+                    ComplaintWorkInfoPO complaintWorkInfoPO = new ComplaintWorkInfoPO();
+                    userComplaintInfoPO1 = userComplaintManager.getUserComplaint(userComplaintInfoPO1);
+                    complaintWorkInfoPO.setComplaintId(userComplaintInfoPO1.getId());
+                    complaintWorkInfoPO.setComplaintsWorkId(complaintsWorkInfoPO.getId());
+                    complaintWorkInfoPO.setOrderType("首次投诉");
+                    complaintWorkInfoPO.setComplaintUrl(url);
 //            complaintWorkInfoPO.setCommentId();
-                complaintWorkInfoPO.setAuditStateOne("处理中");
-                complaintWorkInfoPO.setIsDistribution(new Byte("0"));
-                complaintWorkInfoPO.setCreateTime(System.currentTimeMillis());
-                complaintWorkInfoPO.setUpdateTime(System.currentTimeMillis());
-                complaintWorkManager.addComplaintWork(complaintWorkInfoPO);
-                operationService.addOperator("添加", "系统生成投诉工单", new Long("0"), "系统");
+                    complaintWorkInfoPO.setAuditStateOne("处理中");
+                    complaintWorkInfoPO.setInfoSource("外部");
+                    complaintWorkInfoPO.setIsDistribution(new Byte("0"));
+                    complaintWorkInfoPO.setCreateTime(System.currentTimeMillis());
+                    complaintWorkInfoPO.setUpdateTime(System.currentTimeMillis());
+                    complaintWorkManager.addComplaintWork(complaintWorkInfoPO);
+                    operationService.addOperator("添加", "系统生成投诉工单", new Long("0"), "系统");
+                }
+                ComplaintsWorkInfoPO complaintsWorkInfoPONew = new ComplaintsWorkInfoPO();
+                complaintsWorkInfoPONew.setComplaintNumber(successTotalNumber);
+                complaintsWorkInfoPONew.setId(complaintsWorkInfoPO.getId());
+                complaintsWorkAllInfoMapper.updateByPrimaryKeySelective(complaintsWorkInfoPONew);
+
             }
-            return "success";
+            userComplaintNumberDto.setCode(0);
+            userComplaintNumberDto.setMessage("添加成功");
+            urlTotalNumberDto.setExistNumber(existNumber);
+            urlTotalNumberDto.setSuccessNumber(successTotalNumber);
+            urlTotalNumberDto.setTotalNumber(list.size());
+            userComplaintNumberDto.setUrlTotalNumberDto(urlTotalNumberDto);
+            return userComplaintNumberDto;
         } catch (Exception e) {
-            return e.getMessage();
+            e.printStackTrace();
+            userComplaintNumberDto.setCode(1);
+            userComplaintNumberDto.setMessage("系统错误");
+            return userComplaintNumberDto;
         }
     }
 
@@ -119,7 +153,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
     @Override
     public UserComplaintInfoPO getUserComplaint(UserComplaintInfoPO userComplaintInfoPO) {
         UserComplaintInfoPO userComplaintInfoPO1 = userComplaintManager.getUserComplaint(userComplaintInfoPO);
-        return userComplaintInfoPO;
+        return userComplaintInfoPO1;
     }
 
     @Override
@@ -196,7 +230,7 @@ public class UserComplaintServiceImpl implements UserComplaintService {
         //覆盖原来的信息
         userComplaintInfoPO.setProcessState("处理中");
         userComplaintManager.updateUserComplaint(userComplaintInfoPO);
-        operationService.addOperator("修改", "用户修改投诉信息", userComplaintInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(userComplaintInfoPO.getUserId()));
+        operationService.addOperator("修改", "用户修改投诉信息", userComplaintInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
 
     }
 

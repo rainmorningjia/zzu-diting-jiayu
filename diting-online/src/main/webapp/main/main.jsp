@@ -43,7 +43,6 @@
                                         }
                                     },
                                     onClick: function (node) {
-                                        console.info(node.text)
                                         var ex = $('#tt').tabs('exists', node.text);
 
                                         if (ex == false) {
@@ -75,7 +74,7 @@
 <body class="easyui-layout">
 <div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
     <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px">
-        持名法州后台管理系统
+        谛听版权投诉系统
         欢迎您:<shiro:authenticated>[<shiro:principal/>]</shiro:authenticated>
     </div>
     <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">
@@ -85,7 +84,7 @@
     </div>
 </div>
 <div data-options="region:'south',split:true" style="height: 40px;background: #5C160C">
-    <div style="text-align: center;font-size:15px; color: #FAF7F7;font-family: 楷体">&copy;百知教育 moringrain</div>
+    <div style="text-align: center;font-size:15px; color: #FAF7F7;font-family: 楷体">&copy;谛听 moringrain</div>
 </div>
 
 <div data-options="region:'west',title:'导航菜单',split:true" style="width:220px;">
@@ -96,8 +95,9 @@
 <div data-options="region:'center'">
     <div id="tt" class="easyui-tabs" data-options="fit:true,narrow:true,pill:true">
         <div title="主页" data-options="iconCls:'icon-neighbourhood',"
-             style="background-image:url(image/shouye.jpg);background-repeat: no-repeat;background-size:100% 100%;"></div>
+             style="background-image:url(image/shouyehuge.jpeg);background-repeat: no-repeat;background-size:100% 100%;"></div>
     </div>
 </div>
+<div id="dialogUserRightComplaint"></div>
 </body>
 </html>

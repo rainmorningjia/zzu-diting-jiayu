@@ -1,7 +1,7 @@
 package com.zzu.diting.manager.impl;
 
 import com.zzu.diting.entity.AuthenticationWorkInfoPO;
-import com.zzu.diting.mapper.AuthenticationWorkInfoMapper;
+import com.zzu.diting.mappers.AuthenticationWorkInfoMapper;
 import com.zzu.diting.manager.AuthenticationWorkManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

@@ -3,14 +3,13 @@ package com.zzu.diting.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -46,8 +45,8 @@ public class OtherRightInfoPO implements Serializable {
     private String attorneyAttribute;
     private String attorneyPowerUrl;
 
-    private Timestamp entrustedProtectionStartdate;
-    private Timestamp entrustedProtectionEnddate;
+    private Date entrustedProtectionStartdate;
+    private Date entrustedProtectionEnddate;
     private String auditStatus;
     @Column(name = "gmt_create")
     private Long createTime;

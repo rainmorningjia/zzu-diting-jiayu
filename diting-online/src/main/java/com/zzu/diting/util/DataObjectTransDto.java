@@ -43,68 +43,30 @@ public class DataObjectTransDto {
 
                             if (!(src.getClass().getSimpleName().endsWith("Dto") && target.getClass().getSimpleName().endsWith("Dto"))) {
                                 if (src.getClass().getSimpleName().endsWith("Dto")) {
-                                    if (targetName.equals("setCopyrightRegisterDate")) {
-                                        String t1 = (String) result;
-                                        Timestamp s = DataTransformUtil.stringTransformTimeDate(t1);
-                                        mm.invoke(target, s);
-                                    } else if (targetName.equals("setCopyrightVld")) {
-                                        String t1 = (String) result;
-                                        Timestamp s = DataTransformUtil.stringTransformTimeDate(t1);
-                                        mm.invoke(target, s);
-                                    } else if (targetName.equals("setEntrustedProtectionStartdate")) {
-                                        String t1 = (String) result;
-                                        Timestamp s = DataTransformUtil.stringTransformTimeDate(t1);
-                                        mm.invoke(target, s);
-                                    } else if (targetName.equals("setEntrustedProtectionEnddate")) {
-                                        String t1 = (String) result;
-                                        Timestamp s = DataTransformUtil.stringTransformTimeDate(t1);
-                                        mm.invoke(target, s);
-                                    }
 
                                 } else if (!src.getClass().getSimpleName().endsWith("Dto")) {
-                                    if (targetName.equals("setCopyrightRegisterDate")) {
-                                        Timestamp t1 = (Timestamp) result;
-                                        String s = DataTransformUtil.timeDateTransformString(t1);
-                                        mm.invoke(target, s);
-                                    } else if (targetName.equals("setCopyrightVld")) {
-                                        Timestamp t1 = (Timestamp) result;
-                                        String s = DataTransformUtil.timeDateTransformString(t1);
-                                        mm.invoke(target, s);
-                                    } else if (targetName.equals("setEntrustedProtectionStartdate")) {
-                                        Timestamp t1 = (Timestamp) result;
-                                        String s = DataTransformUtil.timeDateTransformString(t1);
-                                        mm.invoke(target, s);
-                                    } else if (targetName.equals("setEntrustedProtectionEnddate")) {
-                                        Timestamp t1 = (Timestamp) result;
-                                        String s = DataTransformUtil.timeDateTransformString(t1);
-                                        mm.invoke(target, s);
-                                    }
 
                                 }
                             } else if (targetName.startsWith("set")) {
                                 mm.invoke(target, result);
 
                             }
-                            if (!targetName.equals("setCopyrightRegisterDate")
-                                    && !targetName.equals("setCopyrightVld")
-                                    && !targetName.equals("setEntrustedProtectionStartdate")
-                                    && !targetName.equals("setEntrustedProtectionEnddate")
-                            ) {
-                                if (targetName.equals("setUpdateTime")) {
-                                    Long t1 = (Long) result;
-                                    String s = DataTransformUtil.stringDateTransformLong(t1);
-                                    mm.invoke(target, s);
+
+                            if (targetName.equals("setUpdateTime")) {
+                                Long t1 = (Long) result;
+                                String s = DataTransformUtil.stringDateTransformLong(t1);
+                                mm.invoke(target, s);
 
 
-                                } else if (targetName.equals("setCreateTime")) {
-                                    Long t1 = (Long) result;
-                                    String s = DataTransformUtil.stringDateTransformLong(t1);
-                                    mm.invoke(target, s);
-                                } else if (targetName.startsWith("set")) {
-                                    mm.invoke(target, result);
+                            } else if (targetName.equals("setCreateTime")) {
+                                Long t1 = (Long) result;
+                                String s = DataTransformUtil.stringDateTransformLong(t1);
+                                mm.invoke(target, s);
+                            } else if (targetName.startsWith("set")) {
+                                mm.invoke(target, result);
 
-                                }
                             }
+
                         }
 
                     }

@@ -6,21 +6,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="diting-management" />
         <module name="diting-management-core" />
         <module name="diting-online" />
         <module name="diting-online-core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="diting-management" target="1.8" />
       <module name="diting-management-core" target="1.8" />
       <module name="diting-online" target="1.8" />
       <module name="diting-online-core" target="1.7" />
+      <module name="test" target="1.7" />
       <module name="zzu-diting-jiayu" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="diting-management-core" options="-parameters" />
+      <module name="diting-management" options="" />
+      <module name="diting-management-core" options="" />
       <module name="diting-online" options="" />
       <module name="diting-online-core" options="" />
       <module name="zzu-diting-jiayu" options="-parameters" />

@@ -1,7 +1,7 @@
 package com.zzu.diting.manager.impl;
 
 import com.zzu.diting.entity.RightWorkInfoPO;
-import com.zzu.diting.mapper.RightWorkMapper;
+import com.zzu.diting.mappers.RightWorkMapper;
 import com.zzu.diting.manager.RightWorkManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

@@ -1,0 +1,30 @@
+mybatis:
+  type-aliases-package: com.zzu.diting.entity
+  mapper-locations: classpath:com/zzu/diting/mapper/*Mapper.xml
+spring:
+  application:
+    name: diting-management
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    password: jiayu123456
+    username: root
+    url: jdbc:mysql://localhost:3306/diting?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  http:
+    converters:
+      preferred-json-mapper: jackson
+    multipart:
+      maxFileSize: 30MB
+      max-request-size: 100MB
+
+server:
+  port: 8084
+  context-path: /diting
+  jsp-servlet:
+    init-parameters:
+      development: true
+

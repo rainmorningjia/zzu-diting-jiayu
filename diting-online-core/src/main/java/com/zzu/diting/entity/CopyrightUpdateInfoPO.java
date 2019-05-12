@@ -3,12 +3,13 @@ package com.zzu.diting.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * @author :wb-jcy525678
@@ -21,6 +22,7 @@ import java.sql.Timestamp;
 @Table(name = "copyright_update_info")
 public class CopyrightUpdateInfoPO implements Serializable {
     @Id
+    @KeySql(useGeneratedKeys = true)
     private Long id;
     /**
      * 原作品ID
@@ -45,11 +47,11 @@ public class CopyrightUpdateInfoPO implements Serializable {
      * 著作权登记日
      */
 
-    private Timestamp newCopyrightRegisterDate;
+    private Date newCopyrightRegisterDate;
     /**
      * 著作权有效期
      */
-    private Timestamp newCopyrightVld;
+    private Date newCopyrightVld;
     /**
      * 导演信息
      */
@@ -121,11 +123,11 @@ public class CopyrightUpdateInfoPO implements Serializable {
     /**
      * 委托维权起止日
      */
-    private Timestamp newEntrustProtectionStartdate;
+    private Date newEntrustProtectionStartdate;
     /**
      * 委托维权截止日
      */
-    private Timestamp newEntrustProtectionEnddate;
+    private Date newEntrustProtectionEnddate;
     /**
      * 委托文件链接
      */

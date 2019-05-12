@@ -1,14 +1,13 @@
 package com.zzu.diting.manager.impl;
 
 import com.zzu.diting.entity.ComplaintWorkInfoPO;
-import com.zzu.diting.mapper.ComplaintWorkMapper;
+import com.zzu.diting.mappers.ComplaintWorkMapper;
 import com.zzu.diting.manager.ComplaintWorkManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author :wb-jcy525678

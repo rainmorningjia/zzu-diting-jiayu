@@ -12,7 +12,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @RestController
 @SpringBootApplication
-@MapperScan("com.zzu.diting.mapper")
+@MapperScan("com.zzu.diting.mappers")
 public class DiTingOnlineCoreApplication {
     public static void main(String[] args) {
         SpringApplication.run(DiTingOnlineCoreApplication.class,args);

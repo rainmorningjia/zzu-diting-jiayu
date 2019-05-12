@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/diting-management/diting-management.iml" filepath="$PROJECT_DIR$/diting-management/diting-management.iml" />
       <module fileurl="file://$PROJECT_DIR$/diting-management-core/diting-management-core.iml" filepath="$PROJECT_DIR$/diting-management-core/diting-management-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/diting-online/diting-online.iml" filepath="$PROJECT_DIR$/diting-online/diting-online.iml" />
       <module fileurl="file://$PROJECT_DIR$/diting-online-core/diting-online-core.iml" filepath="$PROJECT_DIR$/diting-online-core/diting-online-core.iml" />

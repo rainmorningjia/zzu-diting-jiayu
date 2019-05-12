@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zzu.diting.mapper.ProvinceDao">
+<mapper namespace="com.zzu.diting.mapper.ProvinceMapper">
     <select id="queryAllProvince" resultType="com.zzu.diting.entity.Province">
         select *
         from province

@@ -1,12 +1,13 @@
 package com.zzu.diting.dto.right;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 @Data
@@ -49,11 +50,15 @@ public class RightDetailedDto implements Serializable {
     /**
      * 著作权登记日
      */
-    private String copyrightRegisterDate;
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date copyrightRegisterDate;
     /**
      * 著作权有效期
      */
-    private String copyrightVld;
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date copyrightVld;
     /**
      * 导演信息
      */
@@ -148,14 +153,19 @@ public class RightDetailedDto implements Serializable {
     /**
      * 委托维权起止日
      */
-    private String entrustedProtectionStartdate;
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date entrustedProtectionStartdate;
     /**
      * 委托维权截止日
      */
-    private String entrustedProtectionEnddate;
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date entrustedProtectionEnddate;
     /**
      * 委托文件链接
      */
     private String attorneyPowerUrl;
+
 
 }

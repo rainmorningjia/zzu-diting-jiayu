@@ -5,10 +5,6 @@ import com.zzu.diting.dto.AuthenticationResultDto;
 import com.zzu.diting.entity.*;
 import com.zzu.diting.manager.AuthenticationWorkManager;
 import com.zzu.diting.manager.UserAuthenticationManager;
-import com.zzu.diting.mapper.OrganizationAuthenticationInfoMapper;
-import com.zzu.diting.mapper.OrganizationAuthenticationUpdateInfoPOMapper;
-import com.zzu.diting.mapper.PersonalAuthenticationInfoMapper;
-import com.zzu.diting.mapper.PersonalAuthenticationUpdateInfoPOMapper;
 import com.zzu.diting.service.UserAuthenticationService;
 import com.zzu.diting.service.UserService;
 import org.apache.shiro.SecurityUtils;
@@ -58,7 +54,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         authenticationWorkInfoPO.setOrderType("首次认证");
         authenticationWorkInfoPO.setUserId(personalAuthenticationInfoPO.getUserId());
 
-        authenticationWorkInfoPO.setNickname( (String) SecurityUtils.getSubject().getPrincipal());
+        authenticationWorkInfoPO.setNickname((String) SecurityUtils.getSubject().getPrincipal());
         authenticationWorkInfoPO.setRealName(personalAuthenticationInfoPO.getRealName());
         authenticationWorkInfoPO.setUserType("个人");
         authenticationWorkInfoPO.setIsTransmit(new Byte("0"));
@@ -69,7 +65,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = sdf.format(new Date());
         authenticationWorkInfoPO.setHandleRecord(date + "生成" + "工单");
-        operationService.addOperator("添加", "用户生成个人认证信息", personalAuthenticationInfoPO.getUserId(), getUserNameAuthenticationByUserId(personalAuthenticationInfoPO.getUserId()));
+        operationService.addOperator("添加", "用户生成个人认证信息", personalAuthenticationInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
         operationService.addOperator("添加", "系统生成个人认证工单", new Long("0"), "系统");
         authenticationWorkManager.addAuthenticationWorkInfo(authenticationWorkInfoPO);
     }
@@ -93,7 +89,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = sdf.format(new Date());
         authenticationWorkInfoPO.setHandleRecord(date + "生成" + "工单");
-        operationService.addOperator("添加", "用户生成组织认证信息", organizationAuthenticationInfoPO.getUserId(), getUserNameAuthenticationByUserId(organizationAuthenticationInfoPO.getUserId()));
+        operationService.addOperator("添加", "用户生成组织认证信息", organizationAuthenticationInfoPO.getUserId(),(String) SecurityUtils.getSubject().getPrincipal());
         operationService.addOperator("添加", "系统生成组织认证工单", new Long("0"), "系统");
         authenticationWorkManager.addAuthenticationWorkInfo(authenticationWorkInfoPO);
     }
@@ -196,7 +192,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
             userAuthenticationManager.updateOrganizationAuthenticationInfoPO(organizationAuthenticationInfoPO);
             authenticationWorkInfoPONew.setOrderType("首次认证");
             authenticationWorkManager.addAuthenticationWorkInfo(authenticationWorkInfoPONew);
-            operationService.addOperator("修改", "用户修改个人认证信息", organizationAuthenticationInfoPO.getUserId(), organizationAuthenticationInfoPO.getOrganizationName());
+            operationService.addOperator("修改", "用户修改个人认证信息", organizationAuthenticationInfoPO.getUserId(),(String) SecurityUtils.getSubject().getPrincipal());
         } else if (authenticationWorkInfoPO3 == null && authenticationWorkInfoPO1 != null) {
             organizationAuthenticationUpdateInfoPO.setCreateTime(System.currentTimeMillis());
             //添加用户认证修改信息

@@ -1,17 +1,17 @@
 package com.zzu.diting.mapper;
 
 import com.zzu.diting.entity.UserComplaintInfoPO;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
 
 /**
  * @Author :wb-jcy525678
  */
-@org.apache.ibatis.annotations.Mapper
-public interface UserComplaintInfoMapper extends Mapper<UserComplaintInfoPO> {
-
+@Mapper
+public interface UserComplaintInfoMapper extends BaseMapper<UserComplaintInfoPO> {
     //1
     Integer queryTotalNumberByPageAndTimeAndAll(@Param("userId") Long userId, @Param("t1") Long t1, @Param("t2") Long t2);
 
