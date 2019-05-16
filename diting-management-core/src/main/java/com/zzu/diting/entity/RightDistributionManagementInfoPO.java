@@ -23,8 +23,8 @@ public class RightDistributionManagementInfoPO implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
     private Long id;
-    private Long distributionId;
-    private Long managerId;
+    private String distributionId;
+    private String managerId;
     private String workType;
     private String rightType;
     private String distributionName;

@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * @author :wb-jcy525678
@@ -26,7 +27,7 @@ public class  AuthenticationWorkInfoPO implements Serializable {
     /**
      * 认证用户id
      */
-    private Long auditorId;
+    private String auditorId;
     private Long userId;
     private String nickname;
     private String realName;
@@ -42,6 +43,10 @@ public class  AuthenticationWorkInfoPO implements Serializable {
      */
     private String handleRecord;
     /**
+     * 驳回类型
+     */
+    private String failType;
+    /**
      * 驳回理由
      */
     private String reason;
@@ -53,6 +58,10 @@ public class  AuthenticationWorkInfoPO implements Serializable {
      * 是否已被分配
      */
     private Byte isDistribution;
+    /**
+     * 完成时间
+     */
+    private Timestamp completeTime;
     @Column(name = "gmt_create")
     private Long createTime;
     @Column(name = "gmt_modified")

@@ -18,13 +18,13 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "authentication_distribution_management")
+@Table(name = "authentication_distribution_management_info")
 public class AuthenticationDistributionManagementInfoPO implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
     private Long id;
-    private Long distributionId;
-    private Long managerId;
+    private String distributionId;
+    private String managerId;
     private String operatorName;
     private String managerName;
     @Column(name = "gmt_create")

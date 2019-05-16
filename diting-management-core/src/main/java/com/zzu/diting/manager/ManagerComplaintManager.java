@@ -29,7 +29,7 @@ public interface ManagerComplaintManager {
      * @param sort   排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsAll(@Param("mId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsAll(@Param("mId") String userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 查询特定处理结果的投诉
@@ -42,7 +42,7 @@ public interface ManagerComplaintManager {
      * @param sort   排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByResult(@Param("mId") Long userId, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByResult(@Param("mId") String userId, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 查询特定投诉集合的全部投诉
@@ -55,7 +55,7 @@ public interface ManagerComplaintManager {
      * @param sort   排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByIdAndAllResult(@Param("mId") Long userId, @Param("ids") List<Long> ids, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByIdAndAllResult(@Param("mId") String userId, @Param("ids") List<Long> ids, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 查询特定投诉集合的特定处理结果投诉
@@ -69,7 +69,7 @@ public interface ManagerComplaintManager {
      * @param sort   排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByIdAndResult(@Param("mId") Long userId, @Param("ids") List<Long> ids, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByIdAndResult(@Param("mId") String userId, @Param("ids") List<Long> ids, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 查询投诉人的全部
@@ -82,7 +82,7 @@ public interface ManagerComplaintManager {
      * @param sort   排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintPersonAndAllResult(@Param("mId") Long userId, @Param("person") String person, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintPersonAndAllResult(@Param("mId") String userId, @Param("person") String person, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 查询投诉人的特定处理结果
@@ -96,7 +96,7 @@ public interface ManagerComplaintManager {
      * @param sort   排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintPersonAndResult(@Param("mId") Long userId, @Param("person") String person, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintPersonAndResult(@Param("mId") String userId, @Param("person") String person, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据投诉类型查询全部处理结果
@@ -109,7 +109,7 @@ public interface ManagerComplaintManager {
      * @param sort      排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByRightTypeAndAllResult(@Param("mId") Long userId, @Param("rightType") String rightType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByRightTypeAndAllResult(@Param("mId") String userId, @Param("rightType") String rightType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据投诉类型查询特定处理结果
@@ -123,7 +123,7 @@ public interface ManagerComplaintManager {
      * @param sort      排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByRightTypeAndResult(@Param("mId") Long userId, @Param("rightType") String rightType, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByRightTypeAndResult(@Param("mId") String userId, @Param("rightType") String rightType, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据涉及权利查询全部处理结果
@@ -136,7 +136,7 @@ public interface ManagerComplaintManager {
      * @param sort      排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByRightNameAndAllResult(@Param("mId") Long userId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByRightNameAndAllResult(@Param("mId") String userId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据涉及权利查询全部处理结果
@@ -150,7 +150,7 @@ public interface ManagerComplaintManager {
      * @param sort      排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByRightNameAndResult(@Param("mId") Long userId, @Param("rightName") String rightName, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByRightNameAndResult(@Param("mId") String userId, @Param("rightName") String rightName, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据投诉链接模糊查询全部处理结果
@@ -163,7 +163,7 @@ public interface ManagerComplaintManager {
      * @param sort         排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintUrlAndAllResult(@Param("mId") Long userId, @Param("complaintUrl") String complaintUrl, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintUrlAndAllResult(@Param("mId") String userId, @Param("complaintUrl") String complaintUrl, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据投诉链接模糊查询特定处理结果
@@ -177,7 +177,7 @@ public interface ManagerComplaintManager {
      * @param sort         排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintUrlAndResult(@Param("mId") Long userId, @Param("complaintUrl") String complaintUrl, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintUrlAndResult(@Param("mId") String userId, @Param("complaintUrl") String complaintUrl, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据当前处理人模糊查询全部处理结果
@@ -190,7 +190,7 @@ public interface ManagerComplaintManager {
      * @param sort         排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByHandlePersonAndAllResult(@Param("mId") Long userId, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByHandlePersonAndAllResult(@Param("mId") String userId, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据当前处理人模糊查询特定处理结果
@@ -204,7 +204,7 @@ public interface ManagerComplaintManager {
      * @param sort         排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByHandlePersonAndResult(@Param("mId") Long userId, @Param("handlePerson") String handlePerson, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByHandlePersonAndResult(@Param("mId") String userId, @Param("handlePerson") String handlePerson, @Param("result") String result, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据特定时间段查询全部处理结果
@@ -219,7 +219,7 @@ public interface ManagerComplaintManager {
      * @param sort      排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByTimeAndAllResult(@Param("mId") Long userId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByTimeAndAllResult(@Param("mId") String userId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据特定时间段查询全部处理结果
@@ -235,7 +235,7 @@ public interface ManagerComplaintManager {
      * @param sort      排序方式
      * @return 管理员投诉集合
      */
-    List<ManagerComplaintInfoPO> getManagerComplaintsByTimeAndResult(@Param("mId") Long userId, @Param("timeType") String timeType, @Param("result") String result, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ManagerComplaintInfoPO> getManagerComplaintsByTimeAndResult(@Param("mId") String userId, @Param("timeType") String timeType, @Param("result") String result, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     List<ManagerComplaintInfoPO> getManagerComplaintByComplaintsIdAndAllTypeAndAllState(@Param("complaintsId") Long complaintsId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 

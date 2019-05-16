@@ -16,7 +16,7 @@ public class OperationServiceImpl implements OperationService {
     @Override
     public void addOperator(String operationType, String type, Long userId, String name) {
         OperationRecordInfoPO operationRecordInfoPO = new OperationRecordInfoPO();
-        operationRecordInfoPO.setOperationPersonId(userId);
+        operationRecordInfoPO.setOperationPersonId(userId.toString());
         operationRecordInfoPO.setName(name);
         operationRecordInfoPO.setOperationType(operationType);
         SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");

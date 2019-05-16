@@ -53,8 +53,6 @@
                     }
                 })
             },
-
-
         });
         $("#isRegister1").combobox({
             panelHeight: 50,

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mappers.RightDistributionManagementInfoMapper">
+    <resultMap id="RightDistributionManagementInfo"
+               type="com.zzu.diting.entity.RightDistributionManagementInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="DISTRIBUTION_ID" property="distributionId" jdbcType="VARCHAR"/>
+        <result column="MANAGER_ID" property="managerId" jdbcType="VARCHAR"/>
+        <result column="WORK_TYPE" property="workType" jdbcType="BIGINT"/>
+        <result column="RIGHT_TYPE" property="rightType" jdbcType="VARCHAR"/>
+        <result column="DISTRIBUTION_NAME" property="distributionName" jdbcType="VARCHAR"/>
+        <result column="OPERATOR_NAME" property="operatorName" jdbcType="VARCHAR"/>
+        <result column="GMT_CREATE" property="createTime" jdbcType="BIGINT"/>
+        <result column="GMT_MODIFIED" property="updateTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="condition">
+        <if test="rightType!=null">
+            RIGHT_TYPE=#{rightType}
+        </if>
+        <if test="workType!=null">
+            WORK_TYPE=#{workType}
+        </if>
+        <if test="distribution!=null">
+            DISTRIBUTION_NAME like #{distribution}
+        </if>
+        <if test="operator!=null">
+            OPERATOR_NAME like #{operator}
+        </if>
+        <if test="createTime!=null">
+            GMT_CREATE &gt; #{t2} and GMT_CREATE &lt; #{t1}
+        </if>
+        <if test="updateTime!=null">
+            GMT_MODIFIED &gt; #{t2} and GMT_MODIFIED &lt; #{t1}
+        </if>
+    </sql>
+    <select id="getTotalNumber" resultType="java.lang.Integer">
+        select count(*)
+        from right_distribution_management_info
+        where
+        <include refid="condition"/>
+
+    </select>
+    <select id="queryRightDistributionManagementInfoAll" resultMap="RightDistributionManagementInfo">
+        select *
+        from right_distribution_management_info
+        order by ${time} ${sort} limit #{num1},#{num2}
+    </select>
+
+    <select id="queryRightDistributionManagementInfoById" resultMap="RightDistributionManagementInfo">
+        select *
+        from right_distribution_management_info
+        where id = #{id}
+    </select>
+
+    <select id="queryRightDistributionManagementInfoByRightType" resultMap="RightDistributionManagementInfo">
+        select *
+        from right_distribution_management_info
+        where right_type = @{rightType}
+        order by ${time} ${sort} limit #{num1},#{num2}
+    </select>
+
+    <select id="queryRightDistributionManagementInfoWorkType" resultMap="RightDistributionManagementInfo">
+        select *
+        from right_distribution_management_info
+        where work_type = @{workType}
+        order by ${time} ${sort} limit #{num1},#{num2}
+    </select>
+
+    <select id="queryRightDistributionManagementInfoByDistributionName" resultMap="RightDistributionManagementInfo">
+        select *
+        from right_distribution_management_info
+        where distribution_name like "%"#{distributionName}"%"
+        order by ${time} ${sort} limit #{num1},#{num2}
+    </select>
+
+    <select id="queryRightDistributionManagementInfoByOperatorName" resultMap="RightDistributionManagementInfo">
+        select *
+        from right_distribution_management_info
+        where operator_name like "%"#{operatorName}"%"
+        order by ${time} ${sort} limit #{num1},#{num2}
+    </select>
+
+    <select id="queryRightDistributionManagementInfoByTime" resultMap="RightDistributionManagementInfo">
+        select *
+        from right_distribution_management_info
+        where ${timeType} &gt; #{t1}
+          and ${timeType} &lt; #{t2}
+        order by ${time} ${sort} limit #{num1},#{num2}
+    </select>
+</mapper>

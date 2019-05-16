@@ -15,6 +15,7 @@ import java.util.List;
 @Mapper
 public interface ComplaintsWorkAllInfoMapper extends BaseMapper<ComplaintsWorkInfoPO> {
 
+
     Integer queryTotalNumberForComplaintsWorkAllAndAllNodeAndAllProcessingAndType(@Param("rightType") String rightType);
 
     /**
@@ -382,8 +383,8 @@ public interface ComplaintsWorkAllInfoMapper extends BaseMapper<ComplaintsWorkIn
 
     List<ComplaintsWorkInfoPO> queryComplaintsWorkAllByOneNodeAndPendingAndTimeAndType(@Param("rightType") String rightType, @Param("time") String time, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("node") String node, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("timeType") String timeType, @Param("sort") String sort);
 
-    Integer queryTotalNumberForComplaintsWorkAllByOneNodeAndProcessedAndTimeAndType(@Param("time") String time, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("node") String node);
+    Integer queryTotalNumberForComplaintsWorkAllByOneNodeAndProcessedAndTimeAndType(@Param("rightType") String rightType, @Param("time") String time, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("node") String node);
 
-    List<ComplaintsWorkInfoPO> queryComplaintsWorkAllByOneNodeAndProcessedAndTimeAndType(@Param("time") String time, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("node") String node, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("timeType") String timeType, @Param("sort") String sort);
+    List<ComplaintsWorkInfoPO> queryComplaintsWorkAllByOneNodeAndProcessedAndTimeAndType(@Param("rightType") String rightType, @Param("time") String time, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("node") String node, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("timeType") String timeType, @Param("sort") String sort);
 
 }

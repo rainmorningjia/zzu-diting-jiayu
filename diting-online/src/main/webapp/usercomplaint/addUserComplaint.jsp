@@ -95,7 +95,7 @@
                 </td>
                 <td>
                     <input id="rightName" class="easyui-combobox" name="rightName"
-                           data-options="valueField: 'id',
+                           data-options="valueField: 'name',
                              textField: 'name',
                             " style="width:170px"/>
                 </td>

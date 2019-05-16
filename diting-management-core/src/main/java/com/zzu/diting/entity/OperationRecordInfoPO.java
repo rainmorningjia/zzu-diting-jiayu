@@ -23,7 +23,7 @@ public class OperationRecordInfoPO implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
     private Long id;
-    private Long operationPersonId;
+    private String operationPersonId;
     /**
      * 操作人姓名
      */

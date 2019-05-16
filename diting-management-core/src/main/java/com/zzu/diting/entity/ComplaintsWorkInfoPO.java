@@ -34,7 +34,7 @@ public class ComplaintsWorkInfoPO implements Serializable {
     /**
      * 处理人id
      */
-    private Long handlePersonId;
+    private String handlePersonId;
     /**
      * 信息来源
      */
@@ -62,9 +62,21 @@ public class ComplaintsWorkInfoPO implements Serializable {
      */
     private Double processing;
     /**
+     * 处理进度
+     */
+    private Double processingTwo;
+    /**
      * 处理人
      */
     private String handlePerson;
+    /**
+     *版权处理组处理人id
+     */
+    private String handlePersonHandleId;
+    /**
+     * 版权处理组处理人
+     */
+    private String handlePersonHandle;
     /**
      * 是否已被分配
      */

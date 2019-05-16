@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mappers.ManagerComplaintInfoMapper">
+    <resultMap id="ManagerComplaint" type="com.zzu.diting.entity.ManagerComplaintInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="COMPLAINT_PERSON" property="complaintPerson" jdbcType="VARCHAR"/>
+        <result column="RIGHT_TYPE" property="rightType" jdbcType="VARCHAR"/>
+        <result column="RIGHT_NAME" property="rightName" jdbcType="VARCHAR"/>
+        <result column="COMPLAINT_URL" property="complaintUrl" jdbcType="VARCHAR"/>
+        <result column="COMPLAINT_PLATFORM" property="complaintPlatform" jdbcType="VARCHAR"/>
+        <result column="RESULT" property="result" jdbcType="VARCHAR"/>
+        <result column="HANDLE_PERSON" property="handlePerson" jdbcType="VARCHAR"/>
+        <result column="GMT_CREATE" property="createTime" jdbcType="BIGINT"/>
+        <result column="GMT_MODIFIED" property="updateTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <select id="queryTotalNumberForManagerComplaintsAll" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+    </select>
+    <insert id="insertManagerComplaint" parameterType="com.zzu.diting.entity.ManagerComplaintInfoPO"
+            useGeneratedKeys="true" keyProperty="id"
+            databaseId="mysql">
+        insert into manager_complaint_info (manager_id, complaint_person, right_type, right_name, complaint_url,
+                                            complaint_platform, handle_person, result, remark, complaints_id,
+                                            gmt_create, gmt_modified)
+        values (#{managerId}, #{complaintPerson}, #{rightType}, #{rightName}, #{complaintUrl}, #{complaintPlatform},
+                #{handlePerson}, #{result}, #{remark}, #{complaintsId},
+                #{createTime}, #{updateTime})
+    </insert>
+    <select id="queryManagerComplaintsAll" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByResult" resultType="java.lang.Integer">
+
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and result = #{result}
+
+    </select>
+
+    <select id="queryManagerComplaintsByResult" resultMap="ManagerComplaint">
+
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByIdAndAllResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        <where>manager_id = #{mId}
+            and id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")" index="">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="queryManagerComplaintsByIdAndAllResult" resultMap="ManagerComplaint">
+        select id,
+        complaint_person,
+        right_type,
+        right_name,
+        complaint_url,
+        complaint_platform,
+        result,
+        handle_person,
+        gmt_create,
+        gmt_modified
+        from manager_complaint_info
+        <where>manager_id = #{mId}
+            and id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")" index="">
+                #{item}
+            </foreach>
+        </where>
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByIdAndResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        <where>manager_id = #{mId}
+            and id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")" index="">
+                #{item}
+            </foreach>
+            and result = #{result}
+        </where>
+    </select>
+
+
+    <select id="queryManagerComplaintsByIdAndResult" resultMap="ManagerComplaint">
+        select id,
+        complaint_person,
+        right_type,
+        right_name,
+        complaint_url,
+        complaint_platform,
+        result,
+        handle_person,
+        gmt_create,
+        gmt_modified
+        from manager_complaint_info
+        <where>manager_id = #{mId}
+            and id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")" index="">
+                #{item}
+            </foreach>
+            and result = #{result}
+        </where>
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByComplaintPersonAndAllResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and complaint_person like "%"#{person}"%"
+    </select>
+
+    <select id="queryManagerComplaintsByComplaintPersonAndAllResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and complaint_person like "%"#{person}"%"
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByComplaintPersonAndResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and complaint_person like "%"#{person}"%"
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintsByComplaintPersonAndResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and complaint_person like "%"#{person}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+    <select id="queryTotalNumberForManagerComplaintsByAllRightTypeAndResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintsByAllRightTypeAndResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+    <select id="queryTotalNumberForManagerComplaintsByRightTypeAndAllResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and right_type = #{rightType}
+    </select>
+
+    <select id="queryManagerComplaintsByRightTypeAndAllResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and right_type = #{rightType}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+    <select id="queryTotalNumberForManagerComplaintsByRightTypeAndResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and right_type = #{rightType}
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintsByRightTypeAndResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and right_type = #{rightType}
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByRightNameAndAllResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and right_name like "%"#{rightName}"%"
+    </select>
+
+    <select id="queryManagerComplaintsByRightNameAndAllResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and right_name like "%"#{rightName}"%"
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByRightNameAndResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and right_name like "%"#{rightName}"%"
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintsByRightNameAndResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and right_name like "%"#{rightName}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByComplaintUrlAndAllResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and complaint_url like "%"#{complaintUrl}"%"
+    </select>
+
+    <select id="queryManagerComplaintsByComplaintUrlAndAllResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and complaint_url like "%"#{complaintUrl}"%"
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByComplaintUrlAndResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and complaint_url like "%"#{complaintUrl}"%"
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintsByComplaintUrlAndResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and complaint_url like "%"#{complaintUrl}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByHandlePersonAndAllResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and handle_person like "%"#{handlePerson}"%"
+    </select>
+
+    <select id="queryManagerComplaintsByHandlePersonAndAllResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and handle_person like "%"#{handlePerson}"%"
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByHandlePersonAndResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and handle_person like "%"#{handlePerson}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryManagerComplaintsByHandlePersonAndResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and handle_person like "%"#{handlePerson}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByTimeAndAllResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+    </select>
+
+    <select id="queryManagerComplaintsByTimeAndAllResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintsByTimeAndResult" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintsByTimeAndResult" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where manager_id = #{mId}
+          and ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndAllTypeAndAllState" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndAllTypeAndAllState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndAllTypeAndOneState" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndAllTypeAndOneState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndListIdAndAllTypeAndAllState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        <where>complaints_id=#{complaintsId}
+            and id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")" index="">
+                #{item}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndListIdAndAllTypeAndAllState" resultMap="ManagerComplaint">
+        select id,
+        complaint_person,
+        right_type,
+        right_name,
+        complaint_url,
+        complaint_platform,
+        result,
+        handle_person,
+        gmt_create,
+        gmt_modified
+        from manager_complaint_info
+        <where>complaints_id=#{complaintsId}
+            and id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")" index="">
+                #{item}
+            </foreach>
+        </where>
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndListIdAndAllTypeAndOneState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        <where>complaints_id=#{complaintsId}
+            and id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")" index="">
+                #{item}
+            </foreach>
+            and result = #{result}
+        </where>
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndListIdAndAllTypeAndOneState" resultMap="ManagerComplaint">
+        select id,
+        complaint_person,
+        right_type,
+        right_name,
+        complaint_url,
+        complaint_platform,
+        result,
+        handle_person,
+        gmt_create,
+        gmt_modified
+        from manager_complaint_info
+        <where>complaints_id=#{complaintsId}
+            and id in
+            <foreach collection="ids" item="item" separator="," open="(" close=")" index="">
+                #{item}
+            </foreach>
+            and result = #{result}
+        </where>
+        order by ${time} ${sort}
+        limit #{num1}
+        ,#{num2}
+    </select>
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndComplaintPersonAndAllTypeAndAllState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_person like "%"#{complaintPerson}"%"
+    </select>
+    <select id="queryManagerComplaintByComplaintsIdAndComplaintPersonAndAllTypeAndAllState"
+            resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_person like "%"#{complaintPerson}"%"
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndComplaintPersonAndAllTypeAndOneState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_person like "%"#{complaintPerson}"%"
+          and result = #{result}
+    </select>
+    <select id="queryManagerComplaintByComplaintsIdAndComplaintPersonAndAllTypeAndOneState"
+            resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_person like "%"#{complaintPerson}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndOneTypeAndAllState" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and right_type = #{rightType}
+
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndOneTypeAndAllState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and right_type = #{rightType}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndOneTypeAndOneState" resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and right_type = #{rightType}
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndOneTypeAndOneState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and right_type = #{rightType}
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndRightNameAndAllTypeAndAllState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and right_name like "%"#{rightName}"%"
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndRightNameAndAllTypeAndAllState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and right_name like "%"#{rightName}"%"
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndRightNameAndAllTypeAndOneState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and right_name like "%"#{rightName}"%"
+          and result = #{result}
+    </select>
+    <select id="queryManagerComplaintByComplaintsIdAndRightNameAndAllTypeAndOneState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_url like "%"#{complaintUrl}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndUrlAndAllTypeAndAllState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_url like "%"#{complaintUrl}"%"
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndUrlAndAllTypeAndAllState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_url like "%"#{complaintUrl}"%"
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndUrlAndAllTypeAndOneState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_url like "%"#{complaintUrl}"%"
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndUrlAndAllTypeAndOneState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and complaint_url like "%"#{complaintUrl}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndHandlePersonAndAllTypeAndAllState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and handle_person like "%"#{handlePerson}"%"
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndHandlePersonAndAllTypeAndAllState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and handle_person like "%"#{handlePerson}"%"
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndHandlePersonAndAllTypeAndOneState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and handle_person like "%"#{handlePerson}"%"
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndHandlePersonAndAllTypeAndOneState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and handle_person like "%"#{handlePerson}"%"
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndTimeAndAllTypeAndAllState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndTimeAndAllTypeAndAllState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+
+    <select id="queryTotalNumberForManagerComplaintByComplaintsIdAndTimeAndAllTypeAndOneState"
+            resultType="java.lang.Integer">
+        select count(*)
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+          and result = #{result}
+    </select>
+
+    <select id="queryManagerComplaintByComplaintsIdAndTimeAndAllTypeAndOneState" resultMap="ManagerComplaint">
+        select id,
+               complaint_person,
+               right_type,
+               right_name,
+               complaint_url,
+               complaint_platform,
+               result,
+               handle_person,
+               gmt_create,
+               gmt_modified
+        from manager_complaint_info
+        where complaints_id = #{complaintsId}
+          and ${timeType} &gt; #{startTime}
+          and ${timeType} &lt; #{endTime}
+          and result = #{result}
+        order by ${time} ${sort}
+                 limit #{num1}
+                ,#{num2}
+    </select>
+</mapper>

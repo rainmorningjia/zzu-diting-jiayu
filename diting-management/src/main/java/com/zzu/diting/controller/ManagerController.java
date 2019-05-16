@@ -1,23 +1,30 @@
 package com.zzu.diting.controller;
 
-import com.zzu.diting.dto.MessageDto;
+import com.zzu.diting.entity.ManagerInfo;
 import com.zzu.diting.service.ManagerService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
-@RestController
+@Controller
 @RequestMapping("manager")
 public class ManagerController {
     @Resource
     ManagerService managerService;
 
     @RequestMapping("managerLogin")
-    public MessageDto managerLogin(String name, String password) {
-        MessageDto messageDto = new MessageDto();
-        messageDto.setCode(0);
-        messageDto.setMessage("登录成功");
-        return messageDto;
+    public String managerLogin(String name, String password, HttpSession session) {
+        try {
+            managerService.loginManager(name, password);
+            ManagerInfo managerInfo=new ManagerInfo();
+            managerInfo.setName(name);
+             managerInfo=managerService.getManagerInfo(managerInfo);
+             session.setAttribute("managerId",managerInfo.getId());
+            return "redirect:/main/main.jsp";
+        } catch (RuntimeException e) {
+            session.setAttribute("message", e.getMessage());
+            return "redirect:/Login_M.jsp";
+        }
     }
 }

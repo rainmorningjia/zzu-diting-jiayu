@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * @Author: wb-jcy525678
@@ -31,13 +32,13 @@ public class RightWorkInfoPO implements Serializable {
     /**
      * 审核者id
      */
-    private Long auditorId;
+    private String auditorId;
     /**
      * 权利信息表id
      */
     private Long rightId;
     /**
-     * 工单类型
+     * 类型
      */
     private String jobType;
     /**
@@ -53,7 +54,7 @@ public class RightWorkInfoPO implements Serializable {
      */
     private String rightPerson;
     /**
-     * 工单类型
+     * 作品类型
      */
     private String worksType;
     /**
@@ -64,7 +65,14 @@ public class RightWorkInfoPO implements Serializable {
      * 当前处理人
      */
     private String handlePerson;
+    /**
+     * 审核状态
+     */
     private String auditState;
+    /**
+     * 驳回类型
+     */
+    private String failType;
     /**
      * 驳回原因
      */
@@ -80,7 +88,10 @@ public class RightWorkInfoPO implements Serializable {
      */
     private Byte isTransmit;
     private Byte isDistribution;
-
+    /**
+     * 完成时间
+     */
+    private Timestamp completeTime;
     @Column(name = "gmt_create")
     private Long createTime;
     @Column(name = "gmt_modified")

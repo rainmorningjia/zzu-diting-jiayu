@@ -23,15 +23,23 @@ public class ComplaintsInfo implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
     private Long id;
-    private Long managerId;
+    private String managerId;
+    private Long complaintPersonId;
     private String complaintPerson;
     private String rightType;
+    private Long rightId;
     private String rightName;
+    /**
+     *投诉数量
+     */
     private Byte complaintNumber;
     /**
      * 处理进度
      */
     private Double processing;
+    /**
+     * 备注
+     */
     private String remark;
     @Column(name = "gmt_create")
     private Long createTime;

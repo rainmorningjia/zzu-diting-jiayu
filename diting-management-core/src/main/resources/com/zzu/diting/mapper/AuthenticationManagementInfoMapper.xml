@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mappers.AuthenticationDistributionManagementInfoMapper">
+    <resultMap id="authenManageInfo" type="com.zzu.diting.entity.AuthenticationDistributionManagementInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="DISTRIBUTION_ID" property="distributionID" jdbcType="VARCHAR"/>
+        <result column="MANAGER_ID" property="managerId" jdbcType="VARCHAR"/>
+        <result column="COMPLAINT_PLATFORM" property="complaintPlatform" jdbcType="VARCHAR"/>
+        <result column="operator_name" property="operatorName" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="createTime" jdbcType="BIGINT"/>
+        <result column="gmt_modified" property="updateTime" jdbcType="BIGINT"/>
+    </resultMap>
+
+</mapper>

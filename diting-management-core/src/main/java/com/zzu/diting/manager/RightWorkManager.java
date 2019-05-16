@@ -78,7 +78,7 @@ public interface RightWorkManager {
      * @param sort  排序方式
      * @return 权利工单集合
      */
-    List<RightWorkInfoPO> getWorksByMIdAndState(@Param("mId") Long mId, @Param("state") Long state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndState(@Param("mId") String mId, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id查询已处理进度的全部权利工单
@@ -89,34 +89,34 @@ public interface RightWorkManager {
      * @param sort 排序方式
      * @return 权利工单集合
      */
-    List<RightWorkInfoPO> getWorksByMIdAndProcessedState(@Param("mId") Long mId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndProcessedState(@Param("mId") String mId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndOrderTypeAndAllProcessed(@Param("mId") Long mId, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndOrderTypeAndAllProcessed(@Param("mId") String mId, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndOrderTypeAndState(@Param("mId") Long mId, @Param("orderType") String orderType, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndOrderTypeAndState(@Param("mId") String mId, @Param("orderType") String orderType, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndRightTypeAndAllProcessed(@Param("mId") Long mId, @Param("rightType") String rightType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndRightTypeAndAllProcessed(@Param("mId") String mId, @Param("rightType") String rightType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndRightTypeAndState(@Param("mId") Long mId, @Param("rightType") String rightType, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndRightTypeAndState(@Param("mId") String mId, @Param("rightType") String rightType, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndRightNameAndAllProcessed(@Param("mId") Long mId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndRightNameAndAllProcessed(@Param("mId") String mId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndRightNameAndState(@Param("mId") Long mId, @Param("rightName") String rightName, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndRightNameAndState(@Param("mId") String mId, @Param("rightName") String rightName, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndRightPersonAndAllProcessed(@Param("mId") Long mId, @Param("rightPerson") String rightPerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndRightPersonAndAllProcessed(@Param("mId") String mId, @Param("rightPerson") String rightPerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndRightPersonAndState(@Param("mId") Long mId, @Param("rightPerson") String rightPerson, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndRightPersonAndState(@Param("mId") String mId, @Param("rightPerson") String rightPerson, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndUserTypeAndAllProcessed(@Param("mId") Long mId, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndUserTypeAndAllProcessed(@Param("mId") String mId, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndUserTypeAndState(@Param("mId") Long mId, @Param("userType") String userType, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndUserTypeAndState(@Param("mId") String mId, @Param("userType") String userType, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndHandlePersonAndAllProcessed(@Param("mId") Long mId, @Param("handlerPerson") String handlerPerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndHandlePersonAndAllProcessed(@Param("mId") String mId, @Param("handlerPerson") String handlerPerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndHandlePersonAndState(@Param("mId") Long mId, @Param("handlerPerson") String handlerPerson, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndHandlePersonAndState(@Param("mId") String mId, @Param("handlerPerson") String handlerPerson, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndTimeTypeAndAllProcessed(@Param("mId") Long mId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndTimeTypeAndAllProcessed(@Param("mId") String mId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    List<RightWorkInfoPO> getWorksByMIdAndTimeTypeAndState(@Param("mId") Long mId, @Param("timeType") String timeType, @Param("state") String state, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<RightWorkInfoPO> getWorksByMIdAndTimeTypeAndState(@Param("mId") String mId, @Param("timeType") String timeType, @Param("state") String state, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
 }

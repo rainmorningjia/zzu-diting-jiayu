@@ -12,11 +12,10 @@ import java.util.List;
 
 /**
  * @author :wb-jcy525678
- * @description:
  * @date : 2019/4/3 10:44
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class AuthenticationManagementManagerImpl implements AuthenticationManagementInfoManager {
     @Resource
     AuthenticationDistributionManagementInfoMapper authenticationManagementInfoMapper;
@@ -32,15 +31,17 @@ public class AuthenticationManagementManagerImpl implements AuthenticationManage
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public AuthenticationDistributionManagementInfoPO getAuthenticationManagementInfoById(Long id) {
-        AuthenticationDistributionManagementInfoPO authenticationManagementInfoPO=authenticationManagementInfoMapper.selectByPrimaryKey(id);
+        AuthenticationDistributionManagementInfoPO authenticationManagementInfoPO;
+        authenticationManagementInfoPO = authenticationManagementInfoMapper.selectByPrimaryKey(id);
         return authenticationManagementInfoPO;
     }
 
     @Override
     public AuthenticationDistributionManagementInfoPO getAuthenticationManagementInfo(AuthenticationDistributionManagementInfoPO authenticationManagementInfoPO) {
-        AuthenticationDistributionManagementInfoPO authenticationManagementInfoPO1=authenticationManagementInfoMapper.selectOne(authenticationManagementInfoPO);
+        AuthenticationDistributionManagementInfoPO authenticationManagementInfoPO1;
+        authenticationManagementInfoPO1 = authenticationManagementInfoMapper.selectOne(authenticationManagementInfoPO);
         return authenticationManagementInfoPO1;
     }
 
@@ -50,9 +51,10 @@ public class AuthenticationManagementManagerImpl implements AuthenticationManage
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public List<AuthenticationDistributionManagementInfoPO> getAllAuthenticationManagementInfo() {
-        List<AuthenticationDistributionManagementInfoPO> list=authenticationManagementInfoMapper.selectAll();
+        List<AuthenticationDistributionManagementInfoPO> list;
+        list = authenticationManagementInfoMapper.selectAll();
         return list;
     }
 }

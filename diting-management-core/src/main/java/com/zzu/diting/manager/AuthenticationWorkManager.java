@@ -204,7 +204,7 @@ public interface AuthenticationWorkManager  {
      * @param sort  排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getAllWorksByMIdAndPendingDisposalAndState(@Param("aId") Long aId, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getAllWorksByMIdAndPendingDisposalAndState(@Param("aId") String aId, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和工单id和处理类型查询全部工单
@@ -218,7 +218,7 @@ public interface AuthenticationWorkManager  {
      * @param sort   排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndWorkIdAndState(@Param("aId") Long aId, @Param("state") String state, @Param("workId") Long workId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndWorkIdAndState(@Param("aId") String aId, @Param("state") String state, @Param("workId") Long workId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和工单类型和处理类型查询全部工单
@@ -232,7 +232,7 @@ public interface AuthenticationWorkManager  {
      * @param sort      排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndOrderTypeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndOrderTypeAndState(@Param("aId") String aId, @Param("state") String state, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和优酷id和处理类型查询全部工单
@@ -246,7 +246,7 @@ public interface AuthenticationWorkManager  {
      * @param sort   排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndUserIdAndState(@Param("aId") Long aId, @Param("state") String state, @Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndUserIdAndState(@Param("aId") String aId, @Param("state") String state, @Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和昵称和处理类型查询全部工单
@@ -260,7 +260,7 @@ public interface AuthenticationWorkManager  {
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndNicknameAndState(@Param("aId") Long aId, @Param("state") String state, @Param("nickname") String nickname, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndNicknameAndState(@Param("aId") String aId, @Param("state") String state, @Param("nickname") String nickname, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和真实姓名和处理类型查询全部工单
@@ -274,7 +274,7 @@ public interface AuthenticationWorkManager  {
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndRealNameAndState(@Param("aId") Long aId, @Param("state") String state, @Param("realName") String realName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndRealNameAndState(@Param("aId") String aId, @Param("state") String state, @Param("realName") String realName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和用户类型和处理类型查询全部工单
@@ -288,7 +288,7 @@ public interface AuthenticationWorkManager  {
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndUserTypeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndUserTypeAndState(@Param("aId") String aId, @Param("state") String state, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和用户类型和处理类型查询全部工单
@@ -302,7 +302,7 @@ public interface AuthenticationWorkManager  {
      * @param sort         排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndHandlePersonAndState(@Param("aId") Long aId, @Param("state") String state, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndHandlePersonAndState(@Param("aId") String aId, @Param("state") String state, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和用户类型和处理类型查询全部工单
@@ -318,7 +318,7 @@ public interface AuthenticationWorkManager  {
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndTimeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndPendingDisposalAndTimeAndState(@Param("aId") String aId, @Param("state") String state, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和用户类型和已处理类型查询全部工单
@@ -333,7 +333,7 @@ public interface AuthenticationWorkManager  {
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndTimeAndAllState(@Param("aId") Long aId, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndTimeAndAllState(@Param("aId") String aId, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和用户类型和已处理类型查询全部工单
@@ -346,7 +346,7 @@ public interface AuthenticationWorkManager  {
      * @param sort         排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndHandlePersonAndAllState(@Param("aId") Long aId, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndHandlePersonAndAllState(@Param("aId") String aId, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和用户类型和已处理类型查询全部工单
@@ -359,7 +359,7 @@ public interface AuthenticationWorkManager  {
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndUserTypeAndAllState(@Param("aId") Long aId, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndUserTypeAndAllState(@Param("aId") String aId, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和真实姓名和已处理类型查询全部工单
@@ -372,7 +372,7 @@ public interface AuthenticationWorkManager  {
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndRealNameAndAllState(@Param("aId") Long aId, @Param("realName") String realName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndRealNameAndAllState(@Param("aId") String aId, @Param("realName") String realName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和昵称和已处理处理类型查询全部工单
@@ -385,7 +385,7 @@ public interface AuthenticationWorkManager  {
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndNicknameAndAllState(@Param("aId") Long aId, @Param("nickname") String nickname, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndNicknameAndAllState(@Param("aId") String aId, @Param("nickname") String nickname, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
     /**
      * 根据审核者id和工单类型和处理类型查询全部工单
      *
@@ -397,6 +397,6 @@ public interface AuthenticationWorkManager  {
      * @param sort      排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndOrderTypeAndAllState(@Param("aId") Long aId, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> getWorksByMIdAndProcessedAndOrderTypeAndAllState(@Param("aId") String aId, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
 }

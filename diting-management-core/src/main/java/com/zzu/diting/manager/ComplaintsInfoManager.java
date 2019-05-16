@@ -26,7 +26,7 @@ public interface ComplaintsInfoManager {
      * @param sort 排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsAll(@Param("mId") Long mId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsAll(@Param("mId") String mId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
 
     /**
@@ -39,7 +39,7 @@ public interface ComplaintsInfoManager {
      * @param sort 排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByProcessing(@Param("mId") Long mId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByProcessing(@Param("mId") String mId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 查询特定已完成处理进度状态投诉集以特定时间排序
@@ -51,7 +51,7 @@ public interface ComplaintsInfoManager {
      * @param sort 排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByProcessingComplete(@Param("mId") Long mId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByProcessingComplete(@Param("mId") String mId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据投诉集id精准查询
@@ -60,7 +60,7 @@ public interface ComplaintsInfoManager {
      * @param cId 投诉集id
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByComId(@Param("mId") Long mId, @Param("cId") Long cId);
+    List<ComplaintsInfo> getComplaintsByComId(@Param("mId") String mId, @Param("cId") Long cId);
 
     /**
      * 通过投诉人模糊查询全部处理结果以特定时间排序
@@ -73,7 +73,7 @@ public interface ComplaintsInfoManager {
      * @param sort   排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByPersonAllPro(@Param("mId") Long mId, @Param("person") String person, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByPersonAllPro(@Param("mId") String mId, @Param("person") String person, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过投诉人模糊查询处理中以特定时间排序
@@ -87,7 +87,7 @@ public interface ComplaintsInfoManager {
      * @return 投诉集集合
      */
 
-    List<ComplaintsInfo> getComplaintsByPersonAndProcessing(@Param("mId") Long mId, @Param("person") String person, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByPersonAndProcessing(@Param("mId") String mId, @Param("person") String person, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过投诉人模糊查询处理完成以特定时间排序
@@ -100,7 +100,7 @@ public interface ComplaintsInfoManager {
      * @param sort   排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByPersonAndProcessComplete(@Param("mId") Long mId, @Param("person") String person, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByPersonAndProcessComplete(@Param("mId") String mId, @Param("person") String person, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过投诉集id集合模糊查询全部处理以特定时间排序
@@ -113,7 +113,7 @@ public interface ComplaintsInfoManager {
      * @param sort 排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByListComplaintsIdAll(@Param("mId") Long mId, @Param("ComIdList") List<Long> list, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByListComplaintsIdAll(@Param("mId") String mId, @Param("ComIdList") List<Long> list, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过投诉集id集合模糊查询处理中以特定时间排序
@@ -126,7 +126,7 @@ public interface ComplaintsInfoManager {
      * @param sort 排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByListComplaintsIdProcessing(@Param("mId") Long mId, @Param("ComIdList") List<Long> list, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByListComplaintsIdProcessing(@Param("mId") String mId, @Param("ComIdList") List<Long> list, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过投诉集id集合模糊查询处理完成以特定时间排序
@@ -139,7 +139,7 @@ public interface ComplaintsInfoManager {
      * @param sort 排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByListComplaintsIdComplete(@Param("mId") Long mId, @Param("ComIdList") List<Long> list, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByListComplaintsIdComplete(@Param("mId") String mId, @Param("ComIdList") List<Long> list, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过投诉类型查询全部处理进度以特定时间排序
@@ -152,7 +152,7 @@ public interface ComplaintsInfoManager {
      * @param sort          排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByComplaintTypeAll(@Param("mId") Long mId, @Param("complaintType") String complaintType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByComplaintTypeAll(@Param("mId") String mId, @Param("complaintType") String complaintType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过投诉类型查询处理中以特定时间排序
@@ -165,7 +165,7 @@ public interface ComplaintsInfoManager {
      * @param sort          排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByComplaintTypeProcessing(@Param("mId") Long mId, @Param("complaintType") String complaintType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByComplaintTypeProcessing(@Param("mId") String mId, @Param("complaintType") String complaintType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过投诉类型查询处理完成以特定时间排序
@@ -178,7 +178,7 @@ public interface ComplaintsInfoManager {
      * @param sort          排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByComplaintTypeComplete(@Param("mId") Long mId, @Param("complaintType") String complaintType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByComplaintTypeComplete(@Param("mId") String mId, @Param("complaintType") String complaintType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过涉及权利模糊查询全部处理进度以特定时间排序
@@ -191,7 +191,7 @@ public interface ComplaintsInfoManager {
      * @param sort      排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByRightNameAll(@Param("mId") Long mId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByRightNameAll(@Param("mId") String mId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过涉及权利模糊查询处理中以特定时间排序
@@ -204,7 +204,7 @@ public interface ComplaintsInfoManager {
      * @param sort      排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByRightNameProcessing(@Param("mId") Long mId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByRightNameProcessing(@Param("mId") String mId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过涉及权利模糊查询处理完成以特定时间排序
@@ -217,7 +217,7 @@ public interface ComplaintsInfoManager {
      * @param sort      排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByRightNameComplete(@Param("mId") Long mId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByRightNameComplete(@Param("mId") String mId, @Param("rightName") String rightName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过涉及创建时间查询全部处理以特定时间排序
@@ -232,7 +232,7 @@ public interface ComplaintsInfoManager {
      * @param sort      排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByTimeAll(@Param("mId") Long mId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByTimeAll(@Param("mId") String mId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过涉及创建时间查询处理中以特定时间排序
@@ -247,7 +247,7 @@ public interface ComplaintsInfoManager {
      * @param sort      排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByTimeProcessing(@Param("mId") Long mId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByTimeProcessing(@Param("mId") String mId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 通过涉及创建时间查询处理完成以特定时间排序
@@ -262,6 +262,6 @@ public interface ComplaintsInfoManager {
      * @param sort      排序方式
      * @return 投诉集集合
      */
-    List<ComplaintsInfo> getComplaintsByTimeComplete(@Param("mId") Long mId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<ComplaintsInfo> getComplaintsByTimeComplete(@Param("mId") String mId, @Param("timeType") String timeType, @Param("startTime") Long startTime, @Param("endTime") Long endTime, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
 }

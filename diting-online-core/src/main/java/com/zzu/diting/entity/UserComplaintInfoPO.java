@@ -39,6 +39,7 @@ public class UserComplaintInfoPO implements Serializable {
      * 处理状态
      */
     private String processState;
+    private String reason;
     @Column(name = "gmt_create")
     private Long createTime;
     @Column(name = "gmt_modified")

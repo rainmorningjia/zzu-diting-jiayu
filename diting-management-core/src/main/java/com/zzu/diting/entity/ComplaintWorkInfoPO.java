@@ -46,11 +46,29 @@ public class ComplaintWorkInfoPO implements Serializable {
      * 驳回原因1
      */
     private String reasonOne;
+    /**
+     * 通过等级
+     */
     private String handleRank;
+    /**
+     * 补充说明
+     */
     private String explanation;
+    /**
+     * 驳回类型处理组
+     */
     private String rejectTypeTwo;
+    /**
+     * 处理组驳回原因
+     */
     private String reasonTwo;
+    /**
+     * 处理组通过等级
+     */
     private String handleMode;
+    /**
+     * 处理组补充信息
+     */
     private String specificInformation;
     private String infoSource;
     /**
@@ -61,5 +79,12 @@ public class ComplaintWorkInfoPO implements Serializable {
     private Long updateTime;
     @Column(name = "gmt_create")
     private Long createTime;
-    private Timestamp completeTime;
+    /**
+     * 处理完成时间1
+     */
+    private Timestamp completeTime1;
+    /**
+     * 处理完成时间2
+     */
+    private Timestamp completeTime2;
 }

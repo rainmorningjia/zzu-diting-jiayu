@@ -45,7 +45,6 @@ public class UserAuthenticationController {
     @RequestMapping("userAuthenticationInfo")
     public UserAuthenticationInfoDto getUserAuthenticationInfoByUserId(HttpServletRequest request) {
         Long userId = (Long) request.getSession().getAttribute("userId");
-        UserAuthenticationFormDto userAuthenticationFormDto = new UserAuthenticationFormDto();
         UserAuthenticationInfoDto userAuthenticationInfoDto = new UserAuthenticationInfoDto();
         OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = userAuthenticationService.getUserAuthenticationOrganizationByUserId(userId);
         if (organizationAuthenticationInfoPO != null) {

@@ -23,8 +23,8 @@ public class ComplaintDistributionManagementInfoPO implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
     private Long id;
-    private Long distributionId;
-    private Long managerId;
+    private String distributionId;
+    private String managerId;
     private String rightType;
     private String node;
     private String complaintPlatform;

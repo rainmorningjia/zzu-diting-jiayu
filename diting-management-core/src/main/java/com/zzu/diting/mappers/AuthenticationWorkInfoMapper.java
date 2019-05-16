@@ -1,8 +1,9 @@
 package com.zzu.diting.mappers;
 
 import com.zzu.diting.entity.AuthenticationWorkInfoPO;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ import java.util.List;
  * @description: 认证审核工单表数据查询接口
  * @date : 2019/3/25 21:52
  */
-@org.apache.ibatis.annotations.Mapper
-public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkInfoPO> {
+@Mapper
+public interface AuthenticationWorkInfoMapper extends BaseMapper<AuthenticationWorkInfoPO> {
 
     Integer queryTotalNumberForAllWorksAndAllAuditState();
 
@@ -227,7 +228,7 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      */
     List<AuthenticationWorkInfoPO> queryAllWorksByTimeAndState(@Param("timeType") String timeType, @Param("state") String state, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForAllWorksByMIdAndPendingDisposalAndState(@Param("aId") Long aId, @Param("state") String state);
+    Integer queryTotalNumberForAllWorksByMIdAndPendingDisposalAndState(@Param("aId") String aId, @Param("state") String state);
 
     /**
      * 根据审核者id和处理类型查询全部工单
@@ -240,7 +241,7 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort  排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryAllWorksByMIdAndPendingDisposalAndState(@Param("aId") Long aId, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryAllWorksByMIdAndPendingDisposalAndState(@Param("aId") String aId, @Param("state") String state, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
     /**
      * 根据审核者id和工单id和处理类型查询全部工单
@@ -254,9 +255,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort   排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndWorkIdAndState(@Param("aId") Long aId, @Param("state") String state, @Param("workId") Long workId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndWorkIdAndState(@Param("aId") String aId, @Param("state") String state, @Param("workId") Long workId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndOrderTypeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("orderType") String orderType);
+    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndOrderTypeAndState(@Param("aId") String aId, @Param("state") String state, @Param("orderType") String orderType);
 
     /**
      * 根据审核者id和工单类型和处理类型查询全部工单
@@ -270,9 +271,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort      排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndOrderTypeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndOrderTypeAndState(@Param("aId") String aId, @Param("state") String state, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndUserIdAndState(@Param("aId") Long aId, @Param("state") String state, @Param("userId") Long userId);
+    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndUserIdAndState(@Param("aId") String aId, @Param("state") String state, @Param("userId") Long userId);
 
     /**
      * 根据审核者id和优酷id和处理类型查询全部工单
@@ -286,9 +287,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort   排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndUserIdAndState(@Param("aId") Long aId, @Param("state") String state, @Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndUserIdAndState(@Param("aId") String aId, @Param("state") String state, @Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndNicknameAndState(@Param("aId") Long aId, @Param("state") String state, @Param("nickname") String nickname);
+    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndNicknameAndState(@Param("aId") String aId, @Param("state") String state, @Param("nickname") String nickname);
 
     /**
      * 根据审核者id和昵称和处理类型查询全部工单
@@ -302,9 +303,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndNicknameAndState(@Param("aId") Long aId, @Param("state") String state, @Param("nickname") String nickname, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndNicknameAndState(@Param("aId") String aId, @Param("state") String state, @Param("nickname") String nickname, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndRealNameAndState(@Param("aId") Long aId, @Param("state") String state, @Param("realName") String realName);
+    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndRealNameAndState(@Param("aId") String aId, @Param("state") String state, @Param("realName") String realName);
 
     /**
      * 根据审核者id和真实姓名和处理类型查询全部工单
@@ -318,9 +319,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndRealNameAndState(@Param("aId") Long aId, @Param("state") String state, @Param("realName") String realName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndRealNameAndState(@Param("aId") String aId, @Param("state") String state, @Param("realName") String realName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndUserTypeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("userType") String userType);
+    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndUserTypeAndState(@Param("aId") String aId, @Param("state") String state, @Param("userType") String userType);
 
     /**
      * 根据审核者id和用户类型和处理类型查询全部工单
@@ -334,9 +335,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndUserTypeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndUserTypeAndState(@Param("aId") String aId, @Param("state") String state, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndHandlePersonAndState(@Param("aId") Long aId, @Param("state") String state, @Param("handlePerson") String handlePerson);
+    Integer queryTotalNumberForWorksByMIdAndPendingDisposalAndHandlePersonAndState(@Param("aId") String aId, @Param("state") String state, @Param("handlePerson") String handlePerson);
 
     /**
      * 根据审核者id和用户类型和处理类型查询全部工单
@@ -350,9 +351,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort         排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndHandlePersonAndState(@Param("aId") Long aId, @Param("state") String state, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndHandlePersonAndState(@Param("aId") String aId, @Param("state") String state, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberWorksByMIdAndPendingDisposalAndTimeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2);
+    Integer queryTotalNumberWorksByMIdAndPendingDisposalAndTimeAndState(@Param("aId") String aId, @Param("state") String state, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2);
 
     /**
      * 根据审核者id和用户类型和处理类型查询全部工单
@@ -368,9 +369,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndTimeAndState(@Param("aId") Long aId, @Param("state") String state, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndPendingDisposalAndTimeAndState(@Param("aId") String aId, @Param("state") String state, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndProcessedAndTimeAndAllState(@Param("aId") Long aId, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2);
+    Integer queryTotalNumberForWorksByMIdAndProcessedAndTimeAndAllState(@Param("aId") String aId, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2);
 
     /**
      * 根据审核者id和用户类型和已处理类型查询全部工单
@@ -385,9 +386,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndTimeAndAllState(@Param("aId") Long aId, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndTimeAndAllState(@Param("aId") String aId, @Param("timeType") String timeType, @Param("t1") Long t1, @Param("t2") Long t2, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndProcessedAndHandlePersonAndAllState(@Param("aId") Long aId, @Param("handlePerson") String handlePerson);
+    Integer queryTotalNumberForWorksByMIdAndProcessedAndHandlePersonAndAllState(@Param("aId") String aId, @Param("handlePerson") String handlePerson);
 
     /**
      * 根据审核者id和用户类型和已处理类型查询全部工单
@@ -400,9 +401,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort         排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndHandlePersonAndAllState(@Param("aId") Long aId, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndHandlePersonAndAllState(@Param("aId") String aId, @Param("handlePerson") String handlePerson, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndProcessedAndUserTypeAndAllState(@Param("aId") Long aId, @Param("userType") String userType);
+    Integer queryTotalNumberForWorksByMIdAndProcessedAndUserTypeAndAllState(@Param("aId") String aId, @Param("userType") String userType);
 
     /**
      * 根据审核者id和用户类型和已处理类型查询全部工单
@@ -415,9 +416,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndUserTypeAndAllState(@Param("aId") Long aId, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndUserTypeAndAllState(@Param("aId") String aId, @Param("userType") String userType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndProcessedAndRealNameAndAllState(@Param("aId") Long aId, @Param("realName") String realName);
+    Integer queryTotalNumberForWorksByMIdAndProcessedAndRealNameAndAllState(@Param("aId") String aId, @Param("realName") String realName);
 
     /**
      * 根据审核者id和真实姓名和已处理类型查询全部工单
@@ -430,9 +431,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndRealNameAndAllState(@Param("aId") Long aId, @Param("realName") String realName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndRealNameAndAllState(@Param("aId") String aId, @Param("realName") String realName, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndProcessedAndNicknameAndAllState(@Param("aId") Long aId, @Param("nickname") String nickname);
+    Integer queryTotalNumberForWorksByMIdAndProcessedAndNicknameAndAllState(@Param("aId") String aId, @Param("nickname") String nickname);
 
     /**
      * 根据审核者id和昵称和已处理处理类型查询全部工单
@@ -445,9 +446,9 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort     排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndNicknameAndAllState(@Param("aId") Long aId, @Param("nickname") String nickname, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndNicknameAndAllState(@Param("aId") String aId, @Param("nickname") String nickname, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorksByMIdAndProcessedAndOrderTypeAndAllState(@Param("aId") Long aId, @Param("orderType") String orderType);
+    Integer queryTotalNumberForWorksByMIdAndProcessedAndOrderTypeAndAllState(@Param("aId") String aId, @Param("orderType") String orderType);
 
     /**
      * 根据审核者id和工单类型和处理类型查询全部工单
@@ -460,9 +461,14 @@ public interface AuthenticationWorkInfoMapper extends Mapper<AuthenticationWorkI
      * @param sort      排序方式
      * @return 权利工单集合
      */
-    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndOrderTypeAndAllState(@Param("aId") Long aId, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorksByMIdAndProcessedAndOrderTypeAndAllState(@Param("aId") String aId, @Param("orderType") String orderType, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
 
-    Integer queryTotalNumberForWorkByMIdAndProcessedAndUserIdAndAllState(@Param("aId") Long aId, @Param("userId") Long userId);
+    Integer queryTotalNumberForWorkByMIdAndProcessedAndUserIdAndAllState(@Param("aId") String aId, @Param("userId") Long userId);
 
-    List<AuthenticationWorkInfoPO> queryWorkByMIdAndProcessedAndUserIdAndAllState(@Param("aId") Long aId, @Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+    List<AuthenticationWorkInfoPO> queryWorkByMIdAndProcessedAndUserIdAndAllState(@Param("aId") String aId, @Param("userId") Long userId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+
+    Integer queryTotalNumberForWorkByMIdAndProcessedAndAllState(@Param("aId") String aId);
+
+    List<AuthenticationWorkInfoPO> queryWorkByMIdAndProcessedAndAllState(@Param("aId") String aId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("time") String time, @Param("sort") String sort);
+
 }

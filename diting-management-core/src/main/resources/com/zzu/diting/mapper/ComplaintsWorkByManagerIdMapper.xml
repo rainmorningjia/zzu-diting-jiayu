@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzu.diting.mappers.ComplaintsWorkByManagerIdMapper">
+    <resultMap id="complaintsWork" type="com.zzu.diting.entity.ComplaintsWorkInfoPO">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="COMPLAINTS_ID" property="complaintsId" jdbcType="BIGINT"/>
+        <result column="COMPLAINT_PERSON_ID" property="complaintPersonId" jdbcType="BIGINT"/>
+        <result column="HANDLE_PERSON_ID" property="handlePersonId" jdbcType="VARCHAR"/>
+        <result column="INFO_SOURCE" property="infoSource" jdbcType="VARCHAR"/>
+        <result column="COMPLAINT_PERSON" property="complaintPerson" jdbcType="VARCHAR"/>
+        <result column="RELATION_RIGHT" property="relationRight" jdbcType="VARCHAR"/>
+        <result column="RIGHT_TYPE" property="complaintType" jdbcType="VARCHAR"/>
+        <result column="COMPLAINT_NUMBER" property="complaintNumber" jdbcType="VARCHAR"/>
+        <result column="NODE" property="node" jdbcType="VARCHAR"/>
+        <result column="PROCESSING" property="processing" jdbcType="VARCHAR"/>
+        <result column="HANDLE_PERSON" property="handlePerson" jdbcType="VARCHAR"/>
+        <result column="HANDLE_RECORD" property="handleRecord" jdbcType="VARCHAR"/>
+        <result column="GMT_CREATE" property="createTime" jdbcType="BIGINT"/>
+        <result column="GMT_MODIFIED" property="updateTime" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="complaintsWorkInfo">
+        ID
+        ,
+        COMPLAINT_PERSON,
+        RIGHT_TYPE,
+        RELATION_RIGHT,
+        COMPLAINT_NUMBER,
+        PROCESSING,
+        NODE,
+        HANDLE_PERSON,
+        GMT_CREATE,
+        GMT_MODIFIED
+    </sql>
+
+    <insert id="insertComplaintsWork" parameterType="com.zzu.diting.entity.ComplaintsWorkInfoPO"
+            useGeneratedKeys="true" keyProperty="id" databaseId="mysql">
+        insert into complaints_work_info (complaints_id, complaint_person, complaint_person_id, handle_person_id,
+                                          handle_person, info_source, relation_right, right_type, complaint_number,
+                                          node, processing, is_distribution, handle_record, gmt_create, gmt_modified)
+        values (#{complaintsId}, #{complaintPerson}, #{complaintPersonId}, #{handlePersonId}, #{handlePerson},
+                #{infoSource},
+                #{relationRight}, #{complaintType}, #{complaintNumber}, #{node}, #{processing}, #{isDistribution},
+                #{handleRecord}, #{createTime}, #{updateTime})
+    </insert>
+    <select id="queryTotalNumberForWorksByAllNodeAndPendingAndManagerIdAndType" resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and processing &lt; 1
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndPendingAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and processing &lt; 1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndPendingAndManagerIdAndType" resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and processing &lt; 1
+          and node = #{node}
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndPendingAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and processing &lt; 1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndProcessedAndManagerIdAndType" resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and processing = 1
+          and right_type = #{rightType}
+    </select>
+
+    <select id="queryWorksByAllNodeAndProcessedAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and processing=1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndProcessedAndManagerIdAndType" resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and processing = 1
+          and node = #{node}
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndProcessedAndManagerIdAndTypeAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and processing=1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndPendingAndWorkIdsAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+        count(*)
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.id in  <foreach
+            collection="workIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing&lt;1
+        and right_type=#{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndPendingAndWorkIdsAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.id in  <foreach
+            collection="workIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing&lt;1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndPendingAndWorkIdsAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+        count(*)
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.id in  <foreach
+            collection="workIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing&lt;1
+        and node=#{node}
+        and right_type=#{rightType}
+    </select>
+
+    <select id="queryWorksByOneNodeAndPendingAndWorkIdsAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.id in  <foreach
+            collection="workIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing&lt;1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndProcessedAndWorkIdsAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+        count(*)
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.id in  <foreach
+            collection="workIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing=1
+        and right_type=#{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndProcessedAndWorkIdsAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.id in  <foreach
+            collection="workIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing=1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndProcessedAndWorkIdsAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+        count(*)
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.id in  <foreach
+            collection="workIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing=1
+        and node=#{node}
+        and right_type=#{rightType}
+    </select>
+
+    <select id="queryWorksByOneNodeAndProcessedAndWorkIdsAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.id in  <foreach
+            collection="workIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing=1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndPendingAndCommentIdAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+        count(*)
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.comment_id in  <foreach
+            collection="commentIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing&lt;1
+        and right_type=#{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndPendingAndCommentIdAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.comment_id in  <foreach
+            collection="commentIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing&lt;1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndPendingAndCommentIdAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+        count(*)
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.comment_id in  <foreach
+            collection="commentIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing&lt;1
+        and node=#{node}
+        and right_type=#{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndPendingAndCommentIdAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.comment_id in  <foreach
+            collection="commentIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing&lt;1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndProcessedAndCommentIdAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+        count(*)
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.comment_id in  <foreach
+            collection="commentIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing=1
+        and right_type=#{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndProcessedAndCommentIdAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.comment_id in  <foreach
+            collection="commentIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing=1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndProcessedAndCommentIdAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+        count(*)
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.comment_id in  <foreach
+            collection="commentIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing=1
+        and right_type=#{rightType}
+        and node=#{node}
+    </select>
+    <select id="queryWorksByOneNodeAndProcessedAndCommentIdAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and id in (
+        select complaints_work_id from complaint_work_info where complaint_work_info.comment_id in  <foreach
+            collection="commentIds" item="item" separator="," open="(" close=")" index="">
+        #{item}</foreach>)
+        and processing=1
+        and right_type=#{rightType}
+        and node=#{node}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndPendingAndComplaintPersonAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and complaint_person like "%"#{complaintPerson}"%"
+          and processing&lt;1
+          and right_type=#{rightType}
+    </select>
+
+    <select id="queryWorksByAllNodeAndPendingAndComplaintPersonAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and complaint_person like "%"#{complaintPerson}"%"
+        and processing&lt;1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndPendingAndComplaintPersonAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and complaint_person like "%"#{complaintPerson}"%"
+          and processing&lt;1
+          and node=#{node}
+          and right_type=#{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndPendingAndComplaintPersonAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and complaint_person like "%"#{complaintPerson}"%"
+        and processing&lt;1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndProcessedAndComplaintPersonAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and complaint_person like "%"#{complaintPerson}"%"
+          and processing=1
+          and right_type=#{rightType}
+    </select>
+
+    <select id="queryWorksByAllNodeAndProcessedAndComplaintPersonAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and complaint_person like "%"#{complaintPerson}"%"
+        and processing=1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndProcessedAndComplaintPersonAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and complaint_person like "%"#{complaintPerson}"%"
+          and processing=1
+          and node=#{node}
+          and right_type=#{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndProcessedAndComplaintPersonAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and complaint_person like "%"#{complaintPerson}"%"
+        and processing=1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndPendingAndComplaintTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and right_type = #{complaintType}
+          and processing &lt; 1
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndPendingAndComplaintTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and right_type=#{complaintType}
+        and processing&lt;1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndPendingAndComplaintTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and right_type = #{complaintType}
+          and processing &lt; 1
+          and node = #{node}
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndPendingAndComplaintTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and right_type=#{complaintType}
+        and processing&lt;1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndProcessedAndComplaintTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and right_type = #{complaintType}
+          and processing = 1
+          and right_type = #{rightType}
+    </select>
+
+    <select id="queryWorksByAllNodeAndProcessedAndComplaintTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and right_type=#{complaintType}
+        and processing=1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndProcessedAndComplaintTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and right_type = #{complaintType}
+          and processing = 1
+          and node = #{node}
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndProcessedAndComplaintTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and right_type=#{complaintType}
+        and processing=1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndPendingAndRelationTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and relation_right = #{relationType}
+          and processing &lt; 1
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndPendingAndRelationTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and relation_right=#{relationType}
+        and processing&lt;1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndPendingAndRelationTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and relation_right = #{relationType}
+          and node = #{node}
+          and processing &lt; 1
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndPendingAndRelationTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and relation_right=#{relationType}
+        and node=#{node}
+        and processing&lt;1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndProcessedAndRelationTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and relation_right = #{relationType}
+          and processing = 1
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndProcessedAndRelationTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and relation_right=#{relationType}
+        and processing=1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndProcessedAndRelationTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and relation_right = #{relationType}
+          and processing = 1
+          and node = #{node}
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndProcessedAndRelationTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and relation_right=#{relationType}
+        and processing=1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndPendingAndTimeTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and ${time} &gt; #{startTime}
+          and ${time} &lt; #{endTime}
+          and processing &lt; 1
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndPendingAndTimeTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and ${time}&gt;#{startTime}
+        and ${time}&lt;#{endTime}
+        and processing&lt;1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndPendingAndTimeTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and ${time} &gt; #{startTime}
+          and ${time} &lt; #{endTime}
+          and processing &lt; 1
+          and node = #{node}
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndPendingAndTimeTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and ${time}&gt;#{startTime}
+        and ${time}&lt;#{endTime}
+        and processing&lt;1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByAllNodeAndProcessedAndTimeTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and ${time} &gt; #{startTime}
+          and ${time} &lt; #{endTime}
+          and processing = 1
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByAllNodeAndProcessedAndTimeTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and ${time}&gt;#{startTime}
+        and ${time}&lt;#{endTime}
+        and processing=1
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+
+    <select id="queryTotalNumberForWorksByOneNodeAndProcessedAndTimeTypeAndManagerIdAndType"
+            resultType="java.lang.Integer">
+        select
+            count(*)
+        from complaints_work_info
+        where handle_person_id = #{mId}
+          and ${time} &gt; #{startTime}
+          and ${time} &lt; #{endTime}
+          and processing = 1
+          and node = #{node}
+          and right_type = #{rightType}
+    </select>
+    <select id="queryWorksByOneNodeAndProcessedAndTimeTypeAndManagerIdAndType" resultMap="complaintsWork">
+        select
+        <include refid="complaintsWorkInfo"/>
+        from complaints_work_info
+        where handle_person_id=#{mId}
+        and ${time}&gt;#{startTime}
+        and ${time}&lt;#{endTime}
+        and processing=1
+        and node=#{node}
+        and right_type=#{rightType}
+        order by ${timeType} ${sort}
+        limit #{num1},#{num2}
+    </select>
+</mapper>

@@ -22,13 +22,37 @@ import java.io.Serializable;
 public class ManagerComplaintInfoPO implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
+    /**
+     * 投诉id
+     */
     private Long id;
-    private Long managerId;
+    /**
+     * 管理员id
+     */
+    private String managerId;
+    /**
+     * 投诉人
+     */
     private String complaintPerson;
+    /**
+     * 权利类型
+     */
     private String rightType;
+    /**
+     * 涉及权利
+     */
     private String rightName;
+    /**
+     * 投诉链接
+     */
     private String complaintUrl;
+    /**
+     * 投诉平台
+     */
     private String complaintPlatform;
+    /**
+     * 审核结果
+     */
     private String result;
     /**
      * 投诉集id
@@ -38,6 +62,9 @@ public class ManagerComplaintInfoPO implements Serializable {
      * 当前处理人
      */
     private String handlePerson;
+    /**
+     * 备注
+     */
     private String remark;
     @Column(name = "gmt_create")
     private Long createTime;

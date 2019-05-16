@@ -33,49 +33,49 @@ public class ComplaintDistributionManagementInfoManagerImpl implements Complaint
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public ComplaintDistributionManagementInfoPO getComplaintDistributionManagementInfoById(Long id) {
         ComplaintDistributionManagementInfoPO complaintDistributionManagementInfoPO = complaintDistributionManagementInfoMapper.selectByPrimaryKey(id);
         return complaintDistributionManagementInfoPO;
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public ComplaintDistributionManagementInfoPO getComplaintDistributionManagementInfo(ComplaintDistributionManagementInfoPO complaintDistributionManagementInfoPO) {
         ComplaintDistributionManagementInfoPO complaintDistributionManagementInfoPO1 = complaintDistributionManagementInfoMapper.selectOne(complaintDistributionManagementInfoPO);
         return complaintDistributionManagementInfoPO1;
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public List<ComplaintDistributionManagementInfoPO> queryComplaintDistributionManagementInfoByRightTypeAndAll(String rightType, Integer num1, Integer num2, String time, String sort) {
         List<ComplaintDistributionManagementInfoPO> list = complaintDistributionManagementInfoMapper.queryDistributionManagementInfoByRightTypeAndAll(rightType, num1, num2, time, sort);
         return list;
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public List<ComplaintDistributionManagementInfoPO> queryComplaintDistributionManagementInfoByRightTypeAndComplaintPlatform(String complaintForm, String rightType, Integer num1, Integer num2, String time, String sort) {
         List<ComplaintDistributionManagementInfoPO> list = complaintDistributionManagementInfoMapper.queryDistributionManagementInfoByRightTypeAndComplaintPlatform(complaintForm, rightType, num1, num2, time, sort);
         return list;
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public List<ComplaintDistributionManagementInfoPO> queryComplaintDistributionManagementInfoByRightTypeAndDistributionName(String distributionName, String rightType, Integer num1, Integer num2, String time, String sort) {
         List<ComplaintDistributionManagementInfoPO> list = complaintDistributionManagementInfoMapper.queryDistributionManagementInfoByRightTypeAndDistributionName(distributionName, rightType, num1, num1, time, sort);
         return list;
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public List<ComplaintDistributionManagementInfoPO> queryComplaintDistributionManagementInfoByRightTypeAndOperatorName(String operatorName, String rightType, Integer num1, Integer num2, String time, String sort) {
         List<ComplaintDistributionManagementInfoPO> list = complaintDistributionManagementInfoMapper.queryDistributionManagementInfoByRightTypeAndOperatorName(operatorName, rightType, num1, num1, time, sort);
         return list;
     }
 
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public List<ComplaintDistributionManagementInfoPO> queryComplaintDistributionManagementInfoByRightTypeAndTime(String timeType, Long startTime, Long endTime, String rightType, Integer num1, Integer num2, String time, String sort) {
         List<ComplaintDistributionManagementInfoPO> list = complaintDistributionManagementInfoMapper.queryDistributionManagementInfoByRightTypeAndTime(timeType, startTime, endTime, rightType, num1, num1, time, sort);
         return list;
@@ -86,7 +86,7 @@ public class ComplaintDistributionManagementInfoManagerImpl implements Complaint
         complaintDistributionManagementInfoMapper.updateByPrimaryKeySelective(complaintDistributionManagementInfoPO);
     }
 
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public List<ComplaintDistributionManagementInfoPO> getAll() {
         List<ComplaintDistributionManagementInfoPO> list = complaintDistributionManagementInfoMapper.selectAll();
         return list;

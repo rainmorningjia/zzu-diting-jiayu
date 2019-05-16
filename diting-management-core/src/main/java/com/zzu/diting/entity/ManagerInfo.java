@@ -17,7 +17,7 @@ import java.io.Serializable;
 public class ManagerInfo implements Serializable {
     @Id
     @KeySql(useGeneratedKeys = true)
-    private Long id;
+    private String id;
     private String name;
     private String email;
     private String sex;

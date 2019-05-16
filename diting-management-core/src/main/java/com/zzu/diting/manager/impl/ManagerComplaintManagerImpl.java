@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -63,112 +64,112 @@ public class ManagerComplaintManagerImpl implements ManagerComplaintManager {
     }
 
     @Override
-    public List<ManagerComplaintInfoPO> getManagerComplaintsAll(Long userId, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsAll(String userId, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsAll(userId,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByResult(Long userId, String result, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByResult(String userId, String result, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByResult(userId,result,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByIdAndAllResult(Long userId, List<Long> ids, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByIdAndAllResult(String userId, List<Long> ids, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByIdAndAllResult(userId,ids,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByIdAndResult(Long userId, List<Long> ids, String result, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByIdAndResult(String userId, List<Long> ids, String result, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByIdAndResult(userId,ids,result,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintPersonAndAllResult(Long userId, String person, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintPersonAndAllResult(String userId, String person, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByHandlePersonAndAllResult(userId,person,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintPersonAndResult(Long userId, String person, String result, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintPersonAndResult(String userId, String person, String result, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByComplaintPersonAndResult(userId,person,result,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByRightTypeAndAllResult(Long userId, String rightType, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByRightTypeAndAllResult(String userId, String rightType, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByRightTypeAndAllResult(userId,rightType,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByRightTypeAndResult(Long userId, String rightType, String result, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByRightTypeAndResult(String userId, String rightType, String result, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByRightTypeAndResult(userId,rightType,result,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByRightNameAndAllResult(Long userId, String rightName, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByRightNameAndAllResult(String userId, String rightName, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByRightTypeAndAllResult(userId,rightName,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByRightNameAndResult(Long userId, String rightName, String result, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByRightNameAndResult(String userId, String rightName, String result, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByRightNameAndResult(userId,rightName,result,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintUrlAndAllResult(Long userId, String complaintUrl, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintUrlAndAllResult(String userId, String complaintUrl, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByComplaintUrlAndAllResult(userId,complaintUrl,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintUrlAndResult(Long userId, String complaintUrl, String result, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByComplaintUrlAndResult(String userId, String complaintUrl, String result, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByComplaintUrlAndResult(userId,complaintUrl,result,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByHandlePersonAndAllResult(Long userId, String handlePerson, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByHandlePersonAndAllResult(String userId, String handlePerson, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByHandlePersonAndAllResult(userId,handlePerson,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByHandlePersonAndResult(Long userId, String handlePerson, String result, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByHandlePersonAndResult(String userId, String handlePerson, String result, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByHandlePersonAndResult(userId,handlePerson,result,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByTimeAndAllResult(Long userId, String timeType, Long startTime, Long endTime, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByTimeAndAllResult(String userId, String timeType, Long startTime, Long endTime, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByTimeAndAllResult(userId,timeType,startTime,endTime,num1,num2,time,sort);
         return list;
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
-    public List<ManagerComplaintInfoPO> getManagerComplaintsByTimeAndResult(Long userId, String timeType, String result, Long startTime, Long endTime, Integer num1, Integer num2, String time, String sort) {
+    public List<ManagerComplaintInfoPO> getManagerComplaintsByTimeAndResult(String userId, String timeType, String result, Long startTime, Long endTime, Integer num1, Integer num2, String time, String sort) {
         List<ManagerComplaintInfoPO> list=managerComplaintInfoMapper.queryManagerComplaintsByTimeAndResult(userId,result,timeType,startTime,endTime,num1,num2,time,sort);
         return list;
     }
