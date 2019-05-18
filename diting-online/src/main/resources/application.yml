@@ -1,6 +1,6 @@
 mybatis:
   type-aliases-package: com.zzu.diting.entity
-  mapper-locations: classpath:com/zzu/diting/mapper/*Mapper.xml
+  mapper-locations: classpath*:com/zzu/diting/mapper/*Mapper.xml
 spring:
   application:
     name: diting-online

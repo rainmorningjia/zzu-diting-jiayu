@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * @author :wb-jcy525678
@@ -54,6 +55,10 @@ public class ComplaintsWorkInfoPO implements Serializable {
      */
     private Integer complaintNumber;
     /**
+     * 已处理数量
+     */
+    private Integer processedNumber;
+    /**
      * 节点
      */
     private String node;
@@ -85,6 +90,7 @@ public class ComplaintsWorkInfoPO implements Serializable {
      * 处理记录
      */
     private String handleRecord;
+    private Timestamp completeTime;
     /**
      * 创建时间
      */

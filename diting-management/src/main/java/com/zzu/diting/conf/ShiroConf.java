@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConf {
-
+/*
     //选择凭证匹配器 加密
     @Bean
     public CredentialsMatcher getCredentialMatcher() {
@@ -68,6 +68,6 @@ public class ShiroConf {
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filtermap);
         return shiroFilterFactoryBean;
 
-    }
+    }*/
 
 }

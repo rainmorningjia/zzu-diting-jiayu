@@ -35,7 +35,8 @@ public class ManagerServiceImpl implements ManagerService {
         managerInfo.setId(id);
         String password = managerInfo.getPassword();
         String salt = Md5Util.getSalt();
-        String s = new SimpleHash("MD5", password, salt, 1024).toString();
+        String pass=password+salt;
+        String s =Md5Util.encryption(pass);
         managerInfo.setPassword(s);
         managerInfo.setSalt(salt);
         managerInfo.setCreateTime(System.currentTimeMillis());
@@ -45,8 +46,15 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public void loginManager(String name, String password) {
-        Subject subject = SecurityUtils.getSubject();
-        AuthenticationToken token = new UsernamePasswordToken(name, password);
-        subject.login(token);
+        ManagerInfo managerInfo=new ManagerInfo();
+        managerInfo.setName(name);
+        managerInfo=managerMapper.selectOne(managerInfo);
+        String salt=managerInfo.getSalt();
+        String pass=password+salt;
+        Boolean b=Md5Util.checkPassword(pass,managerInfo.getPassword());
+        if (!b){
+            throw new RuntimeException("密码错误");
+        }
+
     }
 }

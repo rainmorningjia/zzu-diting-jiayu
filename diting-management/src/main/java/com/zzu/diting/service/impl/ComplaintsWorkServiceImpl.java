@@ -1495,16 +1495,30 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
             for (Long id :
                     adoptWorkQueryParam.getWorkIds()) {
                 ComplaintWorkInfoPO oldComplaintWorkInfoPO = complaintWorkMapper.selectByPrimaryKey(id);
+                ComplaintsWorkInfoPO oldComplaintsWorkInfoPO = complaintsWorkAllInfoMapper.selectByPrimaryKey(oldComplaintWorkInfoPO.getComplaintsWorkId());
+                Integer complaintNumber = oldComplaintsWorkInfoPO.getComplaintNumber();
+                Integer processedNumber = oldComplaintsWorkInfoPO.getProcessedNumber();
                 ComplaintWorkInfoPO complaintWorkInfoPO = new ComplaintWorkInfoPO();
                 complaintWorkInfoPO.setUpdateTime(System.currentTimeMillis());
                 complaintWorkInfoPO.setId(id);
+                ComplaintsWorkInfoPO newComplaintsWork = new ComplaintsWorkInfoPO();
+                newComplaintsWork.setId(oldComplaintsWorkInfoPO.getId());
+                UserComplaintInfoPO userComplaintInfoDto = new UserComplaintInfoPO();
+                userComplaintInfoDto.setId(oldComplaintWorkInfoPO.getComplaintId());
+                userComplaintInfoDto.setUpdateTime(System.currentTimeMillis());
                 if (adoptWorkQueryParam.getNode() == 1) {
                     complaintWorkInfoPO.setAuditStateOne("通过");
                     complaintWorkInfoPO.setHandleRank(adoptWorkQueryParam.getHandleRank());
                     if (adoptWorkQueryParam.getExplanation() != null) {
                         complaintWorkInfoPO.setExplanation(adoptWorkQueryParam.getExplanation());
                     }
+                    processedNumber++;
+                    if (processedNumber.equals(complaintNumber)) {
+                        newComplaintsWork.setCompleteTime(new Timestamp(System.currentTimeMillis()));
+                        newComplaintsWork.setProcessing(new Double(1));
+                    }
                     complaintWorkInfoPO.setCompleteTime1(new Timestamp(System.currentTimeMillis()));
+                    userComplaintInfoDto.setProcessState("处理完成");
                 } else {
                     complaintWorkInfoPO.setAuditStateTwo("通过");
                     complaintWorkInfoPO.setHandleMode(adoptWorkQueryParam.getHandleRank());
@@ -1512,12 +1526,9 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
                         complaintWorkInfoPO.setSpecificInformation(adoptWorkQueryParam.getExplanation());
                     }
                     complaintWorkInfoPO.setCompleteTime2(new Timestamp(System.currentTimeMillis()));
-                    UserComplaintInfoPO userComplaintInfoDto = new UserComplaintInfoPO();
-                    userComplaintInfoDto.setId(oldComplaintWorkInfoPO.getComplaintId());
                     userComplaintInfoDto.setProcessState("处理完成");
-                    userComplaintInfoDto.setUpdateTime(System.currentTimeMillis());
-                    userComplaintInfoMapper.updateByPrimaryKeySelective(userComplaintInfoDto);
                 }
+                userComplaintInfoMapper.updateByPrimaryKeySelective(userComplaintInfoDto);
                 complaintWorkMapper.updateByPrimaryKeySelective(complaintWorkInfoPO);
             }
             messageDto.setCode(0);
@@ -1540,6 +1551,11 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
                     rejectComplaintWorkQueryParam.getIds()) {
                 ComplaintWorkInfoPO oldComplaintWorkInfoPO = complaintWorkMapper.selectByPrimaryKey(id);
                 ComplaintWorkInfoPO complaintWorkInfoPO = new ComplaintWorkInfoPO();
+                ComplaintsWorkInfoPO oldComplaintsWorkInfoPO = complaintsWorkAllInfoMapper.selectByPrimaryKey(oldComplaintWorkInfoPO.getComplaintsWorkId());
+                Integer complaintNumber = oldComplaintsWorkInfoPO.getComplaintNumber();
+                Integer processedNumber = oldComplaintsWorkInfoPO.getProcessedNumber();
+                ComplaintsWorkInfoPO newComplaintsWork = new ComplaintsWorkInfoPO();
+                newComplaintsWork.setId(oldComplaintsWorkInfoPO.getId());
                 complaintWorkInfoPO.setUpdateTime(System.currentTimeMillis());
                 complaintWorkInfoPO.setId(id);
                 UserComplaintInfoPO userComplaintInfoDto = new UserComplaintInfoPO();
@@ -1547,6 +1563,11 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
                 userComplaintInfoDto.setProcessState("投诉驳回");
                 userComplaintInfoDto.setUpdateTime(System.currentTimeMillis());
                 if (rejectComplaintWorkQueryParam.getNode() == 1) {
+                    processedNumber++;
+                    if (processedNumber.equals(complaintNumber)) {
+                        newComplaintsWork.setCompleteTime(new Timestamp(System.currentTimeMillis()));
+                        newComplaintsWork.setProcessing(new Double(1));
+                    }
                     complaintWorkInfoPO.setCompleteTime1(new Timestamp(System.currentTimeMillis()));
                     complaintWorkInfoPO.setAuditStateOne("驳回");
                     complaintWorkInfoPO.setRejectTypeOne(rejectComplaintWorkQueryParam.getFailType());

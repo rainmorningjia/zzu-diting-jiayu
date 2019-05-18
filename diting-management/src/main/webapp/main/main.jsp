@@ -90,7 +90,7 @@
 <div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
     <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px">
         谛听版权投诉系统后台
-        欢迎您:<shiro:authenticated>[<shiro:principal/>]</shiro:authenticated>
+        欢迎您:<%= request.getSession().getAttribute("name") %>
     </div>
     <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">
         &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#"

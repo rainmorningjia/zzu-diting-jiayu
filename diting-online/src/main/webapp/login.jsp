@@ -75,12 +75,12 @@
             <tbody>
             <tr>
                 <td width="190" rowspan="2" align="center" valign="bottom">
-                    <img src="img/header_logo.gif"/>
+                    <img src="img/header_logo.png" style="width: 190px"/>
                 </td>
                 <th>
                     用户名:
                 </th>
-                <td>
+                <td >
                     <input id="name" type="text" name="name" class="text" value="xxx" maxlength="15"/>
                 </td>
                 <td><span id="nameMessage" style="font-size: 3px"></span></td>

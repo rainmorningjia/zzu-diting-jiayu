@@ -34,6 +34,8 @@ public class UserController {
     public String loginUser(String name, String password, String code, HttpSession session) {
         code = code.toLowerCase();
         String codeS = (String) session.getAttribute("code");
+        session.setAttribute("managerId","100");
+        session.setAttribute("name","贾晨雨test");
         if (!code.equals(codeS)) {
             return "redirect:/login.jsp";
         } else {

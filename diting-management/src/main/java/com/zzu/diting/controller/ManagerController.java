@@ -21,6 +21,7 @@ public class ManagerController {
             managerInfo.setName(name);
              managerInfo=managerService.getManagerInfo(managerInfo);
              session.setAttribute("managerId",managerInfo.getId());
+             session.setAttribute("name",managerInfo.getName());
             return "redirect:/main/main.jsp";
         } catch (RuntimeException e) {
             session.setAttribute("message", e.getMessage());

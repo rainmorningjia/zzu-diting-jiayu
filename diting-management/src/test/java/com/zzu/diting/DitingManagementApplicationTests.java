@@ -12,6 +12,7 @@ import com.zzu.diting.mappers.ComplaintsWorkAllInfoMapper;
 import com.zzu.diting.service.AuthenticationWorkService;
 import com.zzu.diting.service.ManagerService;
 import com.zzu.diting.service.RightWorkService;
+import com.zzu.diting.util.Md5Util;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,7 +41,7 @@ public class DitingManagementApplicationTests {
     @Test
     public void contextLoads() {
         ManagerInfo managerInfo = new ManagerInfo();
-        managerInfo.setName("贾晨雨");
+        managerInfo.setName("贾晨雨test");
         managerInfo.setAddress("河南省郑州市郑州大学北校区");
         managerInfo.setDepartment("测试");
         managerInfo.setEmail("jiachenyu@zzu.com");
@@ -81,5 +82,13 @@ public class DitingManagementApplicationTests {
         complaintsWorkInfoPO.setProcessing(new Double("0.0"));
         System.out.println(complaintsWorkInfoPO);
         complaintsWorkAllInfoMapper.updateByPrimaryKeySelective(complaintsWorkInfoPO);
+    }
+    @Test
+    public void login(){
+        ManagerInfo managerInfo = new ManagerInfo();
+        managerInfo.setName("贾晨雨test");
+        managerInfo.setPassword("123456");
+        managerService.loginManager("贾晨雨test","123456");
+
     }
 }

@@ -47,6 +47,16 @@ public class UserComplaintController {
         Long userId = (Long) session.getAttribute("userId");
         UserComplaintNumberDto userComplaintNumberDto = new UserComplaintNumberDto();
         userComplaintInfoDto.setUserId(userId);
+        String  right=userComplaintInfoDto.getCopyrightType();
+        if (right.equals("1")){
+            userComplaintInfoDto.setCopyrightType("著作权");
+        }
+        if (right.equals("2")){
+            userComplaintInfoDto.setCopyrightType("名誉权/肖像权");
+        }
+        if (right.equals("3")){
+            userComplaintInfoDto.setCopyrightType("其他权利");
+        }
         try {
             UserComplaintInfoPO userComplaintInfoPO = new UserComplaintInfoPO();
             DataObjectTransDto.populate(userComplaintInfoDto, userComplaintInfoPO);

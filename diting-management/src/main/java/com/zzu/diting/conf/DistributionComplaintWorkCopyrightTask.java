@@ -44,8 +44,10 @@ public class DistributionComplaintWorkCopyrightTask implements Runnable {
         ComplaintDistributionManagementInfoPO complaintDistributionManagementInfoPO = new ComplaintDistributionManagementInfoPO();
         complaintDistributionManagementInfoPO.setRightType(type);
         complaintDistributionManagementInfoPO.setNode(node);
+        System.out.println(complaintDistributionManagementInfoPO+"分配信息11111111111111111111111111");
         List<ComplaintsWorkInfoPO> list = complaintsWorkAllInfoMapper.select(complaintsWorkInfoPO);
         List<ComplaintDistributionManagementInfoPO> complaintDistributionManagementInfoPOS = complaintDistributionManagementInfoMapper.select(complaintDistributionManagementInfoPO);
+        System.out.println(complaintDistributionManagementInfoPOS+"分配信息！！！！！！！！！！！！！！！！！！！！！！！！！");
         Integer size = complaintDistributionManagementInfoPOS.size();
         if (size != 0 && list.size() != 0) {
             List<List<ComplaintsWorkInfoPO>> lists = AverageList.averageAssign(list, size);
