@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% String ss = (String) request.getSession().getAttribute("userHeadIcon"); %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -18,6 +19,9 @@
     <script type="text/javascript">
         <!--菜单处理-->
         $(function () {
+            var sss = "<%=ss %>";
+            $("#headico").attr("src", sss);
+            console.info(sss);
             $.ajax({
                 type: "post",
                 url: "${pageContext.request.contextPath}/menu/getAllUserParentMenu",
@@ -48,7 +52,7 @@
                                         if (ex == false) {
                                             $('#tt').tabs('add', {
                                                 title: node.text,
-                                                href: "${pageContext.request.contextPath}/"+node.url,
+                                                href: "${pageContext.request.contextPath}/" + node.url,
                                                 closable: true,
                                             });
                                         } else {
@@ -65,22 +69,97 @@
 
                 }
 
+            });
+            $("#updateInfo").linkbutton({
+                onClick: function () {
+                    var ex = $('#tt').tabs('exists', "用户个人信息");
+
+                    if (ex == false) {
+                        $('#tt').tabs('add', {
+                            title: "用户个人信息",
+                            href: "${pageContext.request.contextPath}/authen/userInfo.jsp",
+                            closable: true,
+                        });
+                    } else {
+                        $('#tt').tabs('select', "用户个人信息");
+                    }
+                }
             })
 
         })
+
+        function recall(id, t) {
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/right/recall",
+                data: {
+                    id: id,
+                    t: t
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.code == 0) {
+                        if (t == 2) {
+                            $('#dbReputationRight').datagrid('reload');
+                        }
+                        if (t == 1) {
+                            $('#dbCopyRight').datagrid('reload');
+                        }
+                        if (t == 3) {
+                            $('#dbOtherRight').datagrid('reload');
+                        }
+                        $.messager.show({
+                            title: "撤回成功",
+                            msg: "撤回成功，该信息已关闭",
+
+                        });
+                    }
+
+                }
+            })
+        };
+
+        function resumbit(id, t) {
+            var url;
+            if (t==2){
+                url="${pageContext.request.contextPath}/right/updateUserReRightInfo.jsp?id="+id;
+            }
+            $("#updateRight").dialog({
+                title: "重新发起信息",
+                width: 400,
+                height: 400,
+                closed: false,
+                cache: false,
+                iconCls: "icon-add",
+                href: url,
+                modal: true,
+                buttons: [
+                    {
+                        text: "关闭",
+                        handler: function () {
+                            $("#updateRight").dialog("close")
+                        }
+                    }]
+            })
+        };
     </script>
 
 </head>
 <body class="easyui-layout">
-<div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
-    <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px">
+<div data-options="region:'north',split:true" style="height:90px;background-color:  #5C160C">
+    <div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 450px;float:left;padding-left: 20px;padding-top: 10px">
         谛听版权投诉系统
         欢迎您:<shiro:authenticated>[<shiro:principal/>]</shiro:authenticated>
     </div>
+    <div style="width: 300px;float:left;padding-top:10px;padding-left: 10px;">
+        <img id="headico" src="" style="width: 70px;height: 70px"/>
+    </div>
     <div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">
-        &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#"
-                                                                                                              class="easyui-linkbutton"
-                                                                                                              data-options="iconCls:'icon-01'">退出系统</a>
+        &nbsp;<a href="#" id="updateInfo" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改信息</a>&nbsp;&nbsp;<a
+            href="${pageContext.request.contextPath}/user/exitUser"
+            class="easyui-linkbutton"
+            data-options="iconCls:'icon-01'">退出系统</a>
+
     </div>
 </div>
 <div data-options="region:'south',split:true" style="height: 40px;background: #5C160C">
@@ -99,5 +178,6 @@
     </div>
 </div>
 <div id="dialogUserRightComplaint"></div>
+<div id="updateRight"></div>
 </body>
 </html>

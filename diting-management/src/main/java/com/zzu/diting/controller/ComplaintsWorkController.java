@@ -83,4 +83,10 @@ public class ComplaintsWorkController {
         messageDto=complaintsWorkService.rejectManagementNodeWork(rejectComplaintWorkQueryParam);
         return messageDto;
     }
+    @RequestMapping("getComplaintInfo")
+    public ComplaintInfoFormDto getComplaintInfoByComplaintsWorkId(Long id) {
+        ComplaintInfoFormDto complaintInfoFormDto;
+        complaintInfoFormDto = complaintsWorkService.getComplaintInfoByComplaintsWorkId(id);
+        return complaintInfoFormDto;
+    }
 }

@@ -2,8 +2,10 @@
 <%@page isELIgnored="false" %>
 <body>
 <script type="text/javascript">
-
+    var id = "<%=request.getParameter("id").toString()%>";
     $(function () {
+        $("#updateUserReRightForm").form("load", "${pageContext.request.contextPath}/right/getRightDetail?type=名誉权/肖像权&id="+id
+        )
         //标题
         var regs = /^[a-zA-Z\/ ]{2,20}$/;
         var reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
@@ -28,13 +30,13 @@
         })
 
         //定义保存按钮
-        $("#confirmUserReRight").linkbutton({
+        $("#confirmUpUserReRight").linkbutton({
             iconCls: "icon-save",
             //单击保存按钮触发表单提交事件
             onClick: function () {
                 //提交表单事件
-                $("#addUserReRightForm").form("submit", {
-                    url: "${pageContext.request.contextPath}/right/addUserRightInfo",
+                $("#updateUserReRightForm").form("submit", {
+                    url: "${pageContext.request.contextPath}/right/resubmit",
                     onSubmit: function () {
                         //进行验证
                         return true
@@ -42,11 +44,11 @@
                     success: function (data) {
                         $('#dbReputationRight').datagrid('reload');
                         //关闭对话框
-                        $("#dialogReputationRight").dialog("close");
+                        $("#updateRight").dialog("close");
                         //调出系统提示框
                         $.messager.show({
-                            title: "添加成功",
-                            msg: "恭喜！填写认证信息成功，请等待审核！",
+                            title: "修改成功",
+                            msg: "恭喜！填写修改信息成功，请等待审核！",
 
                         });
 
@@ -59,7 +61,6 @@
         $("#isRightEntrusted2").combobox({
             panelHeight: 50,
             onSelect: function (val) {
-                console.info(val)
                 if (val.text === "是") {
 
                     $("#attorneyAttributeT2").removeAttr("hidden");
@@ -82,8 +83,14 @@
     <h1>
         添加用户名誉权利信息:
     </h1>
-    <form id="addUserReRightForm" method="post" enctype="multipart/form-data">
+    <form id="updateUserReRightForm" method="post" enctype="multipart/form-data">
         <table id="reputation">
+            <tr class="typeR">
+                <td>
+                    <input id="id2" type="hidden" class="easyui-validatebox" name="id"
+                            data-options="validType:'name',required:true"/>
+                </td>
+            </tr>
             <tr class="typeR">
                 <td>
                     <input id="type2" type="hidden" class="easyui-validatebox" name="copyrightType"
@@ -163,7 +170,7 @@
             </tr>
         </table>
         <p>
-            <a id="confirmUserReRight" class="easyui-linkbutton">保存</a>
+            <a id="confirmUpUserReRight" class="easyui-linkbutton">保存</a>
         </p>
     </form>
 </div>

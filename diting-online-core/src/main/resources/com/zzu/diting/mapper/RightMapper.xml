@@ -269,7 +269,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -315,7 +315,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -361,7 +361,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -408,7 +408,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -457,7 +457,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -529,7 +529,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -546,8 +546,8 @@
                      right_type,
                      copyright_name
                      right_name,
-                     is_entrusted_protection
-                     is_entrusted_protection,
+                     is_right_entrusted
+                     is_right_entrusted,
                      audit_status
                      audit_state,
                      gmt_create
@@ -563,8 +563,8 @@
                      right_type,
                      copyright_name
                      works_name,
-                     is_entrusted_protection
-                     is_entrusted_protection,
+                     is_right_entrusted
+                     is_right_entrusted,
                      audit_status
                      audit_state,
                      gmt_create
@@ -620,7 +620,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -637,8 +637,8 @@
                      right_type,
                      copyright_name
                      right_name,
-                     is_entrusted_protection
-                     is_entrusted_protection,
+                     is_right_entrusted
+                     is_right_entrusted,
                      audit_status
                      audit_state,
                      gmt_create
@@ -654,8 +654,8 @@
                      right_type,
                      copyright_name
                      works_name,
-                     is_entrusted_protection
-                     is_entrusted_protection,
+                     is_right_entrusted
+                     is_right_entrusted,
                      audit_status
                      audit_state,
                      gmt_create
@@ -705,7 +705,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -722,8 +722,8 @@
                      right_type,
                      copyright_name
                      right_name,
-                     is_entrusted_protection
-                     is_entrusted_protection,
+                     is_right_entrusted
+                     is_right_entrusted,
                      audit_status
                      audit_state,
                      gmt_create
@@ -739,8 +739,8 @@
                      right_type,
                      copyright_name
                      works_name,
-                     is_entrusted_protection
-                     is_entrusted_protection,
+                     is_right_entrusted
+                     is_right_entrusted,
                      audit_status
                      audit_state,
                      gmt_create
@@ -796,7 +796,7 @@
         from (select id                 id,
                      copyright_type     right_type,
                      works_name         right_name,
-                     is_right_entrusted is_entrusted_protection,
+                     is_right_entrusted is_right_entrusted,
                      audit_state        audit_state,
                      gmt_create         create_time,
                      gmt_modified       updateTime
@@ -813,8 +813,8 @@
                      right_type,
                      copyright_name
                      right_name,
-                     is_entrusted_protection
-                     is_entrusted_protection,
+                     is_right_entrusted
+                     is_right_entrusted,
                      audit_status
                      audit_state,
                      gmt_create
@@ -830,8 +830,8 @@
                      right_type,
                      copyright_name
                      works_name,
-                     is_entrusted_protection
-                     is_entrusted_protection,
+                     is_right_entrusted
+                     is_right_entrusted,
                      audit_status
                      audit_state,
                      gmt_create

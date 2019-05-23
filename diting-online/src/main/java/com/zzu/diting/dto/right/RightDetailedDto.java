@@ -14,6 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RightDetailedDto implements Serializable {
+    private String auditState;
+    private Long id;
     /**
      * 用户ID
      */

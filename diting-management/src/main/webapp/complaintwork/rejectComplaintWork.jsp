@@ -4,19 +4,21 @@
     var id = "<%=request.getParameter("id").toString()%>";
     console.info(id);
     $(function () {
-        $("#id").val(id);
         //定义保存按钮
         $("#confirmuserRejectComplaintWork").linkbutton({
             iconCls: "icon-save",
             //单击保存按钮触发表单提交事件
             onClick: function () {
-                //提交表单事件
-                $("#rejectAuthenticationWorkFrom").form("submit", {
+                $.ajax({
+                    type: "post",
                     url: "${pageContext.request.contextPath}/complaintsWork/rejectWork",
-                    onSubmit: function () {
-                        //进行验证
-                        return true
+                    data: {
+                        "ids": id,
+                        "failType": $("#rejectType2").val(),
+                        "reason": $("#reason").val(),
+                        "node": 1
                     },
+                    dataType: "json",
                     success: function () {
                         $("#dbCopyrightComplaintsWorkProccesing").edatagrid("reload");
                         $("#dbCopyrightComplaintsWorkProccessed").edatagrid("reload");
@@ -25,30 +27,20 @@
                         $("#dbReputationComplaintsWorkProccesing").edatagrid("reload");
                         $("#dbReputationRightComplaintsWorkProccessed").edatagrid("reload");
                         $("#dbComplaintWork").edatagrid("reload");
-                        $("#rejectInfo").dialog("close")
+                        $("#rejectInfo").dialog("close");
                         $.messager.show({
                             title: '提示信息',
                             msg: '操作成功!'
                         });
                     }
                 })
-            },
+            }
         });
     })
 </script>
 <div>
     <form id="rejectAuthenticationWorkFrom" method="post">
         <table>
-            <tr hidden>
-                <td>
-                    id:
-                </td>
-                <td>
-                    <input id="id" type="text" class="easyui-validatebox"
-                           name="ids"
-                           data-options=""/>
-                </td>
-            </tr>
             <tr hidden>
                 <td>
                     id:

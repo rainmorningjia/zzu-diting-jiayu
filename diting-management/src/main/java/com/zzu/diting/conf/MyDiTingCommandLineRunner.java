@@ -18,16 +18,13 @@ public class MyDiTingCommandLineRunner implements CommandLineRunner {
         DistributionRightWorkTask distributionRightWorkTask = new DistributionRightWorkTask();
         DistributionAuthenticationWorkTask distributionAuthenticationWorkTask = new DistributionAuthenticationWorkTask();
         DistributionComplaintWorkCopyrightTask distributionComplaintWorkTask = new DistributionComplaintWorkCopyrightTask();
-        ComputerComplaintsWorkProcess computerComplaintsWorkProcess = new ComputerComplaintsWorkProcess();
         ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
                 .setNameFormat("工单线程-pool-%d").build();
         ScheduledExecutorService scheduledExecutorService1 = new ScheduledThreadPoolExecutor(6, namedThreadFactory);
         ScheduledExecutorService scheduledExecutorService2 = new ScheduledThreadPoolExecutor(1, namedThreadFactory);
         ScheduledExecutorService scheduledExecutorService3 = new ScheduledThreadPoolExecutor(6, namedThreadFactory);
-        ScheduledExecutorService scheduledExecutorService4 = new ScheduledThreadPoolExecutor(3, namedThreadFactory);
         scheduledExecutorService1.scheduleAtFixedRate(distributionRightWorkTask, 0, 20, TimeUnit.SECONDS);
         scheduledExecutorService2.scheduleAtFixedRate(distributionAuthenticationWorkTask, 0, 20, TimeUnit.SECONDS);
         scheduledExecutorService3.scheduleAtFixedRate(distributionComplaintWorkTask, 0, 20, TimeUnit.SECONDS);
-        scheduledExecutorService4.scheduleAtFixedRate(computerComplaintsWorkProcess, 0, 20, TimeUnit.SECONDS);
     }
 }

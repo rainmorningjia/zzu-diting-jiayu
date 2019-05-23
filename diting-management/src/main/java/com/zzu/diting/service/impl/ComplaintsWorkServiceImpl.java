@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -1512,10 +1513,29 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
                     if (adoptWorkQueryParam.getExplanation() != null) {
                         complaintWorkInfoPO.setExplanation(adoptWorkQueryParam.getExplanation());
                     }
-                    processedNumber++;
-                    if (processedNumber.equals(complaintNumber)) {
-                        newComplaintsWork.setCompleteTime(new Timestamp(System.currentTimeMillis()));
-                        newComplaintsWork.setProcessing(new Double(1));
+                    if (processedNumber != null) {
+                        processedNumber++;
+                        if (processedNumber.equals(complaintNumber)) {
+                            newComplaintsWork.setProcessedNumber(processedNumber);
+                            newComplaintsWork.setCompleteTime(new Timestamp(System.currentTimeMillis()));
+                            newComplaintsWork.setProcessing(new Double(1));
+                        }else {
+                            float num = (float)processedNumber / oldComplaintsWorkInfoPO.getComplaintNumber();
+                            DecimalFormat df = new DecimalFormat("0.0000");
+                            Double dd = new Double(df.format(num));
+                            newComplaintsWork.setProcessing(dd);
+                        }
+                    } else {
+                        newComplaintsWork.setProcessedNumber(1);
+                        if (complaintNumber == 1) {
+                            newComplaintsWork.setCompleteTime(new Timestamp(System.currentTimeMillis()));
+                            newComplaintsWork.setProcessing(new Double(1));
+                        }else {
+                            float num = (float)1 / oldComplaintsWorkInfoPO.getComplaintNumber();
+                            DecimalFormat df = new DecimalFormat("0.0000");
+                            Double dd = new Double(df.format(num));
+                            newComplaintsWork.setProcessing(dd);
+                        }
                     }
                     complaintWorkInfoPO.setCompleteTime1(new Timestamp(System.currentTimeMillis()));
                     userComplaintInfoDto.setProcessState("处理完成");
@@ -1528,6 +1548,7 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
                     complaintWorkInfoPO.setCompleteTime2(new Timestamp(System.currentTimeMillis()));
                     userComplaintInfoDto.setProcessState("处理完成");
                 }
+                complaintsWorkAllInfoMapper.updateByPrimaryKeySelective(newComplaintsWork);
                 userComplaintInfoMapper.updateByPrimaryKeySelective(userComplaintInfoDto);
                 complaintWorkMapper.updateByPrimaryKeySelective(complaintWorkInfoPO);
             }
@@ -1563,11 +1584,31 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
                 userComplaintInfoDto.setProcessState("投诉驳回");
                 userComplaintInfoDto.setUpdateTime(System.currentTimeMillis());
                 if (rejectComplaintWorkQueryParam.getNode() == 1) {
-                    processedNumber++;
-                    if (processedNumber.equals(complaintNumber)) {
-                        newComplaintsWork.setCompleteTime(new Timestamp(System.currentTimeMillis()));
-                        newComplaintsWork.setProcessing(new Double(1));
+                    if (processedNumber != null) {
+                        processedNumber++;
+                        if (processedNumber.equals(complaintNumber)) {
+                            newComplaintsWork.setProcessedNumber(processedNumber);
+                            newComplaintsWork.setCompleteTime(new Timestamp(System.currentTimeMillis()));
+                            newComplaintsWork.setProcessing(new Double(1));
+                        }else {
+                            float num = (float)processedNumber / oldComplaintsWorkInfoPO.getComplaintNumber();
+                            DecimalFormat df = new DecimalFormat("0.0000");
+                            Double dd = new Double(df.format(num));
+                            newComplaintsWork.setProcessing(dd);
+                        }
+                    } else {
+                        newComplaintsWork.setProcessedNumber(1);
+                        if (complaintNumber == 1) {
+                            newComplaintsWork.setCompleteTime(new Timestamp(System.currentTimeMillis()));
+                            newComplaintsWork.setProcessing(new Double(1));
+                        }else {
+                            float num = (float)1 / oldComplaintsWorkInfoPO.getComplaintNumber();
+                            DecimalFormat df = new DecimalFormat("0.0000");
+                            Double dd = new Double(df.format(num));
+                            newComplaintsWork.setProcessing(dd);
+                        }
                     }
+
                     complaintWorkInfoPO.setCompleteTime1(new Timestamp(System.currentTimeMillis()));
                     complaintWorkInfoPO.setAuditStateOne("驳回");
                     complaintWorkInfoPO.setRejectTypeOne(rejectComplaintWorkQueryParam.getFailType());
@@ -1586,6 +1627,7 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
                         complaintWorkInfoPO.setReasonTwo(rejectComplaintWorkQueryParam.getReason());
                     }
                 }
+                complaintsWorkAllInfoMapper.updateByPrimaryKeySelective(newComplaintsWork);
                 userComplaintInfoMapper.updateByPrimaryKeySelective(userComplaintInfoDto);
                 complaintWorkMapper.updateByPrimaryKeySelective(complaintWorkInfoPO);
             }

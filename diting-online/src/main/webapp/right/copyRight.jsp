@@ -56,6 +56,21 @@
                 field: "reason",
                 title: "失败原因",
                 width: 100,
+            }, {
+                field: "ss",
+                title: "操作",
+                width: 100,
+                formatter: function (value, row, index) {
+                    var id = row.id;
+                    var tt=1;
+                    if (row.auditResult=="审核中"){
+                        return '<a  style="color:blue"  onclick="recall(' + id + ',' + tt + ')' + '">' + '撤回' + '</a>'
+                    }
+                    if (row.auditResult=="驳回"||row.auditResult=="审核未通过"||row.auditResult=="关闭"){
+                        return '<a  style="color:blue"  onclick="resumbit(' + id + ',' + tt + ')' + '">' + '重新发起' + '</a>'
+                    }
+
+                }
             }]],
             view: detailview,
             onExpandRow: function (rowIndex, rowData) {
@@ -80,11 +95,11 @@
                 return '<table><tr>' +
                     /*    '<td rowspan=2 style="border:0"><img src="/imageslun/' + rowData.imagepath + '" style="height:200px;"></td>' + */
                     '<td style="border:0">' +
-                    '<p id="ss1' + rowData.id + '" style="font-size:20px">作品类型: ' + '</p>' +
-                    '<p id="ss2' + rowData.id + '" style="font-size:20px">证件类型: ' + '</p>' +
-                    '<p id="ss3' + rowData.id + '"  style="font-size:20px">导演信息: ' + '</p>' +
-                    '<p id="ss4' + rowData.id + '"  style="font-size:20px">主演信息: ' + '</p>' +
-                    '<p id="ss5' + rowData.id + '"  style="font-size:20px">作品属性: ' + '</p>' +
+                    '<p id="ss1' + rowData.id + '" style="font-size:20px">作品类型: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss2' + rowData.id + '" style="font-size:20px">证件类型: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss3' + rowData.id + '"  style="font-size:20px">导演信息: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss4' + rowData.id + '"  style="font-size:20px">主演信息: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss5' + rowData.id + '"  style="font-size:20px">作品属性: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
                     '<p id="ss6' + rowData.id + '"  style="font-size:20px">作品相关网址: ' + '</p>' +
                     '</td>' +
                     '</tr></table>';
@@ -141,29 +156,13 @@
                 }
             }
         })
-        //导出用户Excle表格
-        /*        $("#exportUser").click(function (e) {
-                    e.preventDefault();
-                    $.ajax({
-                        type: "post",
-                        url: "/chapter/downT",
-                        dataType: "json",
-                        data: {},
-                        success:function () {
-                            $.download("/chapter/exportUser","post","")
-
-                        }
-                    })
-                })*/
     })
-    //定义下载函数
-    /*    $.download = function (url, method, fileDire) {
-            var form = jQuery('<form action="' + url + '" method="' + (method || 'post') + '">' +  // action请求路径及推送方法
-                '<input type="text" name="filePath" value="' + fileDire + '"/>' + // 文件路径
-                '</form>');
-            $(document.body).append(form);
-            form.submit().remove();
-        }*/
+    function doSearch(){
+        $('#dbCopyRight').datagrid('load',{
+            rightId: $('#rightId').val(),
+            rightName: $('#rightName').val()
+        });
+    }
 </script>
 <div>
     <h1 align="center">权利管理</h1>
@@ -171,6 +170,11 @@
     <div id="tbCopyRight">
         <a id="addCopyRight" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-add',plain:true">添加</a>
+        <span>ID:</span>
+        <input id="rightId" style="line-height:26px;border:1px solid #ccc">
+        <span>权利名称</span>
+        <input id="rightName" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">搜索</a>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"

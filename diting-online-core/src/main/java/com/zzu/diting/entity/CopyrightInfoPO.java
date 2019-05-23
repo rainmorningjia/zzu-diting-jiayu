@@ -62,10 +62,12 @@ public class CopyrightInfoPO implements Serializable {
     /**
      * 著作权登记日10
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date copyrightRegisterDate;
     /**
      * 著作权有效期11
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date copyrightVld;
     /**
      * 导演信息12

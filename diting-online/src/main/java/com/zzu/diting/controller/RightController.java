@@ -4,10 +4,8 @@ import com.aliyun.oss.OSSClient;
 import com.zzu.diting.dto.MessageDto;
 import com.zzu.diting.dto.RightType;
 import com.zzu.diting.dto.right.*;
-import com.zzu.diting.entity.CopyrightInfoPO;
-import com.zzu.diting.entity.OtherRightInfoPO;
-import com.zzu.diting.entity.ReputationPortraitInfoPO;
-import com.zzu.diting.entity.RightVO;
+import com.zzu.diting.entity.*;
+import com.zzu.diting.mappers.RightWorkMapper;
 import com.zzu.diting.service.UserRightInfoService;
 import com.zzu.diting.util.DataObjectTransDto;
 import com.zzu.diting.util.FileUtil;
@@ -38,13 +36,71 @@ import java.util.List;
 public class RightController {
     @Resource
     private UserRightInfoService userRightInfoService;
+    @Resource
+    private RightWorkMapper rightWorkMapper;
 
     @RequestMapping("userRightInfo")
-    public RightInfoListDto getRightListDto(Integer page, Integer rows, HttpServletRequest request, String rightType) {
+    public RightInfoListDto getRightListDto(Integer page, Integer rows, HttpServletRequest request, String rightType, Long rightId, String rightName) {
         RightInfoListDto rightInfoListDto = new RightInfoListDto();
         HttpSession session = request.getSession();
         Long userId = (Long) session.getAttribute("userId");
-        List<RightVO> listRightVOAll = userRightInfoService.getListRightVOOneTypeAndAllState(userId, rightType, (page - 1) * rows, page * rows, new Long("0"), System.currentTimeMillis());
+        List<RightVO> listRightVOAll = new ArrayList<>();
+        RightVO rightVO = new RightVO();
+        Integer totalNumber = 0;
+        if (rightId == null && rightName == null) {
+            listRightVOAll = userRightInfoService.getListRightVOOneTypeAndAllState(userId, rightType, (page - 1) * rows, page * rows, new Long("0"), System.currentTimeMillis());
+            totalNumber = userRightInfoService.getTotalNumberByUserIDAndRightAndTypeAll(userId, new Long("0"), System.currentTimeMillis(), rightType);
+        } else {
+            if (rightId != null) {
+                if (rightType.equals("著作权")) {
+                    CopyrightInfoPO copyrightInfoPO = userRightInfoService.getCopyrightInfoByRightId(rightId);
+                    if (copyrightInfoPO != null) {
+                        rightVO.setId(copyrightInfoPO.getId());
+                        rightVO.setAuditResult(copyrightInfoPO.getAuditState());
+                        rightVO.setCreateTime(copyrightInfoPO.getUpdateTime());
+                        rightVO.setRightType(rightType);
+                        rightVO.setIsEntrustedProtection(copyrightInfoPO.getIsRightEntrusted());
+                        rightVO.setRightName(copyrightInfoPO.getWorksName());
+                        rightVO.setUpdateTime(copyrightInfoPO.getUpdateTime());
+                        totalNumber = 1;
+                        listRightVOAll.add(rightVO);
+                    }
+                }
+                if (rightType.equals("名誉权/肖像权")) {
+                    ReputationPortraitInfoPO reputationPortraitInfoPO = userRightInfoService.getReputationPortraitInfoByRightId(rightId);
+                    if (reputationPortraitInfoPO != null) {
+                        rightVO.setId(reputationPortraitInfoPO.getId());
+                        rightVO.setAuditResult(reputationPortraitInfoPO.getAuditStatus());
+                        rightVO.setCreateTime(reputationPortraitInfoPO.getUpdateTime());
+                        rightVO.setRightType(rightType);
+                        rightVO.setIsEntrustedProtection(reputationPortraitInfoPO.getIsRightEntrusted());
+                        rightVO.setRightName(reputationPortraitInfoPO.getCopyrightName());
+                        rightVO.setUpdateTime(reputationPortraitInfoPO.getUpdateTime());
+                        totalNumber = 1;
+                        listRightVOAll.add(rightVO);
+                    }
+                }
+                if (rightType.equals("其他权利")) {
+                    OtherRightInfoPO otherRightInfoPO = userRightInfoService.getOtherRightInfoByRightId(rightId);
+                    if (otherRightInfoPO != null) {
+                        rightVO.setId(otherRightInfoPO.getId());
+                        rightVO.setAuditResult(otherRightInfoPO.getAuditStatus());
+                        rightVO.setCreateTime(otherRightInfoPO.getUpdateTime());
+                        rightVO.setRightType(rightType);
+                        rightVO.setIsEntrustedProtection(otherRightInfoPO.getIsRightEntrusted());
+                        rightVO.setRightName(otherRightInfoPO.getCopyrightName());
+                        rightVO.setUpdateTime(otherRightInfoPO.getUpdateTime());
+                        totalNumber = 1;
+                        listRightVOAll.add(rightVO);
+                    }
+                }
+            } else {
+                if (rightName != null) {
+                    listRightVOAll = userRightInfoService.getListRightVOByRightNameAndAllStateAndOneType(userId, rightName, rightType, (page - 1) * rows, page * rows, new Long("0"), System.currentTimeMillis());
+                    totalNumber = userRightInfoService.getTotalNumberByRightNameAndAllStateAndOneType(userId, rightName, rightType, new Long("0"), System.currentTimeMillis());
+                }
+            }
+        }
         List<RightInfoDto> list = new ArrayList<>();
         list = DataObjectTransDto.populateList(listRightVOAll, list, RightInfoDto.class);
         System.out.println(list);
@@ -54,7 +110,6 @@ public class RightController {
                 rightInfoDto.setReason(userRightInfoService.getReasonForFail(rightInfoDto.getId()));
             }
         }
-        Integer totalNumber = userRightInfoService.getTotalNumberByUserIDAndRightAndTypeAll(userId, new Long("0"), System.currentTimeMillis(), rightType);
         rightInfoListDto.setRows(list);
         rightInfoListDto.setTotal(totalNumber);
         return rightInfoListDto;
@@ -190,5 +245,111 @@ public class RightController {
         list.add(rightType3);
         return list;
     }
+    @RequestMapping("recall")
+    public MessageDto recallRightInfo(Long id, Integer t) {
+        System.out.println("teeeeeeeeeeeeeeeeeeee");
+        RightWorkInfoPO rightWorkInfoPO = new RightWorkInfoPO();
+        rightWorkInfoPO.setAuditState("处理中");
+        rightWorkInfoPO.setRightId(id);
+        RightWorkInfoPO rightWorkInfoPO1 = rightWorkMapper.selectOne(rightWorkInfoPO);
+        if (rightWorkInfoPO1 != null) {
+            try {
+                rightWorkInfoPO.setId(rightWorkInfoPO1.getId());
+                rightWorkInfoPO.setAuditState("关闭");
+                rightWorkMapper.updateByPrimaryKeySelective(rightWorkInfoPO);
+                if (t == 1) {
+                    CopyrightInfoPO copyrightInfoPO = new CopyrightInfoPO();
+                    copyrightInfoPO.setId(id);
+                    copyrightInfoPO.setAuditState("关闭");
+                    userRightInfoService.updateCopyrightInfo(copyrightInfoPO);
 
+                } else if (t == 3) {
+                    OtherRightInfoPO otherRightInfoPO = new OtherRightInfoPO();
+                    otherRightInfoPO.setId(id);
+                    otherRightInfoPO.setAuditStatus("关闭");
+                    userRightInfoService.updateOtherRightInfo(otherRightInfoPO);
+
+                } else if (t == 2) {
+                    ReputationPortraitInfoPO reputationPortraitInfoPO = new ReputationPortraitInfoPO();
+                    reputationPortraitInfoPO.setId(id);
+                    reputationPortraitInfoPO.setAuditStatus("关闭");
+                    userRightInfoService.updateReputationPortraitInfo(reputationPortraitInfoPO);
+                }
+                MessageDto messageDto = new MessageDto();
+                messageDto.setMessage("撤回成功");
+                messageDto.setCode(0);
+                return messageDto;
+
+            } catch (Exception e) {
+                MessageDto messageDto = new MessageDto();
+                messageDto.setMessage("系统错误");
+                messageDto.setCode(1);
+                return messageDto;
+            }
+        } else {
+            return new MessageDto("没有该数据", 1);
+        }
+    }
+    @RequestMapping("resubmit")
+    public MessageDto resubmitRightInfo(RightDetailedDto rightDetailedDto, MultipartFile copyrightRegistrationFileUrlFile, MultipartFile certificatePositiveUrlFile, MultipartFile copyrightDocumentChainUrlFile, MultipartFile attorneyPowerUrlFile, MultipartFile proofMaterialUrlFile, MultipartFile intellctualPropertyCertificatesUrlFile, HttpServletRequest request) {
+        MessageDto messageDto = new MessageDto();
+        Long userId = (Long) request.getSession().getAttribute("userId");
+        OSSClient client = OSSClientUtil.getOSSClient();
+        String name = (String) SecurityUtils.getSubject().getPrincipal();
+        rightDetailedDto.setUserId(userId);
+        String rightType = rightDetailedDto.getCopyrightType();
+        try {
+        if (copyrightRegistrationFileUrlFile != null) {
+            String url = getUrl(copyrightRegistrationFileUrlFile, request, client, name);
+            rightDetailedDto.setCopyrightRegistrationFileUrl(url);
+        }
+        if (certificatePositiveUrlFile != null) {
+            String url = getUrl(certificatePositiveUrlFile, request, client, name);
+            rightDetailedDto.setCertificatePositiveUrl(url);
+        }
+        if (copyrightDocumentChainUrlFile != null) {
+            String url = getUrl(copyrightDocumentChainUrlFile, request, client, name);
+            rightDetailedDto.setCopyrightDocumentChainUrl(url);
+        }
+        if (attorneyPowerUrlFile != null) {
+            String url = getUrl(attorneyPowerUrlFile, request, client, name);
+            rightDetailedDto.setAttorneyPowerUrl(url);
+        }
+        if (proofMaterialUrlFile != null) {
+            String url = getUrl(proofMaterialUrlFile, request, client, name);
+            rightDetailedDto.setProofMaterialUrl(url);
+        }
+        if (intellctualPropertyCertificatesUrlFile != null) {
+            String url = getUrl(intellctualPropertyCertificatesUrlFile, request, client, name);
+            rightDetailedDto.setIntellctualPropertyCertificatesUrl(url);
+        }
+        if (rightType.equals("著作权")) {
+            CopyrightInfoPO copyrightInfoPO = new CopyrightInfoPO();
+            DataObjectTransDto.populate(rightDetailedDto, copyrightInfoPO);
+            userRightInfoService.updateCopyrightInfoResubmit(copyrightInfoPO);
+            messageDto.setCode(0);
+            messageDto.setMessage("success");
+            return messageDto;
+
+        } else if ("其他权利".equals(rightType)) {
+
+            OtherRightInfoPO otherRightInfoPO = new OtherRightInfoPO();
+            DataObjectTransDto.populate(rightDetailedDto, otherRightInfoPO);
+            userRightInfoService.updateOtherRightResubmit(otherRightInfoPO);
+            return messageDto;
+        } else if ("名誉权/肖像权".equals(rightType)) {
+            ReputationPortraitInfoPO reputationPortraitInfoPO=new ReputationPortraitInfoPO();
+            DataObjectTransDto.populate(rightDetailedDto,reputationPortraitInfoPO);
+            userRightInfoService.updateReputationPortraitInfoResubmit(reputationPortraitInfoPO);
+
+        }
+            messageDto.setCode(0);
+            messageDto.setMessage("success");
+            return messageDto;
+        }catch (Exception e){
+            messageDto.setCode(1);
+            messageDto.setMessage("系统异常");
+            return messageDto;
+        }
+    }
 }

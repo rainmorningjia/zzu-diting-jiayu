@@ -42,7 +42,7 @@
                     success: function (data) {
                         $('#dbCopyRight').datagrid('reload');
                         //关闭对话框
-                        $("#addAuthenDia").dialog("close");
+                        $("#dialogCopyRight").dialog("close");
                         //调出系统提示框
                         $.messager.show({
                             title: "添加成功",

@@ -874,8 +874,8 @@ public class RightWorkServiceImpl implements RightWorkService {
                 copyrightInfoDto.setId(rightWorkInfoPOOld.getRightId());
                 copyrightInfoDto.setAuditState("审核通过");
                 copyrightInfoDto.setUpdateTime(System.currentTimeMillis());
-                CopyrightInfoPO copyrightInfoPO=new CopyrightInfoPO();
-                DataObjectTransDto.populate(copyrightInfoDto,copyrightInfoPO);
+                CopyrightInfoPO copyrightInfoPO = new CopyrightInfoPO();
+                DataObjectTransDto.populate(copyrightInfoDto, copyrightInfoPO);
                 copyrightInfoMapper.updateByPrimaryKeySelective(copyrightInfoPO);
             }
             if (rightWorkInfoPOOld.getRightType().equals(RightType.ReputationRight.getDesc())) {
@@ -883,8 +883,8 @@ public class RightWorkServiceImpl implements RightWorkService {
                 reputationPortraitInfoDto.setId(rightWorkInfoPOOld.getRightId());
                 reputationPortraitInfoDto.setAuditStatus("审核通过");
                 reputationPortraitInfoDto.setUpdateTime(System.currentTimeMillis());
-                ReputationPortraitInfoPO reputationPortraitInfoPO=new ReputationPortraitInfoPO();
-                DataObjectTransDto.populate(reputationPortraitInfoDto,reputationPortraitInfoPO);
+                ReputationPortraitInfoPO reputationPortraitInfoPO = new ReputationPortraitInfoPO();
+                DataObjectTransDto.populate(reputationPortraitInfoDto, reputationPortraitInfoPO);
                 reputationPortraintInfoMapper.updateByPrimaryKeySelective(reputationPortraitInfoPO);
             }
             if (rightWorkInfoPOOld.getRightType().equals(RightType.OtherRight.getDesc())) {
@@ -892,8 +892,8 @@ public class RightWorkServiceImpl implements RightWorkService {
                 otherRightInfoDto.setId(rightWorkInfoPOOld.getRightId());
                 otherRightInfoDto.setUpdateTime(System.currentTimeMillis());
                 otherRightInfoDto.setAuditStatus("审核通过");
-                OtherRightInfoPO otherRightInfoPO=new OtherRightInfoPO();
-                DataObjectTransDto.populate(otherRightInfoDto,otherRightInfoPO);
+                OtherRightInfoPO otherRightInfoPO = new OtherRightInfoPO();
+                DataObjectTransDto.populate(otherRightInfoDto, otherRightInfoPO);
                 otherRightInfoMapper.updateByPrimaryKeySelective(otherRightInfoPO);
             }
             messageDto.setCode(0);
@@ -934,8 +934,8 @@ public class RightWorkServiceImpl implements RightWorkService {
                 copyrightInfoDto.setId(oldRightWork.getRightId());
                 copyrightInfoDto.setAuditState("审核未通过");
                 copyrightInfoDto.setUpdateTime(System.currentTimeMillis());
-                CopyrightInfoPO copyrightInfoPO=new CopyrightInfoPO();
-                DataObjectTransDto.populate(copyrightInfoDto,copyrightInfoPO);
+                CopyrightInfoPO copyrightInfoPO = new CopyrightInfoPO();
+                DataObjectTransDto.populate(copyrightInfoDto, copyrightInfoPO);
                 copyrightInfoMapper.updateByPrimaryKeySelective(copyrightInfoPO);
             }
             if (oldRightWork.getRightType().equals(RightType.ReputationRight.getDesc())) {
@@ -943,8 +943,8 @@ public class RightWorkServiceImpl implements RightWorkService {
                 reputationPortraitInfoDto.setId(oldRightWork.getRightId());
                 reputationPortraitInfoDto.setAuditStatus("审核未通过");
                 reputationPortraitInfoDto.setUpdateTime(System.currentTimeMillis());
-                ReputationPortraitInfoPO reputationPortraitInfoPO=new ReputationPortraitInfoPO();
-                DataObjectTransDto.populate(reputationPortraitInfoDto,reputationPortraitInfoPO);
+                ReputationPortraitInfoPO reputationPortraitInfoPO = new ReputationPortraitInfoPO();
+                DataObjectTransDto.populate(reputationPortraitInfoDto, reputationPortraitInfoPO);
                 reputationPortraintInfoMapper.updateByPrimaryKeySelective(reputationPortraitInfoPO);
             }
             if (oldRightWork.getRightType().equals(RightType.OtherRight.getDesc())) {
@@ -952,8 +952,8 @@ public class RightWorkServiceImpl implements RightWorkService {
                 otherRightInfoDto.setId(oldRightWork.getRightId());
                 otherRightInfoDto.setUpdateTime(System.currentTimeMillis());
                 otherRightInfoDto.setAuditStatus("审核未通过");
-                OtherRightInfoPO otherRightInfoPO=new OtherRightInfoPO();
-                DataObjectTransDto.populate(otherRightInfoDto,otherRightInfoPO);
+                OtherRightInfoPO otherRightInfoPO = new OtherRightInfoPO();
+                DataObjectTransDto.populate(otherRightInfoDto, otherRightInfoPO);
                 otherRightInfoMapper.updateByPrimaryKeySelective(otherRightInfoPO);
             }
             messageDto.setCode(0);
@@ -973,14 +973,16 @@ public class RightWorkServiceImpl implements RightWorkService {
         RightWorkDetailDto rightWorkDetailDto = new RightWorkDetailDto();
         try {
             RightWorkInfoPO rightWorkInfoPO = rightWorkMapper.selectByPrimaryKey(id);
-            List<HandleRecord> handleRecords = SplitUtil.splitHandle(rightWorkInfoPO.getProcessingRecord());
-            rightWorkDetailDto.setHandleRecords(handleRecords);
+          /*  List<HandleRecord> handleRecords = SplitUtil.splitHandle(rightWorkInfoPO.getProcessingRecord());
+            rightWorkDetailDto.setHandleRecords(handleRecords);*/
             DataObjectTransDto.populate(rightWorkInfoPO, rightWorkDetailDto);
             String orderType = "首次认证";
             if (orderType.equals(rightWorkInfoPO.getJobType())) {
                 if (rightWorkInfoPO.getRightType().equals(RightType.Copyright.getDesc())) {
                     CopyrightInfoPO copyrightInfoPO = copyrightInfoMapper.selectByPrimaryKey(rightWorkInfoPO.getRightId());
                     DataObjectTransDto.populate(copyrightInfoPO, rightWorkDetailDto);
+                    System.out.println(copyrightInfoPO);
+                    System.out.println(rightWorkDetailDto);
                 }
                 if (rightWorkInfoPO.getRightType().equals(RightType.ReputationRight.getDesc())) {
                     ReputationPortraitInfoPO reputationPortraitInfoDto = reputationPortraintInfoMapper.selectByPrimaryKey(rightWorkInfoPO.getRightId());
@@ -994,10 +996,12 @@ public class RightWorkServiceImpl implements RightWorkService {
                 if (rightWorkInfoPO.getRightType().equals(RightType.Copyright.getDesc())) {
                     CopyrightInfoPO copyrightInfoPO = copyrightInfoMapper.selectByPrimaryKey(rightWorkInfoPO.getRightId());
                     DataObjectTransDto.populate(copyrightInfoPO, rightWorkDetailDto);
-                    CopyrightUpdateInfoPO copyrightUpdateInfoPO=new CopyrightUpdateInfoPO();
+                    System.out.println(copyrightInfoPO);
+                    System.out.println(rightWorkDetailDto);
+                    CopyrightUpdateInfoPO copyrightUpdateInfoPO = new CopyrightUpdateInfoPO();
                     copyrightUpdateInfoPO.setCopyrightId(rightWorkInfoPO.getRightId());
-                    CopyrightUpdateInfoPO copyrightUpdateInfoDto =copyrightUpdateInfoPOMapper .selectOne(copyrightUpdateInfoPO);
-                    DataObjectTransDto.populate(copyrightUpdateInfoDto, rightWorkDetailDto);
+     /*               CopyrightUpdateInfoPO copyrightUpdateInfoDto =copyrightUpdateInfoPOMapper .selectOne(copyrightUpdateInfoPO);
+                    DataObjectTransDto.populate(copyrightUpdateInfoDto, rightWorkDetailDto);*/
                 }
                 if (rightWorkInfoPO.getRightType().equals(RightType.ReputationRight.getDesc())) {
                     ReputationPortraitInfoPO reputationPortraitInfoDto = reputationPortraintInfoMapper.selectByPrimaryKey(rightWorkInfoPO.getRightId());

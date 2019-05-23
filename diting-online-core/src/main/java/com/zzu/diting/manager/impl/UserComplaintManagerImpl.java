@@ -43,7 +43,7 @@ public class UserComplaintManagerImpl implements UserComplaintManager {
     @Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
     public UserComplaintInfoPO getUserComplaint(UserComplaintInfoPO userComplaintInfoPO) {
         UserComplaintInfoPO userComplaintInfoPO1=userComplaintInfoMapper.selectOne(userComplaintInfoPO);
-        return userComplaintInfoPO;
+        return userComplaintInfoPO1;
     }
 
     @Override

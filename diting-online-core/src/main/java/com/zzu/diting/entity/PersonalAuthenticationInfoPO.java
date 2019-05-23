@@ -47,7 +47,7 @@ public class PersonalAuthenticationInfoPO implements Serializable {
      */
     private String certificateHandofUrl;
     private String address;
-    private Integer zip;
+    private String zip;
     /**
      * 受理结果
      */

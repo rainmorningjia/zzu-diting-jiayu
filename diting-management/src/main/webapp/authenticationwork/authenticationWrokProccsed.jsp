@@ -63,7 +63,25 @@
                 width: 100,
 
             }]],
-
+            onClickRow: function (index, row) {
+                $("#userAuthenInfo").dialog({
+                    title: "用户认证信息",
+                    width: 500,
+                    height: 600,
+                    closed: false,
+                    cache: false,
+                    iconCls: "icon-add",
+                    href: "${pageContext.request.contextPath}/authenticationwork/detailAuthentication.jsp?id=" + row.id,
+                    modal: true,
+                    buttons: [
+                        {
+                            text: "关闭",
+                            handler: function () {
+                                $("#userAuthenInfo").dialog("close")
+                            }
+                        }]
+                })
+            }
         });
 
     })

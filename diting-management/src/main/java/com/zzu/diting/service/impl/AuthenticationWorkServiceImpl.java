@@ -601,7 +601,6 @@ public class AuthenticationWorkServiceImpl implements AuthenticationWorkService 
             String userType = authenticationWorkInfoPO.getUserType();
             DataObjectTransDto.populate(authenticationWorkInfoPO, authenticationDetailDto);
             String handleRecord = authenticationWorkInfoPO.getHandleRecord();
-
             List<HandleRecord> list = SplitUtil.splitHandle(handleRecord);
             authenticationDetailDto.setHandleRecords(list);
             if (orderTypeOne.equals(orderType)) {

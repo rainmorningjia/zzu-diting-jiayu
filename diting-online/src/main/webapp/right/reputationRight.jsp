@@ -56,6 +56,21 @@
                 field: "reason",
                 title: "失败原因",
                 width: 100,
+            },{
+                field: "ss",
+                title: "操作",
+                width: 100,
+                formatter: function (value, row, index) {
+                    var id = row.id;
+                    var tt=2;
+                    if (row.auditResult=="审核中"){
+                        return '<a  style="color:blue"  onclick="recall(' + id + ',' + tt + ')' + '">' + '撤回' + '</a>'
+                    }
+                    if (row.auditResult=="驳回"||row.auditResult=="审核未通过"||row.auditResult=="关闭"){
+                        return '<a  style="color:blue"  onclick="resumbit(' + id + ',' + tt + ')' + '">' + '重新发起' + '</a>'
+                    }
+
+                }
             }]],
             view: detailview,
             onExpandRow: function (rowIndex, rowData) {
@@ -66,14 +81,16 @@
                     cache: false,
                     success: function (message) {
                         data = message;
-                        $("#proofMaterialUrls2").attr("src", message.proofMaterialUrl);
+                        $("#proofMaterialUrls2"+ rowData.id).attr("src", message.proofMaterialUrl);
+
                         $("#ss4" + rowData.id).text("是否被委托维权: " + message.isRightEntrusted);
-                        if ( message.isRightEntrusted=="是"){
+                        if (message.isRightEntrusted == "是") {
                             $("#ss5" + rowData.id).text("维权属性: " + message.attorneyAttribute);
-                            $("#certificatePositiveP2").attr("src", message.attorneyPowerUrl);
+                            $("#certificate2"+ rowData.id).attr("src", message.attorneyPowerUrl);
+                            console.info( message.attorneyPowerUrl);
                             $("#ss7" + rowData.id).text("起始日: " + message.entrustedProtectionStartdate);
                             $("#ss8" + rowData.id).text("结合日: " + message.entrustedProtectionEnddate);
-                        }else {
+                        } else {
                             $("#ss5" + rowData.id).remove();
                             $("#ss6" + rowData.id).remove();
                             $("#ss7" + rowData.id).remove();
@@ -87,11 +104,11 @@
             detailFormatter: function (rowIndex, rowData) {
                 return '<table><tr>' +
                     /*    '<td rowspan=2 style="border:0"><img src="/imageslun/' + rowData.imagepath + '" style="height:200px;"></td>' + */
-                    '<p id="ss3' + rowData.id + '"  style="font-size:20px">证明材料文件' + '<img id="proofMaterialUrls2" src=""/>'+'</p>' +
-                    '<p id="ss4' + rowData.id + '"  style="font-size:20px">是否被委托维权: ' + '</p>' +
-                    '<p id="ss5' + rowData.id + '"  style="font-size:20px">维权属性: ' + '</p>' +
-                    '<p id="ss6' + rowData.id + '"  style="font-size:20px">委托维权文件' + '<img id="certificatePositiveP2" src="" />'+'</p>' +
-                    '<p id="ss7' + rowData.id + '"  style="font-size:20px">起始日: ' + '</p>' +
+                    '<p id="ss3' + rowData.id + '"  style="font-size:20px">证明材料文件' + '<img id="proofMaterialUrls2' + rowData.id + '" src="" style="width: 200px;height: 200px" />' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss4' + rowData.id + '"  style="font-size:20px">是否被委托维权: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss5' + rowData.id + '"  style="font-size:20px">维权属性: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss6' + rowData.id + '"  style="font-size:20px">委托维权文件' + '<img id="certificate2' + rowData.id + '" src="" style="width: 200px;height: 200px" />' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss7' + rowData.id + '"  style="font-size:20px">起始日: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
                     '<p id="ss8' + rowData.id + '"  style="font-size:20px">结束日: ' + '</p>' +
                     '</td>' +
                     '</tr></table>';
@@ -132,14 +149,12 @@
                     })
                 })*/
     })
-    //定义下载函数
-    /*    $.download = function (url, method, fileDire) {
-            var form = jQuery('<form action="' + url + '" method="' + (method || 'post') + '">' +  // action请求路径及推送方法
-                '<input type="text" name="filePath" value="' + fileDire + '"/>' + // 文件路径
-                '</form>');
-            $(document.body).append(form);
-            form.submit().remove();
-        }*/
+    function doSearch(){
+        $('#dbReputationRight').datagrid('load',{
+            rightId: $('#rightId2').val(),
+            rightName: $('#rightName2').val()
+        });
+    }
 </script>
 <div>
     <h1 align="center">权利管理</h1>
@@ -147,6 +162,11 @@
     <div id="tbReputationRight">
         <a id="addReputationRight" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-add',plain:true">添加</a>
+        <span>ID:</span>
+        <input id="rightId2" style="line-height:26px;border:1px solid #ccc">
+        <span>权利名称</span>
+        <input id="rightName2" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">搜索</a>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"

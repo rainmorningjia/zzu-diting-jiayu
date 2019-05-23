@@ -4,37 +4,16 @@
 <script type="text/javascript">
 
     $(function () {
-        //标题
-        var regs = /^[a-zA-Z\/ ]{2,20}$/;
-        var reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
-        //状态
-        var sta = /^[0-1]$/;
-        //定义标题验证规则
-        $.extend($.fn.validatebox.defaults.rules, {
-            name: {
-                validator: function (value) {
-                    var s = true;
-                    return s;
-
-                },
-                message: "请输入正确格式"
-            },
-            status: {
-                validator: function (value) {
-                    return sta.test(value);
-                }
-            }
-
-        })
-
+        $("#updateUserOtRightForm").form("load", "${pageContext.request.contextPath}/right/getRightDetail?type=其他权利&id="+id
+        )
         //定义保存按钮
-        $("#confirmUserOtRight").linkbutton({
+        $("#confirmUpUserOtRight").linkbutton({
             iconCls: "icon-save",
             //单击保存按钮触发表单提交事件
             onClick: function () {
                 //提交表单事件
-                $("#addUserOtRightForm").form("submit", {
-                    url: "${pageContext.request.contextPath}/right/addUserRightInfo",
+                $("#updateUserOtRightForm").form("submit", {
+                    url: "${pageContext.request.contextPath}/right/resubmit",
                     onSubmit: function () {
                         //进行验证
                         return true
@@ -42,11 +21,11 @@
                     success: function (data) {
                         $('#dbOtherRight').datagrid('reload');
                         //关闭对话框
-                        $("#dialogRight").dialog("close");
+                        $("#updateRight").dialog("close");
                         //调出系统提示框
                         $.messager.show({
-                            title: "添加成功",
-                            msg: "恭喜！填写认证信息成功，请等待审核！",
+                            title: "修改成功",
+                            msg: "恭喜！填写修改信息成功，请等待审核！",
 
                         });
 
@@ -91,7 +70,7 @@
     <h1>
         添加用户其他权利信息:
     </h1>
-    <form id="addUserOtRightForm" method="post" enctype="multipart/form-data">
+    <form id="updateUserOtRightForm" method="post" enctype="multipart/form-data">
         <table id="otherRight">
             <tr id="typeO">
                 <td>
@@ -186,7 +165,7 @@
             </tr>
         </table>
         <p>
-            <a id="confirmUserOtRight" class="easyui-linkbutton">保存</a>
+            <a id="confirmUpUserOtRight" class="easyui-linkbutton">保存</a>
         </p>
     </form>
 </div>

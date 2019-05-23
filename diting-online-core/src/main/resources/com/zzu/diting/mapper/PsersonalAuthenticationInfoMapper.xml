@@ -15,7 +15,7 @@
         <result column="CERTIFICATE_OPPOSITE_URL" property="certificateOppositeUrl" jdbcType="VARCHAR"/>
         <result column="CERTIFICATE_HANDOF_URL" property="certificateHandofUrl" jdbcType="VARCHAR"/>
         <result column="ADDRESS" property="address" jdbcType="VARCHAR"/>
-        <result column="ZIP" property="zip" jdbcType="INTEGER"/>
+        <result column="ZIP" property="zip" jdbcType="VARCHAR"/>
         <result column="AUTHENTICATION_RESULT" property="authenticationResult" jdbcType="VARCHAR"/>
         <result column="RECENTLY_OPERATOR" property="recentlyOperator" jdbcType="VARCHAR"/>
         <result column="RECENTLY_UPDATE_TYPE" property="recentlyUpdateType" jdbcType="VARCHAR"/>

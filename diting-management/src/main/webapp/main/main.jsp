@@ -117,5 +117,6 @@
 <div id="userAuthenInfo"></div>
 <div id="rejectInfo"></div>
 <div id="adoptInfo"></div>
+<div id="userRightInfo"></div>
 </body>
 </html>

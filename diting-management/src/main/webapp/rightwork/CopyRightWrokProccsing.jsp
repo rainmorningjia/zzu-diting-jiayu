@@ -69,7 +69,25 @@
                 width: 100,
 
             }]],
-
+            onClickRow: function (index, row) {
+                $("#userRightInfo").dialog({
+                    title: "用户权利信息",
+                    width: 500,
+                    height: 600,
+                    closed: false,
+                    cache: false,
+                    iconCls: "icon-add",
+                    href: "${pageContext.request.contextPath}/rightwork/detailRight.jsp?id=" + row.id,
+                    modal: true,
+                    buttons: [
+                        {
+                            text: "关闭",
+                            handler: function () {
+                                $("#userRightInfo").dialog("close")
+                            }
+                        }]
+                })
+            }
         });
         $("#adoptCopyRightWorkProccessing").linkbutton({
             onClick: function () {
@@ -84,7 +102,6 @@
                     success: function () {
                         $("#dbCopyRightWorkProccesing").edatagrid("reload");
                         $("#dbCopyRightWorkProccesied").edatagrid("reload");
-
                         $.messager.show({
                             title: '提示信息',
                             msg: '操作成功!'

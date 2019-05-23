@@ -41,6 +41,7 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         } else {
             PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
             personalAuthenticationInfoPO.setUserId(id);
+            System.out.println(personalAuthenticationInfoPO);
             PersonalAuthenticationInfoPO p = userAuthenticationManager.queryPersonAuthenticationInfo(personalAuthenticationInfoPO);
             name = p.getRealName();
             return name;

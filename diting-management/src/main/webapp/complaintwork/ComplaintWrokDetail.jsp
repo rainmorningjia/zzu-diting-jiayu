@@ -98,7 +98,7 @@
                 $(s).each(function () {
                     ids.push(this.id);
                 });
-                $("#rejectInfo").dialog({
+                $("#adoptInfo").dialog({
                     title: "通过信息",
                     width: 300,
                     height: 200,

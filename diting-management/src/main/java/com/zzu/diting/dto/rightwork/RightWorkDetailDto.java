@@ -1,12 +1,15 @@
 package com.zzu.diting.dto.rightwork;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.zzu.diting.dto.HandleRecord;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +45,8 @@ public class RightWorkDetailDto implements Serializable {
      * 用户类型
      */
     private String userType;
+    private String certificateNumber;
+    private String copyrightAttribute;
     /**
      * 类型
      */
@@ -51,9 +56,17 @@ public class RightWorkDetailDto implements Serializable {
      */
     private String rightName;
     /**
-     * 作品类型
+     * 权利类型
      */
     private String rightType;
+    /**
+     * 作品类型
+     */
+    private String worksType;
+    /**
+     * 作品信息可参考网址
+     */
+    private String consultUrl;
     /**
      * 作品名称
      */
@@ -66,6 +79,8 @@ public class RightWorkDetailDto implements Serializable {
      * 是否进行著作权登记
      */
     private String isRegister;
+    private String isDistribution;
+    private String copyrightPersonType;
     /**
      * 著作权登记号
      */
@@ -77,11 +92,11 @@ public class RightWorkDetailDto implements Serializable {
     /**
      * 著作权登记日
      */
-    private String copyrightRegisterDate;
+    private Date copyrightRegisterDate;
     /**
      * 著作权有效期
      */
-    private String copyrightVld;
+    private Date copyrightVld;
     /**
      * 导演信息
      */
@@ -111,6 +126,10 @@ public class RightWorkDetailDto implements Serializable {
      */
     private String certificateOppositeUrl;
     /**
+     * 证件类型
+     */
+    private String certificateType;
+    /**
      * 护照身份页照链接
      */
     private String passportUrl;
@@ -133,11 +152,11 @@ public class RightWorkDetailDto implements Serializable {
     /**
      * 委托维权起止日
      */
-    private String entrustedProtectionStartdate;
+    private Date entrustedProtectionStartdate;
     /**
      * 委托维权截止日
      */
-    private String entrustedProtectionEnddate;
+    private Date entrustedProtectionEnddate;
     /**
      * 委托文件链接
      */

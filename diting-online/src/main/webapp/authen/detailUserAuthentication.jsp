@@ -33,25 +33,25 @@
                 }
             }
         );
-      $("#realNameP").click(function () {
-          $("#updateAuthen").dialog({
-              title: "用户认证信息修改",
-              width: 500,
-              height: 600,
-              closed: false,
-              cache: false,
-              iconCls: "icon-add",
-              href: "${pageContext.request.contextPath}/authen/updateUserAuthentication.jsp",
-              modal: true,
-              buttons: [
-                  {
-                      text: "关闭",
-                      handler: function () {
-                          $("#updateAuthen").dialog("close")
-                      }
-                  }]
-          })
-      })
+        $("#realNameP").click(function () {
+            $("#updateAuthen").dialog({
+                title: "用户认证信息修改",
+                width: 500,
+                height: 600,
+                closed: false,
+                cache: false,
+                iconCls: "icon-add",
+                href: "${pageContext.request.contextPath}/authen/updateUserAuthentication.jsp",
+                modal: true,
+                buttons: [
+                    {
+                        text: "关闭",
+                        handler: function () {
+                            $("#updateAuthen").dialog("close")
+                        }
+                    }]
+            })
+        })
         //定义保存按钮
         $("#confirmuserAuthen").linkbutton({
             iconCls: "icon-save",
@@ -63,6 +63,7 @@
         })
         $("#AuthenNoUpdate").linkbutton({
             iconCls: "icon-save",
+
             //单击保存按钮触发表单提交事件
             onClick: function () {
                 //提交表单事件
@@ -355,6 +356,8 @@
         </form>
         <p>
             <a id="confirmuserAuthen" class="easyui-linkbutton">关闭</a>
+        </p>
+        <p>
             <a id="AuthenNoUpdate" class="easyui-linkbutton">更改</a>
         </p>
     </div>

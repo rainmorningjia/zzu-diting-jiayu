@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-@Transactional(propagation = Propagation.SUPPORTS, readOnly = true,rollbackFor = Exception.class)
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true, rollbackFor = Exception.class)
 public class UserRightInfoServiceImpl implements UserRightInfoService {
     @Resource
     private UserRightManager userRightManager;
@@ -206,7 +206,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String addCopyrightInfo(CopyrightInfoPO copyrightInfoPO) {
         try {
             copyrightInfoPO.setCreateTime(System.currentTimeMillis());
@@ -252,7 +252,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String addReputationPortraitInfo(ReputationPortraitInfoPO reputationPortraitInfoPO) {
         try {
             reputationPortraitInfoPO.setAuditStatus("审核中");
@@ -297,7 +297,7 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String addOtherRightInfo(OtherRightInfoPO otherRightInfoPO) {
         try {
             otherRightInfoPO.setAuditStatus("审核中");
@@ -339,14 +339,14 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String addOtherRightUpdateInfo(OtherRightUpdateInfoPO otherRightUpdateInfoPO) {
         userOtherRightManager.addUserOtherRightUpdateInfo(otherRightUpdateInfoPO);
         return "success";
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String addCopyrightUpdateInfo(CopyrightUpdateInfoPO copyrightUpdateInfoPO) {
         userCopyrightManager.addCopyrightUpdateInfo(copyrightUpdateInfoPO);
 
@@ -354,241 +354,42 @@ public class UserRightInfoServiceImpl implements UserRightInfoService {
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String addReputationPortraitUpdateInfo(ReputationPortraitUpdateInfoPO reputationPortraitUpdateInfoPO) {
         userReputationPortraitManager.addUserReputationPortraitUpdateInfo(reputationPortraitUpdateInfoPO);
         return "success";
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String updateCopyrightInfoResubmit(CopyrightInfoPO copyrightInfoPO) {
-        //对用户该权利是否是第一次审核做判断
-        RightWorkInfoPO rightWorkInfoPOs = new RightWorkInfoPO();
-        RightWorkInfoPO rightWorkInfoPOs1 = new RightWorkInfoPO();
-        rightWorkInfoPOs.setRightId(copyrightInfoPO.getId());
-        rightWorkInfoPOs.setUserId(copyrightInfoPO.getUserId());
-        rightWorkInfoPOs.setJobType("首次认证");
-        rightWorkInfoPOs.setAuditState("通过");
-        rightWorkInfoPOs.setUserId(copyrightInfoPO.getUserId());
-        RightWorkInfoPO rightWorkInfoPO1 = rightWorkManager.getRightWork(rightWorkInfoPOs);
-
-        //对用户该权利信息是否在信息修改期间做判断
-        rightWorkInfoPOs1.setJobType("信息修改");
-        rightWorkInfoPOs1.setRightId(copyrightInfoPO.getId());
-        rightWorkInfoPOs1.setUserId(copyrightInfoPO.getUserId());
-        RightWorkInfoPO rightWorkInfoPO2 = rightWorkManager.getRightWork(rightWorkInfoPOs1);
-        CopyrightUpdateInfoPO copyrightUpdateInfoPO = new CopyrightUpdateInfoPO();
-        System.out.println("1111111111111111111111111");
-
-        //是否已登记
-        copyrightUpdateInfoPO.setIsRegister(copyrightInfoPO.getIsRegister());
-        if (copyrightInfoPO.getIsRegister().equals("是")) {
-            copyrightUpdateInfoPO.setNewCopyrightRegisterDate(copyrightInfoPO.getCopyrightRegisterDate());
-            copyrightUpdateInfoPO.setNewCopyrightRegistrationNumber(copyrightInfoPO.getCopyrightRegistrationNumber());
-            copyrightUpdateInfoPO.setIsDistribution(copyrightInfoPO.getIsDistribution());
-            if (copyrightInfoPO.getIsDistribution().equals("是")) {
-                copyrightUpdateInfoPO.setCopyrightAttribute(copyrightInfoPO.getCopyrightAttribute());
-                //权利人类型
-                if (copyrightInfoPO.getCopyrightPersonType().equals("个人")) {
-                    if (copyrightInfoPO.getCertificateType().equals("身份证")) {
-                        copyrightUpdateInfoPO.setNewCertificateOppositeUrl(copyrightInfoPO.getCertificateOppositeUrl());
-                        copyrightUpdateInfoPO.setNewCertificatePositiveUrl(copyrightInfoPO.getCertificatePositiveUrl());
-                    } else {
-                        copyrightUpdateInfoPO.setNewPassportUrl(copyrightInfoPO.getPassportUrl());
-                    }
-
-                } else {
-                    copyrightUpdateInfoPO.setNewUnifiedSocialCreditCode(copyrightInfoPO.getUnifiedSocialCreditCode());
-                    copyrightUpdateInfoPO.setNewEnterpriseProveFileUrl(copyrightInfoPO.getEnterpriseProveFileUrl());
-                }
-            }
-        }
-        copyrightUpdateInfoPO.setIsRightEntrusted(copyrightInfoPO.getIsRightEntrusted());
-        if (copyrightInfoPO.getIsRightEntrusted().equals("是")) {
-            copyrightUpdateInfoPO.setAttorneyAttribute(copyrightInfoPO.getAttorneyAttribute());
-            copyrightUpdateInfoPO.setNewEntrustProtectionStartdate(copyrightInfoPO.getEntrustedProtectionStartdate());
-            copyrightUpdateInfoPO.setNewEntrustProtectionEnddate(copyrightInfoPO.getEntrustedProtectionEnddate());
-            copyrightUpdateInfoPO.setNewEntrustFileUrl(copyrightInfoPO.getAttorneyPowerUrl());
-        }
-        copyrightUpdateInfoPO.setNewWorksType(copyrightInfoPO.getWorksType());
-        copyrightUpdateInfoPO.setNewCopyrightPersonName(copyrightInfoPO.getCopyrightPersonName());
-        copyrightUpdateInfoPO.setNewCopyrightDocumentChainUrl(copyrightInfoPO.getCopyrightDocumentChainUrl());
-        copyrightUpdateInfoPO.setNewDirectorInfo(copyrightInfoPO.getDirectorInfo());
-        copyrightUpdateInfoPO.setNewPerformerMainInfo(copyrightInfoPO.getPerformerMainInfo());
-        copyrightUpdateInfoPO.setNewWorksNumber(copyrightInfoPO.getWorksNumber());
-        copyrightUpdateInfoPO.setNewCopyrightVld(copyrightInfoPO.getCopyrightVld());
-        copyrightUpdateInfoPO.setWorksAttribute(copyrightInfoPO.getWorksAttribute());
-        copyrightUpdateInfoPO.setCopyrightId(copyrightInfoPO.getId());
-        copyrightUpdateInfoPO.setUpdateTime(System.currentTimeMillis());
-
-
-        //权利信息已被认证并且第一次修改 第一生成权利信息更新数据2
-        if (rightWorkInfoPO1 != null && rightWorkInfoPO2 == null) {
-            copyrightUpdateInfoPO.setCreateTime(System.currentTimeMillis());
-            CopyrightInfoPO copyrightInfoPO1 = new CopyrightInfoPO();
-            copyrightInfoPO1.setId(copyrightInfoPO.getId());
-            copyrightInfoPO1.setAuditState("审核中");
-            copyrightInfoPO1.setUpdateTime(System.currentTimeMillis());
-            userCopyrightManager.updateUserCopyright(copyrightInfoPO1);
-            copyrightUpdateInfoPO.setCreateTime(System.currentTimeMillis());
-            addCopyrightUpdateInfo(copyrightUpdateInfoPO);
-            operationService.addOperator("添加", "用户添加著作权更新信息", copyrightInfoPO.getUserId(),(String) SecurityUtils.getSubject().getPrincipal());
-            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
-
-        } else if (rightWorkInfoPO1 != null && rightWorkInfoPO2 != null) {
-            //待更新权利修改信息3
-            copyrightInfoPO.setUpdateTime(System.currentTimeMillis());
-            CopyrightInfoPO copyrightInfoPO1 = new CopyrightInfoPO();
-            copyrightInfoPO1.setUpdateTime(System.currentTimeMillis());
-            copyrightInfoPO1.setId(copyrightInfoPO.getId());
-            copyrightInfoPO1.setAuditState("审核中");
-            userCopyrightManager.updateUserCopyright(copyrightInfoPO1);
-            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(),(String) SecurityUtils.getSubject().getPrincipal());
-            updateCopyrightUpdateInfo(copyrightUpdateInfoPO);
-        } else if (rightWorkInfoPO1 == null) {
-            //第一次审核过程中修改权利信息 这次没有用到权利更新表1
-            copyrightInfoPO.setUpdateTime(System.currentTimeMillis());
-            copyrightInfoPO.setAuditState("审核中");
-            userCopyrightManager.updateUserCopyright(copyrightInfoPO);
-            operationService.addOperator("修改", "用户修改著作权信息", copyrightInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
-
-        }
-        //添加著作权更新信息的同时生成权利工单  每一次都生成
-        addRightWork(copyrightInfoPO);
-        operationService.addOperator("添加", "系统添加著作权审核工单信息", new Long("0"), "系统");
+        //第一次审核过程中修改权利信息 这次没有用到权利更新表1
+        copyrightInfoPO.setUpdateTime(System.currentTimeMillis());
+        copyrightInfoPO.setAuditState("审核中");
+        userCopyrightManager.updateUserCopyright(copyrightInfoPO);
+       addRightWork(copyrightInfoPO);
 
         return "success";
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String updateReputationPortraitInfoResubmit(ReputationPortraitInfoPO reputationPortraitInfoPO) {
 
-        RightWorkInfoPO rightWorkInfoPOs = new RightWorkInfoPO();
-        rightWorkInfoPOs.setRightId(reputationPortraitInfoPO.getId());
-        rightWorkInfoPOs.setUserId(reputationPortraitInfoPO.getUserId());
-        rightWorkInfoPOs.setJobType("首次认证");
-        rightWorkInfoPOs.setAuditState("通过");
-        rightWorkInfoPOs.setUserId(reputationPortraitInfoPO.getUserId());
-        RightWorkInfoPO rightWorkInfoPO1 = rightWorkManager.getRightWork(rightWorkInfoPOs);
-
-        //对用户该权利信息是否在信息修改期间做判断
-        RightWorkInfoPO rightWorkInfoPOs1 = new RightWorkInfoPO();
-        rightWorkInfoPOs1.setJobType("信息修改");
-        rightWorkInfoPOs1.setRightId(reputationPortraitInfoPO.getId());
-        rightWorkInfoPOs1.setUserId(reputationPortraitInfoPO.getUserId());
-        RightWorkInfoPO rightWorkInfoPO2 = rightWorkManager.getRightWork(rightWorkInfoPOs1);
-        ReputationPortraitUpdateInfoPO reputationPortraitUpdateInfoPO = new ReputationPortraitUpdateInfoPO();
-        reputationPortraitUpdateInfoPO.setIsEntrustedProtection(reputationPortraitInfoPO.getIsRightEntrusted());
-        //是否被维权委托
-        if (reputationPortraitInfoPO.getIsRightEntrusted().equals("是")) {
-            reputationPortraitUpdateInfoPO.setProtectionRightAttribute(reputationPortraitInfoPO.getAttorneyAttribute());
-            reputationPortraitUpdateInfoPO.setNewEntrustedProtectionStartdate(reputationPortraitInfoPO.getEntrustedProtectionStartdate());
-            reputationPortraitUpdateInfoPO.setNewEntrustedProtectionEnddate(reputationPortraitInfoPO.getEntrustedProtectionEnddate());
-            reputationPortraitUpdateInfoPO.setNewAttorneyPowerUrl(reputationPortraitInfoPO.getAttorneyPowerUrl());
-        }
-        reputationPortraitUpdateInfoPO.setNewProofMaterialUrl(reputationPortraitInfoPO.getProofMaterialUrl());
-        reputationPortraitUpdateInfoPO.setUpdateTime(System.currentTimeMillis());
-        reputationPortraitUpdateInfoPO.setReputationPortraitInfoId(reputationPortraitInfoPO.getId());
-
-        //权利信息已被认证并且第一次修改 第一生成权利信息修改数据2
-        if (rightWorkInfoPO1 != null && rightWorkInfoPO2 == null) {
-            reputationPortraitUpdateInfoPO.setCreateTime(System.currentTimeMillis());
-            ReputationPortraitInfoPO reputationPortraitInfoPO1 = new ReputationPortraitInfoPO();
-            reputationPortraitInfoPO1.setAuditStatus("审核中");
-            reputationPortraitInfoPO1.setId(reputationPortraitInfoPO.getId());
-            reputationPortraitInfoPO1.setUpdateTime(System.currentTimeMillis());
-            userReputationPortraitManager.updateUserReputationPortraitInfo(reputationPortraitInfoPO1);
-            reputationPortraitUpdateInfoPO.setCreateTime(System.currentTimeMillis());
-            addReputationPortraitUpdateInfo(reputationPortraitUpdateInfoPO);
-            operationService.addOperator("修改", "用户修改名誉权/肖像权信息", reputationPortraitInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(reputationPortraitInfoPO.getUserId()));
-            operationService.addOperator("添加", "用户添加名誉权/肖像权更新信息", reputationPortraitInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(reputationPortraitInfoPO.getUserId()));
-        } else if (rightWorkInfoPO1 != null && rightWorkInfoPO2 != null) {
-            //修改权利更新信息3
-            ReputationPortraitInfoPO reputationPortraitInfoPO1 = new ReputationPortraitInfoPO();
-            reputationPortraitInfoPO1.setUpdateTime(System.currentTimeMillis());
-            reputationPortraitInfoPO1.setAuditStatus("审核中");
-            reputationPortraitInfoPO1.setId(reputationPortraitInfoPO.getId());
-            userReputationPortraitManager.updateUserReputationPortraitInfo(reputationPortraitInfoPO1);
-            operationService.addOperator("修改", "用户修改名誉权/肖像权更新信息", reputationPortraitInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(reputationPortraitInfoPO.getUserId()));
-        } else if (rightWorkInfoPO1 == null) {
-            //第一次审核过程中修改权利信息1
-            reputationPortraitInfoPO.setAuditStatus("审核中");
-            reputationPortraitInfoPO.setUpdateTime(System.currentTimeMillis());
-            userReputationPortraitManager.updateUserReputationPortraitInfo(reputationPortraitInfoPO);
-            operationService.addOperator("修改", "用户修改名誉权/肖像权信息", reputationPortraitInfoPO.getUserId(), userAuthenticationService.getUserNameAuthenticationByUserId(reputationPortraitInfoPO.getUserId()));
-        }
-        //添加名誉权权的同时生成权利工单
-        addRightWork(reputationPortraitInfoPO);
-        operationService.addOperator("添加", "系统添加名誉权/肖像权审核工单信息", new Long("0"), "系统");
-
+        reputationPortraitInfoPO.setAuditStatus("审核中");
+        reputationPortraitInfoPO.setUpdateTime(System.currentTimeMillis());
+        userReputationPortraitManager.updateUserReputationPortraitInfo(reputationPortraitInfoPO);
+     addRightWork(reputationPortraitInfoPO);
         return "success";
     }
 
     @Override
- @Transactional(rollbackFor = Exception.class)
+    @Transactional(rollbackFor = Exception.class)
     public String updateOtherRightResubmit(OtherRightInfoPO otherRightInfoPO) {
-
-        RightWorkInfoPO rightWorkInfoPOs = new RightWorkInfoPO();
-        rightWorkInfoPOs.setRightId(otherRightInfoPO.getId());
-        rightWorkInfoPOs.setUserId(otherRightInfoPO.getUserId());
-        rightWorkInfoPOs.setJobType("首次认证");
-        rightWorkInfoPOs.setAuditState("通过");
-        rightWorkInfoPOs.setUserId(otherRightInfoPO.getUserId());
-        RightWorkInfoPO rightWorkInfoPO1 = rightWorkManager.getRightWork(rightWorkInfoPOs);
-
-        //对用户该权利信息是否在信息修改期间做判断
-        RightWorkInfoPO rightWorkInfoPOs1 = new RightWorkInfoPO();
-        rightWorkInfoPOs1.setJobType("信息修改");
-        rightWorkInfoPOs1.setRightId(otherRightInfoPO.getId());
-        rightWorkInfoPOs1.setUserId(otherRightInfoPO.getUserId());
-        RightWorkInfoPO rightWorkInfoPO2 = rightWorkManager.getRightWork(rightWorkInfoPOs1);
-
-        OtherRightUpdateInfoPO otherRightUpdateInfoPO = new OtherRightUpdateInfoPO();
-        otherRightUpdateInfoPO.setNewIntellctualPropertyCertificatesUrl(otherRightInfoPO.getIntellctualPropertyCertificatesUrl());
-        otherRightUpdateInfoPO.setIsEntrustedProtection(otherRightInfoPO.getIsRightEntrusted());
-        otherRightUpdateInfoPO.setNewCountry(otherRightInfoPO.getCountry());
-        otherRightUpdateInfoPO.setNewProvince(otherRightInfoPO.getProvince());
-        otherRightUpdateInfoPO.setOtherRightInfoId(otherRightInfoPO.getId());
-        otherRightUpdateInfoPO.setUpdateTime(System.currentTimeMillis());
-        if (otherRightInfoPO.getIsRightEntrusted().equals("是")) {
-            otherRightUpdateInfoPO.setNewAttorneyPowerUrl(otherRightInfoPO.getAttorneyPowerUrl());
-            otherRightUpdateInfoPO.setProtectionRightAttribute(otherRightInfoPO.getAttorneyAttribute());
-            otherRightUpdateInfoPO.setNewEntrustedProtectionStartdate(otherRightInfoPO.getEntrustedProtectionStartdate());
-            otherRightUpdateInfoPO.setNewEntrustedProtectionEnddate(otherRightInfoPO.getEntrustedProtectionEnddate());
-        }
-        System.out.println(rightWorkInfoPO1 + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        if (rightWorkInfoPO1 == null) {
-            System.out.println("111111111111111111111111111");
-            //修改权利信息1
-            otherRightInfoPO.setAuditStatus("审核中");
-            otherRightInfoPO.setUpdateTime(System.currentTimeMillis());
-            System.out.println(otherRightInfoPO);
-            userOtherRightManager.updateUserOtherRightInfo(otherRightInfoPO);
-            operationService.addOperator("修改", "用户修改其他权利信息", otherRightInfoPO.getUserId(),(String) SecurityUtils.getSubject().getPrincipal());
-        } else if (rightWorkInfoPO1 != null && rightWorkInfoPO2 != null) {
-            OtherRightInfoPO otherRightInfoPO1 = new OtherRightInfoPO();
-            otherRightInfoPO1.setAuditStatus("审核中");
-            otherRightInfoPO1.setId(otherRightInfoPO.getId());
-            otherRightInfoPO1.setUpdateTime(System.currentTimeMillis());
-            userOtherRightManager.updateUserOtherRightInfo(otherRightInfoPO1);
-            //修改权利更新信息3
-            updateOtherRightUpdateInfo(otherRightUpdateInfoPO);
-            operationService.addOperator("修改", "用户修改其他权利信息", otherRightInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
-            operationService.addOperator("添加", "用户修改其他权利更新信息", otherRightInfoPO.getUserId(), (String) SecurityUtils.getSubject().getPrincipal());
-        } else if (rightWorkInfoPO1 != null && rightWorkInfoPO2 == null) {
-            OtherRightInfoPO otherRightInfoPO1 = new OtherRightInfoPO();
-            otherRightInfoPO1.setAuditStatus("审核中");
-            otherRightInfoPO1.setId(otherRightInfoPO.getId());
-            otherRightInfoPO1.setUpdateTime(System.currentTimeMillis());
-            userOtherRightManager.updateUserOtherRightInfo(otherRightInfoPO1);
-            //添加权利更新信息2
-            otherRightUpdateInfoPO.setCreateTime(System.currentTimeMillis());
-            addOtherRightUpdateInfo(otherRightUpdateInfoPO);
-        }
+        otherRightInfoPO.setAuditStatus("审核中");
+        otherRightInfoPO.setUpdateTime(System.currentTimeMillis());
+        userOtherRightManager.updateUserOtherRightInfo(otherRightInfoPO);
         addRightWork(otherRightInfoPO);
-        operationService.addOperator("添加", "系统添加其他权利审核工单", new Long("0"), "系统");
         return "success";
     }
 

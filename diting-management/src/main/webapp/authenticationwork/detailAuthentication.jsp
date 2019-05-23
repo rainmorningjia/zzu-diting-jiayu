@@ -20,7 +20,7 @@
                         $("#certificateHandofP").prop("src", data.certificateHandofUrl)
                         $("#organization").empty();
                     }
-                        document.getElementById("auditState").innerText = "处理中";
+                        document.getElementById("auditState").innerText = data.auditState;
                 }
             }
         );

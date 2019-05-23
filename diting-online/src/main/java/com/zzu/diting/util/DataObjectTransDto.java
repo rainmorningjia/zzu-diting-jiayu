@@ -40,24 +40,10 @@ public class DataObjectTransDto {
                         String targetName = mm.getName();
                         if (targetName.substring(3, targetName.length())
                                 .equals(srcName.substring(3, srcName.length()))) {
-
-                            if (!(src.getClass().getSimpleName().endsWith("Dto") && target.getClass().getSimpleName().endsWith("Dto"))) {
-                                if (src.getClass().getSimpleName().endsWith("Dto")) {
-
-                                } else if (!src.getClass().getSimpleName().endsWith("Dto")) {
-
-                                }
-                            } else if (targetName.startsWith("set")) {
-                                mm.invoke(target, result);
-
-                            }
-
                             if (targetName.equals("setUpdateTime")) {
                                 Long t1 = (Long) result;
                                 String s = DataTransformUtil.stringDateTransformLong(t1);
                                 mm.invoke(target, s);
-
-
                             } else if (targetName.equals("setCreateTime")) {
                                 Long t1 = (Long) result;
                                 String s = DataTransformUtil.stringDateTransformLong(t1);
