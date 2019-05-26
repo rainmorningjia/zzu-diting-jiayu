@@ -89,12 +89,25 @@
             }
         });
     })
-
+    function doSearch(){
+        $('#dbCopyRightWorkProccesed').datagrid('load',{
+            id: $('#Idr1').val(),
+            rightName: $('#rightName1').val(),
+            name: $('#rightPerson1').val()
+        });
+    }
 </script>
 <div>
     <h1 align="center">已处理著作权工单信息</h1>
     <table id="dbCopyRightWorkProccesed"></table>
     <div id="tbCopyRightWorkProccesed">
+        <span>ID:</span>
+        <input id="Idr1" style="line-height:26px;border:1px solid #ccc">
+        <span>权利名称</span>
+        <input id="rightName1" style="line-height:26px;border:1px solid #ccc">
+        <span>权利人</span>
+        <input id="rightPerson1" style="line-height:26px;border:1px solid #ccc">
+        <a  class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="doSearch()">搜索</a>
         <%--<a id="addAuthenticationWrokProccesed" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-add',plain:true">添加</a>--%>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"

@@ -551,7 +551,7 @@
             count(*)
         from complaints_work_info
         where handle_person_id = #{mId}
-          and relation_right = #{relationType}
+          and relation_right like "%"#{relationType}"%"
           and processing &lt; 1
           and right_type = #{rightType}
     </select>
@@ -560,7 +560,7 @@
         <include refid="complaintsWorkInfo"/>
         from complaints_work_info
         where handle_person_id=#{mId}
-        and relation_right=#{relationType}
+        and relation_right like "%"#{relationType}"%"
         and processing&lt;1
         and right_type=#{rightType}
         order by ${timeType} ${sort}
@@ -573,7 +573,7 @@
             count(*)
         from complaints_work_info
         where handle_person_id = #{mId}
-          and relation_right = #{relationType}
+          and relation_right like "%"#{relationType}"%"
           and node = #{node}
           and processing &lt; 1
           and right_type = #{rightType}
@@ -583,7 +583,7 @@
         <include refid="complaintsWorkInfo"/>
         from complaints_work_info
         where handle_person_id=#{mId}
-        and relation_right=#{relationType}
+        and relation_right like "%"#{relationType}"%"
         and node=#{node}
         and processing&lt;1
         and right_type=#{rightType}
@@ -597,7 +597,7 @@
             count(*)
         from complaints_work_info
         where handle_person_id = #{mId}
-          and relation_right = #{relationType}
+          and relation_right like "%"#{relationType}"%"
           and processing = 1
           and right_type = #{rightType}
     </select>
@@ -606,7 +606,7 @@
         <include refid="complaintsWorkInfo"/>
         from complaints_work_info
         where handle_person_id=#{mId}
-        and relation_right=#{relationType}
+        and relation_right like "%"#{relationType}"%"
         and processing=1
         and right_type=#{rightType}
         order by ${timeType} ${sort}
@@ -619,7 +619,7 @@
             count(*)
         from complaints_work_info
         where handle_person_id = #{mId}
-          and relation_right = #{relationType}
+          and relation_right like "%"#{relationType}"%"
           and processing = 1
           and node = #{node}
           and right_type = #{rightType}
@@ -629,7 +629,7 @@
         <include refid="complaintsWorkInfo"/>
         from complaints_work_info
         where handle_person_id=#{mId}
-        and relation_right=#{relationType}
+        and relation_right like "%"#{relationType}"%"
         and processing=1
         and node=#{node}
         and right_type=#{rightType}

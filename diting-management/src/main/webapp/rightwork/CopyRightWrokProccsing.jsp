@@ -134,7 +134,13 @@
             }
         })
     })
-
+    function doSearch(){
+        $('#dbCopyRightWorkProccesing').datagrid('load',{
+            id: $('#Idr2').val(),
+            rightName: $('#rightName2').val(),
+            name: $('#rightPerson2').val()
+        });
+    }
 </script>
 <div>
     <h1 align="center">处理中著作权工单信息</h1>
@@ -144,6 +150,13 @@
            data-options="iconCls:'icon-add',plain:true">通过</a>
         <a id="rejectCopyRightWork" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-edit',plain:true">驳回</a>
+        <span>ID:</span>
+        <input id="Idr2" style="line-height:26px;border:1px solid #ccc">
+        <span>权利名称</span>
+        <input id="rightName2" style="line-height:26px;border:1px solid #ccc">
+        <span>权利人</span>
+        <input id="rightPerson2" style="line-height:26px;border:1px solid #ccc">
+        <a  class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true,size:'large'" onclick="doSearch()">搜索</a>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"

@@ -133,7 +133,13 @@
             }
         })
     })
-
+    function doSearch(){
+        $('#dbReputationRightWorkProccessing').datagrid('load',{
+            id: $('#Idr6').val(),
+            rightName: $('#rightName6').val(),
+            name: $('#rightPerson6').val()
+        });
+    }
 </script>
 <div>
     <h1 align="center">已处理肖像权/名誉权工单信息</h1>
@@ -143,6 +149,13 @@
            data-options="iconCls:'icon-add',plain:true">通过</a>
         <a id="rejectReputationRightWork" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-edit',plain:true">驳回</a>
+        <span>ID:</span>
+        <input id="Idr6" style="line-height:26px;border:1px solid #ccc">
+        <span>权利名称</span>
+        <input id="rightName6" style="line-height:26px;border:1px solid #ccc">
+        <span>权利人</span>
+        <input id="rightPerson6" style="line-height:26px;border:1px solid #ccc">
+        <a  class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true,size:'large'" onclick="doSearch()">搜索</a>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"

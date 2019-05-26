@@ -6,10 +6,13 @@
         $("#dbCopyrightComplaintsWorkProccessed").edatagrid({
             toolbar: "#tbCopyrightComplaintsWorkProccessed",
             fitColumns: true,
-            url: "${pageContext.request.contextPath}/complaintsWork/getComplainsWork?&tableType=2&searchType=1&complaintType=1",
+            url: "${pageContext.request.contextPath}/complaintsWork/getComplainsWork?&tableType=2&complaintType=1",
             <%--updateUrl:"${pageContext.request.contextPath}/user/updataUser",--%>
             pagePosition: "bottom",
             pagination: true,
+            queryParams: {
+                searchType:1
+            },
             pageSize: 4,
             cash: false,
             singleSelect:false,
@@ -74,12 +77,30 @@
 
         });
     })
-
+    function doSearch(){
+        var searchType=1;
+        if ($("#IdC2").val()!=null&&!$('#IdC2').val()==""){
+            searchType=2
+        }else
+        if ($('#rightNameC2').val()!=null&&!$('#rightNameC2').val()==""){
+            searchType=6;
+        }
+        $('#dbCopyrightComplaintsWorkProccessed').datagrid('load',{
+            id: $('#IdC2').val(),
+            rightName: $('#rightNameC2').val(),
+            searchType:searchType
+        });
+    }
 </script>
 <div>
     <h1 align="center">处理中著作权投诉集工单信息</h1>
     <table id="dbCopyrightComplaintsWorkProccessed"></table>
     <div id="tbCopyrightComplaintsWorkProccessed">
+        <span>ID:</span>
+        <input id="IdC2" style="line-height:26px;border:1px solid #ccc">
+        <span>涉及权利</span>
+        <input id="rightNameC2" style="line-height:26px;border:1px solid #ccc">
+        <a  class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="doSearch()">搜索</a>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"

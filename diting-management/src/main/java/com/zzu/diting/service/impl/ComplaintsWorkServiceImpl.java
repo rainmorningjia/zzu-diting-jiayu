@@ -256,8 +256,10 @@ public class ComplaintsWorkServiceImpl implements ComplaintsWorkService {
                             }
                             break;
                         case 6:
+                            System.out.println(complaintsWorkQueryParam);
                             switch (node) {
                                 case 1:
+
                                     totalNumber = complaintsWorkByManagerIdMapper.queryTotalNumberForWorksByAllNodeAndPendingAndRelationTypeAndManagerIdAndType(complaintType, mId, complaintsWorkQueryParam.getRightName());
                                     complaintsWorkInfoPOS = complaintsWorkByManagerIdMapper.queryWorksByAllNodeAndPendingAndRelationTypeAndManagerIdAndType(complaintType, mId, complaintsWorkQueryParam.getRightName(), startNumber, endNumber, timeType, sortType);
                                     break;

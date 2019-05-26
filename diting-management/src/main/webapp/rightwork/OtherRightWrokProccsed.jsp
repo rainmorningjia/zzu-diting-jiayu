@@ -90,12 +90,25 @@
         });
 
     })
-
+    function doSearch(){
+        $('#dbOtherRightWorkProccesed').datagrid('load',{
+            id: $('#Idr3').val(),
+            rightName: $('#rightName3').val(),
+            name: $('#rightPerson3').val()
+        });
+    }
 </script>
 <div>
     <h1 align="center">已处理肖像权/名誉权工单信息</h1>
     <table id="dbOtherRightWorkProccesed"></table>
     <div id="tbOtherRightWorkProccesed">
+        <span>ID:</span>
+        <input id="Idr3" style="line-height:26px;border:1px solid #ccc">
+        <span>权利名称</span>
+        <input id="rightName3" style="line-height:26px;border:1px solid #ccc">
+        <span>权利人</span>
+        <input id="rightPerson3" style="line-height:26px;border:1px solid #ccc">
+        <a  class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true,size:'large'" onclick="doSearch()">搜索</a>
         <%--<a id="addAuthenticationWrokProccesed" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-add',plain:true">添加</a>--%>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"

@@ -485,7 +485,7 @@
         from right_work_info
         where right_name like "%"#{rightName}"%"
             and auditor_id=#{mId}
-            and audit_state=#{state}}
+            and audit_state=#{state}
     </select>
     <select id="queryWorksByMIdAndRightNameAndState" resultMap="rightInfo">
         select

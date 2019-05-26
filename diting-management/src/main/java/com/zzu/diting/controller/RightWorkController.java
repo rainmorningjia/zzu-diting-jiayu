@@ -17,10 +17,22 @@ public class RightWorkController {
     RightWorkService rightWorkService;
 
     @RequestMapping("getTable")
-    public RightWorkListDto getRightTable(Integer rows, Integer page, Integer rightType, HttpServletRequest request, Integer tableType) {
+    public RightWorkListDto getRightTable(Integer rows, Integer page, Integer rightType, HttpServletRequest request, Integer tableType,Long id,String rightName,String name) {
         String managerId = (String) request.getSession().getAttribute("managerId");
         RightWorkQueryParam rightWorkQueryParam = new RightWorkQueryParam();
         rightWorkQueryParam.setSearchType(4);
+        if (id!=null){
+            rightWorkQueryParam.setSearchType(2);
+            rightWorkQueryParam.setId(id);
+        }else if (rightName!=null&&!rightName.equals("")){
+            rightWorkQueryParam.setSearchType(5);
+            rightWorkQueryParam.setRightName(rightName);
+        }else if (name!=null){
+            System.out.println("12321321");
+            rightWorkQueryParam.setSearchType(7);
+            rightWorkQueryParam.setRightPerson(name);
+        }
+
         rightWorkQueryParam.setRightType(rightType);
         rightWorkQueryParam.setManagerId(managerId);
         rightWorkQueryParam.setTableType(tableType);

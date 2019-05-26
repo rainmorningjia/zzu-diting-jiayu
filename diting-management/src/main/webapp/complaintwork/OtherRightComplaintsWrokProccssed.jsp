@@ -74,12 +74,30 @@
 
         });
     })
-
+    function doSearch(){
+        var searchType=1;
+        if ($("#IdC4").val()!=null&&!$('#IdC4').val()==""){
+            searchType=2
+        }else
+        if ($('#rightNameC4').val()!=null&&!$('#rightNameC4').val()==""){
+            searchType=6;
+        }
+        $('#dbOtherRightComplaintsWorkProccessed').datagrid('load',{
+            id: $('#IdC4').val(),
+            rightName: $('#rightNameC4').val(),
+            searchType:searchType
+        });
+    }
 </script>
 <div>
-    <h1 align="center">处理中著作权投诉集工单信息</h1>
+    <h1 align="center">已处理其他权利投诉集工单信息</h1>
     <table id="dbOtherRightComplaintsWorkProccessed"></table>
     <div id="tbOtherRightComplaintsWorkProccessed">
+        <span>ID:</span>
+        <input id="IdC4" style="line-height:26px;border:1px solid #ccc">
+        <span>涉及权利</span>
+        <input id="rightNameC4" style="line-height:26px;border:1px solid #ccc">
+        <a  class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="doSearch()">搜索</a>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"
