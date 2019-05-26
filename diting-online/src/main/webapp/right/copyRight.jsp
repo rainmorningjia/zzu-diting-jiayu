@@ -11,7 +11,7 @@
             <%--updateUrl:"${pageContext.request.contextPath}/user/updataUser",--%>
             pagePosition: "bottom",
             pagination: true,
-            pageSize: 4,
+            pageSize: 8,
             cash: false,
             pageList: [4, 8, 10],
             frozenColumns: [[
@@ -81,12 +81,17 @@
                     cache: false,
                     success: function (message) {
                         data = message;
+                        console.info(message)
                         $("#ss1" + rowData.id).text("作品类型: " + message.worksType);
                         $("#ss2" + rowData.id).text("证件类型: " + message.certificateType);
                         $("#ss3" + rowData.id).text("导演信息: " + message.directorInfo);
                         $("#ss4" + rowData.id).text("主演信息: " + message.performerMainInfo);
+                        $("#copyrightRegistrationFileUrl1" + rowData.id).attr("src" ,message.copyrightRegistrationFileUrl);
+                        $("#copyrightDocumentChainUrl1" + rowData.id).attr("src" ,message.copyrightDocumentChainUrl);
+                        $("#certificatePositiveUrl1" + rowData.id).attr("src" ,message.certificatePositiveUrl);
+                        $("#certificateOppositeUrl1" + rowData.id).attr("src" ,message.certificateOppositeUrl);
                         $("#ss5" + rowData.id).text("作品属性: " + message.worksAttribute);
-                        $("#ss6" + rowData.id).text("作品相关网址: " + message.consultUrl);
+                        $("#conmsul" + rowData.id).attr("href" , message.consultUrl);
                     }
                 })
             },
@@ -97,10 +102,11 @@
                     '<td style="border:0">' +
                     '<p id="ss1' + rowData.id + '" style="font-size:20px">作品类型: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
                     '<p id="ss2' + rowData.id + '" style="font-size:20px">证件类型: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
-                    '<p id="ss3' + rowData.id + '"  style="font-size:20px">导演信息: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                  '<p id="ss3' + rowData.id + '"  style="font-size:20px">导演信息: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
                     '<p id="ss4' + rowData.id + '"  style="font-size:20px">主演信息: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
+                    '<p id="ss7' + rowData.id + '"  style="font-size:20px">著作权登记文件:&nbsp;&nbsp;&nbsp;&nbsp;' + '<img id="copyrightRegistrationFileUrl1' + rowData.id + '" src="" style="height:200px;width: 200px;" />' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
                     '<p id="ss5' + rowData.id + '"  style="font-size:20px">作品属性: ' + '</p>' +'</td>'+'</tr>'+'<tr>'+'<td >'+
-                    '<p id="ss6' + rowData.id + '"  style="font-size:20px">作品相关网址: ' + '</p>' +
+                   '<p id="ss6' + rowData.id + '"  style="font-size:20px">作品相关网址:' + '<a id="conmsul' + rowData.id + '" href="" >链接' + '</a>' + '</p>' +
                     '</td>' +
                     '</tr></table>';
             }

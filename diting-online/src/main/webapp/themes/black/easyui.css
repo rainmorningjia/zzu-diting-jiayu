@@ -2216,7 +2216,7 @@
 }
 .slider-v .slider-rule span {
   width: 5px;
-  height: 'auto';
+  height: 5px;
   border-left: 0;
   border-width: 1px 0 0 0;
   border-style: solid;
@@ -2522,7 +2522,7 @@
   padding: 0;
 }
 .tree-node {
-  height: 18px;
+  height: 30px;
   white-space: nowrap;
   cursor: pointer;
 }
@@ -2600,14 +2600,14 @@
   background: url('images/tree_icons.png') no-repeat -240px -18px;
 }
 .tree-title {
-  font-size: 12px;
+  font-size: 16px;
   display: inline-block;
   text-decoration: none;
   vertical-align: top;
   white-space: nowrap;
   padding: 0 2px;
   height: 18px;
-  line-height: 18px;
+  line-height: 30px;
 }
 .tree-node-proxy {
   font-size: 12px;

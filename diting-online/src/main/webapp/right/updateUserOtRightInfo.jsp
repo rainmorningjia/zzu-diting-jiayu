@@ -2,7 +2,7 @@
 <%@page isELIgnored="false" %>
 <body>
 <script type="text/javascript">
-
+    var id = "<%=request.getParameter("id").toString()%>";
     $(function () {
         $("#updateUserOtRightForm").form("load", "${pageContext.request.contextPath}/right/getRightDetail?type=其他权利&id="+id
         )
@@ -68,10 +68,16 @@
 
 <div>
     <h1>
-        添加用户其他权利信息:
+        重新发起用户其他权利信息:
     </h1>
     <form id="updateUserOtRightForm" method="post" enctype="multipart/form-data">
         <table id="otherRight">
+            <tr >
+                <td>
+                    <input id="id3" type="hidden" class="easyui-validatebox" name="id"
+                           data-options="validType:'name',required:true"/>
+                </td>
+            </tr>
             <tr id="typeO">
                 <td>
                     <input id="type3" type="hidden" class="easyui-validatebox" name="copyrightType"

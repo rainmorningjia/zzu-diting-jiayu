@@ -16,13 +16,74 @@
                         $("#copyrightDocumentChainUrl1").prop("src", data.copyrightDocumentChainUrl);
                         $("#copyrightRegistrationFileUrl1").prop("src", data.copyrightRegistrationFileUrl);
                         $("#attorneyPowerUrl1").prop("src", data.attorneyPowerUrl);
+                        if (data.isRegister === "是") {
+                            $("#copyrightRegistrationNumbert1").removeAttr("hidden");
+                            $("#copyrightRegisterDatet1").removeAttr("hidden");
+                            $("#copyrightVldt1").removeAttr("hidden");
+                        } else {
+                            $("#copyrightRegistrationNumbert1").attr("hidden", "hidden");
+                            $("#copyrightRegisterDatet1").attr("hidden", "hidden");
+                            $("#copyrightVldt1").attr("hidden", "hidden");
+                        }
+                        if (data.isDistribution === "是") {
+                            $("#copyrightAttributeT").removeAttr("hidden");
+                            $("#copyrightPersonTypeT").removeAttr("hidden");
+                            $("#certificateTypeT").removeAttr("hidden");
+                            $("#certificateNumberT").removeAttr("hidden");
+                            $("#certificatePositiveUrlT").removeAttr("hidden");
+                            $("#copyrightDocumentChainUrlT").removeAttr("hidden");
+                        } else {
+                            $("#copyrightAttributeT").attr("hidden", "hidden");
+                            $("#copyrightPersonTypeT").attr("hidden", "hidden");
+                            $("#certificateTypeT").attr("hidden", "hidden");
+                            $("#certificateNumberT").attr("hidden", "hidden");
+                            $("#certificatePositiveUrlT").attr("hidden", "hidden");
+                            $("#copyrightDocumentChainUrlT").attr("hidden", "hidden");
+                        }
+                        if (data.isRightEntrusted === "是") {
+                            $("#attorneyAttributeT").removeAttr("hidden");
+                            $("#entrustedProtectionStartdateT").removeAttr("hidden");
+                            $("#entrustedProtectionEnddateT").removeAttr("hidden");
+                            $("#attorneyPowerUrlT").removeAttr("hidden");
+                        } else {
+                            $("#attorneyAttributeT").attr("hidden", "hidden");
+                            $("#entrustedProtectionStartdateT").attr("hidden", "hidden");
+                            $("#entrustedProtectionEnddateT").attr("hidden", "hidden");
+                            $("#attorneyPowerUrlT").attr("hidden", "hidden");
+
+                        }
                     } else if (data.rightType == "其他权利") {
+                        if (data.isRightEntrusted === "是") {
+
+                            $("#attorneyAttributeT3").removeAttr("hidden");
+                            $("#entrustedProtectionStartdateT3").removeAttr("hidden");
+                            $("#entrustedProtectionEnddateT3").removeAttr("hidden");
+                            $("#attorneyPowerUrlT3").removeAttr("hidden");
+                        } else {
+                            $("#attorneyAttributeT3").attr("hidden", "hidden");
+                            $("#entrustedProtectionStartdateT3").attr("hidden", "hidden");
+                            $("#entrustedProtectionEnddateT3").attr("hidden", "hidden");
+                            $("#attorneyPowerUrlT3").attr("hidden", "hidden");
+
+                        }
                         document.getElementById("otherRight").style.display = "block";
                         document.getElementById("reputation").style.display = "none";
                         document.getElementById("copyright").style.display = "none";
                         $("#intellctualPropertyCertificatesUrl").prop("src", data.intellctualPropertyCertificatesUrl);
                         $("#attorneyPowerUrl3").prop("src", data.attorneyPowerUrl);
                     } else {
+                        if (data.isRightEntrusted === "是") {
+                            $("#attorneyAttributeT2").removeAttr("hidden");
+                            $("#entrustedProtectionStartdateT2").removeAttr("hidden");
+                            $("#entrustedProtectionEnddateT2").removeAttr("hidden");
+                            $("#attorneyPowerUrlT2").removeAttr("hidden");
+                        } else {
+                            $("#attorneyAttributeT2").attr("hidden", "hidden");
+                            $("#entrustedProtectionStartdateT2").attr("hidden", "hidden");
+                            $("#entrustedProtectionEnddateT2").attr("hidden", "hidden");
+                            $("#attorneyPowerUrlT2").attr("hidden", "hidden");
+
+                        }
                         document.getElementById("reputation").style.display = "block";
                         document.getElementById("otherRight").style.display = "none";
                         document.getElementById("copyright").style.display = "none";

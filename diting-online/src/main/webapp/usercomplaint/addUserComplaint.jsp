@@ -47,17 +47,18 @@
 
         });
         var rightType = "著作权";
-        $("#copyrightType").combobox({
+        var name=$("#rightNameCC").val();
+        $("#copyrightTypeCC").combobox({
             valueField: 'id',
             textField: 'text',
             url: '${pageContext.request.contextPath}/right/getRightType',
             onSelect: function (rec) {
                 var url = '${pageContext.request.contextPath}/right/getRightIDAndName?name=' + name + '&rightType=' + rec.text;
-                $('#rightName').combobox('reload', url);
+                $('#rightNameCC').combobox('reload', url);
             }
         });
 
-        $("#rightName").combobox({
+        $("#rightNameCC").combobox({
             prompt: '请输入或选择权利名称',
             url: '${pageContext.request.contextPath}/right/getRightIDAndName?name=' + name + '&rightType=' + rightType,
             filter: function (q, row) {
@@ -84,9 +85,9 @@
                     选择投诉类型:
                 </td>
                 <td>
-                    <input id="copyrightType" class="easyui-combobox" name="copyrightType" style="width:100px;"
+                    <input id="copyrightTypeCC" class="easyui-combobox" name="copyrightType" style="width:150px;"
                            data-options="valueField: 'name',
-                             textField: 'name'," style="width:170px"/>
+                             textField: 'name'," style="width:300px"/>
                 </td>
             </tr>
             <tr>
@@ -94,7 +95,7 @@
                     权利名称:
                 </td>
                 <td>
-                    <input id="rightName" class="easyui-combobox" name="rightName"
+                    <input id="rightNameCC" class="easyui-combobox" name="rightName"
                            data-options="valueField: 'name',
                              textField: 'name',
                             " style="width:170px"/>
@@ -112,7 +113,7 @@
                 </td>
                 <td>
                     <input id="complaintsUrl" type="text" class="easyui-validatebox"
-                           name="complaintsUrl"
+                           name="complaintsUrl" style="width:250px;"
                            data-options=""/>
                 </td>
             </tr>

@@ -41,7 +41,6 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         } else {
             PersonalAuthenticationInfoPO personalAuthenticationInfoPO = new PersonalAuthenticationInfoPO();
             personalAuthenticationInfoPO.setUserId(id);
-            System.out.println(personalAuthenticationInfoPO);
             PersonalAuthenticationInfoPO p = userAuthenticationManager.queryPersonAuthenticationInfo(personalAuthenticationInfoPO);
             name = p.getRealName();
             return name;
@@ -54,7 +53,6 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         AuthenticationWorkInfoPO authenticationWorkInfoPO = new AuthenticationWorkInfoPO();
         authenticationWorkInfoPO.setOrderType("首次认证");
         authenticationWorkInfoPO.setUserId(personalAuthenticationInfoPO.getUserId());
-
         authenticationWorkInfoPO.setNickname((String) SecurityUtils.getSubject().getPrincipal());
         authenticationWorkInfoPO.setRealName(personalAuthenticationInfoPO.getRealName());
         authenticationWorkInfoPO.setUserType("个人");

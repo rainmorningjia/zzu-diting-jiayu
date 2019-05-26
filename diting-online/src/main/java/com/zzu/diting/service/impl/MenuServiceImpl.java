@@ -43,7 +43,6 @@ public class MenuServiceImpl implements MenuService {
         List<Tree> treeList = new ArrayList<>();
         Menu menu = new Menu();
         menu.setParentId(parentId);
-        System.out.println(parentId);
         List<Menu> listm = menuMapper.select(menu);
         for (Menu m :
                 listm) {
@@ -69,10 +68,10 @@ public class MenuServiceImpl implements MenuService {
             Tree tree = new Tree();
             tree.setId(m.getId());
             tree.setText(m.getName());
+            tree.setIconCls(m.getIconCls());
             tree.setUrl(m.getUrl());
             treeList.add(tree);
         }
-        System.out.println(treeList);
         return treeList;
     }
 }

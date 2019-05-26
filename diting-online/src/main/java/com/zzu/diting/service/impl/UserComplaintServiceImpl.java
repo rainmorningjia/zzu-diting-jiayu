@@ -46,7 +46,6 @@ public class UserComplaintServiceImpl implements UserComplaintService {
         UserComplaintNumberDto userComplaintNumberDto = new UserComplaintNumberDto();
         UrlTotalNumberDto urlTotalNumberDto = new UrlTotalNumberDto();
         try {
-            System.out.println(userComplaintInfoPO);
             //添加投诉信息的同时生成投诉工单集
             ComplaintsWorkInfoPO complaintsWorkInfoPO = new ComplaintsWorkInfoPO();
             complaintsWorkInfoPO.setComplaintPersonId(userComplaintInfoPO.getUserId());

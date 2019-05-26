@@ -103,7 +103,6 @@ public class RightController {
         }
         List<RightInfoDto> list = new ArrayList<>();
         list = DataObjectTransDto.populateList(listRightVOAll, list, RightInfoDto.class);
-        System.out.println(list);
         for (RightInfoDto rightInfoDto :
                 list) {
             if ("审核未通过".equals(rightInfoDto.getAuditResult())) {
@@ -118,9 +117,7 @@ public class RightController {
     @ResponseBody
     @RequestMapping("addUserRightInfo")
     public MessageDto addRightInfo(RightDetailedDto rightDetailedDto, MultipartFile copyrightRegistrationFileUrlFile, MultipartFile certificatePositiveUrlFile, MultipartFile copyrightDocumentChainUrlFile, MultipartFile attorneyPowerUrlFile, MultipartFile proofMaterialUrlFile, MultipartFile intellctualPropertyCertificatesUrlFile, HttpServletRequest request) {
-        System.out.println(rightDetailedDto);
         MessageDto messageDto = new MessageDto();
-        OSSClient client = OSSClientUtil.getOSSClient();
         String name = (String) SecurityUtils.getSubject().getPrincipal();
         Long userId = (Long) request.getSession().getAttribute("userId");
         rightDetailedDto.setUserId(userId);
@@ -130,26 +127,33 @@ public class RightController {
             String r = "名誉权/肖像权";
             String o = "其他权利";
             if (copyrightRegistrationFileUrlFile != null) {
+                OSSClient client = OSSClientUtil.getOSSClient();
                 String url = getUrl(copyrightRegistrationFileUrlFile, request, client, name);
                 rightDetailedDto.setCopyrightRegistrationFileUrl(url);
             }
             if (certificatePositiveUrlFile != null) {
+                OSSClient client = OSSClientUtil.getOSSClient();
                 String url = getUrl(certificatePositiveUrlFile, request, client, name);
                 rightDetailedDto.setCertificatePositiveUrl(url);
+
             }
             if (copyrightDocumentChainUrlFile != null) {
+                OSSClient client = OSSClientUtil.getOSSClient();
                 String url = getUrl(copyrightDocumentChainUrlFile, request, client, name);
                 rightDetailedDto.setCopyrightDocumentChainUrl(url);
             }
             if (attorneyPowerUrlFile != null) {
+                OSSClient client = OSSClientUtil.getOSSClient();
                 String url = getUrl(attorneyPowerUrlFile, request, client, name);
                 rightDetailedDto.setAttorneyPowerUrl(url);
             }
             if (proofMaterialUrlFile != null) {
+                OSSClient client = OSSClientUtil.getOSSClient();
                 String url = getUrl(proofMaterialUrlFile, request, client, name);
                 rightDetailedDto.setProofMaterialUrl(url);
             }
             if (intellctualPropertyCertificatesUrlFile != null) {
+                OSSClient client = OSSClientUtil.getOSSClient();
                 String url = getUrl(intellctualPropertyCertificatesUrlFile, request, client, name);
                 rightDetailedDto.setIntellctualPropertyCertificatesUrl(url);
             }
@@ -171,6 +175,7 @@ public class RightController {
                 otherRightInfoPO.setCopyrightType("其他权利");
                 userRightInfoService.addOtherRightInfo(otherRightInfoPO);
             }
+
         } catch (Exception e) {
             messageDto.setCode(1);
             messageDto.setMessage(e.getMessage());
@@ -247,7 +252,6 @@ public class RightController {
     }
     @RequestMapping("recall")
     public MessageDto recallRightInfo(Long id, Integer t) {
-        System.out.println("teeeeeeeeeeeeeeeeeeee");
         RightWorkInfoPO rightWorkInfoPO = new RightWorkInfoPO();
         rightWorkInfoPO.setAuditState("处理中");
         rightWorkInfoPO.setRightId(id);

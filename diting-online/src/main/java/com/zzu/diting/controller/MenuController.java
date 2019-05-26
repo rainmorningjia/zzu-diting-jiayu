@@ -50,7 +50,6 @@ public class MenuController {
     @RequestMapping(value = "queryAllChildrenMenu", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public List<Tree> getAllChildrenMenu(Integer parentId) {
-        System.out.println(parentId);
         List<Tree> treeList = menuService.queryAllChildrenMenu(parentId);
         return treeList;
     }

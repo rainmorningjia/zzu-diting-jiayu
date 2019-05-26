@@ -84,6 +84,7 @@ public class OSSClientUtil {
         String resultStr = null;
         String[] fo = new String[] { "", "" };
         try {
+            if (file!=null){
             // 以输入流的形式上传文件
             String folder = "";
             folder = FOLDER + user_id + "/" + FORMAT + "/";
@@ -91,7 +92,7 @@ public class OSSClientUtil {
             // 文件名
             String timefile = FORMATS;
             String fileName = file.getName();
-            fileName = timefile + fileName.substring(fileName.lastIndexOf("."));
+            fileName = timefile + fileName;
             logger.info("上传到路径" + folder + fileName);
             // 文件大小
             Long fileSize = file.length();
@@ -116,6 +117,8 @@ public class OSSClientUtil {
             resultStr = putResult.getETag();
             fo[1] = folder + fileName;
             fo[0] = resultStr;
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("上传阿里云OSS服务器异常." + e.getMessage(), e);
@@ -174,6 +177,7 @@ public class OSSClientUtil {
         if (url != null) {
             return url.toString();
         }
+        stopOssClinet();
         return "获网址路径出错";
     }
     public String urlpath(String user_id, String files) {
@@ -181,7 +185,6 @@ public class OSSClientUtil {
         String[] file = files.split(",");
         String url = "";
         for (String filename : file) {
-            // System.out.println("filename:"+filename);
             File filess = new File(filename);
             String[] s = OSSClientUtil.uploadObject2OSS(ossClient, filess, bucketName, user_id);
             logger.info("上传后的文件MD5数字唯一签名:" + s[0]);
@@ -199,6 +202,5 @@ public class OSSClientUtil {
         File file=new File("C:\\Users\\wb-jcy525678\\Desktop\\personal files\\设计图\\系统架构图02版 (1).png");
         String[] s=OSSClientUtil.uploadObject2OSS(client,file,bucketName,"2132");
         String url=OSSClientUtil.getUrl(client,bucketName,s[1]);
-        System.out.println(url);
     }
         }

@@ -318,33 +318,6 @@
                 </tr>
                 <tr>
                     <td>
-                        邮编:
-                    </td>
-                    <td>
-                        <input id="zip" type="text" class="easyui-validatebox" name="zip"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        电话:
-                    </td>
-                    <td>
-                        <input id="tel" type="text" class="easyui-validatebox" name="tel"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        fas:
-                    </td>
-                    <td>
-                        <input id="fas" type="text" class="easyui-validatebox" name="fas"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         联系人:
                     </td>
                     <td>

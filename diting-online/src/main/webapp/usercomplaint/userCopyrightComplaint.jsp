@@ -69,7 +69,7 @@
                 $("#dialogUserRightComplaint").dialog({
                     title: "添加投诉信息",
                     width: 600,
-                    height: 700,
+                    height: 300,
                     closed: false,
                     cache: true,
                     iconCls: "icon-add",

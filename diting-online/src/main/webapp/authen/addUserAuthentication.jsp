@@ -13,8 +13,12 @@
     function show2() {
 
         document.getElementById("person").style.display = "none";
-
+        $("#type1").attr("value", "1");
         document.getElementById("organization").style.display = "block";
+        $("#person input").each(function (index, element) {
+            $(this).val();
+            console.info($("#certificateTypeP").val())
+        })
 
     }
 
@@ -56,14 +60,22 @@
                     },
                     success: function (data) {
                         //关闭对话框
-                        $("#addAuthenDia").dialog("close");
-                        //调出系统提示框
-                        $.messager.show({
-                            title: "添加成功",
-                            msg: "恭喜！填写认证信息成功，请等待审核！",
+                        var ss = eval("(" + data + ")")
+                        if (ss.code == 0) {
+                            $("#addAuthenDia").dialog("close");
+                            //调出系统提示框
+                            $.messager.show({
+                                title: "添加成功",
+                                msg: "恭喜！填写认证信息成功，请等待审核！",
 
-                        });
+                            });
+                        } else {
+                            $.messager.show({
+                                title: "添加失败",
+                                msg: ss.message,
 
+                            });
+                        }
                     }
                 })
             },
@@ -81,11 +93,10 @@
     <button type="button" style="color: salmon" onclick=show1()>个人</button>
     <button type="button" onclick=show2()>机构</button>
     <form id="addUserAuthenForm" method="post" enctype="multipart/form-data">
-
         <table style="display: block" id="person">
             <tr>
                 <td>
-                    <input id="type1" type="hidden"  class="easyui-validatebox" name="authenticationType"
+                    <input id="type1" type="hidden" class="easyui-validatebox" name="authenticationType"
                            value="0" data-options="validType:'name',required:true"/>
                 </td>
             </tr>
@@ -213,7 +224,7 @@
         <table style="display: none" id="organization">
             <tr>
                 <td>
-                    <input id="type2" type="hidden"  class="easyui-validatebox" name="authenticationType"
+                    <input id="type2" type="hidden" class="easyui-validatebox" name="authenticationType"
                            value="1" data-options="validType:'name',required:true"/>
                 </td>
             </tr>

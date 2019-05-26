@@ -19,5 +19,6 @@ public class Tree implements Serializable {
     private Integer id;
     private String text;
     private String state;
+    private String iconCls;
     private String url;
 }

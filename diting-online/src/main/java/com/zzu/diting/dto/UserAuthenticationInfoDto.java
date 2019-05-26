@@ -70,7 +70,7 @@ public class UserAuthenticationInfoDto {
     /**
      * 邮编
      */
-    private Integer zip;
+    private String zip;
 
     private String tel;
 

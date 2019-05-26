@@ -67,7 +67,7 @@
                 $("#dialogUserRightComplaint").dialog({
                     title: "添加用户",
                     width: 600,
-                    height: 700,
+                    height: 300,
                     closed: false,
                     cache: true,
                     iconCls: "icon-add",
@@ -97,14 +97,13 @@
                     })
                 })*/
     })
-    //定义下载函数
-    /*    $.download = function (url, method, fileDire) {
-            var form = jQuery('<form action="' + url + '" method="' + (method || 'post') + '">' +  // action请求路径及推送方法
-                '<input type="text" name="filePath" value="' + fileDire + '"/>' + // 文件路径
-                '</form>');
-            $(document.body).append(form);
-            form.submit().remove();
-        }*/
+    function doSearch(){
+        $('#dbUserComplaintReputationRight').datagrid('load',{
+            id: $('#id3').val(),
+            rightName: $('#rightNames3').val(),
+            complaintUrl: $('#complaintUrl3').val(),
+        });
+    }
 </script>
 <div>
     <h1 align="center">名誉权投诉信息</h1>
@@ -112,6 +111,13 @@
     <div id="tbUserComplaintReputationRight">
         <a id="addUserComplaintReputationRight" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-add',plain:true">添加</a>
+        <span>ID:</span>
+        <input id="id3" style="line-height:26px;border:1px solid #ccc">
+        <span>权利名称</span>
+        <input id="rightNames3" style="line-height:26px;border:1px solid #ccc">
+        <span>投诉链接</span>
+        <input id="complaintUrl3" style="line-height:26px;border:1px solid #ccc">
+        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">搜索</a>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"

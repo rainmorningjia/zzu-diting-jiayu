@@ -28,9 +28,7 @@ public class UserComplaintController {
 
     @RequestMapping("getUserCompliant")
     public UserComplaintListDto getUserComplaintInfo(Integer page, Integer rows, HttpServletRequest request, String rightType, String complaintUrl, Long id, String rightName) {
-        System.out.println(id + "1111111111111111111111");
-        System.out.println(rightName);
-        System.out.println(complaintUrl);
+
         UserComplaintListDto userComplaintListDto = new UserComplaintListDto();
         HttpSession session = request.getSession();
         Long userId = (Long) session.getAttribute("userId");
@@ -44,7 +42,6 @@ public class UserComplaintController {
             userComplaintInfoPO = userComplaintService.getUserComplaint(userComplaintInfoPO);
             if (userComplaintInfoPO != null) {
                 list1.add(userComplaintInfoPO);
-                System.out.println(list1);
                 totalNumber = 1;
             }
         } else if (rightName != null) {
@@ -53,20 +50,17 @@ public class UserComplaintController {
                 totalNumber = userComplaintService.getTotalNumberByNameAndOneRightAndAllState(userId, rightName, new Long("0"), System.currentTimeMillis(), rightType);
 
             } else if (rightName != null) {
-                System.out.println(rightName.equals(""));
                 if (complaintUrl != null) {
                     list1 = userComplaintManager.getComplaintByUrlAndOneRightAndAllState(userId, complaintUrl, (page - 1) * rows, page * rows, new Long("0"), System.currentTimeMillis(), rightType);
                     totalNumber = userComplaintService.getTotalNumberByUrlAndOneRightAndAllState(userId, complaintUrl, new Long("0"), System.currentTimeMillis(), rightType);
                 } else {
                     list1 = userComplaintManager.getComplaintsRightAndAllState(userId, (page - 1) * rows, page * rows, new Long("0"), System.currentTimeMillis(), rightType);
                     totalNumber = userComplaintService.getTotalNumberByRightAndAllState(userId, new Long("0"), System.currentTimeMillis(), rightType);
-                    System.out.println(list1);
                 }
             }
         }else {
             list1 = userComplaintManager.getComplaintsRightAndAllState(userId, (page - 1) * rows, page * rows, new Long("0"), System.currentTimeMillis(), rightType);
             totalNumber = userComplaintService.getTotalNumberByRightAndAllState(userId, new Long("0"), System.currentTimeMillis(), rightType);
-            System.out.println(list1);
         }
         DataObjectTransDto.populateList(list1, list, UserComplaintInfoDto.class);
         userComplaintListDto.setRows(list);

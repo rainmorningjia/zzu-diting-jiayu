@@ -81,11 +81,11 @@
 
 <div>
     <h1>
-        添加用户名誉权利信息:
+        重新发起用户名誉权利信息:
     </h1>
     <form id="updateUserReRightForm" method="post" enctype="multipart/form-data">
         <table id="reputation">
-            <tr class="typeR">
+            <tr >
                 <td>
                     <input id="id2" type="hidden" class="easyui-validatebox" name="id"
                             data-options="validType:'name',required:true"/>

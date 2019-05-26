@@ -25,7 +25,7 @@
                 dataType: "json",
                 success: function (result) {
                     $.each(result, function (ind, menu) {
-                        var htm = '<ul id="tree' + menu.id + '" ></ul>';
+                        var htm = '<div title="Language"  style="overflow:auto;padding:10px; height:150px;">' + '<ul id="tree' + menu.id + '" ></ul>';
                         $("#aa").accordion("add", {
 
                             title: menu.name,
@@ -102,8 +102,8 @@
     <div style="text-align: center;font-size:15px; color: #FAF7F7;font-family: 楷体">&copy;谛听 moringrain</div>
 </div>
 
-<div data-options="region:'west',title:'导航菜单',split:true" style="width:220px;">
-    <div id="aa" class="easyui-accordion" data-options="fit:true">
+<div data-options="region:'west',title:'导航菜单',split:true" style="width:250px;">
+    <div id="aa" class="easyui-accordion" data-options="multiple:true," style="width:500px;">
 
     </div>
 </div>

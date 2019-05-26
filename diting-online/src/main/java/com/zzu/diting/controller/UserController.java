@@ -43,13 +43,12 @@ public class UserController {
             return "redirect:/login.jsp";
         } else {
             try {
-                System.out.println(name);
                 userService.LoginUser(name, password);
                 UserInfoPO userInfoPO=new UserInfoPO();
                 userInfoPO.setUserName(name);
                  userInfoPO=userService.getUserByUserInfo(userInfoPO);
+                    session.setAttribute("userId", userInfoPO.getId());
                  session.setAttribute("userHeadIcon",userInfoPO.getHeadIconUrl());
-                System.out.println(1);
                 return "redirect:/main/main.jsp";
             } catch (RuntimeException e) {
                 session.setAttribute("message", e.getMessage());
@@ -126,10 +125,8 @@ public class UserController {
                     file1 = new File(path);
                     FileUtils.copyInputStreamToFile(file.getInputStream(), file1);
                 }
-
                 String[] s1 = OSSClientUtil.uploadObject2OSS(client, file1, "zzu-diting", user.getUserName());
                 String headUrl = OSSClientUtil.getUrl(client, "zzu-diting", s1[1]);
-                OSSClientUtil.stopOssClinet();
                 userInfoPO.setHeadIconUrl(headUrl);
             }else {
                 userInfoPO.setHeadIconUrl("未填写");
@@ -165,11 +162,11 @@ public class UserController {
 
                 String[] s1 = OSSClientUtil.uploadObject2OSS(client, file1, "zzu-diting", user.getUserName());
                 String headUrl = OSSClientUtil.getUrl(client, "zzu-diting", s1[1]);
-                OSSClientUtil.stopOssClinet();
                 user.setHeadIconUrl(headUrl);
                 userService.addUser(user);
             } else {
-                throw new RuntimeException("验证码错误！");
+                session.setAttribute("message","验证码错误");
+                return "redirect:/user/regist";
             }
             return "login";
         } catch (Exception e) {

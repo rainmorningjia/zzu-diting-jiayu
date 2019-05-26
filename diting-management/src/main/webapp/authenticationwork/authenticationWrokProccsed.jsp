@@ -7,7 +7,7 @@
         $("#dbAuthenticationWrokProccesed").edatagrid({
             toolbar: "#tbAuthenticationWrokProccesed",
             fitColumns: true,
-            url: "${pageContext.request.contextPath}/authenticationWork/authenticationTable?state=2",
+            url: "${pageContext.request.contextPath}/authenticationWork/authenticationTable?state=2&searchType=1",
             <%--updateUrl:"${pageContext.request.contextPath}/user/updataUser",--%>
             pagePosition: "bottom",
             pagination: true,
@@ -85,12 +85,22 @@
         });
 
     })
-
+    function doSearch(){
+        $('#dbAuthenticationWrokProccesed').datagrid('load',{
+            id: $('#Id2').val(),
+            name: $('#Name1').val()
+        });
+    }
 </script>
 <div>
     <h1 align="center">已处理认证工单信息</h1>
     <table id="dbAuthenticationWrokProccesed"></table>
     <div id="tbAuthenticationWrokProccesed">
+        <span>ID:</span>
+        <input id="Id2" style="line-height:26px;border:1px solid #ccc">
+        <span>用户昵称</span>
+        <input id="Name1" style="line-height:26px;border:1px solid #ccc">
+        <a  class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="doSearch()">搜索</a>
         <%--<a id="addAuthenticationWrokProccesed" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-add',plain:true">添加</a>--%>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"

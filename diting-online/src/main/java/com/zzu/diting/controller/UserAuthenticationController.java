@@ -45,6 +45,7 @@ public class UserAuthenticationController {
     @RequestMapping("userAuthenticationInfo")
     public UserAuthenticationInfoDto getUserAuthenticationInfoByUserId(HttpServletRequest request) {
         Long userId = (Long) request.getSession().getAttribute("userId");
+        System.out.println(userId);
         UserAuthenticationInfoDto userAuthenticationInfoDto = new UserAuthenticationInfoDto();
         OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = userAuthenticationService.getUserAuthenticationOrganizationByUserId(userId);
         if (organizationAuthenticationInfoPO != null) {
@@ -99,7 +100,7 @@ public class UserAuthenticationController {
     @ResponseBody
     public MessageDto addUserAuthenticationInfo(UserAuthenticationInfoQueryParam userAuthenticationInfoQueryParam, MultipartFile file1, MultipartFile file2, MultipartFile file3, HttpServletRequest request) {
         MessageDto messageDto = new MessageDto();
-        OSSClient client = OSSClientUtil.getOSSClient();
+        System.out.println(userAuthenticationInfoQueryParam);
         try {
             Integer userAuthenticationType = userAuthenticationInfoQueryParam.getAuthenticationType();
             String name = (String) SecurityUtils.getSubject().getPrincipal();
@@ -117,25 +118,26 @@ public class UserAuthenticationController {
                 personalAuthenticationInfoPO.setRecentlyOperator("用户创建");
                 personalAuthenticationInfoPO.setRecentlyUpdateType("用户创建");
                 File files1 = FileUtil.transerFile(file1, request);
-                String[] s1 = OSSClientUtil.uploadObject2OSS(client, files1, "zzu-diting", personalAuthenticationInfoPO.getRealName());
-                String positiveUrl = OSSClientUtil.getUrl(client, "zzu-diting", s1[1]);
+                OSSClient client1 = OSSClientUtil.getOSSClient();
+                String[] s1 = OSSClientUtil.uploadObject2OSS(client1, files1, "zzu-diting", personalAuthenticationInfoPO.getRealName());
+                String positiveUrl = OSSClientUtil.getUrl(client1, "zzu-diting", s1[1]);
                 personalAuthenticationInfoPO.setCertificatePositiveUrl(positiveUrl);
                 File files2 = FileUtil.transerFile(file2, request);
-                String[] s2 = OSSClientUtil.uploadObject2OSS(client, files2, "zzu-diting", personalAuthenticationInfoPO.getRealName());
-                String oppsiteUrl = OSSClientUtil.getUrl(client, "zzu-diting", s2[1]);
+                OSSClient client2 = OSSClientUtil.getOSSClient();
+                String[] s2 = OSSClientUtil.uploadObject2OSS(client2, files2, "zzu-diting", personalAuthenticationInfoPO.getRealName());
+                String oppsiteUrl = OSSClientUtil.getUrl(client2, "zzu-diting", s2[1]);
                 personalAuthenticationInfoPO.setCertificateOppositeUrl(oppsiteUrl);
                 File files3 = FileUtil.transerFile(file3, request);
-                String[] s3 = OSSClientUtil.uploadObject2OSS(client, files3, "zzu-diting", personalAuthenticationInfoPO.getRealName());
-                String handofUrl = OSSClientUtil.getUrl(client, "zzu-diting", s3[1]);
+                OSSClient client3 = OSSClientUtil.getOSSClient();
+                String[] s3 = OSSClientUtil.uploadObject2OSS(client3, files3, "zzu-diting", personalAuthenticationInfoPO.getRealName());
+                String handofUrl = OSSClientUtil.getUrl(client3, "zzu-diting", s3[1]);
                 personalAuthenticationInfoPO.setCertificateHandofUrl(handofUrl);
-                OSSClientUtil.stopOssClinet();
                 userAuthenticationService.addUserAuthenticationPerson(personalAuthenticationInfoPO);
                 userInfoPO.setAuthenticationState(1);
                 userInfoPO.setId(id);
-                System.out.println(userInfoPO);
                 userService.updateUser(userInfoPO);
             } else {
-
+                OSSClient client = OSSClientUtil.getOSSClient();
                 OrganizationAuthenticationInfoPO organizationAuthenticationInfoPO = new OrganizationAuthenticationInfoPO();
                 Object o = DataObjectTransDto.populate(userAuthenticationInfoQueryParam, organizationAuthenticationInfoPO);
                 File files1 = FileUtil.transerFile(file1, request);
@@ -149,7 +151,6 @@ public class UserAuthenticationController {
                 organizationAuthenticationInfoPO.setRecentlyUpdateType("内部创建");
                 organizationAuthenticationInfoPO.setRecentlyOperator("内部创建");
                 organizationAuthenticationInfoPO.setAuthenticationResult("待审核");
-                OSSClientUtil.stopOssClinet();
                 userAuthenticationService.addUserAuthenticationOrganization(organizationAuthenticationInfoPO);
                 userInfoPO.setAuthenticationState(1);
                 userInfoPO.setId(id);
@@ -172,6 +173,7 @@ public class UserAuthenticationController {
         HttpSession session = request.getSession();
         Long userId = (Long) session.getAttribute("userId");
         userAuthenticationInfo.setUserId(userId);
+        System.out.println(userId);
         MessageDto messageDto = new MessageDto();
         Integer userAuthenticationType = userAuthenticationInfo.getAuthenticationType();
         try {

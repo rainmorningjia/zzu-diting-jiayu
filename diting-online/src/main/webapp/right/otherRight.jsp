@@ -11,7 +11,7 @@
             <%--updateUrl:"${pageContext.request.contextPath}/user/updataUser",--%>
             pagePosition: "bottom",
             pagination: true,
-            pageSize: 4,
+            pageSize: 8,
             cash: false,
             pageList: [4, 8, 10],
             frozenColumns: [[

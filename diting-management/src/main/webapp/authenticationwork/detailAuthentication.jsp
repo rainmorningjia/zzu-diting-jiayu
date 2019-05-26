@@ -12,6 +12,7 @@
                         document.getElementById("person").style.display = "none";
                         document.getElementById("organization").style.display = "block";
                         $("#certificatePositive").prop("src", data.certificatePositiveUrl);
+
                     } else {
                         document.getElementById("person").style.display = "block";
                         document.getElementById("organization").style.display = "none";
@@ -187,7 +188,7 @@
                     </td>
                     <td>
                         <input id="provinceC" type="text" class="easyui-validatebox" name="province"
-                               data-options="validType:'name',required:true"/>
+                               data-options="validType:'name',required:true" readonly/>
                     </td>
                 </tr>
                 <tr>
@@ -196,7 +197,7 @@
                     </td>
                     <td>
                         <input id="cityC" type="text" class="easyui-validatebox" name="city"
-                               data-options=""/>
+                               data-options="" readonly/>
                     </td>
                 </tr>
                 <tr>
@@ -205,7 +206,7 @@
                     </td>
                     <td>
                         <input id="phoneNumberC" type="text" class="easyui-validatebox" name="phoneNumber"
-                               data-options="validType:'name',required:true"/>
+                               data-options="validType:'name',required:true" />
                     </td>
                 </tr>
                 <tr>
@@ -214,7 +215,7 @@
                     </td>
                     <td>
                         <input id="emailC" type="text" class="easyui-validatebox" name="email"
-                               data-options=""/>
+                               data-options="" readonly/>
                     </td>
                 </tr>
                 <tr>
@@ -223,7 +224,7 @@
                     </td>
                     <td>
                         <input id="certificateType" type="text" class="easyui-validatebox" name="certificateType"
-                               readonly data-options=""/>
+                               readonly data-options="" readonly/>
                     </td>
                 </tr>
                 <tr>
@@ -232,7 +233,7 @@
                     </td>
                     <td>
                         <input id="certificateNumber" type="text" class="easyui-validatebox" name="certificateNumber"
-                               readonly data-options=""/>
+                               readonly data-options="" readonly/>
                     </td>
                 </tr>
                 <tr>
@@ -247,7 +248,7 @@
                     </td>
                     <td>
                         <input id="corporationName" type="text" class="easyui-validatebox" name="corporationName"
-                               data-options=""/>
+                               data-options="" readonly/>
                     </td>
                 </tr>
                 <tr>
@@ -256,34 +257,7 @@
                     </td>
                     <td>
                         <input id="address" type="text" class="easyui-validatebox" name="address"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        邮编:
-                    </td>
-                    <td>
-                        <input id="zip" type="text" class="easyui-validatebox" name="zip"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        电话:
-                    </td>
-                    <td>
-                        <input id="tel" type="text" class="easyui-validatebox" name="tel"
-                               data-options=""/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        fas:
-                    </td>
-                    <td>
-                        <input id="fas" type="text" class="easyui-validatebox" name="fas"
-                               data-options=""/>
+                               data-options="" readonly/>
                     </td>
                 </tr>
                 <tr>
@@ -292,7 +266,7 @@
                     </td>
                     <td>
                         <input id="relationName" type="text" class="easyui-validatebox" name="relationName"
-                               data-options=""/>
+                               data-options="" readonly/>
                     </td>
                 </tr>
             </table>

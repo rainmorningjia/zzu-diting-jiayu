@@ -46,7 +46,7 @@ public class OrganizationAuthenticationInfoPO implements Serializable {
     private String certificatePositiveUrl;
     private String corporationName;
     private String address;
-    private Integer zip;
+    private String zip;
     private String tel;
     private String fas;
     private String relationName;

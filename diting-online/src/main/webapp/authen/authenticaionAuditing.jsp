@@ -11,7 +11,6 @@
     $(function () {
         $("#lookUserAuthenInfo").linkbutton({
             onClick: function () {
-                alert("????")
                 $("#userAuthenInfo").dialog({
                     title: "用户认证信息",
                     width: 500,

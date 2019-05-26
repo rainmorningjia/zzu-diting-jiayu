@@ -40,6 +40,20 @@ public class DataObjectTransDto {
                         String targetName = mm.getName();
                         if (targetName.substring(3, targetName.length())
                                 .equals(srcName.substring(3, srcName.length()))) {
+                            if (target.getClass().getSimpleName().equals("OrganizationAuthenticationInfoPO")) {
+                                String results = (String) result;
+                                if (results.contains(",")) {
+                                    String newS = results.split(",")[1];
+                                    result = newS;
+                                }
+                            }
+                            if (target.getClass().getSimpleName().equals("PersonalAuthenticationInfoPO")){
+                                String results = (String) result;
+                                if (results.contains(",")) {
+                                    String newS = results.split(",")[0];
+                                    result = newS;
+                                }
+                            }
                             if (targetName.equals("setUpdateTime")) {
                                 Long t1 = (Long) result;
                                 String s = DataTransformUtil.stringDateTransformLong(t1);

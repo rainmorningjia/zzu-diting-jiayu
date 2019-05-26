@@ -20,7 +20,7 @@ public class AuthenticationController {
     AuthenticationWorkService authenticationWorkService;
 
     @RequestMapping("authenticationTable")
-    public AuthenticationWorkTableDto getAuthenticationTable(Integer page, Integer rows, Integer state, HttpServletRequest request) {
+    public AuthenticationWorkTableDto getAuthenticationTable(Integer page, Integer rows, Integer state,Long id,String name, HttpServletRequest request) {
         String managerId = (String) request.getSession().getAttribute("managerId");
         AuthenticationWorkQueryParam authenticationWorkQueryParam = new AuthenticationWorkQueryParam();
         if (state == 1) {
@@ -31,6 +31,14 @@ public class AuthenticationController {
             authenticationWorkQueryParam.setProcessType(1);
         }
         authenticationWorkQueryParam.setSearchType(1);
+        if (id!=null){
+            authenticationWorkQueryParam.setSearchType(2);
+            authenticationWorkQueryParam.setId(id);
+        }else
+        if (name!=null){
+            authenticationWorkQueryParam.setSearchType(5);
+            authenticationWorkQueryParam.setNickname(name);
+        }
         authenticationWorkQueryParam.setPageNumber(page);
         authenticationWorkQueryParam.setRowNumber(rows);
         authenticationWorkQueryParam.setTimeType(1);

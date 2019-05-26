@@ -65,7 +65,7 @@
                     $("#attorneyAttributeT2").removeAttr("hidden");
                     $("#entrustedProtectionStartdateT2").removeAttr("hidden");
                     $("#entrustedProtectionEnddateT2").removeAttr("hidden");
-                    $("#attorneyPowerUrlT3").removeAttr("hidden");
+                    $("#attorneyPowerUrlT2").removeAttr("hidden");
                 } else {
                     $("#attorneyAttributeT2").attr("hidden", "hidden");
                     $("#entrustedProtectionStartdateT2").attr("hidden", "hidden");

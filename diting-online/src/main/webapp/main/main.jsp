@@ -29,20 +29,20 @@
                 dataType: "json",
                 success: function (result) {
                     $.each(result, function (ind, menu) {
-                        var htm = '<ul id="tree' + menu.id + '" ></ul>';
+                        var htm = '<div title="Language"  style="overflow:auto;padding:10px; height:50px;">' + '<ul  id="tree' + menu.id + '" ></ul>' + '</div>';
                         $("#aa").accordion("add", {
-
                             title: menu.name,
+                            multiple: true,
                             content: htm,
                             selected: false,
-
                             onExpand: function () {
                                 $('#tree' + menu.id).tree({
                                     url: "${pageContext.request.contextPath}/menu/queryAllChildrenMenu?parentId=" + menu.id,
                                     loadFilter: function (data) {
                                         if (data.d) {
-                                            return data.d;
+                                            return data;
                                         } else {
+                                            console.info(data)
                                             return data;
                                         }
                                     },
@@ -121,12 +121,18 @@
 
         function resumbit(id, t) {
             var url;
-            if (t==2){
-                url="${pageContext.request.contextPath}/right/updateUserReRightInfo.jsp?id="+id;
+            if (t == 1) {
+                url = "${pageContext.request.contextPath}/right/updateUserCoRightInfo.jsp?id=" + id;
+            }
+            if (t == 2) {
+                url = "${pageContext.request.contextPath}/right/updateUserReRightInfo.jsp?id=" + id;
+            }
+            if (t == 3) {
+                url = "${pageContext.request.contextPath}/right/updateUserOtRightInfo.jsp?id=" + id;
             }
             $("#updateRight").dialog({
                 title: "重新发起信息",
-                width: 400,
+                width: 500,
                 height: 400,
                 closed: false,
                 cache: false,
@@ -166,10 +172,27 @@
     <div style="text-align: center;font-size:15px; color: #FAF7F7;font-family: 楷体">&copy;谛听 moringrain</div>
 </div>
 
-<div data-options="region:'west',title:'导航菜单',split:true" style="width:220px;">
-    <div id="aa" class="easyui-accordion" data-options="fit:true">
+<div data-options="region:'west',title:'导航菜单',split:true" style="width:300px;">
+    <div id="aa" class="easyui-accordion" data-options="multiple:true," style="width:500px;">
 
     </div>
+    <%--<div class="easyui-accordion" data-options="multiple:true" style="width:500px;">
+        <div title="Language" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
+            <p>A programming language is a formal language designed to communicate instructions to a machine, particularly a computer. Programming languages can be used to create programs that control the behavior of a machine and/or to express algorithms precisely.</p>
+        </div>
+        <div title="Java" style="padding:10px">
+            <p>Java (Indonesian: Jawa) is an island of Indonesia. With a population of 135 million (excluding the 3.6 million on the island of Madura which is administered as part of the provinces of Java), Java is the world's most populous island, and one of the most densely populated places in the world.</p>
+        </div>
+        <div title="C#" style="padding:10px;">
+            <p>C# is a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines.</p>
+        </div>
+        <div title="Ruby" style="padding:10px">
+            <p>A dynamic, reflective, general-purpose object-oriented programming language.</p>
+        </div>
+        <div title="Fortran" stylep="padding:10px">
+            <p>Fortran (previously FORTRAN) is a general-purpose, imperative programming language that is especially suited to numeric computation and scientific computing.</p>
+        </div>
+    </div>--%>
 </div>
 <div data-options="region:'center'">
     <div id="tt" class="easyui-tabs" data-options="fit:true,narrow:true,pill:true">

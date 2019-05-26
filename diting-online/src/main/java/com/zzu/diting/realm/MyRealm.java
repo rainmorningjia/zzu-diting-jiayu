@@ -42,9 +42,7 @@ public class MyRealm extends AuthorizingRealm {
             //调用数据库查出密码
             UserInfoPO userInfoPO=new UserInfoPO();
             userInfoPO.setUserName(username);
-            System.out.println(username);
             UserInfoPO userInfo=userService.getUserByUserInfo(userInfoPO);
-            System.out.println(userInfo);
             if (userInfo==null){
                 throw new RuntimeException("该用户不存在!");
             }

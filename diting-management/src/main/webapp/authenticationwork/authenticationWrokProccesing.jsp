@@ -82,7 +82,7 @@
                 })
             }
         });
-        $("#adoptAuthenticationWorkProccesing").linkbutton({
+        $("#adoptAuthenticationWorkProccessing").linkbutton({
             onClick: function () {
                var s=$("#dbAuthenticationWorkProccesing").edatagrid("getSelected");
                 $.ajax({
@@ -126,7 +126,12 @@
             }
         })
     })
-
+    function doSearch(){
+        $('#dbAuthenticationWorkProccesing').datagrid('load',{
+            id: $('#Id1').val(),
+            name: $('#Name2').val()
+        });
+    }
 </script>
 <div>
     <h1 align="center">处理中认证工单信息</h1>
@@ -135,6 +140,11 @@
            data-options="iconCls:'icon-add',plain:true">通过</a>
         <a id="rejectAuthenticationWork" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-edit',plain:true">驳回</a>
+        <span>ID:</span>
+        <input id="Id1" style="line-height:26px;border:1px solid #ccc">
+        <span>用户昵称</span>
+        <input id="Name2" style="line-height:26px;border:1px solid #ccc">
+        <a  class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="doSearch()">搜索</a>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-save',plain:true">导出</a>--%>
     </div>
