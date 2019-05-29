@@ -16,19 +16,19 @@
     </resultMap>
     <sql id="condition">
         <if test="rightType!=null">
-            RIGHT_TYPE=#{rightType}
+            where RIGHT_TYPE=#{rightType}
         </if>
         <if test="workType!=null">
-            WORK_TYPE=#{workType}
+            where WORK_TYPE=#{workType}
         </if>
         <if test="distribution!=null">
-            DISTRIBUTION_NAME like #{distribution}
+            where DISTRIBUTION_NAME like #{distribution}
         </if>
         <if test="operator!=null">
-            OPERATOR_NAME like #{operator}
+            where OPERATOR_NAME like #{operator}
         </if>
         <if test="createTime!=null">
-            GMT_CREATE &gt; #{t2} and GMT_CREATE &lt; #{t1}
+            where GMT_CREATE &gt; #{t2} and GMT_CREATE &lt; #{t1}
         </if>
         <if test="updateTime!=null">
             GMT_MODIFIED &gt; #{t2} and GMT_MODIFIED &lt; #{t1}
@@ -37,7 +37,6 @@
     <select id="getTotalNumber" resultType="java.lang.Integer">
         select count(*)
         from right_distribution_management_info
-        where
         <include refid="condition"/>
 
     </select>
