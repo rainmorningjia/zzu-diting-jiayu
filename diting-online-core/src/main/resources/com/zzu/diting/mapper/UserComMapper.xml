@@ -28,8 +28,9 @@
         from user_complaint_info
         where user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryTotalNumberAllRightAndState" resultType="java.lang.Integer">
@@ -49,8 +50,9 @@
         where user_id = #{userId}
           and process_state = #{state}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryTotalNumberRightAndAllState" resultType="java.lang.Integer">
@@ -70,8 +72,9 @@
         where user_id = #{userId}
           and copyright_type = #{rightType}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryTotalNumberRightAndState" resultType="java.lang.Integer">
@@ -93,8 +96,9 @@
           and copyright_type = #{rightType}
           and process_state = #{state}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryComplaintByIdAllRightAndAllState" resultMap="complaint">
@@ -116,8 +120,9 @@
           and id = #{id}
           and copyright_type = #{rightType}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryComplaintByIdAllRightAndState" resultMap="complaint">
@@ -128,8 +133,9 @@
           and id = #{id}
           and process_state = #{state}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryComplaintByIdRightAndState" resultMap="complaint">
@@ -141,8 +147,9 @@
           and process_state = #{state}
           and copyright_type = #{rightType}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryTotalNumberByUrlAndAllRightAndAllState" resultType="java.lang.Integer">
@@ -162,8 +169,9 @@
         where complaints_url like "%"#{url}"%"
             and user_id = #{userId}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+            and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryTotalNumberByUrlAndOneRightAndAllState" resultType="java.lang.Integer">
@@ -185,8 +193,9 @@
             and user_id = #{userId}
             and copyright_type = #{rightType}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+            and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
 
@@ -209,8 +218,9 @@
             and user_id = #{userId}
             and process_state = #{state}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+            and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
 
@@ -235,8 +245,9 @@
             and process_state = #{state}
             and copyright_type = #{rightType}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+            and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
 
@@ -257,8 +268,9 @@
         where right_name like "%"#{name}"%"
             and user_id = #{userId}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+            and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryTotalNumberByNameAndOneRightAndAllState" resultType="java.lang.Integer">
@@ -281,8 +293,9 @@
             and user_id = #{userId}
             and copyright_type = #{rightType}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+            and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
 
@@ -305,8 +318,9 @@
             and user_id = #{userId}
             and process_state = #{state}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+            and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
 
@@ -331,8 +345,9 @@
             and process_state = #{state}
             and copyright_type = #{rightType}
             and gmt_create < #{t2}
-            and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+            and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
     <select id="queryTotalNumberByRightIdAndAllRightAndAllState" resultType="java.lang.Integer">
@@ -352,8 +367,9 @@
         where RELATION_RIGHT_ID = #{rightId}
           and user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
 
@@ -376,8 +392,9 @@
           and copyright_type = #{rightType}
           and user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
 
@@ -402,8 +419,9 @@
           and process_state = #{state}
           and user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1} order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
 
@@ -429,8 +447,18 @@
           and copyright_type = #{rightType}
           and user_id = #{userId}
           and gmt_create < #{t2}
-          and gmt_create > #{t1}  order by gmt_create desc limit #{num1}
-            ,#{num2}
+          and gmt_create > #{t1}
+        order by gmt_create desc limit #{num1}
+                ,#{num2}
         ]]>
     </select>
+
+    <select id="queryComplaintNumberByRightTypeAndDate" resultType="java.lang.Integer">
+
+        select count(*)
+        from user_complaint_info
+        where copyright_type=#{rightType}
+        and gmt_create>#{date}
+    </select>
+
 </mapper>

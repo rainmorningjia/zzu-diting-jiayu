@@ -333,4 +333,11 @@ public interface UserComplaintInfoMapper extends BaseMapper<UserComplaintInfoPO>
      */
     List<UserComplaintInfoPO> queryComplaintByRightIdAndOneRightAndOneState(@Param("userId") Long userId, @Param("rightId") Long rightId, @Param("num1") Integer num1, @Param("num2") Integer num2, @Param("t1") Long t1, @Param("t2") Long t2, @Param("state") String state, @Param("rightType") String rightType);
 
+    /**
+     * 通过投诉类型和日期查询投诉量
+     * @param rightType 权利类型
+     * @param date 投诉日期
+     * @return 投诉量
+     */
+    Integer queryComplaintNumberByRightTypeAndDate(@Param("rightType") String rightType, @Param("date") Long date);
 }
