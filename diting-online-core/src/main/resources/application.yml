@@ -10,9 +10,9 @@ spring:
       prefix: /
       suffix: .jsp
   datasource:
-    password: jiayu123456
+    password: jcy123456
     username: root
-    url: jdbc:mysql://localhost:3306/diting?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ditingtest?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 

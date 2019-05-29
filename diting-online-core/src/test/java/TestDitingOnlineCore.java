@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,6 +45,12 @@ public class TestDitingOnlineCore {
 
     @Test
     public void testUserComplaint() {
-        userComplaintManager.getComplaintsRightAndAllState(new Long("12345685"), 0, 10, new Long("0"), System.currentTimeMillis(), "名誉权/肖像权");
+        Date nowDate=new Date();
+        Calendar calendar=Calendar.getInstance();
+        calendar.setTime(nowDate);
+        calendar.add(Calendar.DAY_OF_YEAR,-7);
+        long lasttime=calendar.getTime().getTime();
+        Integer total = userComplaintInfoMapper.queryComplaintNumberByRightTypeAndDate("著作权", lasttime);
+        System.out.println(total);
     }
 }

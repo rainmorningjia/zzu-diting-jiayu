@@ -16,7 +16,7 @@
       <module name="diting-management" target="1.8" />
       <module name="diting-management-core" target="1.8" />
       <module name="diting-online" target="1.8" />
-      <module name="diting-online-core" target="1.7" />
+      <module name="diting-online-core" target="1.8" />
       <module name="test" target="1.7" />
       <module name="zzu-diting-jiayu" target="1.8" />
     </bytecodeTargetLevel>
