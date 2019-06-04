@@ -16,10 +16,17 @@
     </resultMap>
     <sql id="condition">
         <if test="rightType!=null">
+<<<<<<< HEAD
             where  RIGHT_TYPE=#{rightType}
         </if>
         <if test="workType!=null">
             where  WORK_TYPE=#{workType}
+=======
+            where RIGHT_TYPE=#{rightType}
+        </if>
+        <if test="workType!=null">
+            where WORK_TYPE=#{workType}
+>>>>>>> a16dbfba1920490a6fd73b14f1ee04ede432a9b7
         </if>
         <if test="distribution!=null">
             where DISTRIBUTION_NAME like #{distribution}

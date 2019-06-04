@@ -1,10 +1,14 @@
 package com.zzu.diting.service.impl;
 
 import com.zzu.diting.dto.MessageDto;
+<<<<<<< HEAD
 import com.zzu.diting.dto.rightaudit.AddRightAuditQueryParam;
 import com.zzu.diting.dto.rightaudit.RightAuditFormQueryParam;
 import com.zzu.diting.dto.rightaudit.RightAuditTableDto;
 import com.zzu.diting.dto.rightaudit.RightAuditTablesDto;
+=======
+import com.zzu.diting.dto.rightaudit.*;
+>>>>>>> a16dbfba1920490a6fd73b14f1ee04ede432a9b7
 import com.zzu.diting.entity.RightDistributionManagementInfoPO;
 import com.zzu.diting.mappers.RightDistributionManagementInfoMapper;
 import com.zzu.diting.service.RightAuditService;
@@ -156,23 +160,43 @@ public class RightAuditServiceImpl implements RightAuditService {
             if (addRightAuditQueryParam.getRightType() == num3) {
                 rightType = "其他权利";
             }
+<<<<<<< HEAD
+=======
+            List<ManagerNameAndId> list = addRightAuditQueryParam.getList();
+            StringBuilder managerNames = new StringBuilder();
+            StringBuilder ids=new StringBuilder() ;
+            for (ManagerNameAndId s :
+                    list) {
+                managerNames = managerNames.append(";" + s.getName());
+                ids = ids.append(";" + s.getId());
+            }
+>>>>>>> a16dbfba1920490a6fd73b14f1ee04ede432a9b7
             RightDistributionManagementInfoPO rightDistributionManagementInfoPO = new RightDistributionManagementInfoPO();
             rightDistributionManagementInfoPO.setOperatorName(addRightAuditQueryParam.getOperatorName());
             rightDistributionManagementInfoPO.setRightType(rightType);
             rightDistributionManagementInfoPO.setWorkType(workType);
             rightDistributionManagementInfoPO.setUpdateTime(System.currentTimeMillis());
             rightDistributionManagementInfoPO.setCreateTime(System.currentTimeMillis());
+<<<<<<< HEAD
             rightDistributionManagementInfoPO.setDistributionId(addRightAuditQueryParam.getDistributionId());
             rightDistributionManagementInfoPO.setDistributionName(addRightAuditQueryParam.getDistributionName());
             rightDistributionManagementInfoPO.setManagerId(addRightAuditQueryParam.getManagerId());
             System.out.println(rightDistributionManagementInfoPO);
             rightDistributionManagementInfoMapper.insert(rightDistributionManagementInfoPO);
 
+=======
+            rightDistributionManagementInfoPO.setDistributionName(managerNames.toString());
+            rightDistributionManagementInfoPO.setManagerId(ids.toString());
+            rightDistributionManagementInfoMapper.insert(rightDistributionManagementInfoPO);
+>>>>>>> a16dbfba1920490a6fd73b14f1ee04ede432a9b7
             messageDto.setCode(0);
             messageDto.setMessage("添加权利信息成功");
             return messageDto;
         } catch (Exception e) {
+<<<<<<< HEAD
             e.printStackTrace();
+=======
+>>>>>>> a16dbfba1920490a6fd73b14f1ee04ede432a9b7
             messageDto.setCode(1);
             messageDto.setMessage("SYSTEM_EXCEPTION");
             return messageDto;

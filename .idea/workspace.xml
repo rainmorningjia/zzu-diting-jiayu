@@ -8,6 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d83e08e-edff-4869-90b9-0e4ee0e32376" name="Default Changelist" comment="DIRECTION: 2019/05/12&#10;author: jiachenyu&#10;version: updateUserComplaint">
+
       <change afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com/zzu/diting/mapper/ManagerInfoMapper.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/RightWorkDistributionController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/AddRightAuditQueryParam.java" afterDir="false" />
@@ -19,6 +20,15 @@
       <change afterPath="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/impl/RightAuditServiceImpl.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/diting-management/src/main/webapp/rightdistribution/addRightDistribution.jsp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/diting-management/src/main/webapp/rightdistribution/rightDistribution.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-management/src/main/webapp/images/addRightDistribution.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-management/src/main/webapp/rightdistribution/rightDistribution.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-management-core/src/main/resources/com/zzu/diting/mapper/RightDistributionManagementInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-management-core/src/main/resources/com/zzu/diting/mapper/RightDistributionManagementInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/DataController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/DataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/impl/DataServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-management/src/main/webapp/dataanaysis/dataAnalysis.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/UserInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mappers/ManagerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/mappers/ManagerMapper.java" afterDir="false" />
@@ -36,6 +46,15 @@
       <change beforePath="$PROJECT_DIR$/diting-online/src/main/webapp/right/otherRight.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/right/otherRight.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/diting-online/src/main/webapp/right/reputationRight.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/right/reputationRight.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserComplaintInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserComplaintInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserComplaintInfoTMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/UserComMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/UserComMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online-core/src/test/java/TestDitingOnlineCore.java" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online-core/src/test/java/TestDitingOnlineCore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diting-online/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/diting-online/src/main/webapp/login.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -95,6 +114,17 @@
     <favorites_list name="ditingtest" />
   </component>
   <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/rightdistribution/rightDistribution.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="55" column="46" lean-forward="true" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/ManagerController.java">
@@ -146,6 +176,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+            </state>
+              <state relative-caret-position="13">
+              <caret line="36" column="95" selection-start-line="36" selection-start-column="95" selection-end-line="36" selection-end-column="95" />
             </state>
           </provider>
         </entry>
@@ -246,6 +279,23 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/right/updateUserReRightInfo.jsp" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/webapp/main/main.jsp" />
+        <option value="$PROJECT_DIR$/diting-online/pom.xml" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/MailUtil.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/UserComplaintController.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/MenuController.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserAuthenticationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/UserComplaintServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/service/impl/MenuServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/realm/MyRealm.java" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/detailUserAuthentication.jsp" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticaionAuditing.jsp" />
+        <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/controller/RightController.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/webapp/authenticationwork/detailAuthentication.jsp" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/AuthenticationController.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/webapp/authenticationwork/authenticationWrokProccsed.jsp" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/webapp/authenticationwork/authenticationWrokProccesing.jsp" />
         <option value="$PROJECT_DIR$/diting-online/src/main/webapp/right/addUserReRightInfo.jsp" />
         <option value="$PROJECT_DIR$/diting-management/src/main/webapp/rightwork/detailRight.jsp" />
         <option value="$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/util/DataObjectTransDto.java" />
@@ -268,6 +318,19 @@
         <option value="$PROJECT_DIR$/diting-management/src/main/webapp/complaintwork/CopyrightComplaintsWrokProccssed.jsp" />
         <option value="$PROJECT_DIR$/diting-management/src/main/webapp/complaintwork/OtherRightComplaintsWrokProccssed.jsp" />
         <option value="$PROJECT_DIR$/diting-management/src/main/webapp/complaintwork/OtherRightComplaintsWrokProccsing.jsp" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/RightAuditService.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/ManagerNameAndId.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/AddRightAuditQueryParam.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/RightWorkDistributionComtroller.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/RightWorkDistributionController.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/RightAuditTablesDto.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/webapp/rightDistribution/rightDistribution.jsp" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/RightAuditFormQueryParam.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/impl/RightAuditServiceImpl.java" />
+        <option value="$PROJECT_DIR$/diting-management-core/src/main/resources/com/zzu/diting/mapper/RightDistributionManagementInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/RightAuditTableDto.java" />
+        <option value="$PROJECT_DIR$/diting-management/src/main/webapp/rightdistribution/rightDistribution.jsp" />
+======
         <option value="$PROJECT_DIR$/diting-management/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/diting-online/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/diting-online/src/main/webapp/login.jsp" />
@@ -355,6 +418,11 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="width" value="1370" />
+    <option name="height" value="728" />
     <option name="x" value="-9" />
     <option name="width" value="1371" />
     <option name="height" value="729" />
@@ -367,6 +435,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -407,6 +476,45 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ditingtest" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+              <item name="rightaudit" type="462c0819:PsiDirectoryNode" />
+              <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ditingtest" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
@@ -416,6 +524,9 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="authenticationwork" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
@@ -423,8 +534,13 @@
               <item name="diting-management" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="dataanaysis" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
@@ -434,6 +550,58 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="rightdistribution" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="rightdistribution" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management-core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management-core" type="462c0819:PsiDirectoryNode" />
+              <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ditingtest" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
@@ -468,6 +636,35 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management-core" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ditingtest" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
@@ -477,6 +674,28 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="right" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ditingtest" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="diting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="diting" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-management-core" type="462c0819:PsiDirectoryNode" />
+              <item name="ditingtest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ditingtest" type="462c0819:PsiDirectoryNode" />
+              <item name="diting-online-core" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -499,6 +718,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559323266477" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558967685755" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559124237998" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/diting-management/src/main/webapp" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -518,6 +739,11 @@
       <recent name="D:\workspace\ditingtest\diting-management-core\src\main\resources\com\zzu\diting\mapper" />
       <recent name="D:\workspace\ditingtest\diting-management-core\src\main\java\com\zzu\diting\mappers" />
       <recent name="D:\workspace\ditingtest\diting-management\src\main\java\com\zzu\diting\dto" />
+      <recent name="F:\workspace\diting\diting-management\src\main\webapp\images" />
+      <recent name="F:\workspace\diting\diting-management\src\main\webapp\rightDistribution" />
+      <recent name="F:\workspace\diting\diting-management\src\main\java\com\zzu\diting\service\impl" />
+      <recent name="F:\workspace\diting\diting-management\src\main\java\com\zzu\diting\dto" />
+      <recent name="F:\workspace\diting\diting-management\src\main\java\com\zzu\diting\service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.zzu.diting.dto.rightwork" />
@@ -532,6 +758,13 @@
       <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main\webapp" />
       <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online-core\src\main\webapp" />
       <recent name="E:\IDEA\workespace\zzu-diting-jiayu\diting-online\src\main" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\ditingtest\diting-online-core\src\main\resources\com\zzu\diting\mapper" />
+      <recent name="F:\workspace\diting\diting-online\src\main\webapp\right" />
+      <recent name="F:\workspace\diting\diting-management-core\src\main\resources" />
+      <recent name="F:\workspace\diting\diting-management\src\main\resources" />
+      <recent name="F:\workspace\diting\diting-management\src\main\webapp\rightwork" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -731,6 +964,8 @@
       <workItem from="1558352198727" duration="11406000" />
       <workItem from="1558448154233" duration="36056000" />
       <workItem from="1558695713650" duration="2008000" />
+      <workItem from="1558754834047" duration="44115000" />
+      <workItem from="1558963461196" duration="4283000" />
       <workItem from="1558754834047" duration="41597000" />
       <workItem from="1558881195015" duration="3723000" />
       <workItem from="1558921226726" duration="27000" />
@@ -802,12 +1037,22 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="396119000" />
+    <option name="totallyTimeSpent" value="369411000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4975" visible="true" weight="0.25039744" />
+    </layout>
+      <option name="totallyTimeSpent" value="378543000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4975" visible="true" weight="0.3047696" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4975" weight="0.24333064" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -818,6 +1063,8 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.23644252" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.62699825" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.44468546" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.3250444" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -894,6 +1141,12 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/diting-management/src/main/resources/application.yml">
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/authenticationNoAdopt.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/authen/addUserAuthentication.jsp">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/usercomplaint/userCopyrightComplaint.jsp"></entry>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="11" column="23" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="23" />
@@ -991,7 +1244,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/pom.xml">
+    <entry file="file://$PROJECT_DIR$/diting-online/pom.xml"/>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/rightwork/CopyRightWrokProccsed.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-591">
           <caret line="80" column="21" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
@@ -1109,14 +1363,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/conf/MyDiTingCommandLineRunner.java">
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/conf/MyDiTingCommandLineRunner.java"/>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/rightwork/ReputationRightWrokProccsing.jsp"/>
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/conf/ComputerComplaintsWorkProcess.java">
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/conf/ComputerComplaintsWorkProcess.java"/>
+    <entry file="file://$PROJECT_DIR$/diting-online/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
@@ -1158,14 +1415,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/realm/MyRealm.java">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/java/com/zzu/diting/realm/MyRealm.java"/>
+    <entry file="file://$PROJECT_DIR$/diting-management-core/src/main/resources/com/zzu/diting/mapper/ComplaintsWorkAllMapper.xml"/>
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserComplaintInfoTMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/main/main.jsp">
+    <entry file="file://$PROJECT_DIR$/diting-online/src/main/webapp/main/main.jsp"/>
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/java/com/zzu/diting/mapper/UserAppealInfoMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="164" column="66" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="66" />
@@ -1210,14 +1470,23 @@
     <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/impl/ManagerServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/ManagerController.java">
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/ManagerController.java"/>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/complaintwork/CopyrightComplaintsWrokProccssed.jsp">
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/impl/DataServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1026">
           <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/realm/MyRealm.java">
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/realm/MyRealm.java"/>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/Login_M.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/JS/echarts.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-online-core/src/main/resources/com/zzu/diting/mapper/UserInfoMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
@@ -1261,6 +1530,144 @@
             <element signature="n#style#0;n#p#0;n#td#0;n#tr#4;n#table#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#td#0;n#tr#5;n#table#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/RightAuditService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/ManagerNameAndId.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/AddRightAuditQueryParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/毕业图片资料/程序代码/diting-management-service(1)/src/main/java/com/youku/diting/hsf/provider/RightAuditApiImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="30" selection-start-line="30" selection-end-line="34" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/rightwork/CopyRightWrokProccsed.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2457">
+          <caret line="91" selection-start-line="91" selection-end-line="97" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/complaintwork/CopyrightComplaintsWrokProccsing.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1963">
+          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="12" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/complaintwork/ComplaintWrokDetail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
+            <element signature="e#21#27#0" expanded="true" />
+            <element signature="e#27#33#0" expanded="true" />
+            <element signature="e#33#39#0" expanded="true" />
+            <element signature="e#39#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/RightWorkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/RightAuditFormQueryParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/service/impl/RightAuditServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="128" column="32" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management-core/src/main/resources/com/zzu/diting/mapper/RightDistributionManagementInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/controller/RightWorkDistributionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/RightAuditTablesDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management-core/src/main/java/com/zzu/diting/entity/RightDistributionManagementInfoPO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/java/com/zzu/diting/dto/rightaudit/RightAuditTableDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diting-management/src/main/webapp/rightdistribution/rightDistribution.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="55" column="46" lean-forward="true" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
         </state>
       </provider>
     </entry>

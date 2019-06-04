@@ -48,6 +48,7 @@
 
             }]],
         });
+<<<<<<< HEAD
         $("#addRightDistribution").linkbutton({
             onClick:function () {
                 $("#addRightDistributionInfo").dialog({
@@ -72,6 +73,10 @@
     });
     
     
+=======
+    })
+
+>>>>>>> a16dbfba1920490a6fd73b14f1ee04ede432a9b7
     function doSearch() {
         $('#dbRightDistribution').datagrid('load', {
             id: $('#Idr1').val(),
@@ -88,8 +93,13 @@
     </div>
     <table id="dbRightDistribution"></table>
     <div id="tbRightDistribution">
+<<<<<<< HEAD
         <a id="addRightDistribution" class="easyui-linkbutton" href="#"
            data-options="iconCls:'icon-add',plain:true">添加</a>
+=======
+        <%--<a id="addAuthenticationWrokProccesed" class="easyui-linkbutton" href="#"
+           data-options="iconCls:'icon-add',plain:true">添加</a>--%>
+>>>>>>> a16dbfba1920490a6fd73b14f1ee04ede432a9b7
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"
