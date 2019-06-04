@@ -163,7 +163,7 @@
             }
         })
     })
-    function doSearch(){
+    function doSearchc(){
         $('#dbCopyRight').datagrid('load',{
             rightId: $('#rightId').val(),
             rightName: $('#rightName').val()
@@ -180,7 +180,7 @@
         <input id="rightId" style="line-height:26px;border:1px solid #ccc">
         <span>权利名称</span>
         <input id="rightName" style="line-height:26px;border:1px solid #ccc">
-        <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">搜索</a>
+        <a class="easyui-linkbutton" plain="true" onclick="doSearchc()">搜索</a>
         <%--        <a id="saveUser" class="easyui-linkbutton" href="#"
                    data-options="iconCls:'icon-edit',plain:true">保存</a>--%>
         <%--        <a id="exportUser" class="easyui-linkbutton" href="#"

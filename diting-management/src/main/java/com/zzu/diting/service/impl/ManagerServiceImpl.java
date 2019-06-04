@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -35,8 +36,8 @@ public class ManagerServiceImpl implements ManagerService {
         managerInfo.setId(id);
         String password = managerInfo.getPassword();
         String salt = Md5Util.getSalt();
-        String pass=password+salt;
-        String s =Md5Util.encryption(pass);
+        String pass = password + salt;
+        String s = Md5Util.encryption(pass);
         managerInfo.setPassword(s);
         managerInfo.setSalt(salt);
         managerInfo.setCreateTime(System.currentTimeMillis());
@@ -45,16 +46,23 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
     public void loginManager(String name, String password) {
-        ManagerInfo managerInfo=new ManagerInfo();
+        ManagerInfo managerInfo = new ManagerInfo();
         managerInfo.setName(name);
-        managerInfo=managerMapper.selectOne(managerInfo);
-        String salt=managerInfo.getSalt();
-        String pass=password+salt;
-        Boolean b=Md5Util.checkPassword(pass,managerInfo.getPassword());
-        if (!b){
+        managerInfo = managerMapper.selectOne(managerInfo);
+        String salt = managerInfo.getSalt();
+        String pass = password + salt;
+        Boolean b = Md5Util.checkPassword(pass, managerInfo.getPassword());
+        if (!b) {
             throw new RuntimeException("密码错误");
         }
 
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.SUPPORTS, readOnly = true)
+    public List<ManagerInfo> queryManagerInfoByName(String name) {
+        return managerMapper.queryManagerInfoByName(name);
     }
 }

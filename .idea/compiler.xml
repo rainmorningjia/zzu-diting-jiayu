@@ -10,6 +10,7 @@
         <module name="diting-management-core" />
         <module name="diting-online" />
         <module name="diting-online-core" />
+        <module name="zzu-diting-jiayu" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,7 +28,7 @@
       <module name="diting-management-core" options="" />
       <module name="diting-online" options="" />
       <module name="diting-online-core" options="" />
-      <module name="zzu-diting-jiayu" options="-parameters" />
+      <module name="zzu-diting-jiayu" options="" />
     </option>
   </component>
 </project>

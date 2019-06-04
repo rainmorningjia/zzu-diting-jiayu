@@ -2,6 +2,8 @@ package com.zzu.diting.service;
 
 import com.zzu.diting.entity.ManagerInfo;
 
+import java.util.List;
+
 public interface ManagerService {
     /**
      * 得到管理者信息
@@ -20,8 +22,11 @@ public interface ManagerService {
 
     /**
      * 管理员登录
-     * @param name 姓名
+     *
+     * @param name     姓名
      * @param password 密码
      */
     void loginManager(String name, String password);
+
+    List<ManagerInfo> queryManagerInfoByName(String name);
 }

@@ -17,6 +17,7 @@ import java.util.List;
  * @date : 2019/5/16 11:44
  */
 public class DistributionAuthenticationWorkTask implements Runnable {
+
     @Override
     public void run() {
         distributionAuthenticationWork();
