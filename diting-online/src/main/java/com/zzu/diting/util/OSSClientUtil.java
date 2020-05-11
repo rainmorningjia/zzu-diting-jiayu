@@ -23,8 +23,8 @@ public class OSSClientUtil {
     // log日志
     private static Logger logger = Logger.getLogger(OSSClientUtil.class);
     private static String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
-    private static String accessKeyId = "LTAIsFJTIRCdA8Ru";
-    private static String accessKeySecret = "fFlfijBvG2SljGTPhA8LCBA5QvwSF5";
+    private static String accessKeyId = "";
+    private static String accessKeySecret = "";
     private static String bucketName = "zzu-diting";
     private static String FOLDER = "user/";
     public static final String FORMAT = new SimpleDateFormat("yyyyMMdd").format(new Date());
